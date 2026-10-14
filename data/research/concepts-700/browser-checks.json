@@ -1,0 +1,18 @@
+{
+  "browser": "Chromium",
+  "ordinary": 700,
+  "conceptCoverage": "700/700",
+  "conflictWarning": true,
+  "conflictingLetterNotStyledCorrect": true,
+  "restoredBearingText": true,
+  "subjectAndSubconceptEditable": true,
+  "humanConfirmationInitiallyFalse": true,
+  "relationsWithOriginalQuestions": true,
+  "temporalReconstructionWarning": true,
+  "mobileViewport": 390,
+  "horizontalOverflow": false,
+  "javascriptErrors": [],
+  "mediumConfidenceFilter": 211,
+  "answerConflictFilter": 1,
+  "personalDatabaseModified": false
+}

@@ -11,7 +11,7 @@ Se eligió JSON validado en tablas relacionadas frente a un esquema con decenas 
 - `lib/types.ts`: contratos de dominio, estado de validación y pesos.
 - `lib/db.ts`: SQLite/PostgreSQL, migración, transacciones, persistencia y auditoría.
 - `lib/store.ts`: carga del catálogo y del temario; lectura del dataset y aplicación idempotente del banco cotejado.
-- `lib/verified-bank.ts`, `lib/historical-bank.ts`, `lib/documentary.ts`: manifiesto y validación transaccional de evidencias; elegibilidad documental y huellas por pregunta.
+- `lib/verified-bank.ts`, `lib/historical-bank.ts`, `lib/concept-bank.ts`, `lib/documentary.ts`: manifiesto y validación transaccional de evidencias; elegibilidad documental y huellas por pregunta.
 - `lib/history.ts`, `components/article-history.tsx`: fichas normativas e informe anual.
 - `lib/importer.ts`, `lib/review.ts`: esquema de entrada, procedencia, extracción, correspondencia de opciones, plantillas y revisión.
 - `lib/analysis.ts`: frecuencias, corpus admisible, ranking, comparación textual y evaluación temporal.
@@ -51,3 +51,9 @@ No se cachean páginas privadas ni respuestas API en el service worker. SQLite/W
 ## Evolución
 
 Para más datos: columnas/índices materializados de frecuencia, procesado en cola, revisión en lotes, mapeo histórico de versiones de programa y referencias legales por fecha, motor OCR aislado y sugerencias semánticas opcionales con modelo local. Añadir un modelo probabilístico sólo después de fijar el protocolo temporal, reservar un conjunto externo y demostrar calibración fuera de entrenamiento.
+
+## Capa conceptual completa
+
+`python/curate_concepts.py` liga 524 asignaciones explícitas y 176 anteriores a los textos del banco, sin llamadas a IA o red. El manifiesto incluye anotaciones, relaciones y evidencia. `applyConceptBank` se ejecuta después de los bancos originales: verifica huellas y aplica únicamente metadatos y una referencia normativa documentada, conservando enunciados, opciones y respuestas. Su versión depende también de los manifiestos de los bancos de entrada; una reextracción no puede dejar silenciosamente las clasificaciones borradas por una migración anterior. Las anotaciones `manual-reviewed` del usuario se preservan.
+
+`Question.subject`, `subconcept` y `conceptReview` separan materia, foco específico, método, confianza cualitativa y revisión humana independiente. `contentRelations` conserva enlaces explícitos con su tipo de equivalencia. `answerIssue` documenta un conflicto material con la norma sin alterar la letra de la plantilla, y lo excluye del corpus estricto. La revisión del usuario puede confirmar por separado la clasificación; cambiar su contenido retira la constancia previa correspondiente. Se conserva el historial de todas las entidades.

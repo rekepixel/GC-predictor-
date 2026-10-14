@@ -38,6 +38,7 @@ export function articleProfiles(data: Dataset) {
           keySourceId: q.keySourceId,
           legalUrl: q.legalUrl,
           checkedAsOf: q.legalCheckedAsOf || null,
+          answerIssue: q.answerIssue || null,
           finality:
             q.validation === "validated"
               ? "final_confirmed"

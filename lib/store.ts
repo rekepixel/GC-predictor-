@@ -4,6 +4,7 @@ import { getDB, migrate, put, readAll, type DB } from "./db";
 import type { Dataset, Source, Topic, Syllabus } from "./types";
 import { applyVerifiedBank } from "./verified-bank";
 import { applyHistoricalBank } from "./historical-bank";
+import { applyConceptBank } from "./concept-bank";
 let initialization: Promise<void> | undefined;
 export function initialize() {
   return (initialization ??= (async () => {
@@ -94,8 +95,11 @@ export function initialize() {
     }
     if (process.env.GC_SKIP_VERIFIED_BANK !== "1") {
       await applyVerifiedBank(db);
-      if (process.env.GC_SKIP_HISTORICAL_BANK !== "1")
+      if (process.env.GC_SKIP_HISTORICAL_BANK !== "1") {
         await applyHistoricalBank(db);
+        if (process.env.GC_SKIP_CONCEPT_BANK !== "1")
+          await applyConceptBank(db);
+      }
     }
   })());
 }

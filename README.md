@@ -4,26 +4,26 @@ Aplicación personal para analizar exámenes oficiales de acceso a la Escala de 
 
 Implementación funcional con Next.js 16, App Router, TypeScript, Tailwind 4, SQLite/PostgreSQL y extracción local de PDF en JavaScript o Python. No necesita una API de IA ni servicios de pago para ejecutarse localmente.
 
-## Estado real: base histórica 2023–2026
+## Estado real: 700 preguntas con clasificación conceptual
 
-Consulta del **14/10/2026**. Se continúa el mismo proyecto. Informe: [base histórica y controles](docs/history-2023-2026.md); datos agregados: [reporte JSON](data/research/history/validation-report.json).
+Consulta del **14/10/2026**. Se continúa el mismo proyecto. Informe vigente: [análisis conceptual de las 700 preguntas](docs/concept-analysis-700.md); [datos calculados](data/research/concepts-700/analysis-report.json). Se conserva el [informe de la fase histórica anterior](docs/history-2023-2026.md).
 
-| Control                                                | Resultado                                                                                                                         |
-| ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
-| Sesiones celebradas representadas                      | **6**: dos de 2023, dos de 2024, una de 2025 y una de 2026                                                                        |
-| Formas distintas de examen                             | **7**; la sesión 28/09/2024 contiene dos ejercicios diferentes, uno aplicado en un aula de Baeza                                  |
-| Preguntas ordinarias para descripción                  | **700 únicas**, sin duplicar A/B                                                                                                  |
-| Reservas                                               | **35 únicas**, separadas e inactivas                                                                                              |
-| Registros literales cotejados                          | **1.470** ocurrencias de modelo, con cuatro alternativas y claves emparejadas                                                     |
-| Procedencia                                            | **100 ordinarias de descarga institucional y 600 cotejadas en copias secundarias corroboradas**                                   |
-| Respuesta final y anulaciones acreditadas por pregunta | **0**; no se presentan las copias ni las claves vigentes como prueba de ese control final                                         |
-| Clasificación temática                                 | 700/700 ordinarias en los 23 temas de referencia 2026                                                                             |
-| Clasificación conceptual específica                    | **176/700 revisadas; 524 pendientes**; 12 grupos reaparecen entre años                                                            |
-| Referencias normativas                                 | **132 preguntas** con alguna localización normativa cotejada; **121 fichas de artículos numéricos**, con sus versiones históricas |
-| Repeticiones                                           | 2 grupos de repetición literal entre años; 12 grupos conceptuales, 6 con años consecutivos                                        |
-| Archivo existente                                      | **2.100 registros**: los 840 anteriores se conservan y se añaden 1.260 históricos; 630 de 2022 siguen en borrador                 |
-| Documentación                                          | 69 fuentes catalogadas; 45 PDF retenidos: 24 de procedencia oficial y 21 secundarios                                              |
-| Predicción                                             | Probabilidades siempre `null`; retrospectiva estricta no concluyente; reconstrucción exploratoria separada                        |
+| Control                                                | Resultado                                                                                                                                                                                      |
+| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Sesiones celebradas representadas                      | **6**: dos de 2023, dos de 2024, una de 2025 y una de 2026                                                                                                                                     |
+| Formas distintas de examen                             | **7**; la sesión 28/09/2024 contiene dos ejercicios diferentes, uno aplicado en un aula de Baeza                                                                                               |
+| Preguntas ordinarias para descripción                  | **700 únicas**, sin duplicar A/B                                                                                                                                                               |
+| Reservas                                               | **35 únicas**, separadas e inactivas                                                                                                                                                           |
+| Registros literales cotejados                          | **1.470** ocurrencias de modelo, con cuatro alternativas y claves emparejadas                                                                                                                  |
+| Procedencia                                            | **100 ordinarias de descarga institucional y 600 cotejadas en copias secundarias corroboradas**                                                                                                |
+| Respuesta final y anulaciones acreditadas por pregunta | **0**; no se presentan las copias ni las claves vigentes como prueba de ese control final                                                                                                      |
+| Clasificación temática                                 | 700/700 ordinarias en los 23 temas de referencia 2026                                                                                                                                          |
+| Clasificación conceptual específica                    | **700/700 asignadas**, 553 conceptos de estudio y subconcepto por pregunta; 524 nuevas asignaciones, 176 anteriores conservadas. Revisión asistida, pendiente de revisión humana independiente |
+| Referencias normativas                                 | **133 preguntas** con alguna localización normativa cotejada; **122 fichas de artículos numéricos**, con sus versiones históricas                                                              |
+| Repeticiones                                           | 2 grupos literales; 89 familias interanuales, 63 con años consecutivos; 14 relaciones explícitas que distinguen misma regla, mismo método y subaspectos                                        |
+| Archivo existente                                      | **2.100 registros**: los 840 anteriores se conservan y se añaden 1.260 históricos; 630 de 2022 siguen en borrador                                                                              |
+| Documentación                                          | 69 fuentes catalogadas; 45 PDF retenidos: 24 de procedencia oficial y 21 secundarios                                                                                                           |
+| Predicción                                             | Probabilidades siempre `null`; retrospectiva estricta no concluyente; reconstrucción exploratoria separada                                                                                     |
 
 **Corroborar copias no las convierte en descargas oficiales.** Para admitir el cotejo histórico se exige concordancia literal de dos motores PDF, cuatro alternativas, sección y reservas identificadas, transcripción visual independiente de las claves A/B y correspondencia biyectiva coherente de respuestas. Las copias coinciden entre dos proveedores: por SHA-256 en 2023/2024 y plantillas, o por texto de preguntas tras retirar únicamente la marca editorial del documento de contraste de 2025. Se conserva procedencia secundaria, originales institucionales inaccesibles y situación final pendiente.
 
@@ -31,7 +31,7 @@ La resolución de 24/07/2026 acredita resultados definitivos tras revisiones de 
 
 En 2024 no se cuenta el examen suspendido del 29/09: las sesiones son 28/09 y 13/10. La primera reúne 200 preguntas distintas de dos ejercicios, cada uno con A/B. No se conoce el número de aspirantes de cada forma; las tasas se normalizan por sesión sobre los contenidos disponibles, sin inventar pesos poblacionales.
 
-Estadísticas actuales: Derechos Humanos 80/700, Procesal Penal 68/700 y Constitucional 58/700. Son recuentos documentales. El ranking conceptual sólo utiliza la parte revisada; **su cobertura incompleta impide tratarlo como ranking exhaustivo del temario**. El tiempo sin aparecer no añade puntos.
+Estadísticas actuales: Derechos Humanos 80/700, Procesal Penal 68/700 y Constitucional 58/700. Son recuentos documentales. Las 700 ordinarias tienen clasificación conceptual asistida. Esto no equivale a revisión humana independiente ni a una taxonomía perfecta: 211 etiquetas tienen confianza cualitativa media y las familias pueden contener reglas distintas. El tiempo sin aparecer no añade puntos. Se documenta una discrepancia entre clave copiada y norma en 2024 2A81/2B75; su letra se conserva pero no se ofrece como respuesta jurídica fiable.
 
 ## Estado de entrega y permisos de GitHub
 
@@ -88,10 +88,20 @@ La base local se guarda en `.local/gc-predictor.sqlite`, fuera de Git. Los PDF s
 
 En desarrollo, el acceso sin contraseña se limita a un servidor enlazado a loopback y un host `localhost`/`127.0.0.1`. Para exigir contraseña también en desarrollo, configura `PRIVATE_APP_PASSWORD`. No expongas `next dev` a Internet.
 
+Para reproducir la curación conceptual explícita, sin API de IA ni conexión de red:
+
+```bash
+.venv/bin/python python/curate_concepts.py
+npm run data:apply-verified
+npx tsx scripts/history-report.ts --concepts
+```
+
+Se conservan 524 anotaciones explícitas en `data/curation/concepts-700.psv` y un artefacto sellado de 700 filas, con texto y huella de entrada. `data:classify:concepts` abrevia curación y aplicación usando `python` del PATH. Las revisiones humanas del usuario se preservan. Administración permite editar materia y subconcepto, y confirmar la revisión humana por separado.
+
 ## Qué se puede usar
 
 - **Dashboard**: documentos y registros importados, años, estado de cobertura distribución de las 700 preguntas ordinarias cotejadas y gráficos interactivos; separa cotejo documental de firmeza final.
-- **Explorador**: preguntas reales en borrador/revisadas/validadas, filtradas por año, sesión, modelo, tema, norma, artículo, concepto y texto. Conserva el enunciado y el orden literal de las opciones de cada modelo. Por defecto muestra ordinarias cotejadas y una sola variante por pregunta. La pestaña «Fichas de artículos» ofrece 121 fichas, historial, páginas A/B y versión normativa.
+- **Explorador**: preguntas reales en borrador/revisadas/validadas, filtradas por año, sesión, modelo, tema, norma, artículo, concepto y texto. Conserva el enunciado y el orden literal de las opciones de cada modelo. Por defecto muestra ordinarias cotejadas y una sola variante por pregunta. La pestaña «Fichas de artículos» ofrece 122 fichas, historial, páginas A/B y versión normativa.
 - **Administración**: subida y conservación de PDF, extracción revisable, importación de JSON, asociación de plantillas, cotejo de preguntas, fuentes, versiones del programa y cambios normativos. Auditoría de cambios y exportación JSON.
 - **Análisis**: frecuencia de temas, normas, artículos y conceptos; repeticiones literales y conceptuales; sugerencias léxicas TF-IDF/coseno; periodos sin reaparición; estilos y distractores anotados.
 - **Prioridades**: orden explicable por concepto o artículo, pesos configurables y referencias documentales. Con un único año sólo se muestran apariciones; los puntos heurísticos se habilitan con al menos dos años, sin promesa de fiabilidad predictiva. Se informa de cobertura, fechas desconocidas, vigencia y muestra pequeña.
@@ -220,10 +230,10 @@ GitHub Actions ejecuta integridad de fuentes, comprobación de tipos, pruebas y 
 
 ## Límites y siguiente paso
 
-El corpus permite comparar seis sesiones, con procedencia explícita. No equivale a disponer de todas sus respuestas finales acreditadas. Faltan autenticación institucional plena de las copias, fechas originales de publicación, revisión de 524 conceptos y referencias concretas en 568 preguntas (algunas materias no son jurídicas). No se han certificado retiradas concretas del temario 2026; mapear un tema no demuestra vigencia de cada contenido. Las versiones legales se cotejan para la fecha del examen, no para 2027.
+El corpus permite comparar seis sesiones, con procedencia explícita. No equivale a disponer de todas sus respuestas finales acreditadas. Faltan autenticación institucional plena de las copias, fechas originales de publicación, revisión humana independiente de las etiquetas conceptuales y referencias concretas en 567 preguntas (algunas materias no son jurídicas). No se han certificado retiradas concretas del temario 2026; mapear un tema no demuestra vigencia de cada contenido. Las versiones legales se cotejan para la fecha del examen, no para 2027.
 
-La retrospectiva estricta mantiene sus controles de publicación y respuesta final. La reconstrucción exploratoria usa sólo exámenes anteriores, pero supone disponibilidad a partir de la celebración cuando falta la publicación y utiliza etiquetas retrospectivas: sus resultados no son concluyentes. Top 10 de 2025: 2 conceptos cubiertos de 14 revisados; de 2026: 6 de 100. La referencia de frecuencia consigue lo mismo, por lo que **no hay evidencia de mejora predictiva**.
+La retrospectiva estricta mantiene sus controles de publicación y respuesta final. La reconstrucción exploratoria usa sólo exámenes anteriores, pero supone disponibilidad a partir de la celebración cuando falta la publicación y utiliza etiquetas retrospectivas: sus resultados no son concluyentes. Con cobertura conceptual completa, el top 10 cubre 3 conceptos/preguntas de 2025 y 3 de 2026. Frecuencia histórica cubre 2 y 3. Al ampliar a top 50, la heurística cubre 6 y 5 frente a 7 y 6 de frecuencia. **No se acredita mejora predictiva consistente**. Los resultados anteriores pertenecían al subconjunto incompleto y se conservan en el informe previo.
 
 No hay calibración probabilística, OCR automático web, embeddings de pago ni sistema multiusuario. Las claves históricas escaneadas se transcribieron visualmente y se cruzaron entre A/B. La similitud es léxica y conserva su límite interactivo de 1.000 preguntas.
 
-Siguiente paso: conseguir los acuerdos o claves que acrediten el estado final por pregunta, confirmar fechas históricas de publicación y completar la taxonomía conceptual. Congelar la taxonomía y los pesos antes de evaluar un periodo externo nuevo. Los archivos y registros anteriores están conservados; el informe incluye las comprobaciones de integridad.
+Siguiente paso: conseguir los acuerdos o claves que acrediten el estado final por pregunta, confirmar fechas históricas de publicación y revisar la taxonomía conceptual y resolver la discrepancia de clave documentada. Congelar la taxonomía y los pesos antes de evaluar un periodo externo nuevo. Los archivos y registros anteriores están conservados; el informe incluye las comprobaciones de integridad.

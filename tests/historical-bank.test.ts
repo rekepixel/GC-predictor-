@@ -11,6 +11,7 @@ process.env.SQLITE_PATH = path.join(
 delete process.env.DATABASE_URL;
 delete process.env.GC_SKIP_VERIFIED_BANK;
 delete process.env.GC_SKIP_HISTORICAL_BANK;
+process.env.GC_SKIP_CONCEPT_BANK = "1";
 import { dataset } from "../lib/store";
 import { getDB } from "../lib/db";
 import { applyHistoricalBank } from "../lib/historical-bank";

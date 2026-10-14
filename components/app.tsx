@@ -405,6 +405,10 @@ function Dashboard({
           {stats.basisNote} Clave final acreditada: {stats.definitiveQuestions}{" "}
           preguntas. Descarga oficial: {stats.primaryDocumentQuestions}; copias
           secundarias corroboradas: {stats.corroboratedCopyQuestions}.
+          {stats.conceptReviews.assisted > 0 &&
+            ` Clasificación asistida: ${stats.conceptClassified}/${stats.questions}; revisión humana independiente: ${stats.conceptReviews.independentHuman}.`}
+          {stats.answerIssues > 0 &&
+            ` ${stats.answerIssues} pregunta con discrepancia de respuesta documentada; su aparición se cuenta, su respuesta no se ofrece como fiable.`}
           {stats.years.length < 2
             ? " Un solo año no permite comparar tendencias históricas."
             : " Las comparaciones describen el corpus disponible y su cobertura parcial."}
@@ -729,11 +733,17 @@ export function QuestionCard({
         {q.options.map((o, i) => (
           <div
             key={i}
-            className={answer && q.correct === i ? "option correct" : "option"}
+            className={
+              answer && q.correct === i && !q.answerIssue
+                ? "option correct"
+                : "option"
+            }
           >
             <span>{String.fromCharCode(65 + i)}</span>
             <p className="literal">{o}</p>
-            {answer && q.correct === i && <CheckCircle2 size={17} />}
+            {answer && q.correct === i && !q.answerIssue && (
+              <CheckCircle2 size={17} />
+            )}
           </div>
         ))}
       </div>
@@ -748,6 +758,8 @@ export function QuestionCard({
           <Badge>Confianza de regla {pct(q.confidence)}</Badge>
         )}
         {q.concept && <Badge tone="green">Concepto: {q.concept}</Badge>}
+        {q.subject && <Badge>Materia: {q.subject}</Badge>}
+        {q.subconcept && <Badge>Subconcepto: {q.subconcept}</Badge>}
         {q.conceptDetail && <Badge>Subaspecto: {q.conceptDetail}</Badge>}
         {q.law && (
           <Badge>
@@ -763,18 +775,45 @@ export function QuestionCard({
           </Badge>
         )}
       </div>
+      {q.conceptReview && (
+        <p className="muted">
+          {q.conceptReview.independentHumanReview
+            ? "Clasificación revisada por el usuario"
+            : "Clasificación asistida · revisión humana independiente pendiente"}{" "}
+          · confianza cualitativa{" "}
+          {q.conceptReview.confidence === "high" ? "alta" : "media"}, no
+          calibrada.{" "}
+          {q.conceptReview.scope === "keyed_statement_focus"
+            ? "La etiqueta destaca el foco de la alternativa de clave; el ítem puede examinar varios contenidos."
+            : ""}
+        </p>
+      )}
+      {q.answerIssue && (
+        <div className="notice amber" role="note">
+          <AlertCircle size={18} />
+          <span>
+            <strong>Discrepancia de respuesta pendiente.</strong>{" "}
+            {q.answerIssue.description}{" "}
+            <a href={q.answerIssue.sourceUrl} target="_blank" rel="noreferrer">
+              Consultar versión normativa
+            </a>
+          </span>
+        </div>
+      )}
       {answer && (
         <div className="answer-note">
-          {q.correct === null
-            ? "Sin respuesta contrastada."
-            : q.validation === "validated"
-              ? "Respuesta de plantilla definitiva."
-              : q.documentaryEligible
-                ? q.documentaryVerification?.scope ===
-                  "corroborated_documentary"
-                  ? "Respuesta cotejada con copias secundarias concordantes de la plantilla. La procedencia y la situación final por pregunta se informan por separado."
-                  : "Respuesta cotejada con la plantilla oficial nº 2. Resultados definitivos publicados el 24/07/2026; el acuerdo no identifica cambios de respuesta ni anulaciones por pregunta."
-                : "Respuesta provisional extraída. No equivale a una plantilla definitiva."}
+          {q.answerIssue
+            ? `La plantilla copiada marca ${String.fromCharCode(65 + (q.correct ?? 0))}. No se ofrece como respuesta jurídica fiable mientras persista la discrepancia.`
+            : q.correct === null
+              ? "Sin respuesta contrastada."
+              : q.validation === "validated"
+                ? "Respuesta de plantilla definitiva."
+                : q.documentaryEligible
+                  ? q.documentaryVerification?.scope ===
+                    "corroborated_documentary"
+                    ? "Respuesta cotejada con copias secundarias concordantes de la plantilla. La procedencia y la situación final por pregunta se informan por separado."
+                    : "Respuesta cotejada con la plantilla oficial nº 2. Resultados definitivos publicados el 24/07/2026; el acuerdo no identifica cambios de respuesta ni anulaciones por pregunta."
+                  : "Respuesta provisional extraída. No equivale a una plantilla definitiva."}
           {q.explanation && <p>{q.explanation}</p>}
           {q.legalUrl && (
             <a href={q.legalUrl} target="_blank" rel="noreferrer">
@@ -853,7 +892,12 @@ function Explorer({
             (!status ||
               (status === "documentary"
                 ? q.documentaryEligible || q.validation === "validated"
-                : q.validation === status)) &&
+                : status === "concept_medium"
+                  ? q.documentaryEligible &&
+                    q.conceptReview?.confidence === "medium"
+                  : status === "answer_conflict"
+                    ? q.documentaryEligible && !!q.answerIssue
+                    : q.validation === status)) &&
             (reserves || !q.reserve) &&
             (!session || q.session === session) &&
             (!model || q.model === model),
@@ -1056,6 +1100,8 @@ function Explorer({
                 Cotejo documental o definitiva
               </option>
               <option value="validated">Validadas</option>
+              <option value="concept_medium">Concepto · confianza media</option>
+              <option value="answer_conflict">Discrepancia de respuesta</option>
               <option value="draft">Borradores</option>
               <option value="reviewed">Revisadas</option>
               <option value="cancelled">Anuladas</option>
@@ -1196,6 +1242,7 @@ function Patterns({
         {[
           ["literal", "Repeticiones literales"],
           ["concept", "Conceptos repetidos"],
+          ["relations", "Relaciones de contenido"],
           ["laws", "Frecuencia de leyes"],
           ["recent", "Histórica frente a reciente"],
           ["similar", "Similitud textual"],
@@ -1240,6 +1287,32 @@ function Patterns({
               description="Se normalizan espacios y Unicode, conservando acentos, puntuación y símbolos. Los cambios de orden entre modelos no crean una nueva observación."
             />
           )
+        ) : tab === "relations" ? (
+          <>
+            <p className="muted">
+              Relaciones explícitas revisadas a posteriori. Se distingue misma
+              regla, mismo método y subaspectos relacionados. No es una prueba
+              predictiva ni un inventario exhaustivo.
+            </p>
+            {p.reviewedRelations.map((r) => (
+              <div className="pattern-row" key={r.id}>
+                <strong>{r.name}</strong>
+                <Badge>
+                  {r.kind === "same_rule"
+                    ? "Misma regla examinada"
+                    : r.kind === "same_method"
+                      ? "Mismo método de cálculo"
+                      : "Subaspectos distintos"}
+                </Badge>
+                <p>{r.reason}</p>
+                <QuestionEvidence
+                  ids={r.questionIds}
+                  data={data}
+                  review={review}
+                />
+              </div>
+            ))}
+          </>
         ) : tab === "concept" ? (
           p.concepts.length ? (
             p.concepts.map((c) => (
@@ -1530,7 +1603,7 @@ function Priorities({
               value={kind}
               onChange={(e) => setKind(e.target.value as "concept" | "article")}
             >
-              <option value="concept">Conceptos revisados</option>
+              <option value="concept">Conceptos de estudio clasificados</option>
               <option value="article">Artículos verificados</option>
             </select>
           </div>
@@ -1548,6 +1621,17 @@ function Priorities({
                     {p.count} observaciones · años {p.years.join(", ")} · última
                     aparición {p.lastYear}
                   </p>
+                  {p.topicIds.length > 1 && (
+                    <p className="muted">
+                      Temas de aparición:{" "}
+                      {p.topicIds
+                        .map(
+                          (id) => data.topics.find((t) => t.id === id)?.number,
+                        )
+                        .filter(Boolean)
+                        .join(", ")}
+                    </p>
+                  )}
                   <div className="priority-evidence">
                     <span>
                       Frecuencia histórica: <b>{pct(p.historicalRate)}</b>

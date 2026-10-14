@@ -143,11 +143,13 @@ export function ArticleHistory({
                       </td>
                       <td>{h.paragraph || "Sólo artículo cotejado"}</td>
                       <td>
-                        {h.finality === "final_confirmed"
-                          ? "Definitiva acreditada"
-                          : h.finality === "corroborated_documentary"
-                            ? "Copia de clave corroborada · situación final pendiente"
-                            : "Clave oficial cotejada · situación final pendiente"}
+                        {h.answerIssue
+                          ? "Discrepancia entre pregunta, clave y norma · pendiente de resolución"
+                          : h.finality === "final_confirmed"
+                            ? "Definitiva acreditada"
+                            : h.finality === "corroborated_documentary"
+                              ? "Copia de clave corroborada · situación final pendiente"
+                              : "Clave oficial cotejada · situación final pendiente"}
                       </td>
                       <td>
                         {h.legalUrl ? (

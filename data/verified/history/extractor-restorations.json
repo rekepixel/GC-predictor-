@@ -1,0 +1,18 @@
+{
+  "2024-1A-87": {
+    "field": "stem",
+    "from": "Topografía. Respecto de una dirección AB, ¿cómo se denomina el ángulo que forma el Norte m agnético con la del reloj?",
+    "to": "Topografía. Respecto de una dirección AB, ¿cómo se denomina el ángulo que forma el Norte m agnético con la dirección opuesta BA, contando desde el Norte magnético a la dirección opuesta BA, en el sentido de las agujas del reloj?",
+    "sourcePage": 14,
+    "reason": "El filtro genérico de cabeceras descartaba una continuación real que empezaba por dirección. Se restringe a cabeceras institucionales completas; texto recuperado con dos motores y cotejo visual del modelo A.",
+    "evidence": "data/verified/concepts-2023-2026/2024-1A-87-page14.png"
+  },
+  "2024-1B-73": {
+    "field": "stem",
+    "from": "Topografía. Respecto de una dirección AB, ¿cómo se denomina el ángulo que forma el Norte magnético con la del reloj?",
+    "to": "Topografía. Respecto de una dirección AB, ¿cómo se denomina el ángulo que forma el Norte magnético con la dirección opuesta BA, contando desde el Norte magnético a la dirección opuesta BA, en el sentido de las agujas del reloj?",
+    "sourcePage": 12,
+    "reason": "El filtro genérico de cabeceras descartaba una continuación real que empezaba por dirección. Se restringe a cabeceras institucionales completas; texto recuperado con dos motores y cotejo visual del modelo A.",
+    "evidence": "data/verified/concepts-2023-2026/2024-1A-87-page14.png"
+  }
+}

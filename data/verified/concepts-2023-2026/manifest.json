@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    {
+      "path": "data/curation/concept-relations.json",
+      "sha256": "2fb6d5e5a8fef7254ba4e79ea1f1408dc08af26323543d2d4d609e76c6be9f3e"
+    },
+    {
+      "path": "data/curation/concepts-700.psv",
+      "sha256": "1891cc747fb6e04d16664bd0ea6fa23f271a0bff687130fbcc71936217267b04"
+    },
+    {
+      "path": "data/verified/concepts-2023-2026/2024-1A-87-page14.png",
+      "sha256": "8adbdf4d0110d5465fee90a12155ee94982142fe1a400ca72821c0fa75d61b20"
+    },
+    {
+      "path": "data/verified/concepts-2023-2026/2024-2A-81-page13.png",
+      "sha256": "49a07637c9f783f2203452986dfb86bb424e938e41a35130b0197befea82af23"
+    },
+    {
+      "path": "data/verified/concepts-2023-2026/2024-key-page1.png",
+      "sha256": "24053fb75e5efa1fe93e7ed55ead840e32ba4376bd4a79a5b2b0855cefada1cb"
+    },
+    {
+      "path": "data/verified/concepts-2023-2026/issues.json",
+      "sha256": "84dbdacd0eb7215a3aeb7b407eaab5b0c21437f8e052f07c27b56a21a2eaf5a5"
+    },
+    {
+      "path": "data/verified/concepts-2023-2026/review.json",
+      "sha256": "d02e4b61eea73dc2b0fb474e62fd661fad59a24dfcce665a669fe8ec15ec774a"
+    }
+  ]
+}

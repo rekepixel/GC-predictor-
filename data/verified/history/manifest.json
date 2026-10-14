@@ -7,7 +7,7 @@
     },
     {
       "path": "data/verified/history/bank.json",
-      "sha256": "d5c1685eeadad6e9f0f59460b9d0b599d350b019a573d9f19943ce69d0cd503b"
+      "sha256": "594dcb6162bf2e01a604a7037df635730a480330d7e6f6d8110ee8d797ee187f"
     },
     {
       "path": "data/verified/history/concept-groups.json",
@@ -20,6 +20,10 @@
     {
       "path": "data/verified/history/curation.json",
       "sha256": "41f806150faa036f3b32351452764e159f477a26199949ee285945a16f5e5e5f"
+    },
+    {
+      "path": "data/verified/history/extractor-restorations.json",
+      "sha256": "4a99b9ca631b2a3a07090b822539294ee69dfd573cc8b0a9665c0032648887a9"
     },
     {
       "path": "data/verified/history/heading-rules.json",

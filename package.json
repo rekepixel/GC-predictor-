@@ -14,7 +14,8 @@
     "data:verify": "tsx scripts/verify-sources.ts",
     "data:apply-verified": "tsx scripts/apply-verified.ts",
     "data:verify:2026": "python python/verify_2026.py && tsx scripts/seal-bank.ts && tsx scripts/apply-verified.ts",
-    "data:verify:history": "python python/verify_history.py && tsx scripts/apply-verified.ts"
+    "data:verify:history": "python python/verify_history.py && tsx scripts/apply-verified.ts",
+    "data:classify:concepts": "python python/curate_concepts.py && tsx scripts/apply-verified.ts"
   },
   "dependencies": {
     "better-sqlite3": "13.0.3",

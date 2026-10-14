@@ -16,8 +16,12 @@ async function main() {
   const d = await dataset(),
     s = frequencies(d),
     p = patterns(d);
-  const inventoryPath = ".local/backups/historical-2023-2026/files.json",
-    backupPath = ".local/backups/historical-2023-2026/before.sqlite";
+  const conceptPhase = process.argv.includes("--concepts");
+  const backupRoot = conceptPhase
+    ? ".local/backups/concepts-700"
+    : ".local/backups/historical-2023-2026";
+  const inventoryPath = backupRoot + "/files.json",
+    backupPath = backupRoot + "/before.sqlite";
   let preservation: unknown = null;
   if (fs.existsSync(inventoryPath) && fs.existsSync(backupPath)) {
     const inv = JSON.parse(fs.readFileSync(inventoryPath, "utf8")) as Record<
@@ -48,6 +52,49 @@ async function main() {
       });
       if (missingIds.length) throw Error(`Lost records in ${table}`);
     }
+    const previousQuestions = oldDB
+      .prepare("SELECT id,payload FROM questions")
+      .all() as { id: string; payload: string }[];
+    const currentQuestions = new Map(d.questions.map((q) => [q.id, q]));
+    const changedAnswers = previousQuestions
+      .filter(
+        (r) =>
+          JSON.parse(r.payload).correct !== currentQuestions.get(r.id)?.correct,
+      )
+      .map((r) => r.id);
+    const changedOptions = previousQuestions
+      .filter(
+        (r) =>
+          JSON.stringify(JSON.parse(r.payload).options) !==
+          JSON.stringify(currentQuestions.get(r.id)?.options),
+      )
+      .map((r) => r.id);
+    const changedStems = previousQuestions
+      .filter(
+        (r) => JSON.parse(r.payload).stem !== currentQuestions.get(r.id)?.stem,
+      )
+      .map((r) => ({
+        id: r.id,
+        year: currentQuestions.get(r.id)?.year,
+        model: currentQuestions.get(r.id)?.model,
+        number: currentQuestions.get(r.id)?.number,
+      }));
+    const changedPreviousConcepts = previousQuestions
+      .filter(
+        (r) =>
+          JSON.parse(r.payload).concept &&
+          JSON.parse(r.payload).concept !== currentQuestions.get(r.id)?.concept,
+      )
+      .map((r) => r.id);
+    if (
+      conceptPhase &&
+      (changedAnswers.length ||
+        changedOptions.length ||
+        changedPreviousConcepts.length)
+    )
+      throw Error(
+        "Unexpected changes to existing answers, options or concept labels.",
+      );
     oldDB.close();
     const missingPaths = Object.keys(inv).filter((p) => !fs.existsSync(p));
     const changedPDFs = Object.entries(inv)
@@ -68,6 +115,10 @@ async function main() {
       preexistingQuestionIds: oldIds.length,
       currentQuestionIds: ids.size,
       missingQuestionIds: missingIds,
+      changedAnswers,
+      changedOptions,
+      changedStems,
+      changedPreviousConcepts,
       entities,
     };
     if (missingPaths.length || changedPDFs.length || missingIds.length)
@@ -86,6 +137,9 @@ async function main() {
       years: s.years,
       classifiedConceptQuestions: s.conceptClassified,
       conceptPending: s.conceptPending,
+      conceptFamilies: s.concepts.length,
+      conceptReviews: s.conceptReviews,
+      answerIssues: s.answerIssues,
       legalReferencedQuestions: s.legalVerified,
       articleProfiles: articleProfiles(d).length,
       retainedRecords: d.questions.length,
@@ -103,6 +157,10 @@ async function main() {
         sourcePage: q.sourcePage,
         keySourceId: q.keySourceId,
         canonicalId: q.canonicalId,
+        subject: q.subject,
+        concept: q.concept,
+        subconcept: q.subconcept,
+        conceptReview: q.conceptReview,
       })),
     byYear: validationByYear(d),
     frequencies: {
@@ -113,6 +171,7 @@ async function main() {
       byYear: s.byYear,
     },
     literalRepeats: p.literals,
+    reviewedRelations: p.reviewedRelations,
     conceptRepeats: p.concepts.map(
       ({ id, name, count, years, sessions, consecutiveYears, evidence }) => ({
         id,
@@ -134,12 +193,29 @@ async function main() {
       2027,
       "documentary_reconstruction",
     ),
+    sensitivity: [10, 25, 50].map((k) => ({
+      k,
+      rows: backtest(d, {}, k, 2027, "documentary_reconstruction").rows.map(
+        (r) => ({
+          year: r.year,
+          targetQuestions: r.targetQuestions,
+          targetConcepts: r.targetConcepts,
+          heuristicAvailable: r.heuristicAvailable,
+          heuristic: r.heuristic,
+          frequency: r.frequency,
+          random: r.random,
+          randomMeanCoverage: r.randomMeanCoverage,
+          beatsReferences: r.beatsReferences,
+        }),
+      ),
+    })),
     preservation,
   };
-  fs.writeFileSync(
-    "data/research/history/validation-report.json",
-    JSON.stringify(report, null, 2) + "\n",
-  );
+  const output = conceptPhase
+    ? "data/research/concepts-700/analysis-report.json"
+    : "data/research/history/validation-report.json";
+  fs.mkdirSync(output.slice(0, output.lastIndexOf("/")), { recursive: true });
+  fs.writeFileSync(output, JSON.stringify(report, null, 2) + "\n");
   console.log(
     JSON.stringify(
       {

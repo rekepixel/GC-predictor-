@@ -11,6 +11,9 @@ export const reviewSchema = z.object({
   validation: z.enum(["draft", "reviewed", "validated", "cancelled"]),
   topicId: z.string().nullable(),
   concept: z.string().max(300).nullable(),
+  subject: z.string().max(300).nullable().optional(),
+  subconcept: z.string().max(500).nullable().optional(),
+  confirmConceptReview: z.boolean().optional().default(false),
   law: z.string().max(500).nullable(),
   lawVerified: z.boolean().optional().default(false),
   article: z.string().max(100).nullable(),
@@ -36,7 +39,7 @@ export async function reviewQuestion(
   input: unknown,
   actor = "owner",
 ) {
-  const changes = reviewSchema.parse(input);
+  const { confirmConceptReview, ...changes } = reviewSchema.parse(input);
   await initialize();
   return getDB().transaction(async (tx) => {
     const data = await dataset(tx);
@@ -57,6 +60,10 @@ export async function reviewQuestion(
         "Verificar una referencia requiere norma, artículo y enlace oficial.",
       );
     if (changes.validation === "validated") {
+      if (previous.answerIssue)
+        throw Error(
+          "Hay una discrepancia entre pregunta, clave y norma pendiente de resolución documental.",
+        );
       const src = data.sources.find((s) => s.id === previous.sourceId);
       const key = data.sources.find((s) => s.id === previous.keySourceId);
       if (
@@ -151,6 +158,28 @@ export async function reviewQuestion(
       changes.stem !== previous.stem ||
       JSON.stringify(changes.options) !== JSON.stringify(previous.options) ||
       changes.correct !== previous.correct;
+    const conceptChanged =
+      changes.concept !== previous.concept ||
+      changes.topicId !== previous.topicId ||
+      (changes.subject !== undefined && changes.subject !== previous.subject) ||
+      (changes.subconcept !== undefined &&
+        changes.subconcept !== previous.subconcept);
+    if (contentChanged || conceptChanged) updated.conceptReview = null;
+    if (
+      confirmConceptReview &&
+      changes.classificationReviewed &&
+      changes.concept?.trim()
+    )
+      updated.conceptReview = {
+        method: "owner_review",
+        confidence: "high",
+        scope: previous.conceptReview?.scope || "focused",
+        independentHumanReview: true,
+        normStatus: changes.legalVerified
+          ? "article_checked_by_owner"
+          : "normative_scope_requires_separate_verification",
+        reviewedAt: new Date().toISOString(),
+      };
     if (!contentChanged) {
       await put(tx, "questions", updated as unknown as Record<string, unknown>);
       await audit(tx, id, "review_question", previous, updated, actor);

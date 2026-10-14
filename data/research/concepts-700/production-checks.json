@@ -1,0 +1,21 @@
+{
+  "productionBuild": true,
+  "anonymousAPI": 401,
+  "login": 200,
+  "rows": 1470,
+  "ordinary": 700,
+  "final": 0,
+  "articleProfiles": 122,
+  "conceptsClassified": 700,
+  "conceptAssignmentsPending": 0,
+  "answerIssues": 1,
+  "literalGroups": 2,
+  "conceptGroups": 89,
+  "crossOrigin": 403,
+  "invalidFinalReview": 400,
+  "documentHash": "matches_catalog",
+  "mobileWidth": 390,
+  "horizontalOverflow": false,
+  "browserErrors": [],
+  "personalDatabaseModified": false
+}

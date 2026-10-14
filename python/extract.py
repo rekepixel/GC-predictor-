@@ -51,7 +51,7 @@ def extract(pdf):
                 reserve = True
                 continue
             if re.search(
-                r"CONCURSO.OPOSICI|Resoluci[oó]n (?:n[uú]m\.?\s*)?160/|ACCESO A LA ESCALA|EJERCICIO DE CONOCIMIENTOS|NUMERADAS DEL|LAS SIGUIENTES PREGUNTAS|^MINISTERIO|^DIRECCI[ÓO]N|^GUARDIA CIVIL$",
+                r"CONCURSO.OPOSICI|Resoluci[oó]n (?:n[uú]m\.?\s*)?160/|ACCESO A LA ESCALA|EJERCICIO DE CONOCIMIENTOS|NUMERADAS DEL|LAS SIGUIENTES PREGUNTAS|^MINISTERIO DEL INTERIOR$|^DIRECCI[ÓO]N GENERAL DE LA GUARDIA CIVIL$|^GUARDIA CIVIL$",
                 stripped,
                 re.I,
             ):

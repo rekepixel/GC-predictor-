@@ -1,0 +1,154 @@
+{
+  "scope": "Relaciones de contenido revisadas a posteriori; no acreditan respuesta final ni anticipación predictiva. No es un inventario exhaustivo.",
+  "relations": [
+    {
+      "id": "internamiento-cautelar",
+      "kind": "same_rule",
+      "name": "Antecedentes para adoptar internamiento cautelar de menores",
+      "identities": [
+        "2023-2A-93",
+        "2024-3A-92"
+      ],
+      "reason": "Mismo enunciado y cuatro opciones; repetición literal entre sesiones."
+    },
+    {
+      "id": "quejas-superior",
+      "kind": "same_rule",
+      "name": "Queja relativa al mando inmediato superior",
+      "identities": [
+        "2024-3A-78",
+        "2026-A-76"
+      ],
+      "reason": "Mismo supuesto de presentación en última instancia; texto restaurado previamente con cotejo visual."
+    },
+    {
+      "id": "detencion-72",
+      "kind": "same_rule",
+      "name": "Límite general de detención preventiva",
+      "identities": [
+        "2024-2A-45",
+        "2026-A-46"
+      ],
+      "reason": "Mismo límite general de puesta en libertad o disposición judicial. No se agrupa con entrega al juez más próximo en 24 horas."
+    },
+    {
+      "id": "audiencia-tutor",
+      "kind": "same_rule",
+      "name": "Edad para audiencia obligatoria al remover al tutor",
+      "identities": [
+        "2023-1A-40",
+        "2025-A-38"
+      ],
+      "reason": "Misma exigencia de audiencia del menor mayor de doce años en remoción del tutor."
+    },
+    {
+      "id": "expulsion-menores",
+      "kind": "same_rule",
+      "name": "Protección del menor ciudadano de la Unión frente a expulsión",
+      "identities": [
+        "2023-1A-69",
+        "2025-A-63"
+      ],
+      "reason": "Misma excepción de interés superior del menor y motivos imperiosos de seguridad pública."
+    },
+    {
+      "id": "fraude-contable",
+      "kind": "same_rule",
+      "name": "Anomalías contables como medio fraudulento en contrabando",
+      "identities": [
+        "2024-1A-99",
+        "2025-A-97"
+      ],
+      "reason": "Misma alternativa sobre cualquier anomalía contable; la formulación exige distinguir requisitos adicionales."
+    },
+    {
+      "id": "aviso-armas",
+      "kind": "same_rule",
+      "name": "Notificación tras uso de armas de fuego",
+      "identities": [
+        "2024-3A-89",
+        "2025-A-89"
+      ],
+      "reason": "Misma trampa de sustituir la notificación lo antes posible por un plazo fijo, con 8 y 24 horas en opciones distintas."
+    },
+    {
+      "id": "sala-cuarta",
+      "kind": "same_rule",
+      "name": "Denominación de la Sala Cuarta del Tribunal Supremo",
+      "identities": [
+        "2024-2A-48",
+        "2026-A-48"
+      ],
+      "reason": "La misma correspondencia de Sala Cuarta y orden Social, en pregunta negativa y positiva."
+    },
+    {
+      "id": "reexportacion",
+      "kind": "same_rule",
+      "name": "Definición de notificación de reexportación",
+      "identities": [
+        "2024-1A-100",
+        "2026-A-98"
+      ],
+      "reason": "Misma definición para salida de mercancías no pertenecientes a la Unión en zona franca o depósito temporal."
+    },
+    {
+      "id": "paradas-explosivos",
+      "kind": "same_rule",
+      "name": "Distancia de paradas de transporte de explosivos",
+      "identities": [
+        "2024-3A-98",
+        "2025-A-96"
+      ],
+      "reason": "Misma alternativa incorrecta con mil metros escrito en letra o cifra."
+    },
+    {
+      "id": "escala-distancias",
+      "kind": "same_method",
+      "name": "Conversión de distancias mediante escala",
+      "identities": [
+        "2024-1A-88",
+        "2024-3A-87",
+        "2026-A-84"
+      ],
+      "reason": "Se usa la razón lineal de escala y conversión de unidades, con datos y sentido de cálculo distintos; no se equiparan superficies, que requieren el cuadrado de la escala."
+    },
+    {
+      "id": "educacion-dudh",
+      "kind": "related_subaspects",
+      "name": "Fines de la educación en la Declaración Universal",
+      "identities": [
+        "2023-1A-2",
+        "2024-2A-1",
+        "2026-A-2"
+      ],
+      "reason": "Revisión de distintos términos y fines del derecho a la educación; estudiar una sola opción no cubre todas las formulaciones."
+    },
+    {
+      "id": "mnp-consejo",
+      "kind": "related_subaspects",
+      "name": "Organización del Consejo Asesor del Mecanismo Nacional de Prevención",
+      "identities": [
+        "2023-2A-24",
+        "2024-1A-11",
+        "2024-1A-12",
+        "2024-2A-11",
+        "2024-2A-12",
+        "2024-3A-12",
+        "2025-A-13",
+        "2026-A-12"
+      ],
+      "reason": "Órgano común con preguntas distintas de función, composición, nombramiento, reuniones, retribución y mandato."
+    },
+    {
+      "id": "acreditacion-vg",
+      "kind": "related_subaspects",
+      "name": "Acreditación de violencia de género",
+      "identities": [
+        "2023-1A-94",
+        "2023-1A-95",
+        "2026-A-91"
+      ],
+      "reason": "Se distinguen diseño de procedimientos y medios de acreditación; no se afirma identidad de todas las condiciones."
+    }
+  ]
+}

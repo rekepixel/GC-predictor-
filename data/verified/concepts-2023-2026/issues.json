@@ -1,0 +1,35 @@
+{
+  "issues": [
+    {
+      "id": "2024-form2-81-key-vs-law",
+      "questionIdentity": "2024-2A-81",
+      "pairedIdentity": "2024-2B-75",
+      "status": "unresolved",
+      "type": "question_key_vs_law_conflict",
+      "checkedAt": "2026-10-14T19:36:11.642660+00:00",
+      "examDate": "2024-09-28",
+      "keyedOption": 0,
+      "officialCorrectionLocated": false,
+      "preserveDocumentaryAnswer": true,
+      "conclusion": "La clave copiada marca A en una pregunta negativa. La ley vigente al examen enumera las cuatro alternativas, incluidas las Reservas de la Biosfera y las Reservas biogenéticas. Hay una incompatibilidad material entre enunciado, opciones y clave, pendiente de acuerdo oficial o rectificación. No se elige otra letra ni se presume anulación. La aparición temática se conserva; no se presenta la letra como respuesta jurídica fiable.",
+      "evidence": {
+        "law": "Ley 42/2007 · Patrimonio Natural y Biodiversidad",
+        "lawId": "BOE-A-2007-21490",
+        "article": "50",
+        "paragraph": "1",
+        "blockId": "a50",
+        "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-21490&p=20150922&tn=1#a50",
+        "apiUrl": "https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/BOE-A-2007-21490/texto",
+        "xmlSha256": "56bd4dd6031294a7563e0425cc6df0ca006d49f19f1ed10a36eb3c4d26ce22ad",
+        "version": {
+          "id_norma": "BOE-A-2015-10142",
+          "fecha_publicacion": "20150922",
+          "fecha_vigencia": "20151007"
+        },
+        "text": "Artículo 50. Áreas protegidas por instrumentos internacionales. 1. Tendrán la consideración de áreas protegidas por instrumentos internacionales todos aquellos espacios naturales que sean formalmente designados de conformidad con lo dispuesto en los Convenios y Acuerdos internacionales de los que sea parte España y, en particular, los siguientes: a) Los humedales de Importancia Internacional, del Convenio relativo a los Humedales de Importancia Internacional especialmente como Hábitat de Aves Acuáticas. b) Los sitios naturales de la Lista del Patrimonio Mundial, de la Convención sobre la Protección del Patrimonio Mundial, Cultural y Natural. c) Las áreas protegidas, del Convenio para la protección del medio ambiente marino del Atlántico del nordeste (OSPAR). d) Las Zonas Especialmente Protegidas de Importancia para el Mediterráneo (ZEPIM), del Convenio para la protección del medio marino y de la región costera del Mediterráneo. e) Los Geoparques, declarados por la UNESCO. f) Las Reservas de la Biosfera, declaradas por la UNESCO. g) Las Reservas biogenéticas del Consejo de Europa. 2. La declaración o inclusión de áreas protegidas por instrumentos internacionales será sometida a información pública y posteriormente publicada en el Boletín Oficial del Estado junto con la información básica y un plano del perímetro abarcado por la misma. 3. El régimen de protección de estas áreas será el establecido en los correspondientes convenios y acuerdos internacionales, sin perjuicio de la vigencia de regímenes de protección, ordenación y gestión específicos cuyo ámbito territorial coincida total o parcialmente con dichas áreas, siempre que se adecuen a lo previsto en dichos instrumentos internacionales. 4. El Ministerio de Medio Ambiente, con la participación de las Comunidades autónomas, elaborará, en el marco del Plan Estratégico Estatal del Patrimonio Natural y la Biodiversidad, unas directrices de conservación de las áreas protegidas por instrumentos internacionales. Estas directrices constituirán el marco orientativo para la planificación y gestión de dichos espacios y serán aprobadas mediante acuerdo de la Conferencia Sectorial de Medio Ambiente. Se modifica por el art. único.36 de la Ley 33/2015, de 21 de septiembre. Ref. BOE-A-2015-10142#aunico . Su anterior numeración era art. 49.",
+        "questionPage": "data/verified/concepts-2023-2026/2024-2A-81-page13.png",
+        "keyPage": "data/verified/concepts-2023-2026/2024-key-page1.png"
+      }
+    }
+  ]
+}

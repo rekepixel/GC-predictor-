@@ -46,7 +46,7 @@ Hay 700 ordinarias de seis sesiones: 100 de descarga institucional y 600 cotejad
 
 En 28/09/2024 se documentan dos formas diferentes: el denominador es 200, frente a 100 en 13/10. No se estiman tamaños de población ni pesos de aspirantes. Los artículos se agregan por norma y número, conservando apartados y versiones en las fichas.
 
-Sólo 176/700 preguntas tienen concepto específico revisado. Los 12 grupos interanuales incluyen familias con subaspectos: la redacción literal y el detalle conceptual se conservan. Los rankings de conceptos y artículos informan de su cobertura parcial; no representan todas las materias. No hay un incremento de prioridad por años sin aparecer. Tampoco se han acreditado retiradas concretas del temario vigente.
+Las 700/700 preguntas tienen una clasificación conceptual asistida; se conservaron 176 etiquetas y se asignaron las 524 pendientes. Hay 553 familias y 89 reaparecen entre años. La cobertura de asignación no equivale a validación semántica independiente: 211 etiquetas son de confianza cualitativa media y ninguna ha pasado en este flujo una segunda revisión humana independiente. Se preservan subconceptos y relaciones explícitas de misma regla, método o subaspectos. El ranking de artículos mantiene cobertura parcial. No hay un incremento de prioridad por años sin aparecer. Tampoco se han acreditado retiradas concretas del temario vigente.
 
 ## Reconstrucción exploratoria separada
 
@@ -54,4 +54,12 @@ La evaluación estricta no cambia sus exigencias de fuente final y publicación 
 
 Las claves copiadas se recuperaron posteriormente: no se ha certificado su disponibilidad histórica en esa versión. Las etiquetas y familias se curaron retrospectivamente, con riesgo de sesgo por conocimiento del objetivo y selección de coincidencias. Este ejercicio no prueba ausencia de toda fuga de información ni constituye validación predictiva. Requiere fechas verificadas y taxonomía congelada antes de evaluar un periodo externo.
 
-Top 10 exploratorio: 2/14 conceptos revisados de 2025 y 6/100 de 2026; la frecuencia histórica obtiene exactamente los mismos aciertos. Para 2025 sólo 15 preguntas tienen etiqueta revisada. No se demuestra mejora y no se emiten probabilidades. En 2024 hay un único año de entrenamiento: la puntuación está deshabilitada y se etiqueta el orden descriptivo por apariciones.
+Top 10 exploratorio con cobertura completa: 3/99 conceptos de 2025 y 3/100 de 2026; la frecuencia histórica obtiene 2 y 3. La mejora de una partición no es consistente: con top 50, frecuencia supera la heurística en ambos objetivos. No se demuestra mejora predictiva estable ni se emiten probabilidades. Los resultados de la fase parcial anterior se conservan en su informe, sin compararlos como si el universo fuera idéntico. En 2024 hay un único año de entrenamiento: la puntuación está deshabilitada y se etiqueta el orden descriptivo por apariciones.
+
+## Revisión conceptual y conflictos de respuesta
+
+Las etiquetas se ligan al contenido mediante huella, fuente, página y método. La revisión asistida se distingue de la confirmación humana en Administración. Una pregunta de varias proposiciones puede clasificarse por el foco de su alternativa de clave: se informa de esa limitación y una proposición falsa de una pregunta negativa nunca se convierte en explicación jurídica.
+
+Las familias pueden examinar diferentes reglas. El inventario de relaciones explícitas no es exhaustivo; distingue misma regla, mismo método y subaspectos. La revisión posterior de 2024 1A87/1B73 encontró una línea descartada por un filtro compartido: dos motores con el mismo preprocesado no constituyen comprobaciones independientes de ese preprocesado. Se reparó y se conservó el texto previo.
+
+Una discrepancia entre clave y ley se informa aparte de la aparición de contenido: 2024 2A81/2B75 sigue como observación documental, con letra conservada, aviso visible y bloqueo de corrección estricta. No se presume anulación ni se cambia la respuesta sin acuerdo. Véase [el informe conceptual vigente](concept-analysis-700.md).

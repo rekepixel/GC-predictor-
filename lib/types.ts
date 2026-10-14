@@ -78,6 +78,36 @@ export interface Question {
   conceptId: string | null;
   concept: string | null;
   conceptDetail?: string | null;
+  subject?: string | null;
+  subconcept?: string | null;
+  conceptReview?: {
+    method:
+      | "assistant_content_review"
+      | "preserved_previous_curation"
+      | "owner_review";
+    artifactId?: string;
+    artifactSha256?: string;
+    confidence: "high" | "medium";
+    scope: "focused" | "keyed_statement_focus";
+    independentHumanReview: boolean;
+    normStatus: string;
+    reviewedAt: string;
+    inputSha256?: string;
+  } | null;
+  contentRelations?: {
+    id: string;
+    kind: "same_rule" | "same_method" | "related_subaspects";
+    name: string;
+    questionIds: string[];
+    reason: string;
+  }[];
+  answerIssue?: {
+    id: string;
+    status: "unresolved";
+    description: string;
+    sourceUrl: string;
+    lawVersion: string;
+  } | null;
   extractionCorrections?: {
     field: string;
     from: string;

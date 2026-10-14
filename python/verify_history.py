@@ -81,6 +81,11 @@ def run():
     curation_path = BASE / "curation.json"
     curation = json.loads(curation_path.read_text()) if curation_path.exists() else {}
     corrections = json.loads((BASE / "literal-corrections.json").read_text())
+    restorations = (
+        json.loads((BASE / "extractor-restorations.json").read_text())
+        if (BASE / "extractor-restorations.json").exists()
+        else {}
+    )
     forms = []
     used_sources = set()
     for form in config["forms"]:
@@ -184,7 +189,16 @@ def run():
                         and change["from"] in a["stem"]
                     )
                     a["stem"] = a["stem"].replace(change["from"], change["to"])
-                a["extractionCorrections"] = changes
+                restoration = restorations.get(f'{year}-{model["model"]}-{a["number"]}')
+                if restoration:
+                    assert (
+                        restoration["to"] == a["stem"]
+                        and restoration["sourcePage"] == a["sourcePage"]
+                    )
+                a["extractionCorrections"] = [
+                    *changes,
+                    *([restoration] if restoration else []),
+                ]
                 a["classification"] = curation.get(
                     f'{year}-{model["model"]}-{a["number"]}', {}
                 )

@@ -19,6 +19,7 @@ function corpus(data: Dataset, documentary = false) {
       key?.origin === "official" &&
       key.definitive &&
       key.verified &&
+      !q.answerIssue &&
       q.correct !== null;
     if (
       !final &&
@@ -141,6 +142,18 @@ export function frequencies(data: Dataset) {
     conceptPending: questions.filter(
       (q) => !q.conceptId || !q.classificationReviewed,
     ).length,
+    conceptReviews: {
+      assisted: questions.filter(
+        (q) => q.conceptReview && !q.conceptReview.independentHumanReview,
+      ).length,
+      independentHuman: questions.filter(
+        (q) => q.conceptReview?.independentHumanReview,
+      ).length,
+      mediumConfidence: questions.filter(
+        (q) => q.conceptReview?.confidence === "medium",
+      ).length,
+    },
+    answerIssues: questions.filter((q) => q.answerIssue).length,
     bySession: [...new Set(questions.map(sessionKey))].sort().map((key) => {
       const subset = questions.filter((q) => sessionKey(q) === key);
       return {
@@ -183,6 +196,7 @@ export interface Priority {
   id: string;
   name: string;
   topicId: string | null;
+  topicIds: string[];
   count: number;
   years: number[];
   lastYear: number;
@@ -306,6 +320,9 @@ export function rank(
       id,
       name,
       topicId: sample.topicId,
+      topicIds: [
+        ...new Set(qs.map((q) => q.topicId).filter((t): t is string => !!t)),
+      ],
       count: qs.length,
       years,
       lastYear: Math.max(...years),
@@ -367,7 +384,7 @@ export function rank(
         ? q.classificationReviewed && q.conceptId
         : q.legalVerified && q.article,
     ).length,
-    qualityNote: `Clasificación conceptual revisada en ${corpus.filter((q) => q.classificationReviewed && q.conceptId).length}/${corpus.length} preguntas; los conceptos pendientes no se sustituyen por etiquetas automáticas. Las copias secundarias corroboradas conservan esa procedencia. El ranking describe sólo la parte clasificada.`,
+    qualityNote: `Clasificación conceptual asignada en ${corpus.filter((q) => q.classificationReviewed && q.conceptId).length}/${corpus.length} preguntas. Las anotaciones asistidas no equivalen a revisión humana independiente. Una familia puede contener reglas distintas: consulta los subconceptos. Las copias secundarias conservan su procedencia; la vigencia 2027 y las respuestas finales se acreditan aparte.`,
     probability: null,
     probabilityStatus:
       "No se ha entrenado ni calibrado un modelo probabilístico. La puntuación es una heurística de estudio.",
@@ -594,6 +611,17 @@ export function patterns(data: Dataset, weights: Partial<Weights> = {}) {
     0.72,
   );
   const recentFrom = latest - 1;
+  const admissibleIds = new Set(qs.map((q) => q.id));
+  const reviewedRelations = [
+    ...new Map(
+      qs.flatMap((q) => q.contentRelations || []).map((r) => [r.id, r]),
+    ).values(),
+  ]
+    .map((r) => ({
+      ...r,
+      questionIds: r.questionIds.filter((id) => admissibleIds.has(id)),
+    }))
+    .filter((r) => r.questionIds.length >= 2);
   const recentComparison = rank(data, {
     ...weights,
     recentFrom,
@@ -614,6 +642,7 @@ export function patterns(data: Dataset, weights: Partial<Weights> = {}) {
     dormant,
     similar,
     recentComparison,
+    reviewedRelations,
     recentFrom,
     consecutive: concepts.filter((c) => c.consecutiveYears.length > 0),
     similarityMethod:

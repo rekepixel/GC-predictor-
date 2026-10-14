@@ -580,6 +580,7 @@ function ReviewForm({
   close: () => void;
 }) {
   const [form, setForm] = useState({ ...q }),
+    [confirmConceptReview, setConfirmConceptReview] = useState(false),
     [audit, setAudit] = useState<
       { action: string; created_at: string; actor: string }[]
     >([]);
@@ -628,6 +629,17 @@ function ReviewForm({
             : "Falta una plantilla oficial acreditada como definitiva. Puedes corregir y marcar «revisada», pero todavía no «validada»."}
         </span>
       </div>
+      {q.answerIssue && (
+        <div className="notice amber">
+          <AlertCircle size={18} />
+          <span>
+            {q.answerIssue.description}{" "}
+            <a href={q.answerIssue.sourceUrl} target="_blank" rel="noreferrer">
+              Consultar norma
+            </a>
+          </span>
+        </div>
+      )}
       <label>
         Enunciado literal
         <textarea
@@ -652,7 +664,9 @@ function ReviewForm({
       ))}
       <div className="form-grid">
         <label>
-          Respuesta contrastada
+          {q.answerIssue
+            ? "Letra de la plantilla · discrepancia pendiente"
+            : "Respuesta contrastada"}
           <select
             value={form.correct === null ? "" : form.correct}
             onChange={(e) =>
@@ -699,7 +713,7 @@ function ReviewForm({
           </select>
         </label>
         <label>
-          Concepto examinado
+          Concepto principal de estudio
           <input
             list="concepts"
             value={form.concept || ""}
@@ -711,6 +725,20 @@ function ReviewForm({
               <option key={c.id}>{c.name}</option>
             ))}
           </datalist>
+        </label>
+        <label>
+          Materia
+          <input
+            value={form.subject || ""}
+            onChange={(e) => update("subject", e.target.value || null)}
+          />
+        </label>
+        <label>
+          Subconcepto específico
+          <input
+            value={form.subconcept || ""}
+            onChange={(e) => update("subconcept", e.target.value || null)}
+          />
         </label>
         <label>
           Ley / reglamento / norma
@@ -793,7 +821,16 @@ function ReviewForm({
             checked={form.classificationReviewed}
             onChange={(e) => update("classificationReviewed", e.target.checked)}
           />
-          Tema y concepto revisados
+          Clasificación temática y conceptual asignada
+        </label>
+        <label className="checkbox-label">
+          <input
+            type="checkbox"
+            checked={confirmConceptReview}
+            onChange={(e) => setConfirmConceptReview(e.target.checked)}
+          />
+          Confirmo mi revisión humana del concepto y subconcepto frente al
+          original
         </label>
         <label className="checkbox-label">
           <input
@@ -826,7 +863,12 @@ function ReviewForm({
         disabled={busy}
         onClick={() =>
           perform(
-            () => api(`questions/${q.id}`, form, "PATCH"),
+            () =>
+              api(
+                `questions/${q.id}`,
+                { ...form, confirmConceptReview },
+                "PATCH",
+              ),
             "Revisión guardada y registrada.",
           )
         }
