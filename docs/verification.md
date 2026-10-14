@@ -13,3 +13,5 @@ Fecha: 14/10/2026. Entorno Node 24.19.0 y Python 3.12.14.
 - Chromium instalado, mediante Playwright: navegación de las seis secciones, apertura de revisión de pregunta, capturas a 1440 y 390 píxeles de ancho. Sin errores de JavaScript y sin desbordamiento horizontal en ambos tamaños. No equivale a una prueba física de Safari iOS.
 
 Pendientes: PostgreSQL/Supabase y Storage con credenciales reales; ejecución Docker; instalación Safari/iPhone real; despliegue alojado HTTPS. No se afirma que el motor estadístico supere referencias con datos reales: actualmente carece de corpus definitivo validado. No hay rendimiento predictivo ni calibración acreditados.
+
+Entrega remota: `git push` devuelve 403; `github_create_blob` también devuelve `Resource not accessible by integration` (403). La cuenta puede leer el repositorio público, pero la consulta de cuentas con la app instalada devuelve una lista vacía. Se conserva un commit local y se entregan ZIP y Git bundle; no se afirma que exista código subido al remoto.

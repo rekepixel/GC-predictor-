@@ -25,6 +25,12 @@ Los 840 registros **no son 840 preguntas independientes**: incluyen variantes A/
 
 Los originales de 2022 y 2026 tienen extracción en borrador. Los registros 2020 conservan la procedencia y el error de extracción. Los PDF 2022 de respuestas son principalmente escaneados: no se les asignan respuestas inventadas. Las rutas oficiales 2023–2025 consultadas devolvieron 404; 2017–2019 siguen sin cuadernillos originales oficiales verificados. 2021 sólo tiene plantilla localizada. Esto no demuestra que los documentos no existan en otro archivo.
 
+## Estado de entrega y permisos de GitHub
+
+El proyecto está guardado en este espacio de trabajo y en un paquete ZIP. La conexión actual a GitHub permite consultar el repositorio público, pero **rechaza la escritura con HTTP 403: Resource not accessible by integration**. El primer `git push` y la escritura mediante la conexión nativa fallaron; no se ha subido el código al remoto.
+
+Para recibirlo mediante GitHub, hay que conceder a la app de ChatGPT/Codex acceso a `rekepixel/GC-predictor-`. Si utilizas el ZIP, descomprímelo, entra en su carpeta `gc-predictor` y comienza las instrucciones por `npm ci`, omitiendo las dos líneas de clonación. El paquete no incluye contraseñas, dependencias instaladas ni bases de datos personales; el comando `data:archive` reconstruye los borradores a partir de los originales incluidos.
+
 ## Inicio local
 
 Requisitos: **Node.js 24**, npm y, para la importación inicial del archivo, Python 3.11 o superior. SQLite no requiere servicio externo.
