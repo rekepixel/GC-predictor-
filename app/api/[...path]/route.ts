@@ -30,6 +30,8 @@ import {
   validatedCorpus,
 } from "@/lib/analysis";
 import type { Source, Weights } from "@/lib/types";
+import { isDocumentaryVerified } from "@/lib/documentary";
+import { articleProfiles, validationByYear } from "@/lib/history";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 function response(value: unknown, status = 200) {
@@ -113,11 +115,22 @@ async function handle(
     if (action === "bootstrap" && req.method === "GET") {
       const data = await dataset();
       return response({
-        data,
+        data: {
+          ...data,
+          questions: data.questions.map((q) => ({
+            ...q,
+            documentaryEligible: isDocumentaryVerified(q, data),
+          })),
+        },
         stats: frequencies(data),
+        validationByYear: validationByYear(data),
         simulationIds: validatedCorpus(data).questions.map((q) => q.id),
       });
     }
+    if (action === "articles" && req.method === "GET")
+      return response(articleProfiles(await dataset()));
+    if (action === "validation-report" && req.method === "GET")
+      return response(validationByYear(await dataset()));
     if (action === "simulation-pool" && req.method === "GET")
       return response(
         validatedCorpus(await dataset()).questions.map((q) => q.id),
@@ -231,10 +244,12 @@ async function handle(
           throw Error("Sólo se verifica como oficial una URL institucional.");
         if (
           fields.definitive &&
-          (source.kind !== "answer_key" || !fields.verified)
+          (source.kind !== "answer_key" ||
+            !fields.verified ||
+            source.answerKeyStatus === "superseded")
         )
           throw Error(
-            "Sólo una plantilla oficial verificada puede ser definitiva.",
+            "Sólo una plantilla oficial verificada y no sustituida puede ser definitiva.",
           );
         const updated: Source = { ...source, ...fields };
         await put(tx, "sources", updated as unknown as Record<string, unknown>);

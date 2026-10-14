@@ -3,14 +3,14 @@
 ## Tres salidas que no se confunden
 
 1. **Frecuencia observada**: número de apariciones en lo disponible. No representa el total de exámenes históricos no recopilados.
-2. **Prioridad heurística**: utilidad relativa exploratoria para ordenar el estudio. Escala de puntos 0–100 con fórmula y evidencias visibles.
+2. **Prioridad heurística**: utilidad relativa exploratoria para ordenar el estudio. Escala de puntos 0–100 con fórmula y evidencias visibles, habilitada sólo con al menos dos años. Con un año `score:null` y orden descriptivo por apariciones.
 3. **Probabilidad predictiva calibrada**: no disponible. El código devuelve `null`, nunca el score dividido por 100.
 
 ## Unidad y denominadores
 
-Un examen es año + sesión, no modelo A/B. El corpus sólo admite preguntas activas validadas con fuente oficial y clave definitiva. Las variantes identificadas por literalidad se consolidan, preservando las opciones originales y su mapa. Las discrepancias de respuesta del grupo se excluyen y se informan. Una pregunta legítimamente repetida en otro año conserva su observación. Las reservas se excluyen hasta que se acredita su activación; las anuladas se conservan para auditoría y no para frecuencias.
+Un examen es año + sesión, no modelo A/B. Hay dos corpus: el descriptivo admite preguntas ordinarias activas con cotejo documental sellado y clave oficial corregida, además de las definitivamente validadas. El estricto, para simulacros y retrospectiva, sólo admite preguntas activas validadas con fuente oficial y clave definitiva. La interfaz muestra siempre la diferencia y los recuentos de cada estado. El cotejo documental no asciende el estado `reviewed` a `validated`. Las variantes identificadas por literalidad o mediante una correspondencia documental verificada se consolidan, preservando las opciones originales y su mapa. La excepción A28/B62 de 2026 conserva la diferencia «Noveno»/«Noveno.» sin eliminar puntuación del resto del corpus. Las discrepancias de respuesta del grupo se excluyen y se informan. Una pregunta legítimamente repetida en otro año conserva su observación. Las reservas se excluyen hasta que se acredita su activación; las anuladas se conservan para auditoría y no para frecuencias.
 
-Se informa del recuento y proporción del corpus, de la parte clasificada y de años/sesiones con datos. Para priorizar un contenido c, en cada sesión e se calcula `n(c,e)/N(e)`, siendo N las preguntas activas validadas de esa sesión. Se promedian esas proporciones entre las sesiones disponibles. Las preguntas sin concepto revisado siguen en el denominador, evitando elevar artificialmente la proporción al ignorarlas.
+Se informa del recuento y proporción del corpus, de la parte clasificada y de años/sesiones con datos. Para priorizar un contenido c, en cada sesión e se calcula `n(c,e)/N(e)`, siendo N las preguntas admisibles en el corpus usado de esa sesión. Para descripción se utilizan ordinarias; las reservas documentales nunca aumentan ese denominador, aunque alguien cambie su marca activa. Se promedian esas proporciones entre las sesiones disponibles. Las preguntas sin concepto revisado siguen en el denominador, evitando elevar artificialmente la proporción al ignorarlas.
 
 No se equipara ausencia de datos con ausencia de un contenido. La cobertura y la calidad se comunican explícitamente, no se ocultan detrás de una probabilidad o un «índice de confianza» supuestamente calibrado.
 
@@ -40,4 +40,4 @@ Si no hay objetivos validados, fechas acreditadas o conceptos revisados, las mé
 
 La igualdad literal conserva la puntuación y símbolos (por ejemplo, `>` y `<` nunca se igualan). TF-IDF/coseno identifica similitud léxica en enunciados, umbral 0,72, con límite interactivo de 1.000 preguntas. No es un modelo semántico ni prueba equivalencia jurídica. Las relaciones conceptuales provienen de la misma asignación conceptual revisada, independiente del enunciado. Los tipos de distractor y estilos son anotaciones; una regla de «INCORRECTA» sólo sugiere un estilo negativo.
 
-En esta entrega no hay corpus estadístico habilitado. Todas las conclusiones sustantivas sobre «qué cae» o qué estudiar deben esperar una validación suficiente de originales y claves definitivas.
+En esta entrega hay 100 ordinarias cotejadas de una sesión de 2026 y cero con firmeza definitiva acreditada. Se habilitan frecuencias descriptivas, sin puntos heurísticos ni probabilidades. Cada concepto y cada artículo numérico cotejado aparece una vez; no hay evidencia interanual. Las tendencias, la retrospectiva y las conclusiones predictivas siguen pendientes de más originales, claves y años. Véase [el informe](validation-2026.md).

@@ -5,18 +5,24 @@ import {
   type Weights,
 } from "./types";
 import { normalized, literalNormalized, similarityPairs } from "./text";
-export function validatedCorpus(data: Dataset) {
+import { isDocumentaryVerified } from "./documentary";
+function corpus(data: Dataset, documentary = false) {
   const groups = new Map<string, Question[]>();
   for (const q of data.questions) {
-    if (q.validation !== "validated" || !q.active) continue;
+    if (!q.active || q.validation === "cancelled") continue;
     const src = data.sources.find((s) => s.id === q.sourceId),
       key = data.sources.find((s) => s.id === q.keySourceId);
+    const final =
+      q.validation === "validated" &&
+      src?.origin === "official" &&
+      src.verified &&
+      key?.origin === "official" &&
+      key.definitive &&
+      key.verified &&
+      q.correct !== null;
     if (
-      src?.origin !== "official" ||
-      !src.verified ||
-      !key?.definitive ||
-      !key.verified ||
-      q.correct === null
+      !final &&
+      !(documentary && !q.reserve && isDocumentaryVerified(q, data))
     )
       continue;
     const group = groups.get(q.canonicalId) || [];
@@ -26,8 +32,20 @@ export function validatedCorpus(data: Dataset) {
   const questions: Question[] = [];
   const conflicts: string[] = [];
   for (const [id, group] of groups) {
+    const evidencedPair = group.every(
+      (q) =>
+        isDocumentaryVerified(q, data) &&
+        q.documentaryVerification?.artifactSha256 ===
+          group[0].documentaryVerification?.artifactSha256 &&
+        q.documentaryVerification?.canonicalNumber ===
+          group[0].documentaryVerification?.canonicalNumber,
+    );
     const answers = new Set(
-      group.map((q) => literalNormalized(q.options[q.correct!])),
+      group.map((q) =>
+        evidencedPair
+          ? String(q.optionMap[q.correct!])
+          : literalNormalized(q.options[q.correct!]),
+      ),
     );
     if (answers.size > 1) {
       conflicts.push(id);
@@ -44,6 +62,14 @@ export function validatedCorpus(data: Dataset) {
   }
   return { questions, conflicts };
 }
+/** Strict final-answer corpus, used for scored simulations and temporal validation. */
+export function validatedCorpus(data: Dataset) {
+  return corpus(data, false);
+}
+/** Verified published content; finality is separately disclosed and never inferred. */
+export function observedCorpus(data: Dataset) {
+  return corpus(data, true);
+}
 const sessionKey = (q: Question) => `${q.year}|${q.session}`;
 const rate = (n: number, d: number) => (d ? n / d : 0);
 function counts(items: Question[], label: (q: Question) => string | null) {
@@ -57,7 +83,7 @@ function counts(items: Question[], label: (q: Question) => string | null) {
     .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
 }
 export function frequencies(data: Dataset) {
-  const { questions, conflicts } = validatedCorpus(data);
+  const { questions, conflicts } = observedCorpus(data);
   const topicName = (q: Question) =>
     q.classificationReviewed && q.topicId
       ? data.topics.find((t) => t.id === q.topicId)?.title || null
@@ -65,20 +91,32 @@ export function frequencies(data: Dataset) {
   const years = [...new Set(questions.map((q) => q.year))].sort();
   return {
     questions: questions.length,
+    definitiveQuestions: validatedCorpus(data).questions.length,
+    documentaryOnlyQuestions: questions.filter(
+      (q) => q.validation !== "validated",
+    ).length,
+    basis: "verified_published_ordinary_content",
+    basisNote:
+      "Frecuencias de preguntas ordinarias publicadas y cotejadas. Las reservas y variantes A/B no aumentan el denominador. La clave oficial corregida no se declara definitiva.",
     occurrences: data.questions.length,
     validatedOccurrences: data.questions.filter(
       (q) => q.validation === "validated",
     ).length,
     drafts: data.questions.filter(
-      (q) => q.validation !== "validated" && q.validation !== "cancelled",
+      (q) =>
+        q.validation !== "validated" &&
+        q.validation !== "cancelled" &&
+        !isDocumentaryVerified(q, data),
     ).length,
     conflicts,
     years,
     examinations: new Set(questions.map(sessionKey)).size,
     topics: counts(questions, topicName),
-    laws: counts(questions, (q) => (q.legalVerified ? q.law : null)),
+    laws: counts(questions, (q) =>
+      q.legalVerified || q.lawVerified ? q.law : null,
+    ),
     articles: counts(questions, (q) =>
-      q.legalVerified && q.law && q.article
+      q.legalVerified && q.law && q.article && /^\d/.test(q.article)
         ? `${q.law} · art. ${q.article}${q.paragraph ? " · " + q.paragraph : ""}`
         : null,
     ),
@@ -133,7 +171,7 @@ export interface Priority {
   historicalRate: number;
   recentRate: number;
   persistence: number;
-  score: number;
+  score: number | null;
   components: {
     historical: number;
     recent: number;
@@ -155,7 +193,7 @@ export function rank(
   const total =
     w.historical + w.recent + w.persistence + w.syllabus + w.legislation;
   if (total <= 0) throw Error("Los pesos deben sumar más de cero.");
-  const corpus = validatedCorpus(data).questions.filter(
+  const corpus = observedCorpus(data).questions.filter(
     (q) => q.year < targetYear && (!q.availableAt || q.availableAt < cutoff),
   );
   const units = [...new Set(corpus.map(sessionKey))];
@@ -167,7 +205,7 @@ export function rank(
       ? q.classificationReviewed
         ? q.conceptId
         : null
-      : q.legalVerified && q.law && q.article
+      : q.legalVerified && q.law && q.article && /^\d/.test(q.article)
         ? normalized(q.law) + "|" + q.article + "|" + (q.paragraph || "")
         : null;
   const ids = [...new Set(corpus.map(keyOf).filter((s): s is string => !!s))];
@@ -224,6 +262,10 @@ export function rank(
             (!c.article || c.article === sample.article))),
     );
     const warnings = [];
+    if (qs.some((q) => q.validation !== "validated"))
+      warnings.push(
+        "Contenido documental cotejado con clave oficial corregida; firmeza administrativa final pendiente.",
+      );
     if (years.length < 3)
       warnings.push("Pocos años observados; prioridad exploratoria.");
     if (qs.some((q) => !q.availableAt))
@@ -282,11 +324,17 @@ export function rank(
             components.syllabus * w.syllabus +
             components.legislation * w.legislation)) /
         total;
-      return { ...r, components, score };
+      return {
+        ...r,
+        components,
+        score: historicalYears.length >= 2 ? score : null,
+      };
     })
     .sort(
       (a, b) =>
-        b.score - a.score || b.count - a.count || a.name.localeCompare(b.name),
+        (b.score ?? 0) - (a.score ?? 0) ||
+        b.count - a.count ||
+        a.name.localeCompare(b.name),
     );
   return {
     priorities,
@@ -296,6 +344,11 @@ export function rank(
     probability: null,
     probabilityStatus:
       "No se ha entrenado ni calibrado un modelo probabilístico. La puntuación es una heurística de estudio.",
+    heuristicAvailable: historicalYears.length >= 2,
+    heuristicStatus:
+      historicalYears.length >= 2
+        ? "Heurística exploratoria; requiere validación retrospectiva."
+        : "Sólo hay un año o ninguno cotejado. Se muestra frecuencia descriptiva; puntuación temporal no disponible. Los empates se ordenan alfabéticamente y no expresan mayor prioridad.",
     formula:
       "100 × suma(peso × componente) / suma(pesos). Frecuencias: media de proporciones por examen; frecuencia y presencia reciente se escalan por el máximo del corpus. Persistencia: años observados / años cubiertos. Temario y cambios: indicadores documentados.",
   };
@@ -452,7 +505,7 @@ export function backtest(
   };
 }
 export function patterns(data: Dataset, weights: Partial<Weights> = {}) {
-  const qs = validatedCorpus(data).questions;
+  const qs = observedCorpus(data).questions;
   const groups = new Map<string, Question[]>();
   qs.forEach((q) => {
     const g = groups.get(q.literalHash) || [];

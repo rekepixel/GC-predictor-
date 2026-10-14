@@ -12,6 +12,7 @@ export const reviewSchema = z.object({
   topicId: z.string().nullable(),
   concept: z.string().max(300).nullable(),
   law: z.string().max(500).nullable(),
+  lawVerified: z.boolean().optional().default(false),
   article: z.string().max(100).nullable(),
   paragraph: z.string().max(100).nullable(),
   legalUrl: z.string().url().or(z.literal("")).nullable(),
@@ -108,38 +109,89 @@ export async function reviewQuestion(
       classificationMethod: changes.classificationReviewed
         ? "manual-reviewed"
         : previous.classificationMethod,
-      canonicalId: previous.id,
-      optionMap: [0, 1, 2, 3],
+      canonicalId: previous.canonicalId,
+      optionMap: previous.optionMap,
     };
+    if (
+      changes.law !== previous.law ||
+      changes.article !== previous.article ||
+      changes.paragraph !== previous.paragraph ||
+      (changes.legalUrl || null) !== previous.legalUrl
+    ) {
+      // A new manual reference must not inherit evidence or dates from another BOE block.
+      updated.legalEvidenceId = null;
+      updated.legalCheckedAsOf = null;
+      updated.lawId = null;
+    }
     if (updated.validation === "cancelled") updated.active = false;
+    if (updated.validation === "cancelled")
+      for (const other of data.questions.filter(
+        (q) => q.id !== id && q.canonicalId === previous.canonicalId,
+      )) {
+        const cancelled = {
+          ...other,
+          validation: "cancelled" as const,
+          active: false,
+        };
+        await put(
+          tx,
+          "questions",
+          cancelled as unknown as Record<string, unknown>,
+        );
+        await audit(
+          tx,
+          other.id,
+          "cancel_equivalent_question",
+          other,
+          cancelled,
+          actor,
+        );
+      }
+    const contentChanged =
+      changes.stem !== previous.stem ||
+      JSON.stringify(changes.options) !== JSON.stringify(previous.options) ||
+      changes.correct !== previous.correct;
+    if (!contentChanged) {
+      await put(tx, "questions", updated as unknown as Record<string, unknown>);
+      await audit(tx, id, "review_question", previous, updated, actor);
+      return updated;
+    }
+    updated.documentaryVerification = null;
     updated = deduplicate(
-      updated,
+      { ...updated, canonicalId: updated.id, optionMap: [0, 1, 2, 3] },
       data.questions.filter((q) => q.id !== id),
     );
     await put(tx, "questions", updated as unknown as Record<string, unknown>);
-    await audit(tx, id, "review_question", previous, updated, actor);
-    // Recompute all aliases in this examination family after literal edits to avoid stale equivalences.
-    const family = [
+    await audit(
+      tx,
+      id,
+      "review_question_content_changed",
+      previous,
       updated,
-      ...data.questions.filter(
-        (q) =>
-          q.id !== id &&
-          q.year === updated.year &&
-          q.session === updated.session,
-      ),
-    ].sort(
-      (a, b) =>
-        a.createdAt.localeCompare(b.createdAt) || a.id.localeCompare(b.id),
+      actor,
     );
-    const rebuilt: Question[] = [];
-    for (const q of family) {
-      const fresh = deduplicate(
-        { ...q, canonicalId: q.id, optionMap: [0, 1, 2, 3] },
-        rebuilt,
+    // Editing content invalidates its documented counterpart's correspondence proof.
+    for (const other of data.questions.filter(
+      (q) =>
+        q.id !== id &&
+        q.canonicalId === previous.canonicalId &&
+        q.documentaryVerification,
+    )) {
+      const invalidated = { ...other, documentaryVerification: null };
+      await put(
+        tx,
+        "questions",
+        invalidated as unknown as Record<string, unknown>,
       );
-      rebuilt.push(fresh);
-      await put(tx, "questions", fresh as unknown as Record<string, unknown>);
+      await audit(
+        tx,
+        other.id,
+        "invalidate_documentary_pair",
+        other,
+        invalidated,
+        actor,
+      );
     }
-    return rebuilt.find((q) => q.id === id)!;
+    return updated;
   });
 }

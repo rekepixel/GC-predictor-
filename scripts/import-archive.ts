@@ -15,7 +15,10 @@ async function main() {
   let extracted = 0;
   for (const source of catalog.sources.filter(
     (s: { kind: string; localPath?: string }) =>
-      s.kind === "exam" && s.localPath,
+      s.kind === "exam" &&
+      s.localPath &&
+      "origin" in s &&
+      s.origin === "official",
   )) {
     if (
       createHash("sha256")

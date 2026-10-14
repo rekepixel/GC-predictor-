@@ -1,0 +1,1433 @@
+{
+  "generatedAt": "2026-10-14T12:45:02.072Z",
+  "scope": "official-corrected-documentary; finality separately disclosed",
+  "byYear": [
+    {
+      "year": 2026,
+      "models": 2,
+      "sessions": 1,
+      "importedRecords": 210,
+      "documentaryVerifiedRecords": 210,
+      "verifiedOrdinary": 100,
+      "definitiveOrdinary": 0,
+      "pendingImportedRecords": 0,
+      "discardedCancelledRecords": 0,
+      "duplicateModelRecords": 100,
+      "inactiveReserveQuestions": 5,
+      "finalityPending": 100,
+      "missingExamDocuments": false,
+      "secondaryDocumentsPending": 0,
+      "expectedQuestionsWhenMissing": null,
+      "notes": "Frecuencia documental; la firmeza final de las respuestas se informa aparte."
+    },
+    {
+      "year": 2025,
+      "models": 0,
+      "sessions": 0,
+      "importedRecords": 0,
+      "documentaryVerifiedRecords": 0,
+      "verifiedOrdinary": 0,
+      "definitiveOrdinary": 0,
+      "pendingImportedRecords": 0,
+      "discardedCancelledRecords": 0,
+      "duplicateModelRecords": 0,
+      "inactiveReserveQuestions": 0,
+      "finalityPending": 0,
+      "missingExamDocuments": true,
+      "secondaryDocumentsPending": 3,
+      "expectedQuestionsWhenMissing": null,
+      "notes": "No hay cuadernillo importado; se desconoce el número de preguntas pendientes."
+    },
+    {
+      "year": 2024,
+      "models": 0,
+      "sessions": 0,
+      "importedRecords": 0,
+      "documentaryVerifiedRecords": 0,
+      "verifiedOrdinary": 0,
+      "definitiveOrdinary": 0,
+      "pendingImportedRecords": 0,
+      "discardedCancelledRecords": 0,
+      "duplicateModelRecords": 0,
+      "inactiveReserveQuestions": 0,
+      "finalityPending": 0,
+      "missingExamDocuments": true,
+      "secondaryDocumentsPending": 8,
+      "expectedQuestionsWhenMissing": null,
+      "notes": "No hay cuadernillo importado; se desconoce el número de preguntas pendientes."
+    },
+    {
+      "year": 2023,
+      "models": 0,
+      "sessions": 0,
+      "importedRecords": 0,
+      "documentaryVerifiedRecords": 0,
+      "verifiedOrdinary": 0,
+      "definitiveOrdinary": 0,
+      "pendingImportedRecords": 0,
+      "discardedCancelledRecords": 0,
+      "duplicateModelRecords": 0,
+      "inactiveReserveQuestions": 0,
+      "finalityPending": 0,
+      "missingExamDocuments": true,
+      "secondaryDocumentsPending": 0,
+      "expectedQuestionsWhenMissing": null,
+      "notes": "No hay cuadernillo importado; se desconoce el número de preguntas pendientes."
+    },
+    {
+      "year": 2022,
+      "models": 6,
+      "sessions": 3,
+      "importedRecords": 630,
+      "documentaryVerifiedRecords": 0,
+      "verifiedOrdinary": 0,
+      "definitiveOrdinary": 0,
+      "pendingImportedRecords": 630,
+      "discardedCancelledRecords": 0,
+      "duplicateModelRecords": 0,
+      "inactiveReserveQuestions": 0,
+      "finalityPending": 0,
+      "missingExamDocuments": false,
+      "secondaryDocumentsPending": 0,
+      "expectedQuestionsWhenMissing": null,
+      "notes": "Cuadernillos registrados sin cotejo documental completo."
+    },
+    {
+      "year": 2021,
+      "models": 0,
+      "sessions": 0,
+      "importedRecords": 0,
+      "documentaryVerifiedRecords": 0,
+      "verifiedOrdinary": 0,
+      "definitiveOrdinary": 0,
+      "pendingImportedRecords": 0,
+      "discardedCancelledRecords": 0,
+      "duplicateModelRecords": 0,
+      "inactiveReserveQuestions": 0,
+      "finalityPending": 0,
+      "missingExamDocuments": true,
+      "secondaryDocumentsPending": 0,
+      "expectedQuestionsWhenMissing": null,
+      "notes": "No hay cuadernillo importado; se desconoce el número de preguntas pendientes."
+    },
+    {
+      "year": 2020,
+      "models": 4,
+      "sessions": 2,
+      "importedRecords": 0,
+      "documentaryVerifiedRecords": 0,
+      "verifiedOrdinary": 0,
+      "definitiveOrdinary": 0,
+      "pendingImportedRecords": 0,
+      "discardedCancelledRecords": 0,
+      "duplicateModelRecords": 0,
+      "inactiveReserveQuestions": 0,
+      "finalityPending": 0,
+      "missingExamDocuments": false,
+      "secondaryDocumentsPending": 0,
+      "expectedQuestionsWhenMissing": null,
+      "notes": "Cuadernillos registrados sin cotejo documental completo."
+    },
+    {
+      "year": 2019,
+      "models": 0,
+      "sessions": 0,
+      "importedRecords": 0,
+      "documentaryVerifiedRecords": 0,
+      "verifiedOrdinary": 0,
+      "definitiveOrdinary": 0,
+      "pendingImportedRecords": 0,
+      "discardedCancelledRecords": 0,
+      "duplicateModelRecords": 0,
+      "inactiveReserveQuestions": 0,
+      "finalityPending": 0,
+      "missingExamDocuments": true,
+      "secondaryDocumentsPending": 0,
+      "expectedQuestionsWhenMissing": null,
+      "notes": "No hay cuadernillo importado; se desconoce el número de preguntas pendientes."
+    },
+    {
+      "year": 2018,
+      "models": 0,
+      "sessions": 0,
+      "importedRecords": 0,
+      "documentaryVerifiedRecords": 0,
+      "verifiedOrdinary": 0,
+      "definitiveOrdinary": 0,
+      "pendingImportedRecords": 0,
+      "discardedCancelledRecords": 0,
+      "duplicateModelRecords": 0,
+      "inactiveReserveQuestions": 0,
+      "finalityPending": 0,
+      "missingExamDocuments": true,
+      "secondaryDocumentsPending": 0,
+      "expectedQuestionsWhenMissing": null,
+      "notes": "No hay cuadernillo importado; se desconoce el número de preguntas pendientes."
+    },
+    {
+      "year": 2017,
+      "models": 0,
+      "sessions": 0,
+      "importedRecords": 0,
+      "documentaryVerifiedRecords": 0,
+      "verifiedOrdinary": 0,
+      "definitiveOrdinary": 0,
+      "pendingImportedRecords": 0,
+      "discardedCancelledRecords": 0,
+      "duplicateModelRecords": 0,
+      "inactiveReserveQuestions": 0,
+      "finalityPending": 0,
+      "missingExamDocuments": true,
+      "secondaryDocumentsPending": 0,
+      "expectedQuestionsWhenMissing": null,
+      "notes": "No hay cuadernillo importado; se desconoce el número de preguntas pendientes."
+    }
+  ],
+  "statistics": {
+    "questions": 100,
+    "definitiveQuestions": 0,
+    "documentaryOnlyQuestions": 100,
+    "years": [
+      2026
+    ],
+    "examinations": 1,
+    "topics": [
+      {
+        "name": "DERECHOS HUMANOS",
+        "count": 12,
+        "share": 0.12
+      },
+      {
+        "name": "DERECHO PROCESAL PENAL",
+        "count": 9,
+        "share": 0.09
+      },
+      {
+        "name": "FUERZAS Y CUERPOS DE SEGURIDAD. GUARDIA CIVIL",
+        "count": 9,
+        "share": 0.09
+      },
+      {
+        "name": "DERECHO CONSTITUCIONAL",
+        "count": 7,
+        "share": 0.07
+      },
+      {
+        "name": "DERECHO FISCAL",
+        "count": 5,
+        "share": 0.05
+      },
+      {
+        "name": "DERECHO PENAL",
+        "count": 5,
+        "share": 0.05
+      },
+      {
+        "name": "INSTITUCIONES INTERNACIONALES",
+        "count": 5,
+        "share": 0.05
+      },
+      {
+        "name": "ARMAS Y EXPLOSIVOS",
+        "count": 4,
+        "share": 0.04
+      },
+      {
+        "name": "DERECHO ADMINISTRATIVO",
+        "count": 4,
+        "share": 0.04
+      },
+      {
+        "name": "DERECHO CIVIL",
+        "count": 4,
+        "share": 0.04
+      },
+      {
+        "name": "DERECHO DE LA UNIÓN EUROPEA",
+        "count": 4,
+        "share": 0.04
+      },
+      {
+        "name": "MATERIAS TÉCNICO-CIENTÍFICAS. TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN",
+        "count": 4,
+        "share": 0.04
+      },
+      {
+        "name": "MINISTERIO DEL INTERIOR. MINISTERIO DE DEFENSA",
+        "count": 4,
+        "share": 0.04
+      },
+      {
+        "name": "SEGURIDAD PÚBLICA Y SEGURIDAD PRIVADA",
+        "count": 4,
+        "share": 0.04
+      },
+      {
+        "name": "DEONTOLOGÍA PROFESIONAL",
+        "count": 3,
+        "share": 0.03
+      },
+      {
+        "name": "EXTRANJERÍA. INMIGRACIÓN",
+        "count": 3,
+        "share": 0.03
+      },
+      {
+        "name": "MATERIAS SOCIO-CULTURALES. PROTECCIÓN CIVIL. DESARROLLO SOSTENIBLE. EFICIENCIA ENERGÉTICA",
+        "count": 3,
+        "share": 0.03
+      },
+      {
+        "name": "PREVENCIÓN DE RIESGOS LABORALES",
+        "count": 3,
+        "share": 0.03
+      },
+      {
+        "name": "PROTECCIÓN DE DATOS",
+        "count": 2,
+        "share": 0.02
+      },
+      {
+        "name": "PROTECCIÓN INTEGRAL CONTRA LA VIOLENCIA DE GÉNERO",
+        "count": 2,
+        "share": 0.02
+      },
+      {
+        "name": "TOPOGRAFÍA",
+        "count": 2,
+        "share": 0.02
+      },
+      {
+        "name": "IGUALDAD EFECTIVA DE MUJERES Y HOMBRES",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "RESPONSABILIDAD PENAL DE LOS MENORES",
+        "count": 1,
+        "share": 0.01
+      }
+    ],
+    "laws": [
+      {
+        "name": "Constitución Española",
+        "count": 5,
+        "share": 0.05
+      },
+      {
+        "name": "Ley de Enjuiciamiento Criminal",
+        "count": 5,
+        "share": 0.05
+      },
+      {
+        "name": "Ley Orgánica 10/1995 · Código Penal",
+        "count": 5,
+        "share": 0.05
+      },
+      {
+        "name": "Código Civil",
+        "count": 4,
+        "share": 0.04
+      },
+      {
+        "name": "Ley Orgánica 4/2015 · Protección de la seguridad ciudadana",
+        "count": 3,
+        "share": 0.03
+      },
+      {
+        "name": "Reglamento (UE) 952/2013 · Código Aduanero de la Unión",
+        "count": 3,
+        "share": 0.03
+      },
+      {
+        "name": "Estructura orgánica de los Servicios Centrales de la Dirección General de la Guardia Civil",
+        "count": 2,
+        "share": 0.02
+      },
+      {
+        "name": "Ley 17/2015 · Sistema Nacional de Protección Civil",
+        "count": 2,
+        "share": 0.02
+      },
+      {
+        "name": "Ley 29/2014 · Régimen del Personal de la Guardia Civil",
+        "count": 2,
+        "share": 0.02
+      },
+      {
+        "name": "Ley 39/2015 · Procedimiento Administrativo Común",
+        "count": 2,
+        "share": 0.02
+      },
+      {
+        "name": "Ley 40/2015 · Régimen Jurídico del Sector Público",
+        "count": 2,
+        "share": 0.02
+      },
+      {
+        "name": "Ley Orgánica 1/2004 · Medidas contra la violencia de género",
+        "count": 2,
+        "share": 0.02
+      },
+      {
+        "name": "Ley Orgánica 11/2007 · Derechos y deberes de los miembros de la Guardia Civil",
+        "count": 2,
+        "share": 0.02
+      },
+      {
+        "name": "Ley Orgánica 2/1986 · Fuerzas y Cuerpos de Seguridad",
+        "count": 2,
+        "share": 0.02
+      },
+      {
+        "name": "Ley Orgánica 3/2018 · Protección de Datos Personales",
+        "count": 2,
+        "share": 0.02
+      },
+      {
+        "name": "Ley Orgánica 4/2000 · Derechos y libertades de los extranjeros",
+        "count": 2,
+        "share": 0.02
+      },
+      {
+        "name": "Ley Orgánica 6/1985 · Poder Judicial",
+        "count": 2,
+        "share": 0.02
+      },
+      {
+        "name": "Real Decreto 130/2017 · Reglamento de Explosivos",
+        "count": 2,
+        "share": 0.02
+      },
+      {
+        "name": "Real Decreto 137/1993 · Reglamento de Armas",
+        "count": 2,
+        "share": 0.02
+      },
+      {
+        "name": "Real Decreto 176/2022 · Código de Conducta del personal de la Guardia Civil",
+        "count": 2,
+        "share": 0.02
+      },
+      {
+        "name": "Real Decreto 205/2024 · Estructura del Ministerio de Defensa",
+        "count": 2,
+        "share": 0.02
+      },
+      {
+        "name": "Real Decreto 207/2024 · Estructura del Ministerio del Interior",
+        "count": 2,
+        "share": 0.02
+      },
+      {
+        "name": "Tratado de Funcionamiento de la Unión Europea",
+        "count": 2,
+        "share": 0.02
+      },
+      {
+        "name": "Tratado de la Unión Europea",
+        "count": 2,
+        "share": 0.02
+      },
+      {
+        "name": "Carta de las Naciones Unidas",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Carta de los Derechos Fundamentales de la Unión Europea",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Carta Social Europea revisada",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Convenio Europeo de Derechos Humanos",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Declaración Universal de Derechos Humanos",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Estatuto de Roma de la Corte Penal Internacional",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley 11/2022 · General de Telecomunicaciones",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley 31/1995 · Prevención de Riesgos Laborales",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley 4/2015 · Estatuto de la víctima del delito",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley 42/2007 · Patrimonio Natural y Biodiversidad",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley 5/2014 · Seguridad Privada",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley 6/2020 · Servicios electrónicos de confianza",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 1/1982 · Honor, intimidad y propia imagen",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 12/1995 · Represión del Contrabando",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 18/2003 · Cooperación con la Corte Penal Internacional",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 3/1981 · Defensor del Pueblo",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 3/2007 · Igualdad efectiva de mujeres y hombres",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 5/2000 · Responsabilidad penal de los menores",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 6/1984 · Habeas Corpus",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Pacto Internacional de Derechos Civiles y Políticos",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Pacto Internacional de Derechos Económicos, Sociales y Culturales",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Principios Básicos sobre el Empleo de la Fuerza y de Armas de Fuego",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Protocolo Facultativo de la Convención contra la Tortura",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Real Decreto 1649/1998 · Infracciones administrativas de contrabando",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Real Decreto 179/2005 · Prevención de riesgos laborales en la Guardia Civil",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Real Decreto 240/2007 · Libre circulación y residencia de ciudadanos de la Unión",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Real Decreto 4/2010 · Esquema Nacional de Interoperabilidad",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Real Decreto 67/2010 · Prevención de riesgos laborales en la AGE",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Reglamento de Organización y Funcionamiento del Defensor del Pueblo",
+        "count": 1,
+        "share": 0.01
+      }
+    ],
+    "articles": [
+      {
+        "name": "Código Civil · art. 152",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Código Civil · art. 267",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Código Civil · art. 54",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Código Civil · art. 6 · 4",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Constitución Española · art. 155 · 1",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Constitución Española · art. 30 · 3",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Constitución Española · art. 55 · 2",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Constitución Española · art. 59 · 2",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Constitución Española · art. 68 · 6",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley 11/2022 · General de Telecomunicaciones · art. 56 · 1",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley 17/2015 · Sistema Nacional de Protección Civil · art. 33",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley 17/2015 · Sistema Nacional de Protección Civil · art. 5",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley 29/2014 · Régimen del Personal de la Guardia Civil · art. 18 · 5",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley 29/2014 · Régimen del Personal de la Guardia Civil · art. 7",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley 31/1995 · Prevención de Riesgos Laborales · art. 53",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley 39/2015 · Procedimiento Administrativo Común · art. 126 · 3",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley 39/2015 · Procedimiento Administrativo Común · art. 48 · 1",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley 4/2015 · Estatuto de la víctima del delito · art. 15 · 1",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley 40/2015 · Régimen Jurídico del Sector Público · art. 55 · 3",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley 40/2015 · Régimen Jurídico del Sector Público · art. 9 · 6",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley 42/2007 · Patrimonio Natural y Biodiversidad · art. 3",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley 5/2014 · Seguridad Privada · art. 10 · 3",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley 6/2020 · Servicios electrónicos de confianza · art. 4",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley de Enjuiciamiento Criminal · art. 284 · 2",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley de Enjuiciamiento Criminal · art. 354",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley de Enjuiciamiento Criminal · art. 370",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley de Enjuiciamiento Criminal · art. 490",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley de Enjuiciamiento Criminal · art. 520 · 1",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 1/1982 · Honor, intimidad y propia imagen · art. 9",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 1/2004 · Medidas contra la violencia de género · art. 15 · 1",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 1/2004 · Medidas contra la violencia de género · art. 23",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 10/1995 · Código Penal · art. 136 · 1",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 10/1995 · Código Penal · art. 16 · 3",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 10/1995 · Código Penal · art. 18 · 1",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 10/1995 · Código Penal · art. 23",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 10/1995 · Código Penal · art. 33 · 3",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 11/2007 · Derechos y deberes de los miembros de la Guardia Civil · art. 33",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 11/2007 · Derechos y deberes de los miembros de la Guardia Civil · art. 47",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 18/2003 · Cooperación con la Corte Penal Internacional · art. 4",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 2/1986 · Fuerzas y Cuerpos de Seguridad · art. 2",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 2/1986 · Fuerzas y Cuerpos de Seguridad · art. 5 · 5",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 3/1981 · Defensor del Pueblo · art. 2",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 3/2007 · Igualdad efectiva de mujeres y hombres · art. 13 · 2",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 3/2018 · Protección de Datos Personales · art. 34 · 1",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 3/2018 · Protección de Datos Personales · art. 44 · 3",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 4/2000 · Derechos y libertades de los extranjeros · art. 19 · 1",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 4/2000 · Derechos y libertades de los extranjeros · art. 25 bis",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 4/2015 · Protección de la seguridad ciudadana · art. 16 · 4",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 4/2015 · Protección de la seguridad ciudadana · art. 20",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 4/2015 · Protección de la seguridad ciudadana · art. 21",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 5/2000 · Responsabilidad penal de los menores · art. 15 · 1",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 6/1985 · Poder Judicial · art. 55",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ley Orgánica 6/1985 · Poder Judicial · art. 65",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Real Decreto 130/2017 · Reglamento de Explosivos · art. 122",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Real Decreto 130/2017 · Reglamento de Explosivos · art. 8",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Real Decreto 137/1993 · Reglamento de Armas · art. 13 · 3",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Real Decreto 137/1993 · Reglamento de Armas · art. 90 · 1",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Real Decreto 1649/1998 · Infracciones administrativas de contrabando · art. 35 · 5",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Real Decreto 176/2022 · Código de Conducta del personal de la Guardia Civil · art. 5 · 2",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Real Decreto 176/2022 · Código de Conducta del personal de la Guardia Civil · art. 8 · 2",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Real Decreto 179/2005 · Prevención de riesgos laborales en la Guardia Civil · art. 8",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Real Decreto 205/2024 · Estructura del Ministerio de Defensa · art. 2 · 4",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Real Decreto 205/2024 · Estructura del Ministerio de Defensa · art. 7",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Real Decreto 207/2024 · Estructura del Ministerio del Interior · art. 8 bis",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Real Decreto 207/2024 · Estructura del Ministerio del Interior · art. 8 ter · 3",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Real Decreto 240/2007 · Libre circulación y residencia de ciudadanos de la Unión · art. 15 · 7",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Real Decreto 67/2010 · Prevención de riesgos laborales en la AGE · art. 3 · 3",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Reglamento de Organización y Funcionamiento del Defensor del Pueblo · art. 20 · 1",
+        "count": 1,
+        "share": 0.01
+      }
+    ],
+    "concepts": [
+      {
+        "name": "Acreditación de violencia de género para derechos laborales",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ámbito territorial del Código Aduanero de la Unión",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Año de lanzamiento de WhatsApp",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Anulabilidad por desviación de poder",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Aprobación de normas técnicas de interoperabilidad",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Autoridades competentes para cooperar con la Corte Penal Internacional",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Autorización del matrimonio secreto",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Ayuda social y de vivienda contra la exclusión social",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Caducidad documental y expulsión de ciudadanos de la Unión",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Capacidades TIC para el ejercicio de funciones de la Jefatura del Estado",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Carga de la prueba en procesos por discriminación por sexo",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Causas de cese de la obligación de alimentos",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Cierre del centro de trabajo por infracciones excepcionalmente graves",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Circunstancia mixta de parentesco",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Clases de visado de extranjería",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Clasificación de la prohibición de aproximación por duración",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Código de Conducta en procesos selectivos por promoción profesional",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Competencia para determinar las divisas de empleos de la Guardia Civil",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Competencia penal de la Audiencia Nacional",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Composición y cualificación del Comité de Derechos Humanos",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Concepto de emergencia en seguridad ciudadana",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Concepto de notificación de reexportación",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Concepto legal de ecosistema",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Conservación del atestado sin autor conocido y excepciones de remisión",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Contenido del volante de identificación policial",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Conversión de distancia del terreno a plano mediante escala",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Convocatoria de reuniones del Consejo de la Unión Europea",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Convocatoria del Congreso para elegir al Defensor del Pueblo",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Cooperación en protección de datos en la Administración de Justicia",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Crímenes de competencia de la Corte Penal Internacional",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Cuerpos integrantes de las Fuerzas y Cuerpos de Seguridad",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Definición del grado centesimal",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Dependencia de la Dirección General de Protección Civil y Emergencias",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Dependencia de representaciones militares en organismos internacionales",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Dependencias de la Dirección Adjunta Operativa",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Derecho a la vivienda en la Carta Social Europea",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Desistimiento del delito intentado con varios intervinientes",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Despacho a libre práctica y estatuto aduanero",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Detección precoz sanitaria de la violencia de género",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Dignidad en el Código de Conducta de la Guardia Civil",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Disponibilidad documental del plan de prevención en la AGE",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Distribución de competencias estatales de protección civil",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Distribución geográfica del Consejo de Derechos Humanos",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "División de riesgo 1.4 de explosivos",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Duración del mandato de la Comisión Europea",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Duración y renovación de vocales del Mecanismo Nacional de Prevención",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Estados fundadores del Consejo de Europa",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Evaluación del riesgo de armas no letales para terceros",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Expulsión de miembros de Naciones Unidas",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Extinción de la guarda de hecho de personas con discapacidad",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Finalidad de la educación en la Declaración Universal",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Fraude de ley y eficacia de las normas jurídicas",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Funciones de la Jefatura de Policía Marítima",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Habilitación laboral de familiares reagrupados",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Información en registros corporales externos",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Instituciones de la Unión Europea",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Integración histórica del Cuerpo de Carabineros en la Guardia Civil",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Levantamiento de cadáver en accidente ferroviario",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Libre circulación de trabajadores y potestad normativa europea",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Medidas de protección civil para personas con discapacidad",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Medidas estatales frente a incumplimientos autonómicos",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Misión de Europol",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Modificaciones sustanciales de fábricas de armas",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Motivación y comunicación de opiniones consultivas del TEDH",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Orden sucesivo del Secretario General de Naciones Unidas",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Órganos superiores y directivos de la AGE",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Papel del Servicio de Vigilancia Aduanera en delitos de contrabando",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Participación en prevención de riesgos en la Guardia Civil",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Periodicidad y momento de revista de armas",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Periodo de vigencia de certificados electrónicos cualificados",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Plazo de convocatoria del Congreso electo",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Plazo máximo general de detención preventiva",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Plazos de cancelación de antecedentes penales",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Prescripción de delitos menos graves cometidos por menores",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Prestaciones y deberes civiles del artículo 30 de la Constitución",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Principios inspiradores del procedimiento de habeas corpus",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Programa de visitas del Subcomité para la Prevención",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Prohibición de que detectives presten servicios de empresas de seguridad",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Prórroga del plazo para resolver sanciones de contrabando",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Protección de las madres antes y después del parto",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Provocación para cometer un delito",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Quejas relativas al mando inmediato superior",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Reconocimiento de la inhabilitación del Rey y regencia",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Reglas de comportamiento y honor del guardia civil",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Remisión mensual del registro de consumo de explosivos",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Requisitos de acceso a servicios de justicia restaurativa",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Reuniones de asociaciones profesionales en centros oficiales",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Revocabilidad de la delegación de competencias",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Salas del Tribunal Supremo",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Salvaguarda de derechos fundamentales en redes y servicios electrónicos",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Secreto profesional y fuentes de información de miembros de las FCS",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Sede de Frontex",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Separación y documentación del reconocimiento en rueda",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Silencio en el recurso extraordinario de revisión",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Subdirecciones de la Dirección General de Protección Civil y Emergencias",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Supuestos de designación obligatoria de delegado de protección de datos",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Supuestos de detención por particulares",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Suspensión individual de derechos en investigaciones de terrorismo",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Titular de la Secretaría General de la OTAN",
+        "count": 1,
+        "share": 0.01
+      },
+      {
+        "name": "Tutela frente a intromisiones ilegítimas en el honor",
+        "count": 1,
+        "share": 0.01
+      }
+    ]
+  },
+  "preservation": {
+    "preexistingPaths": 77,
+    "missingPaths": [],
+    "preexistingOfficialPdfs": 22,
+    "alteredOfficialPdfs": [],
+    "preexistingQuestionIds": 840,
+    "currentQuestionIds": 840,
+    "missingQuestionIds": [],
+    "databaseBackup": ".local/backups/pre-validation.sqlite"
+  }
+}

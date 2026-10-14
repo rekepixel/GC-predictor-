@@ -46,6 +46,7 @@ import type { Dataset, Question, Weights, Source } from "@/lib/types";
 import { DEFAULT_WEIGHTS } from "@/lib/types";
 import type { frequencies, rank, patterns, backtest } from "@/lib/analysis";
 import Admin from "./admin";
+import { ArticleHistory } from "./article-history";
 type Stats = ReturnType<typeof frequencies>;
 type Analysis = {
   ranking: ReturnType<typeof rank>;
@@ -372,7 +373,9 @@ function Dashboard({
   stats: Stats;
   navigate: (id: string) => void;
 }) {
-  const files = data.sources.filter((s) => s.storageKey),
+  const files = data.sources.filter(
+      (s) => s.storageKey && s.origin === "official",
+    ),
     sessions = new Set(data.exams.map((e) => e.year + "|" + e.session));
   const importedYears = [...new Set(data.exams.map((e) => e.year))].sort();
   const uniqueDrafts = new Set(data.questions.map((q) => q.canonicalId)).size;
@@ -392,6 +395,14 @@ function Dashboard({
           </button>
         }
       />
+      <div className="notice amber">
+        <Info size={18} />
+        <span>
+          {stats.basisNote} Clave final acreditada: {stats.definitiveQuestions}{" "}
+          preguntas. Una única sesión cotejada no permite comparar tendencias
+          históricas.
+        </span>
+      </div>
       <section className="hero">
         <div>
           <Badge tone="hero-badge">GUARDIA CIVIL · CONVOCATORIA 2027</Badge>
@@ -415,12 +426,12 @@ function Dashboard({
           <span>CALIDAD DEL CORPUS</span>
           <strong>
             {stats.questions
-              ? format(stats.questions) + " preguntas validadas"
+              ? format(stats.questions) + " preguntas cotejadas"
               : "Pendiente de validación"}
           </strong>
           <p>
             {stats.questions
-              ? "Plantillas definitivas y variantes depuradas."
+              ? "Contenido documental cotejado y variantes agrupadas; firmeza final aparte."
               : "Los borradores no alimentan estadísticas ni prioridades."}
           </p>
         </div>
@@ -429,9 +440,9 @@ function Dashboard({
         {[
           {
             icon: Database,
-            label: "Preguntas oficiales validadas",
+            label: "Preguntas cotejadas para análisis",
             value: format(stats.questions),
-            note: `${format(data.questions.length)} registros extraídos pendientes o revisados`,
+            note: `${format(stats.definitiveQuestions)} con clave definitiva · ${format(stats.documentaryOnlyQuestions)} con cotejo documental`,
           },
           {
             icon: CalendarDays,
@@ -449,9 +460,9 @@ function Dashboard({
           },
           {
             icon: Layers3,
-            label: "Cobertura del temario",
+            label: "Cobertura por temas",
             value: pct(stats.coverage),
-            note: "Temas con preguntas validadas y clasificación revisada",
+            note: "Temas representados por preguntas cotejadas y clasificación revisada",
           },
         ].map((m) => (
           <div className="metric" key={m.label}>
@@ -469,7 +480,7 @@ function Dashboard({
           <div className="panel-header">
             <div>
               <h2>Evolución del archivo</h2>
-              <p>Preguntas validadas por convocatoria</p>
+              <p>Preguntas ordinarias cotejadas por convocatoria</p>
             </div>
             <Badge>2017 — 2026</Badge>
           </div>
@@ -483,7 +494,7 @@ function Dashboard({
                   <Tooltip />
                   <Bar
                     dataKey="questions"
-                    name="Preguntas validadas"
+                    name="Preguntas cotejadas"
                     fill="#2f6b58"
                     radius={[5, 5, 0, 0]}
                   />
@@ -492,8 +503,8 @@ function Dashboard({
             </div>
           ) : (
             <Empty
-              title="La gráfica espera datos validados"
-              description="Tener un PDF no equivale a tener un examen validado. Revisa el texto y la plantilla definitiva para activar este análisis."
+              title="La gráfica espera transcripciones cotejadas"
+              description="Tener un PDF no acredita su transcripción. Revisa texto, sección, modelo y clave oficial antes de incluirlo."
               action={
                 <button
                   className="text-button"
@@ -515,7 +526,7 @@ function Dashboard({
                   className={v ? "covered" : q.length ? "pending" : ""}
                   title={
                     v
-                      ? `${v.questions} preguntas validadas`
+                      ? `${v.questions} preguntas cotejadas`
                       : q.length
                         ? `${q.length} registros en borrador`
                         : "Sin cuadernillo importado"
@@ -525,7 +536,7 @@ function Dashboard({
                   <strong>{year}</strong>
                   <small>
                     {v
-                      ? "Validado"
+                      ? "Cotejado"
                       : q.length
                         ? "Revisión"
                         : hasPDF
@@ -555,7 +566,7 @@ function Dashboard({
               <strong>Cotejo y plantilla definitiva</strong>
               <p>
                 {format(uniqueDrafts)} grupos extraídos.{" "}
-                {format(stats.questions)} preguntas activas validadas.
+                {format(stats.questions)} preguntas ordinarias cotejadas.
               </p>
             </div>
           </div>
@@ -660,7 +671,7 @@ function Dashboard({
     </>
   );
 }
-function QuestionCard({
+export function QuestionCard({
   q,
   data,
   review,
@@ -677,7 +688,7 @@ function QuestionCard({
         <div>
           <Badge
             tone={
-              q.validation === "validated"
+              q.validation === "validated" || q.documentaryEligible
                 ? "green"
                 : q.validation === "cancelled"
                   ? "red"
@@ -685,12 +696,14 @@ function QuestionCard({
             }
           >
             {q.validation === "validated"
-              ? "Validada"
-              : q.validation === "cancelled"
-                ? "Anulada"
-                : q.validation === "reviewed"
-                  ? "Revisada · falta definitiva"
-                  : "Borrador"}
+              ? "Definitiva acreditada"
+              : q.documentaryEligible
+                ? "Cotejo documental · PDF nº 2"
+                : q.validation === "cancelled"
+                  ? "Anulada"
+                  : q.validation === "reviewed"
+                    ? "Revisada · falta definitiva"
+                    : "Borrador"}
           </Badge>
           <span>
             {q.year} · {q.session} · Modelo {q.model} · Nº {q.number}
@@ -728,8 +741,14 @@ function QuestionCard({
         {q.law && (
           <Badge>
             {q.law}
-            {q.article ? " · art. " + q.article : ""}
-            {q.legalVerified ? " · verificado" : " · sin cotejar"}
+            {q.article
+              ? (/^\d/.test(q.article) ? " · art. " : " · ") + q.article
+              : ""}
+            {q.legalVerified
+              ? " · referencia cotejada"
+              : q.lawVerified
+                ? " · norma identificada, artículo pendiente"
+                : " · sin cotejar"}
           </Badge>
         )}
       </div>
@@ -739,7 +758,9 @@ function QuestionCard({
             ? "Sin respuesta contrastada."
             : q.validation === "validated"
               ? "Respuesta de plantilla definitiva."
-              : "Respuesta provisional extraída. No equivale a una plantilla definitiva."}
+              : q.documentaryEligible
+                ? "Respuesta cotejada con la plantilla oficial corregida nº 2. Firmeza administrativa final no acreditada."
+                : "Respuesta provisional extraída. No equivale a una plantilla definitiva."}
           {q.explanation && <p>{q.explanation}</p>}
           {q.legalUrl && (
             <a href={q.legalUrl} target="_blank" rel="noreferrer">
@@ -781,10 +802,13 @@ function Explorer({
     [law, setLaw] = useState(""),
     [article, setArticle] = useState(""),
     [concept, setConcept] = useState(""),
-    [status, setStatus] = useState(""),
+    [status, setStatus] = useState("documentary"),
     [session, setSession] = useState(""),
     [model, setModel] = useState(""),
     [page, setPage] = useState(1);
+  const [tab, setTab] = useState("questions"),
+    [variants, setVariants] = useState(false),
+    [reserves, setReserves] = useState(false);
   const filtered = useMemo(
     () =>
       data.questions
@@ -802,7 +826,11 @@ function Explorer({
               (q.concept || "")
                 .toLocaleLowerCase("es")
                 .includes(concept.toLocaleLowerCase("es"))) &&
-            (!status || q.validation === status) &&
+            (!status ||
+              (status === "documentary"
+                ? q.documentaryEligible || q.validation === "validated"
+                : q.validation === status)) &&
+            (reserves || !q.reserve) &&
             (!session || q.session === session) &&
             (!model || q.model === model),
         )
@@ -812,13 +840,61 @@ function Explorer({
             a.session.localeCompare(b.session) ||
             a.model.localeCompare(b.model) ||
             a.number - b.number,
+        )
+        .filter(
+          (q, i, all) =>
+            variants ||
+            !!model ||
+            all.findIndex((other) => other.canonicalId === q.canonicalId) === i,
         ),
-    [data, search, year, topic, law, article, concept, status, session, model],
+    [
+      data,
+      search,
+      year,
+      topic,
+      law,
+      article,
+      concept,
+      status,
+      session,
+      model,
+      variants,
+      reserves,
+    ],
   );
   useEffect(
     () => setPage(1),
-    [search, year, topic, law, article, concept, status, session, model],
+    [
+      search,
+      year,
+      topic,
+      law,
+      article,
+      concept,
+      status,
+      session,
+      model,
+      variants,
+      reserves,
+    ],
   );
+  if (tab === "articles")
+    return (
+      <>
+        <PageTitle
+          eyebrow="REFERENCIAS Y EVIDENCIA"
+          title="Explorador de exámenes"
+          description="Historial por artículo, con fuentes y correspondencias A/B."
+        />
+        <div className="tabs">
+          <button onClick={() => setTab("questions")}>
+            Preguntas por tema
+          </button>
+          <button className="active">Fichas de artículos</button>
+        </div>
+        <ArticleHistory data={data} review={review} />
+      </>
+    );
   const years = [...new Set(data.questions.map((q) => q.year))].sort(
       (a, b) => b - a,
     ),
@@ -832,6 +908,10 @@ function Explorer({
         title="Explorador de exámenes"
         description="Enunciados literales, opciones, respuestas y fuentes. Cada modelo conserva su orden original."
       />
+      <div className="tabs">
+        <button className="active">Preguntas por tema</button>
+        <button onClick={() => setTab("articles")}>Fichas de artículos</button>
+      </div>
       <div className="notice">
         <Info size={18} />
         <span>
@@ -853,7 +933,11 @@ function Explorer({
         <div className="filter-grid">
           <label>
             Año
-            <select value={year} onChange={(e) => setYear(e.target.value)}>
+            <select
+              aria-label="Año"
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+            >
               <option value="">Todos los años</option>
               {years.map((y) => (
                 <option key={y}>{y}</option>
@@ -863,6 +947,7 @@ function Explorer({
           <label>
             Convocatoria
             <select
+              aria-label="Convocatoria"
               value={session}
               onChange={(e) => setSession(e.target.value)}
             >
@@ -874,7 +959,11 @@ function Explorer({
           </label>
           <label>
             Modelo
-            <select value={model} onChange={(e) => setModel(e.target.value)}>
+            <select
+              aria-label="Modelo"
+              value={model}
+              onChange={(e) => setModel(e.target.value)}
+            >
               <option value="">Todos</option>
               {[...new Set(data.questions.map((q) => q.model))]
                 .sort()
@@ -885,7 +974,11 @@ function Explorer({
           </label>
           <label>
             Tema
-            <select value={topic} onChange={(e) => setTopic(e.target.value)}>
+            <select
+              aria-label="Tema"
+              value={topic}
+              onChange={(e) => setTopic(e.target.value)}
+            >
               <option value="">Todo el temario</option>
               {data.topics
                 .filter((t) => t.number <= 23)
@@ -898,7 +991,11 @@ function Explorer({
           </label>
           <label>
             Norma
-            <select value={law} onChange={(e) => setLaw(e.target.value)}>
+            <select
+              aria-label="Norma"
+              value={law}
+              onChange={(e) => setLaw(e.target.value)}
+            >
               <option value="">Todas las normas</option>
               {laws.sort().map((l) => (
                 <option key={l}>{l}</option>
@@ -923,8 +1020,15 @@ function Explorer({
           </label>
           <label>
             Validación
-            <select value={status} onChange={(e) => setStatus(e.target.value)}>
+            <select
+              aria-label="Validación"
+              value={status}
+              onChange={(e) => setStatus(e.target.value)}
+            >
               <option value="">Todos los estados</option>
+              <option value="documentary">
+                Cotejo documental o definitiva
+              </option>
               <option value="validated">Validadas</option>
               <option value="draft">Borradores</option>
               <option value="reviewed">Revisadas</option>
@@ -933,6 +1037,24 @@ function Explorer({
           </label>
         </div>
       </section>
+      <div className="checkbox-group">
+        <label className="checkbox-label">
+          <input
+            type="checkbox"
+            checked={variants}
+            onChange={(e) => setVariants(e.target.checked)}
+          />
+          Mostrar cada variante A/B (no cambia las estadísticas)
+        </label>
+        <label className="checkbox-label">
+          <input
+            type="checkbox"
+            checked={reserves}
+            onChange={(e) => setReserves(e.target.checked)}
+          />
+          Incluir reservas identificadas e inactivas
+        </label>
+      </div>
       <div className="results-heading">
         <span>
           <strong>{format(filtered.length)}</strong> registros encontrados
@@ -1016,7 +1138,7 @@ function Patterns({
       <PageTitle
         eyebrow="LO QUE VUELVE A APARECER"
         title="Análisis de patrones"
-        description="Repetición literal, conceptos persistentes y cambios de estilo sobre un corpus validado."
+        description="Repetición literal, conceptos persistentes y cambios de estilo sobre preguntas documentadas y cotejadas."
       />
       <div className="tabs">
         {[
@@ -1041,7 +1163,7 @@ function Patterns({
         {!p ? (
           <Empty
             title="Preparando análisis"
-            description="La comparación utiliza sólo preguntas oficiales con respuestas definitivas validadas."
+            description="La comparación utiliza contenido oficial cotejado. La firmeza final de la clave se informa aparte."
           />
         ) : tab === "literal" ? (
           p.literals.length ? (
@@ -1257,9 +1379,13 @@ function Priorities({
         <section className="panel">
           <div className="panel-header">
             <div>
-              <h2>Prioridad heurística de estudio</h2>
+              <h2>
+                {r?.heuristicAvailable
+                  ? "Prioridad heurística de estudio"
+                  : "Ranking descriptivo por frecuencia"}
+              </h2>
               <p>
-                {r?.trainingQuestions || 0} preguntas validadas · frecuencia
+                {r?.trainingQuestions || 0} preguntas cotejadas · frecuencia
                 normalizada por sesión
               </p>
             </div>
@@ -1272,6 +1398,7 @@ function Priorities({
               <option value="article">Artículos verificados</option>
             </select>
           </div>
+          <p className="muted">{r?.heuristicStatus}</p>
           {r?.priorities.length ? (
             r.priorities.map((p, i) => (
               <article className="priority-row" key={p.id}>
@@ -1328,9 +1455,15 @@ function Priorities({
                   </details>
                 </div>
                 <div className="priority-score">
-                  <strong>{p.score.toFixed(1)}</strong>
-                  <small>PUNTOS / 100</small>
-                  <Badge>Heurística</Badge>
+                  <strong>
+                    {p.score === null ? p.count : p.score.toFixed(1)}
+                  </strong>
+                  <small>
+                    {p.score === null ? "APARICIONES" : "PUNTOS / 100"}
+                  </small>
+                  <Badge>
+                    {p.score === null ? "Frecuencia" : "Heurística"}
+                  </Badge>
                 </div>
               </article>
             ))
@@ -1848,8 +1981,8 @@ function TemporalDistribution({ stats }: { stats: Stats }) {
   if (!series.length)
     return (
       <Empty
-        title="Sin distribución temporal validada"
-        description="Para comparar temas, estilos y distractores por año o sesión se necesita un corpus definitivo. Los huecos del archivo no se rellenan con ceros históricos."
+        title="Sin distribución temporal cotejada"
+        description="Para comparar temas, estilos y distractores por año o sesión se necesitan transcripciones cotejadas. Los huecos del archivo no se rellenan con ceros históricos."
       />
     );
   return (
@@ -1875,8 +2008,9 @@ function TemporalDistribution({ stats }: { stats: Stats }) {
         </label>
       </div>
       <p className="muted">
-        Proporciones respecto a las preguntas activas validadas disponibles en
-        cada periodo. Una celda sin anotaciones no demuestra ausencia histórica.
+        Proporciones respecto a las preguntas ordinarias cotejadas disponibles
+        en cada periodo. Una celda sin anotaciones no demuestra ausencia
+        histórica.
       </p>
       {labels.length ? (
         <>
@@ -1964,7 +2098,7 @@ function TemporalDistribution({ stats }: { stats: Stats }) {
       ) : (
         <Empty
           title="Faltan anotaciones revisadas para este contenido"
-          description="Las preguntas validadas se conservan como denominador; no se atribuyen temas, estilos o distractores inexistentes."
+          description="Las preguntas cotejadas se conservan como denominador; no se atribuyen temas, estilos o distractores inexistentes."
         />
       )}
     </>

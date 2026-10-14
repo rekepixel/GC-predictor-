@@ -38,7 +38,7 @@ export async function storePDF(file: File) {
 }
 export async function readPDF(key: string) {
   if (
-    !/^(originals\/[a-f0-9]{64}\.pdf|data\/raw\/[a-zA-Z0-9_.-]+\.pdf)$/i.test(
+    !/^(originals\/[a-f0-9]{64}\.pdf|data\/(raw|pending)\/[a-zA-Z0-9_.-]+\.pdf)$/i.test(
       key,
     )
   )

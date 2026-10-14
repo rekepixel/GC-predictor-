@@ -2,6 +2,8 @@
 
 Fecha de consulta: **14 de octubre de 2026 (UTC)**. El detalle reproducible de cada URL, acceso, procedencia, fecha y SHA-256 está en [`data/source-catalog.json`](../data/source-catalog.json). Esta investigación describe documentos; **descargar un PDF no equivale a importar ni validar un examen**.
 
+**Actualización:** el nuevo cotejo y las descargas secundarias se documentan al final y en [validación de 2026](validation-2026.md). La tabla inicial se conserva como registro de la primera recopilación.
+
 ## Dónde publica la Guardia Civil
 
 El punto principal es la [página oficial de ingreso a la Escala de Cabos y Guardias](https://web.guardiacivil.es/es/tramites/ingresos/ingresocuerpo/). La [página oficial del procedimiento](https://web.guardiacivil.es/es/tramites/autorizaciones-de-armas-y-explosivos/Procedimiento-de-ingreso-directo-en-la-Escala-de-Cabos-y-Guardias-de-la-Guardia-Civil/) reúne el programa, las normas del proceso y los enlaces de convocatoria. Las convocatorias se contrastan con el **BOE**, por ejemplo [BOE-A-2026-9982](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-9982).
@@ -10,7 +12,7 @@ Las páginas vivas se actualizan y algunos cuadernillos de años anteriores deja
 
 Se siguieron redirecciones HTTP normales de `www.guardiacivil.es/documentos/...` al portal `web.guardiacivil.es/export/sites/guardiaCivil/documentos/...`. No se usaron credenciales, formularios, mecanismos de evasión, rastreo indiscriminado ni datos personales de aspirantes. `robots.txt` del portal respondió 404; sólo se consultaron páginas/enlaces públicos concretos, con concurrencia limitada. Un índice secundario devolvió 403 al descargar su HTML: se registró y no se eludió.
 
-## Resultado de recopilación
+## Recopilación inicial, antes del nuevo cotejo de 2026
 
 | Año  | Cuadernillos oficiales descargados | Plantillas descargadas | Situación                                                                            |
 | ---- | ---------------------------------: | ---------------------: | ------------------------------------------------------------------------------------ |
@@ -80,3 +82,13 @@ La estructura conserva una **versión** y evidencia de procedencia para reemplaz
 ## Siguiente intervención documental
 
 Revisar primero **2026 A/B + clave corregida**, confirmar el carácter definitivo y conservar el mapa A/B. Después cotejar/OCR 2020 y 2022. Obtener manualmente cuadernillos y **plantillas definitivas** 2023, 2024 y 2025, junto con acuerdos de anulaciones y sesiones. Esos años son imprescindibles para una evaluación retrospectiva 2024, 2025 y 2026 sin fugas de información futura.
+
+## Seguimiento: banco documental 2026 y fuentes 2023–2025
+
+Se han recuperado de nuevo A, B, PDF nº 2 y el PDF nº 1 original; los tres originales ya retenidos conservan idéntica huella. La página oficial confirma A7/B88 corregidas y el cotejo de ambas claves confirma C→A como únicos cambios. Se conservan ahora **23 PDF de procedencia oficial** y **11 copias secundarias** pendientes (3 de 2025 y 8 de 2024), con un catálogo de 57 fuentes. Los documentos de resultados personales y los análisis de academia no se incorporan.
+
+Las 16 rutas primarias anteriores consultadas volvieron a responder 404. Se han localizado copias desde [Método GC 2025](https://metodogc.com/examenes-oposiciones-guardia-civil/examen-2025/) y [Ser Guardia Civil 2024](https://serguardiacivil.es/examen-guardia-civil-2024/). Ser Guardia Civil es una fuente secundaria: no pertenece al dominio institucional. Para clasificar dominios se exige coincidencia exacta o subdominio con punto, evitando confundir nombres parecidos. La página secundaria de 2023 consultada respondió 403 y se respetó el bloqueo.
+
+Las copias de 2024 no prueban qué sesiones se celebraron o repitieron; sus nombres no establecen fechas acreditadas. Ninguna pregunta secundaria entra en el análisis. Seguimiento HTTP y huellas: `data/research/2023-2025-follow-up.json`.
+
+El nuevo banco contiene 210 ocurrencias cotejadas (105 parejas): 100 ordinarias únicas y 5 reservas únicas. Mantiene firmeza no acreditada; habilita sólo frecuencias descriptivas y conserva la exigencia definitiva para retrospectiva y simulacros. Informe del protocolo, referencias BOE históricas y discrepancias en [validación de 2026](validation-2026.md).

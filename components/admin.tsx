@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import type { Dataset, Question, Source } from "@/lib/types";
 import { api, Empty, Badge, SourceLink } from "./app";
+import { ValidationLedger } from "./article-history";
 type Storage = { key: string; sha256: string };
 const initialMeta = {
   title: "",
@@ -64,7 +65,9 @@ export default function Admin({
   }
   const q = data.questions.find((q) => q.id === selectedId);
   const pending = data.questions.filter(
-    (q) => q.validation === "draft" || q.validation === "reviewed",
+    (q) =>
+      (q.validation === "draft" || q.validation === "reviewed") &&
+      !q.documentaryEligible,
   );
   return (
     <>
@@ -86,6 +89,7 @@ export default function Admin({
           ["sources", "Fuentes y plantillas"],
           ["norms", "Normas y temario"],
           ["jobs", "Registro de importación"],
+          ["validation", "Verificación por año"],
         ].map(([id, label]) => (
           <button
             key={id}
@@ -108,6 +112,7 @@ export default function Admin({
           {success}
         </div>
       )}
+      {tab === "validation" && <ValidationLedger data={data} />}
       {tab === "import" && (
         <ImportForm data={data} perform={perform} busy={busy} />
       )}

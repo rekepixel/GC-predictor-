@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "bank": "gc-2026-documentary-v2",
+  "files": [
+    {
+      "path": "data/verified/2026-documentary.json",
+      "sha256": "97bd2ef400ef60e659e967d7bf9938841d6b18f87217997574fb9acf49e994b5"
+    },
+    {
+      "path": "data/verified/2026-classification.json",
+      "sha256": "0786fb3adf82fe61e27261d5fd3c0cea41ae6c4fa84fd82cff1e2166f2939650"
+    },
+    {
+      "path": "data/verified/2026-legal-evidence.json",
+      "sha256": "6c9e05b03dcf189c8885c21653b628b9d67d6bbef4d2c06bfece05b4adf1e2c1"
+    },
+    {
+      "path": "data/research/2026-retrieval.json",
+      "sha256": "261b34d17eb399265ba239db8ecc9eabf7f0aebec91d627f703e23bc68c1a05a"
+    },
+    {
+      "path": "data/research/2026-process-page.html",
+      "sha256": "52336715ebb05bff2e3b5255b8f665a3c52ada5ab3cd6fd1f6c96bf225e17727"
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { getDB, migrate, put, readAll, type DB } from "./db";
 import type { Dataset, Source, Topic, Syllabus } from "./types";
+import { applyVerifiedBank } from "./verified-bank";
 let initialization: Promise<void> | undefined;
 export function initialize() {
   return (initialization ??= (async () => {
@@ -90,6 +91,7 @@ export function initialize() {
         }
       }
     }
+    if (process.env.GC_SKIP_VERIFIED_BANK !== "1") await applyVerifiedBank(db);
   })());
 }
 export async function dataset(db?: DB): Promise<Dataset> {

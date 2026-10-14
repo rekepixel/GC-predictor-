@@ -1,0 +1,42 @@
+[
+  {
+    "id": "official-process-2026",
+    "url": "https://web.guardiacivil.es/es/tramites/ingresos/ingresocuerpo/",
+    "status": 200,
+    "contentType": "text/html;charset=UTF-8",
+    "sha256": "52336715ebb05bff2e3b5255b8f665a3c52ada5ab3cd6fd1f6c96bf225e17727",
+    "bytes": 218993
+  },
+  {
+    "id": "exam-2026-A",
+    "url": "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/INGRESO-GC-2026-TIPO-A.pdf",
+    "status": 200,
+    "contentType": "application/pdf",
+    "sha256": "0f13f5aae9554ea12aec2d789af5b64d7d6815007cca307e47249b04c063bbc3",
+    "bytes": 840193
+  },
+  {
+    "id": "exam-2026-B",
+    "url": "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/INGRESO-GC-2026-TIPO-B.pdf",
+    "status": 200,
+    "contentType": "application/pdf",
+    "sha256": "db3994b24ef72be42acd3dc8602016784de167ee692c10ec7f78f6294ba9728a",
+    "bytes": 840512
+  },
+  {
+    "id": "key-2026-corrected",
+    "url": "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/PLANTILLAS-INGRESO_CABOS_-Y_GUARDIAS.-2026-2.pdf",
+    "status": 200,
+    "contentType": "application/pdf",
+    "sha256": "383a25ea2a78b6762543c15a2df978d9d30d38ababae037a5c8688204919d52c",
+    "bytes": 632463
+  },
+  {
+    "id": "key-2026-original",
+    "url": "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/PLANTILLAS-INGRESO-CABOS-Y-GUARDIAS.-2026.pdf",
+    "status": 200,
+    "contentType": "application/pdf",
+    "sha256": "4d5ab78d875fed6474db2538b723bb15d604d0ef3af2d9b2398cf0f3cfca2a3b",
+    "bytes": 647297
+  }
+]

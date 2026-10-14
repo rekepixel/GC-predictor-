@@ -1,0 +1,364 @@
+{
+  "consultedAt": "2026-10-14T12:24:09.135786+00:00",
+  "discovery": [
+    {
+      "year": 2025,
+      "url": "https://metodogc.com/examenes-oposiciones-guardia-civil/examen-2025/",
+      "status": 200,
+      "pdfLinks": [
+        "https://metodogc.com/wp-content/uploads/2025/09/Teorico-Practico-A.pdf",
+        "https://metodogc.com/wp-content/uploads/2025/09/Teorico-Practico-A.pdf",
+        "https://metodogc.com/wp-content/uploads/2025/09/Teorico-Practico-B.pdf",
+        "https://metodogc.com/wp-content/uploads/2025/09/Teorico-Practico-B.pdf",
+        "https://metodogc.com/wp-content/uploads/2025/09/Plantillas-Resultados-Ingreso-2025.pdf",
+        "https://metodogc.com/wp-content/uploads/2025/09/Plantillas-Resultados-Ingreso-2025.pdf"
+      ],
+      "origin": "secondary_discovery_only"
+    },
+    {
+      "year": 2024,
+      "url": "https://serguardiacivil.es/examen-guardia-civil-2024/",
+      "status": 200,
+      "pdfLinks": [
+        "https://serguardiacivil.es/wp-content/uploads/2024/10/examen_guardia_civil_2024_1A.pdf",
+        "https://serguardiacivil.es/wp-content/uploads/2024/10/examen_guardia_civil_2024_1B.pdf",
+        "https://serguardiacivil.es/wp-content/uploads/2024/10/examen_guardia_civil_2024_2A.pdf",
+        "https://serguardiacivil.es/wp-content/uploads/2024/10/examen_guardia_civil_2024_2B.pdf",
+        "https://serguardiacivil.es/wp-content/uploads/2024/10/examen_guardia_civil_2024_3A.pdf",
+        "https://serguardiacivil.es/wp-content/uploads/2024/10/examen_guardia_civil_2024_3B.pdf",
+        "https://serguardiacivil.es/wp-content/uploads/2024/10/plantilla_examen_guardia_civil_2024_3B_28_09_24.pdf",
+        "https://serguardiacivil.es/wp-content/uploads/2024/10/plantilla_examen_guardia_civil_2024_3B_13_10_24.pdf",
+        "https://serguardiacivil.es/wp-content/uploads/2024/10/resultados_provisionales_examen_guardia_civil_2024.pdf",
+        "https://serguardiacivil.es/wp-content/uploads/2025/12/analisis-examen-guardia-civil-2024.pdf",
+        "https://serguardiacivil.es/wp-content/uploads/2025/12/analisis-examen-guardia-civil-2024.pdf"
+      ],
+      "origin": "secondary_discovery_only"
+    },
+    {
+      "year": 2023,
+      "url": "https://opoluz.com/examenes-oficiales/estado/guardia-civil/2023/",
+      "status": 403,
+      "origin": "secondary_discovery_only"
+    }
+  ],
+  "primaryChecks": [
+    {
+      "year": 2024,
+      "url": "https://www.guardiacivil.es/documentos/pdfs/2024/procesos_selectivos/INGRESO_GC_2024_1A.pdf",
+      "discoveredFrom": "data/source-catalog.json",
+      "origin": "official",
+      "consultedAt": "2026-10-14T12:23:56.982324+00:00",
+      "status": 404
+    },
+    {
+      "year": 2024,
+      "url": "https://www.guardiacivil.es/documentos/pdfs/2024/procesos_selectivos/INGRESO_GC_2024_1B.pdf",
+      "discoveredFrom": "data/source-catalog.json",
+      "origin": "official",
+      "consultedAt": "2026-10-14T12:23:57.680539+00:00",
+      "status": 404
+    },
+    {
+      "year": 2024,
+      "url": "https://www.guardiacivil.es/documentos/pdfs/2024/procesos_selectivos/Plantillas_ingreso_GC_28_09_24.pdf",
+      "discoveredFrom": "data/source-catalog.json",
+      "origin": "official",
+      "consultedAt": "2026-10-14T12:23:59.394082+00:00",
+      "status": 404
+    },
+    {
+      "year": 2024,
+      "url": "https://www.guardiacivil.es/documentos/pdfs/2024/procesos_selectivos/INGRESO_GC_2024_2A.pdf",
+      "discoveredFrom": "data/source-catalog.json",
+      "origin": "official",
+      "consultedAt": "2026-10-14T12:23:59.868208+00:00",
+      "status": 404
+    },
+    {
+      "year": 2024,
+      "url": "https://www.guardiacivil.es/documentos/pdfs/2024/procesos_selectivos/INGRESO_GC_2024_2B.pdf",
+      "discoveredFrom": "data/source-catalog.json",
+      "origin": "official",
+      "consultedAt": "2026-10-14T12:24:00.953711+00:00",
+      "status": 404
+    },
+    {
+      "year": 2024,
+      "url": "https://www.guardiacivil.es/documentos/pdfs/2024/procesos_selectivos/Plantillas_ingreso_GC_13_10_24.pdf",
+      "discoveredFrom": "data/source-catalog.json",
+      "origin": "official",
+      "consultedAt": "2026-10-14T12:24:02.016183+00:00",
+      "status": 404
+    },
+    {
+      "year": 2024,
+      "url": "https://www.guardiacivil.es/documentos/pdfs/2024/procesos_selectivos/INGRESO_GC_2024_3A.pdf",
+      "discoveredFrom": "data/source-catalog.json",
+      "origin": "official",
+      "consultedAt": "2026-10-14T12:24:02.086671+00:00",
+      "status": 404
+    },
+    {
+      "year": 2023,
+      "url": "https://www.guardiacivil.es/documentos/pdfs/2023/IngresoGC2023/INGRESO_GC_2023_2A.pdf",
+      "discoveredFrom": "data/source-catalog.json",
+      "origin": "official",
+      "consultedAt": "2026-10-14T12:24:02.832221+00:00",
+      "status": 404
+    },
+    {
+      "year": 2023,
+      "url": "https://www.guardiacivil.es/documentos/pdfs/2023/IngresoGC2023/INGRESO_GC_2023_2B.pdf",
+      "discoveredFrom": "data/source-catalog.json",
+      "origin": "official",
+      "consultedAt": "2026-10-14T12:24:02.979018+00:00",
+      "status": 404
+    },
+    {
+      "year": 2023,
+      "url": "https://www.guardiacivil.es/documentos/pdfs/2023/IngresoGC2023/Plantillas_dxa_28OCT2023_Actualizado31oct.pdf",
+      "discoveredFrom": "data/source-catalog.json",
+      "origin": "official",
+      "consultedAt": "2026-10-14T12:24:03.927567+00:00",
+      "status": 404
+    },
+    {
+      "year": 2023,
+      "url": "https://www.guardiacivil.es/documentos/pdfs/2023/IngresoGC2023/INGRESO_GC_2023_1A.pdf",
+      "discoveredFrom": "data/source-catalog.json",
+      "origin": "official",
+      "consultedAt": "2026-10-14T12:24:04.747589+00:00",
+      "status": 404
+    },
+    {
+      "year": 2023,
+      "url": "https://www.guardiacivil.es/documentos/pdfs/2023/IngresoGC2023/INGRESO_GC_2023_1B.pdf",
+      "discoveredFrom": "data/source-catalog.json",
+      "origin": "official",
+      "consultedAt": "2026-10-14T12:24:05.022633+00:00",
+      "status": 404
+    },
+    {
+      "year": 2023,
+      "url": "https://www.guardiacivil.es/documentos/pdfs/2023/IngresoGC2023/Plantillas_dxa_29OCT2023.pdf",
+      "discoveredFrom": "data/source-catalog.json",
+      "origin": "official",
+      "consultedAt": "2026-10-14T12:24:05.913047+00:00",
+      "status": 404
+    },
+    {
+      "year": 2025,
+      "url": "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2025/Procesos_Selectivos_2025/IngresoGC_2025/INGRESO-GC-2025-TIPO-A-.pdf",
+      "discoveredFrom": "data/source-catalog.json",
+      "origin": "official",
+      "consultedAt": "2026-10-14T12:24:06.487420+00:00",
+      "status": 404
+    },
+    {
+      "year": 2025,
+      "url": "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2025/Procesos_Selectivos_2025/IngresoGC_2025/INGRESO-GC-2025-TIPO-B-.pdf",
+      "discoveredFrom": "data/source-catalog.json",
+      "origin": "official",
+      "consultedAt": "2026-10-14T12:24:07.311614+00:00",
+      "status": 404
+    },
+    {
+      "year": 2025,
+      "url": "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2025/Procesos_Selectivos_2025/Plantillas-Resultados-Ingreso-2025.pdf",
+      "discoveredFrom": "data/source-catalog.json",
+      "origin": "official",
+      "consultedAt": "2026-10-14T12:24:07.351647+00:00",
+      "status": 404
+    }
+  ],
+  "policy": "Sólo URLs encontradas en páginas concretas o ya catalogadas; sin evasión de accesos ni preguntas secundarias importadas.",
+  "secondaryCopies": [
+    {
+      "year": 2024,
+      "url": "https://serguardiacivil.es/wp-content/uploads/2024/10/examen_guardia_civil_2024_1A.pdf",
+      "discoveredFrom": "https://serguardiacivil.es/examen-guardia-civil-2024/",
+      "origin": "secondary",
+      "consultedAt": "2026-10-14T12:23:51.385236+00:00",
+      "status": 200,
+      "finalUrl": "https://serguardiacivil.es/wp-content/uploads/2024/10/examen_guardia_civil_2024_1A.pdf",
+      "bytes": 656786,
+      "contentType": "application/pdf",
+      "sha256": "18fb2b2c910e640f56d9874d3f6dcc92273deb049f64a3c207873843cb59d270",
+      "localPath": "data/pending/2024-examen_guardia_civil_2024_1A.pdf",
+      "authenticity": "not_verified_against_primary",
+      "retainedInDeliverable": true
+    },
+    {
+      "year": 2024,
+      "url": "https://serguardiacivil.es/wp-content/uploads/2024/10/examen_guardia_civil_2024_1B.pdf",
+      "discoveredFrom": "https://serguardiacivil.es/examen-guardia-civil-2024/",
+      "origin": "secondary",
+      "consultedAt": "2026-10-14T12:23:51.386406+00:00",
+      "status": 200,
+      "finalUrl": "https://serguardiacivil.es/wp-content/uploads/2024/10/examen_guardia_civil_2024_1B.pdf",
+      "bytes": 656080,
+      "contentType": "application/pdf",
+      "sha256": "a27e92be6f6ffd12b494c8934c3201d5ce012695c05c9cd474f92eef4700df1b",
+      "localPath": "data/pending/2024-examen_guardia_civil_2024_1B.pdf",
+      "authenticity": "not_verified_against_primary",
+      "retainedInDeliverable": true
+    },
+    {
+      "year": 2024,
+      "url": "https://serguardiacivil.es/wp-content/uploads/2024/10/examen_guardia_civil_2024_2A.pdf",
+      "discoveredFrom": "https://serguardiacivil.es/examen-guardia-civil-2024/",
+      "origin": "secondary",
+      "consultedAt": "2026-10-14T12:23:52.347770+00:00",
+      "status": 200,
+      "finalUrl": "https://serguardiacivil.es/wp-content/uploads/2024/10/examen_guardia_civil_2024_2A.pdf",
+      "bytes": 552334,
+      "contentType": "application/pdf",
+      "sha256": "c38db56ef8f91dac7be1eb3a2b891c7fea3f1e4bdda9425f058fd4a589d4d0a9",
+      "localPath": "data/pending/2024-examen_guardia_civil_2024_2A.pdf",
+      "authenticity": "not_verified_against_primary",
+      "retainedInDeliverable": true
+    },
+    {
+      "year": 2024,
+      "url": "https://serguardiacivil.es/wp-content/uploads/2024/10/examen_guardia_civil_2024_2B.pdf",
+      "discoveredFrom": "https://serguardiacivil.es/examen-guardia-civil-2024/",
+      "origin": "secondary",
+      "consultedAt": "2026-10-14T12:23:52.541811+00:00",
+      "status": 200,
+      "finalUrl": "https://serguardiacivil.es/wp-content/uploads/2024/10/examen_guardia_civil_2024_2B.pdf",
+      "bytes": 552510,
+      "contentType": "application/pdf",
+      "sha256": "c8cfb4c69f793e5b75749ea4e3bbfe9cdf4d034c25f42ba762ed0e049d9e77d0",
+      "localPath": "data/pending/2024-examen_guardia_civil_2024_2B.pdf",
+      "authenticity": "not_verified_against_primary",
+      "retainedInDeliverable": true
+    },
+    {
+      "year": 2024,
+      "url": "https://serguardiacivil.es/wp-content/uploads/2024/10/examen_guardia_civil_2024_3A.pdf",
+      "discoveredFrom": "https://serguardiacivil.es/examen-guardia-civil-2024/",
+      "origin": "secondary",
+      "consultedAt": "2026-10-14T12:23:53.375403+00:00",
+      "status": 200,
+      "finalUrl": "https://serguardiacivil.es/wp-content/uploads/2024/10/examen_guardia_civil_2024_3A.pdf",
+      "bytes": 531198,
+      "contentType": "application/pdf",
+      "sha256": "b3260365c0a78554e7d294b4a30da2b7303a85512db86c7149833c54c13dc0fe",
+      "localPath": "data/pending/2024-examen_guardia_civil_2024_3A.pdf",
+      "authenticity": "not_verified_against_primary",
+      "retainedInDeliverable": true
+    },
+    {
+      "year": 2024,
+      "url": "https://serguardiacivil.es/wp-content/uploads/2024/10/examen_guardia_civil_2024_3B.pdf",
+      "discoveredFrom": "https://serguardiacivil.es/examen-guardia-civil-2024/",
+      "origin": "secondary",
+      "consultedAt": "2026-10-14T12:23:53.567495+00:00",
+      "status": 200,
+      "finalUrl": "https://serguardiacivil.es/wp-content/uploads/2024/10/examen_guardia_civil_2024_3B.pdf",
+      "bytes": 466867,
+      "contentType": "application/pdf",
+      "sha256": "b9ed6ee271fe1f34c66dcefe0124dae06d0cd59eef32cb91c21e6496fd55f3a0",
+      "localPath": "data/pending/2024-examen_guardia_civil_2024_3B.pdf",
+      "authenticity": "not_verified_against_primary",
+      "retainedInDeliverable": true
+    },
+    {
+      "year": 2024,
+      "url": "https://serguardiacivil.es/wp-content/uploads/2024/10/plantilla_examen_guardia_civil_2024_3B_28_09_24.pdf",
+      "discoveredFrom": "https://serguardiacivil.es/examen-guardia-civil-2024/",
+      "origin": "secondary",
+      "consultedAt": "2026-10-14T12:23:54.403407+00:00",
+      "status": 200,
+      "finalUrl": "https://serguardiacivil.es/wp-content/uploads/2024/10/plantilla_examen_guardia_civil_2024_3B_28_09_24.pdf",
+      "bytes": 2591687,
+      "contentType": "application/pdf",
+      "sha256": "ea6c22fa4f4906efdaf270736ed7e5654dfc84e4fdd37616968f51f12bc78ce9",
+      "localPath": "data/pending/2024-plantilla_examen_guardia_civil_2024_3B_28_09_24.pdf",
+      "authenticity": "not_verified_against_primary",
+      "retainedInDeliverable": true
+    },
+    {
+      "year": 2024,
+      "url": "https://serguardiacivil.es/wp-content/uploads/2024/10/plantilla_examen_guardia_civil_2024_3B_13_10_24.pdf",
+      "discoveredFrom": "https://serguardiacivil.es/examen-guardia-civil-2024/",
+      "origin": "secondary",
+      "consultedAt": "2026-10-14T12:23:54.561862+00:00",
+      "status": 200,
+      "finalUrl": "https://serguardiacivil.es/wp-content/uploads/2024/10/plantilla_examen_guardia_civil_2024_3B_13_10_24.pdf",
+      "bytes": 1526578,
+      "contentType": "application/pdf",
+      "sha256": "9551570af8cdd7acf2d5bb677d554840272fb6f059ec180b06a7f8dcc7330b5d",
+      "localPath": "data/pending/2024-plantilla_examen_guardia_civil_2024_3B_13_10_24.pdf",
+      "authenticity": "not_verified_against_primary",
+      "retainedInDeliverable": true
+    },
+    {
+      "year": 2024,
+      "url": "https://serguardiacivil.es/wp-content/uploads/2024/10/resultados_provisionales_examen_guardia_civil_2024.pdf",
+      "discoveredFrom": "https://serguardiacivil.es/examen-guardia-civil-2024/",
+      "origin": "secondary",
+      "consultedAt": "2026-10-14T12:23:55.584212+00:00",
+      "status": 200,
+      "finalUrl": "https://serguardiacivil.es/wp-content/uploads/2024/10/resultados_provisionales_examen_guardia_civil_2024.pdf",
+      "bytes": 7024871,
+      "contentType": "application/pdf",
+      "sha256": "b5333f675e56dfff23a0a2811afdf48d52e66fd3b5987810d37ed02c27ebdfd9",
+      "authenticity": "not_verified_against_primary",
+      "retainedInDeliverable": false,
+      "notes": "Documento ajeno al banco de preguntas. No se conserva en el proyecto distribuido."
+    },
+    {
+      "year": 2024,
+      "url": "https://serguardiacivil.es/wp-content/uploads/2025/12/analisis-examen-guardia-civil-2024.pdf",
+      "discoveredFrom": "https://serguardiacivil.es/examen-guardia-civil-2024/",
+      "origin": "secondary",
+      "consultedAt": "2026-10-14T12:23:55.730749+00:00",
+      "status": 200,
+      "finalUrl": "https://serguardiacivil.es/wp-content/uploads/2025/12/analisis-examen-guardia-civil-2024.pdf",
+      "bytes": 2206989,
+      "contentType": "application/pdf",
+      "sha256": "b041fefb6b610c45aee4909a445737c7fea0c133d963696865231e5300fdef34",
+      "authenticity": "not_verified_against_primary",
+      "retainedInDeliverable": false,
+      "notes": "Documento ajeno al banco de preguntas. No se conserva en el proyecto distribuido."
+    },
+    {
+      "year": 2025,
+      "url": "https://metodogc.com/wp-content/uploads/2025/09/Teorico-Practico-A.pdf",
+      "origin": "secondary",
+      "authenticity": "not_verified_against_primary",
+      "consultedAt": "2026-10-14T12:29:08.542925+00:00",
+      "discoveredFrom": "https://metodogc.com/examenes-oposiciones-guardia-civil/examen-2025/",
+      "status": 200,
+      "sha256": "b96424201c85f589176afe865f76c5e5a88df3c92a3d48bbdb5f1549d0463f0e",
+      "localPath": "data/pending/2025-Teorico-Practico-A.pdf",
+      "retainedInDeliverable": true
+    },
+    {
+      "year": 2025,
+      "url": "https://metodogc.com/wp-content/uploads/2025/09/Teorico-Practico-B.pdf",
+      "origin": "secondary",
+      "authenticity": "not_verified_against_primary",
+      "consultedAt": "2026-10-14T12:29:16.084349+00:00",
+      "discoveredFrom": "https://metodogc.com/examenes-oposiciones-guardia-civil/examen-2025/",
+      "status": 200,
+      "sha256": "7c9337cc8541f36eeb05e26cf63e6352a68e3ddf493704a261d3a29bac9e62d0",
+      "localPath": "data/pending/2025-Teorico-Practico-B.pdf",
+      "retainedInDeliverable": true
+    },
+    {
+      "year": 2025,
+      "url": "https://metodogc.com/wp-content/uploads/2025/09/Plantillas-Resultados-Ingreso-2025.pdf",
+      "origin": "secondary",
+      "authenticity": "not_verified_against_primary",
+      "consultedAt": "2026-10-14T12:29:22.350480+00:00",
+      "discoveredFrom": "https://metodogc.com/examenes-oposiciones-guardia-civil/examen-2025/",
+      "status": 200,
+      "sha256": "7d622fe6e4594545c2eb80a1d65d77609e0849c0220a6666be382d98e68d641c",
+      "localPath": "data/pending/2025-Plantillas-Resultados-Ingreso-2025.pdf",
+      "retainedInDeliverable": true
+    }
+  ],
+  "notes": "Los dominios se verifican por igualdad o sufijo con punto; un dominio de academia que contiene el texto guardiacivil no es oficial."
+}

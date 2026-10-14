@@ -16,6 +16,22 @@ export interface Source {
   storageKey: string | null;
   definitive: boolean;
   verified: boolean;
+  answerKeyStatus?: "official_corrected_current" | "superseded";
+}
+export interface DocumentaryVerification {
+  status: "verified";
+  scope: "official_corrected_documentary";
+  artifactId: string;
+  artifactSha256: string;
+  fingerprint: string;
+  sourceSha256: string;
+  keySha256: string;
+  checkedAt: string;
+  canonicalNumber: number;
+  pairedNumber: number;
+  administrativeFinalityConfirmed: false;
+  checks: string[];
+  notes: string[];
 }
 export interface Exam {
   id: string;
@@ -49,6 +65,12 @@ export interface Question {
   paragraph: string | null;
   legalUrl: string | null;
   legalVerified: boolean;
+  lawVerified?: boolean;
+  lawId?: string | null;
+  legalEvidenceId?: string | null;
+  legalCheckedAsOf?: string | null;
+  documentaryVerification?: DocumentaryVerification | null;
+  documentaryEligible?: boolean;
   confidence: number | null;
   classificationMethod: string;
   classificationReviewed: boolean;

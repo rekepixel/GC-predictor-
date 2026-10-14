@@ -112,6 +112,22 @@ export function sourceRecord(
     consultedAt: new Date().toISOString(),
   };
 }
+export function assertCurrentAnswerKey(source: Source, knownSources: Source[]) {
+  if (
+    source.answerKeyStatus === "superseded" ||
+    knownSources.some(
+      (s) =>
+        s.kind === "answer_key" &&
+        s.answerKeyStatus === "superseded" &&
+        (s.id === source.id ||
+          s.url === source.url ||
+          (!!s.sha256 && s.sha256 === source.sha256)),
+    )
+  )
+    throw Error(
+      "Plantilla sustituida oficialmente: utiliza la versión corregida vigente.",
+    );
+}
 export function deduplicate(q: Question, others: Question[]) {
   const match = others.find(
     (p) =>
@@ -264,6 +280,7 @@ export async function importBundle(
       await put(tx, "sources", source as unknown as Record<string, unknown>);
     const key = bundle.answerKey ? sourceRecord(bundle.answerKey.source) : null;
     if (key) {
+      assertCurrentAnswerKey(key, data.sources);
       const existing = data.sources.find((s) => s.id === key.id);
       if (existing) {
         if (
@@ -400,6 +417,7 @@ export async function attachAnswerKey(
     )
       throw Error("La plantilla no corresponde al examen seleccionado.");
     const source = sourceRecord(raw, storage);
+    assertCurrentAnswerKey(source, data.sources);
     if (data.sources.some((s) => s.id === source.id))
       throw Error("Fuente ya registrada.");
     await put(tx, "sources", source as unknown as Record<string, unknown>);
@@ -421,6 +439,7 @@ export async function attachAnswerKey(
       const dates = [src?.publishedAt, source.publishedAt];
       const updated = {
         ...q,
+        documentaryVerification: null,
         keySourceId: source.id,
         correct: answer?.correct ?? null,
         validation: answer?.cancelled ? "cancelled" : "draft",

@@ -10,20 +10,31 @@ Se eligió JSON validado en tablas relacionadas frente a un esquema con decenas 
 
 - `lib/types.ts`: contratos de dominio, estado de validación y pesos.
 - `lib/db.ts`: SQLite/PostgreSQL, migración, transacciones, persistencia y auditoría.
-- `lib/store.ts`: carga del catálogo y del temario; lectura del dataset.
+- `lib/store.ts`: carga del catálogo y del temario; lectura del dataset y aplicación idempotente del banco cotejado.
+- `lib/verified-bank.ts`, `lib/documentary.ts`: manifiesto y validación transaccional de evidencias; elegibilidad documental y huellas por pregunta.
+- `lib/history.ts`, `components/article-history.tsx`: fichas normativas e informe anual.
 - `lib/importer.ts`, `lib/review.ts`: esquema de entrada, procedencia, extracción, correspondencia de opciones, plantillas y revisión.
 - `lib/analysis.ts`: frecuencias, corpus admisible, ranking, comparación textual y evaluación temporal.
 - `lib/auth.ts`, `lib/files.ts`: sesiones firmadas, protección del acceso, originales privados locales/Supabase.
 - `app/api/[...path]/route.ts`: endpoints autenticados, corrección de simulacros y exportación.
 - `components/app.tsx`, `components/admin.tsx`: interfaz de las seis secciones, filtros y revisión.
+- `python/verify_2026.py`, `python/curate_2026.py`: cotejo con dos motores PDF y referencias BOE históricas.
 - `python/extract.py`: extracción especializada de conocimientos del archivo oficial, excluyendo idioma y ortografía.
 - `data/source-catalog.json`, `data/syllabus-2026.json`, `data/raw`: investigación y originales públicos oficiales. No contienen resultados personales.
 
 ## Estados y trazabilidad
 
-Documento localizado → original descargado y huella → extracción `draft` → cotejo `reviewed` → respuesta de clave definitiva + revisión literal `validated`. `cancelled` conserva la pregunta y la excluye; `reserve` no significa activa. Las propuestas de clasificación y referencias normativas tienen revisión independiente de la pregunta. Ninguna llamada de importación puede establecer `validated`.
+Documento localizado → original descargado y huella → extracción `draft` → cotejo `reviewed` → respuesta de clave definitiva + revisión literal `validated`. `cancelled` conserva la pregunta y la excluye; `reserve` no significa activa. Las propuestas de clasificación y referencias normativas tienen revisión independiente de la pregunta. Ninguna llamada de importación puede establecer `validated`. El cotejo documental de 2026 es ortogonal al estado: guarda `reviewed` y un certificado con ámbito `official_corrected_documentary`, firmeza no confirmada, huellas, método y limitaciones. `observedCorpus` permite frecuencias publicadas; `validatedCorpus` conserva el filtro de clave definitiva.
 
 Se conserva una ocurrencia literal por modelo. `canonicalId` agrupa equivalencias dentro del mismo año y sesión; `optionMap` corresponde al orden del grupo. Se usa igualdad conservadora del enunciado y de las cuatro opciones (NFC y espacios), ordenando sólo el conjunto para la huella. Acentos, negaciones, puntuación y símbolos se conservan. Errores de extracción que impiden igualdad necesitan cotejo humano antes de consolidarse. No se agrupan automáticamente preguntas sólo por su concepto ni se eliminan repeticiones entre años.
+
+## Aplicación del banco documental
+
+Los JSON de `data/verified` contienen las 210 ocurrencias reales y las referencias verificadas; el manifiesto fija sus huellas y las de la consulta oficial. `initialize` aplica el banco a una base nueva o existente mediante una transacción. Una versión de manifiesto ya aplicada no se repite; los identificadores existentes se reutilizan y las revisiones manuales se preservan. `GC_SKIP_VERIFIED_BANK=1` se reserva para aislamiento de fixtures de prueba. El estado inicial se puede reconstruir sin ejecutar Python.
+
+Antes de aplicar se validan esquemas, numeración, reservas, correcciones y correspondencia biyectiva, además de las huellas de los PDF retenidos. El cotejo en ejecución liga texto, opciones, respuesta, identidad de fuente/clave, grupo y mapa A/B. Cambiar contenido retira el certificado propio y el de la pareja. La revisión de metadatos conserva la relación; una anulación se propaga a sus variantes, con auditoría y sin borrar filas. La clave sustituida nº 1 queda conservada y bloqueada para corrección.
+
+`data/pending` contiene once copias secundarias sin autenticar y no genera preguntas. El servidor entrega sus PDF como documentos tras autenticación, pero no los convierte en oficiales. La verificación de integridad diferencia explícitamente fuente oficial y secundaria.
 
 ## Acceso y despliegue
 

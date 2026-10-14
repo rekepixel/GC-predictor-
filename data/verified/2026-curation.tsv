@@ -1,0 +1,106 @@
+number	topic	concept	lawCode	article	paragraph	anchor
+1	1	Expulsión de miembros de Naciones Unidas	UN			
+2	1	Finalidad de la educación en la Declaración Universal	DUDH			
+3	1	Motivación y comunicación de opiniones consultivas del TEDH	CEDH			
+4	1	Derecho a la vivienda en la Carta Social Europea	CSE			
+5	1	Protección de las madres antes y después del parto	PIDESC			
+6	1	Composición y cualificación del Comité de Derechos Humanos	PIDCP			
+7	1	Distribución geográfica del Consejo de Derechos Humanos	RES60			
+8	1	Programa de visitas del Subcomité para la Prevención	OPCAT			
+9	1	Ayuda social y de vivienda contra la exclusión social	CDFUE			
+10	1	Crímenes de competencia de la Corte Penal Internacional	ROMA			
+11	1	Autoridades competentes para cooperar con la Corte Penal Internacional	LO18	4	1	Tribunal Militar Central
+12	1	Duración y renovación de vocales del Mecanismo Nacional de Prevención	DEFREG	20	1	cuatro años
+13	2	Carga de la prueba en procesos por discriminación por sexo	LO3EQ	13	2	penales
+14	3	Cierre del centro de trabajo por infracciones excepcionalmente graves	L31	53		cierre
+15	3	Disponibilidad documental del plan de prevención en la AGE	RD67	3	3	autoridad laboral
+16	3	Participación en prevención de riesgos en la Guardia Civil	RD179	8		propuestas
+17	4	Prestaciones y deberes civiles del artículo 30 de la Constitución	CE	30	3	servicio civil
+18	4	Suspensión individual de derechos en investigaciones de terrorismo	CE	55	2	personas determinadas
+19	4	Reconocimiento de la inhabilitación del Rey y regencia	CE	59	2	Cortes Generales
+20	4	Plazo de convocatoria del Congreso electo	CE	68	6	veinticinco
+21	4	Medidas estatales frente a incumplimientos autonómicos	CE	155	1	mayoría absoluta
+22	4	Convocatoria del Congreso para elegir al Defensor del Pueblo	LODP	2	3	diez días
+23	4	Tutela frente a intromisiones ilegítimas en el honor	LOHONOR	9	2	derecho de réplica
+24	5	Instituciones de la Unión Europea	TUE			
+25	5	Duración del mandato de la Comisión Europea	TUE			
+26	5	Libre circulación de trabajadores y potestad normativa europea	TFUE			
+27	5	Convocatoria de reuniones del Consejo de la Unión Europea	TFUE			
+28	6	Orden sucesivo del Secretario General de Naciones Unidas				
+29	6	Estados fundadores del Consejo de Europa				
+30	6	Titular de la Secretaría General de la OTAN				
+31	6	Misión de Europol				
+32	6	Sede de Frontex				
+33	7	Fraude de ley y eficacia de las normas jurídicas	CC	6	4	fraude de ley
+34	7	Autorización del matrimonio secreto	CC	54		matrimonio secreto
+35	7	Causas de cese de la obligación de alimentos	CC	152	4	falta
+36	7	Extinción de la guarda de hecho de personas con discapacidad	CC	267	4	autoridad judicial
+37	8	Desistimiento del delito intentado con varios intervinientes	CP	16	3	intervengan varios sujetos
+38	8	Provocación para cometer un delito	CP	18	1	concurrencia de personas
+39	8	Circunstancia mixta de parentesco	CP	23		hermano
+40	8	Clasificación de la prohibición de aproximación por duración	CP	33	3	aproximarse
+41	8	Plazos de cancelación de antecedentes penales	CP	136	1	delitos imprudentes
+42	9	Conservación del atestado sin autor conocido y excepciones de remisión	LEC	284	2	setenta y dos
+43	9	Levantamiento de cadáver en accidente ferroviario	LEC	354		tren
+44	9	Separación y documentación del reconocimiento en rueda	LEC	370		separadamente
+45	9	Supuestos de detención por particulares	LEC	490		fugare
+46	9	Plazo máximo general de detención preventiva	LEC	520	1	setenta y dos
+47	9	Principios inspiradores del procedimiento de habeas corpus	HC	preámbulo		universalidad
+48	9	Salas del Tribunal Supremo	LOPJ	55		Social
+49	9	Competencia penal de la Audiencia Nacional	LOPJ	65	1	delitos contra
+50	9	Requisitos de acceso a servicios de justicia restaurativa	VICTIM	15	1	nuevos perjuicios
+51	10	Anulabilidad por desviación de poder	L39	48	1	desviación de poder
+52	10	Silencio en el recurso extraordinario de revisión	L39	126	3	tres meses
+53	10	Revocabilidad de la delegación de competencias	L40	9	6	revocable
+54	10	Órganos superiores y directivos de la AGE	L40	55	3	Subsecretarios
+55	11	Supuestos de designación obligatoria de delegado de protección de datos	LOPD	34	1	comunicaciones electrónicas
+56	11	Cooperación en protección de datos en la Administración de Justicia	LOPD	44	3	colaborarán
+57	12	Habilitación laboral de familiares reagrupados	LOEX	19	1	edad laboral
+58	12	Clases de visado de extranjería	LOEX	25 bis		Visado
+59	12	Caducidad documental y expulsión de ciudadanos de la Unión	RD240	15	7	caducidad
+60	13	Contenido del volante de identificación policial	LOSC	16	4	volante
+61	13	Información en registros corporales externos	LOSC	20	2	comprensible
+62	13	Concepto de emergencia en seguridad ciudadana	LOSC	21		riesgo sobrevenida
+63	13	Prohibición de que detectives presten servicios de empresas de seguridad	LSP	10	3	detectives
+64	14	Dependencia de la Dirección General de Protección Civil y Emergencias	RDINT	8 bis		Dirección General de Protección Civil
+65	14	Subdirecciones de la Dirección General de Protección Civil y Emergencias	RDINT	8 ter	3	Subdirección General
+66	14	Capacidades TIC para el ejercicio de funciones de la Jefatura del Estado	RDDEF	7		Jefatura del Estado
+67	14	Dependencia de representaciones militares en organismos internacionales	RDDEF	2	4	representaciones militares
+68	15	Cuerpos integrantes de las Fuerzas y Cuerpos de Seguridad	LOFCS	2		Corporaciones Locales
+69	15	Secreto profesional y fuentes de información de miembros de las FCS	LOFCS	5	5	fuentes de información
+70	15	Reglas de comportamiento y honor del guardia civil	LGC	7	1	honor
+71	15	Competencia para determinar las divisas de empleos de la Guardia Civil	LGC	18	5	divisas
+72	15	Funciones de la Jefatura de Policía Marítima	OGC			
+73	15	Dependencias de la Dirección Adjunta Operativa	OGC			
+74	15	Integración histórica del Cuerpo de Carabineros en la Guardia Civil				
+75	15	Reuniones de asociaciones profesionales en centros oficiales	LOGCDD	47		denegar
+76	15	Quejas relativas al mando inmediato superior	LOGCDD	33		mando inmediato superior
+77	16	Medidas de protección civil para personas con discapacidad	LPC	5	2	discapacidad
+78	16	Distribución de competencias estatales de protección civil	LPC	33		competencias del Gobierno
+79	16	Concepto legal de ecosistema	LPAT	3		unidad funcional
+80	17	Salvaguarda de derechos fundamentales en redes y servicios electrónicos	LGT	56	1	derechos y libertades
+81	17	Periodo de vigencia de certificados electrónicos cualificados	LECONF	4		vigencia
+82	17	Año de lanzamiento de WhatsApp				
+83	17	Aprobación de normas técnicas de interoperabilidad	ENI	DA primera		normas técnicas
+84	18	Conversión de distancia del terreno a plano mediante escala				
+85	18	Definición del grado centesimal				
+86	19	Código de Conducta en procesos selectivos por promoción profesional	RDCOD	5	2	perfiles profesionales
+87	19	Dignidad en el Código de Conducta de la Guardia Civil	RDCOD	8	2	seriedad
+88	19	Evaluación del riesgo de armas no letales para terceros	PBF			
+89	20	Prescripción de delitos menos graves cometidos por menores	LOMEN	15	1	menos grave
+90	21	Detección precoz sanitaria de la violencia de género	LOGEN	15	1	Consejo Interterritorial
+91	21	Acreditación de violencia de género para derechos laborales	LOGEN	23		orden de protección
+92	22	Modificaciones sustanciales de fábricas de armas	RARMS	13	3	ampliación
+93	22	Periodicidad y momento de revista de armas	RARMS	90	1	cinco años
+94	22	División de riesgo 1.4 de explosivos	REXP	8		pequeño riesgo
+95	22	Remisión mensual del registro de consumo de explosivos	REXP	122		mensualmente
+96	23	Papel del Servicio de Vigilancia Aduanera en delitos de contrabando	LOCON	DA primera		colaborador
+97	23	Prórroga del plazo para resolver sanciones de contrabando	RDCON	35	5	prorrogarse
+98	23	Concepto de notificación de reexportación	CAU			
+99	23	Ámbito territorial del Código Aduanero de la Unión	CAU			
+100	23	Despacho a libre práctica y estatuto aduanero	CAU			
+101	14	Dirección de la cooperación policial internacional	RDINT	2	1	SIRENE
+102	10	Remisión del expediente electrónico e interoperabilidad	L39	70	3	Interoperabilidad
+103	9	Requisitos para una Presidencia de Sección del Tribunal de Instancia	LOPJ	84		Presidencia de Sección
+104	4	Alegación judicial de principios rectores sociales y económicos	CE	53	3	jurisdicción ordinaria
+105	7	Causas de extinción de la patria potestad	CC	169		muerte

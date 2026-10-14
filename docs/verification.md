@@ -1,6 +1,10 @@
-# Verificación de la entrega inicial
+# Verificación de GC Predictor
 
 Fecha: 14/10/2026. Entorno Node 24.19.0 y Python 3.12.14.
+
+## Comprobaciones de la entrega inicial
+
+Se conservan como registro de la primera entrega; el estado actual del corpus se detalla al final.
 
 - `npm run typecheck`: correcto.
 - `npm test`: 14 pruebas aprobadas, cero fallos. Bases temporales con fixtures sintéticos separados del corpus real.
@@ -15,3 +19,18 @@ Fecha: 14/10/2026. Entorno Node 24.19.0 y Python 3.12.14.
 Pendientes: PostgreSQL/Supabase y Storage con credenciales reales; ejecución Docker; instalación Safari/iPhone real; despliegue alojado HTTPS. No se afirma que el motor estadístico supere referencias con datos reales: actualmente carece de corpus definitivo validado. No hay rendimiento predictivo ni calibración acreditados.
 
 Entrega remota: `git push` devuelve 403; `github_create_blob` también devuelve `Resource not accessible by integration` (403). La cuenta puede leer el repositorio público, pero la consulta de cuentas con la app instalada devuelve una lista vacía. Se conserva un commit local y se entregan ZIP y Git bundle; no se afirma que exista código subido al remoto.
+
+## Cotejo y segunda entrega: 2026
+
+- Protocolo real ejecutado sobre A/B y las dos plantillas oficiales: 210 ocurrencias, 105 equivalencias, corrección A7/B88 C→A, cinco reservas únicas separadas, 100 ordinarias para descripción. Dos motores PDF concordantes; inspección visual de tablas y excepción A28/B62. No se afirma revisión humana independiente de todas las transcripciones.
+- `npm run data:verify`: **34 archivos con SHA-256 correcto**, diferenciando **23 de procedencia oficial** y **11 copias secundarias sin autenticar**. Las secundarias no se importan ni alimentan estadísticas.
+- `npm test`: **23 pruebas aprobadas**, cero fallos. Nueve comprobaciones de integración sobre el banco auténtico, en SQLite temporal. Comprueban equivalencias, corrección, firmeza pendiente, reservas, estadísticas, artículos, rechazo de clave sustituida, modificaciones, idempotencia, cambios de referencia y anulaciones. Los fixtures sintéticos siguen aislados.
+- `npm run typecheck` y `npm run build`: correctos. Las rutas servidor, API y login compilan en producción.
+- Navegación Chromium mediante Playwright: dashboard con 100 ordinarias, filtro Constitucional con 7, artículo 6 CC con una aparición y A33/B22, prioridades descriptivas y registro anual. Cero errores JavaScript; sin desbordamiento horizontal a 390 píxeles. Capturas de escritorio y móvil conservadas en el entorno. No certifica Safari iOS físico.
+- Producción con credenciales de prueba y SQLite nueva temporal: anónimo 401, login firmado correcto, carga automática de 210 ocurrencias reales, 100 ordinarias, 0 definitivas y 68 artículos. Intento de marcar una pregunta como definitiva sin clave final rechazado con 400; el corpus permanece intacto. Los secretos aleatorios no se imprimieron ni guardaron en el repositorio.
+- Conservación: **77 rutas previas presentes**, **22 PDF anteriores con huella intacta** y **840/840 identificadores de pregunta preservados**. Copia transaccional previa en `.local/backups/pre-validation.sqlite`. Los paquetes de la primera entrega se conservan.
+- Informe agregado sin resultados personales en `data/research/validation-summary-2026.json`; el reporte operativo se regenera con `npm run data:apply-verified` en `.local/reports/validation-summary.json`.
+
+Estado estricto: **0 preguntas con firmeza definitiva acreditada**. Frecuencias documentales habilitadas con ese aviso; simulacros y retrospectiva sin corpus estricto. Ninguna probabilidad ni eficacia predictiva acreditada. Las 2023–2025 siguen pendientes de fuentes primarias/autenticación, no se rellenan años ni cifras.
+
+La conexión GitHub volvió a devolver instalaciones y cuentas vacías. Instrucciones y distinción entre conector de consulta y acceso de escritura Codex en [github-access.md](github-access.md). No hay despliegue HTTPS contratado/configurado; la compilación no publica por sí sola una URL. PostgreSQL/Supabase, Docker y Safari físico mantienen sus pruebas pendientes.
