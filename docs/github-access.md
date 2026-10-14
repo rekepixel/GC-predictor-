@@ -6,6 +6,8 @@ Repositorio objetivo: `rekepixel/GC-predictor-`, público y legible. Los intento
 
 Esto acredita una limitación de la integración disponible. No permite distinguir por sí solo entre instalación ausente, repositorio no incluido o permiso Contents insuficiente. Ser propietario o hacer el repositorio público no concede a una app permisos de escritura.
 
+Tras guardar la segunda entrega se repitió `git push -u origin main`: **403**, «Permission to rekepixel/GC-predictor-.git denied to rekepixel». No se publicó el commit; el estado de trabajo local se conserva limpio. Los paquetes actualizados no sustituyen los de la primera entrega.
+
 ## Configuración que debe revisar el propietario
 
 1. Abre **https://chatgpt.com/codex** y completa la conexión de GitHub con la cuenta **rekepixel**. Selecciona `GC-predictor-` como repositorio accesible para Codex.
