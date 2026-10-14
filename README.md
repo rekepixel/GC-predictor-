@@ -31,15 +31,17 @@ Las 840 filas no representan preguntas independientes: incluyen modelos y reserv
 
 ## Estado de entrega y permisos de GitHub
 
-El proyecto está guardado en este espacio de trabajo y en un paquete ZIP. La conexión actual a GitHub permite consultar el repositorio público, pero **rechaza la escritura con HTTP 403: Resource not accessible by integration**. El primer `git push` y la escritura mediante la conexión nativa fallaron; no se ha subido el código al remoto.
+El proyecto completo está publicado en [rekepixel/GC-predictor-](https://github.com/rekepixel/GC-predictor-), rama **main**, con el código, los documentos recopilados y el banco documental de 2026. El 14/10/2026 se resolvió el error 403 tras instalar ChatGPT Codex Connector y conceder acceso al repositorio. La subida se ha comprobado contra la referencia remota.
 
-Diagnóstico e instrucciones exactas en [Acceso a GitHub](docs/github-access.md). La conexión de Codex necesita acceso al repositorio y permiso Contents de escritura; hacerlo público no concede ese permiso. Si utilizas el ZIP, descomprímelo, entra en su carpeta `gc-predictor` y comienza las instrucciones por `npm ci`, omitiendo las dos líneas de clonación. El paquete no incluye contraseñas, dependencias instaladas ni bases de datos personales; el arranque carga automáticamente el banco documental de 2026; `data:archive` reconstruye además los borradores antiguos.
+El historial del diagnóstico está en [Acceso a GitHub](docs/github-access.md). También se conservan los paquetes ZIP anteriores. Si usas el ZIP, entra en su carpeta `gc-predictor` y omite las dos líneas de clonación. No se incluyen contraseñas, dependencias instaladas ni bases de datos personales; el arranque carga automáticamente el banco documental de 2026 y `data:archive` reconstruye además los borradores antiguos.
 
 ## Inicio local
 
-Requisitos: **Node.js 24** y npm. SQLite no necesita un servicio externo. Si el remoto continúa vacío por el 403, usa el ZIP de esta entrega y entra en su carpeta `gc-predictor`.
+Requisitos: **Node.js 24** y npm. SQLite no necesita un servicio externo. Puedes clonar el repositorio o utilizar el ZIP de la entrega.
 
 ```bash
+git clone https://github.com/rekepixel/GC-predictor-.git
+cd GC-predictor-
 npm ci
 cp .env.example .env.local
 npm run dev
@@ -184,7 +186,7 @@ docker run --rm -p 127.0.0.1:3000:3000 --env-file .env.local \
   -v gc-predictor-data:/app/.local gc-predictor
 ```
 
-Configura primero `PRIVATE_APP_PASSWORD` y `SESSION_SECRET`; producción permanece bloqueada sin ellos. Mantén el contenedor detrás de HTTPS para uso remoto. El Dockerfile se aporta como alternativa; no se ha publicado una imagen ni contratado un hosting. El proyecto usa APIs de Node y SQLite nativo: **no es un sitio estático ni un Worker de Cloudflare**. No se ha desplegado en Sites por esa incompatibilidad de runtime; la entrega verificable es el código local y el paquete descargable; la subida a GitHub sigue pendiente del permiso de escritura. No hay una URL alojada todavía.
+Configura primero `PRIVATE_APP_PASSWORD` y `SESSION_SECRET`; producción permanece bloqueada sin ellos. Mantén el contenedor detrás de HTTPS para uso remoto. El Dockerfile se aporta como alternativa; no se ha publicado una imagen ni contratado un hosting. El proyecto usa APIs de Node y SQLite nativo: **no es un sitio estático ni un Worker de Cloudflare**. No se ha desplegado en Sites por esa incompatibilidad de runtime; la entrega verificable es el código local y el paquete descargable; el repositorio GitHub ya contiene la aplicación; el despliegue alojado sigue pendiente. No hay una URL alojada todavía.
 
 ### iPhone
 

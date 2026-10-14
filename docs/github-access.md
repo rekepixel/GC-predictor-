@@ -1,6 +1,10 @@
 # Acceso de escritura a GitHub
 
-## Diagnóstico
+## Estado actual: resuelto
+
+El 14/10/2026 se confirmó la instalación de ChatGPT Codex Connector en la cuenta rekepixel. `git push -u origin main` finalizó correctamente y creó la rama remota; `git ls-remote` confirmó el commit publicado. El código y los documentos ya están en https://github.com/rekepixel/GC-predictor-. Las siguientes secciones conservan el diagnóstico previo para futuras incidencias.
+
+## Diagnóstico anterior
 
 Repositorio objetivo: `rekepixel/GC-predictor-`, público y legible. Los intentos anteriores de `git push` y escritura nativa devolvieron **HTTP 403, Resource not accessible by integration**. En la nueva comprobación, la conexión devuelve listas vacías de instalaciones y cuentas instaladas; consultar el permiso de colaborador también devuelve 403.
 

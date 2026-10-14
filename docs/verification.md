@@ -34,3 +34,7 @@ Entrega remota: `git push` devuelve 403; `github_create_blob` también devuelve 
 Estado estricto: **0 preguntas con firmeza definitiva acreditada**. Frecuencias documentales habilitadas con ese aviso; simulacros y retrospectiva sin corpus estricto. Ninguna probabilidad ni eficacia predictiva acreditada. Las 2023–2025 siguen pendientes de fuentes primarias/autenticación, no se rellenan años ni cifras.
 
 La conexión GitHub volvió a devolver instalaciones y cuentas vacías. Instrucciones y distinción entre conector de consulta y acceso de escritura Codex en [github-access.md](github-access.md). No hay despliegue HTTPS contratado/configurado; la compilación no publica por sí sola una URL. PostgreSQL/Supabase, Docker y Safari físico mantienen sus pruebas pendientes.
+
+## Publicación en GitHub confirmada
+
+El 14/10/2026, después de instalar ChatGPT Codex Connector y conceder acceso al repositorio, el push finalizó correctamente. La rama remota `main` contiene el proyecto y sus documentos; se comprobó su referencia mediante `git ls-remote`. El error 403 anterior queda resuelto. Esto publica el código, no despliega la aplicación web.
