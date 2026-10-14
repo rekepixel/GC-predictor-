@@ -90,7 +90,8 @@ export async function applyConceptBank(db: DB) {
     sha(fs.readFileSync("data/verified/history/manifest.json")),
   ];
   const version =
-    "concepts-v2-" + sha(JSON.stringify([manifest, dependencies]));
+    "concepts-v3-withdraw-wording-confidence-" +
+    sha(JSON.stringify([manifest, dependencies]));
   if (
     (
       await db.query("SELECT version FROM schema_migrations WHERE version=?", [
@@ -213,12 +214,14 @@ export async function applyConceptBank(db: DB) {
           concept: concept.name,
           conceptId: concept.id,
           subconcept: row.subconcept,
+          confidence: null,
           contentRelations,
           conceptReview: {
             method: row.method,
             artifactId: bank.id,
             artifactSha256: sha(bytes),
-            confidence: row.confidence,
+            confidence: "unassessed",
+            legacyConfidence: row.confidence,
             scope: row.scope,
             independentHumanReview: false,
             normStatus: row.normStatus,

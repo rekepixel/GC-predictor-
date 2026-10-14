@@ -4,9 +4,21 @@ Aplicación personal para analizar exámenes oficiales de acceso a la Escala de 
 
 Implementación funcional con Next.js 16, App Router, TypeScript, Tailwind 4, SQLite/PostgreSQL y extracción local de PDF en JavaScript o Python. No necesita una API de IA ni servicios de pago para ejecutarse localmente.
 
-## Estado real: 700 preguntas con clasificación conceptual
+## Fase actual: auditoría y preparación de uso privado
 
-Consulta del **14/10/2026**. Se continúa el mismo proyecto. Informe vigente: [análisis conceptual de las 700 preguntas](docs/concept-analysis-700.md); [datos calculados](data/research/concepts-700/analysis-report.json). Se conserva el [informe de la fase histórica anterior](docs/history-2023-2026.md).
+Informe vigente: [auditoría de las 700 preguntas](docs/auditoria-700.md). Se retira la confianza basada en «señale/indique», se conserva toda la evidencia previa y se prepara el [despliegue privado para iPhone](docs/despliegue-iphone.md).
+
+El paquete completo de esta fase contiene 700 revisiones asistidas, **cero validaciones humanas nuevas**, una cola inicial de 211 etiquetas más 80 antiguas altas seleccionadas de forma reproducible, 65 materias, 652 focos conceptuales y 693 subaspectos. Las familias interanuales bajan de 89 a 37; el top 10 exploratorio cubre **0 conceptos de 2025 y 1 de 2026**, sin superar la frecuencia histórica. La evaluación estricta sigue sin datos suficientes y no se publican probabilidades.
+
+La plantilla institucional del 28/10/2023 se recuperó de Internet Archive: **210 respuestas cotejadas, incluidas reservas A/B, cero diferencias**. La del 29/10/2023 también se recuperó y es idéntica a la copia retenida. Las plantillas institucionales de 2024/2025 siguen inaccesibles en las rutas comprobadas. Se conservan las copias y su procedencia. Se mantienen 700 ordinarias únicas, 35 reservas y **2.100 registros personales sin borrar ninguno**. Se añaden o precisan 31 referencias BOE (152 preguntas localizadas; 126 fichas de artículos).
+
+**GitHub es público.** Esta subida contiene código e informe agregado. Los nuevos PDF, artefactos de auditoría y base personal se entregan en el **ZIP privado** para cumplir la instrucción de no publicar datos. Un clon público conserva el banco anterior de 553 familias, con su confianza retirada. Para utilizar los datos nuevos, descomprime el paquete completo y ejecuta `npm ci`, `npm run data:apply-verified` y `npm run dev`; abre **http://127.0.0.1:3000**.
+
+Los nuevos filtros están en Explorador → Validación → Auditoría. Los tres niveles se consultan en Análisis de patrones. `npm run data:report:audit` compara ambas taxonomías; requiere el paquete privado. `npm run db:backup` y `npm run db:restore -- RUTA_COPIA` conservan SQLite y originales subidos. `npm run deploy:prepare` prepara la transferencia privada sin subirla. No se ha contratado alojamiento ni generado una URL pública.
+
+## Estado conservado de la fase anterior: 700 preguntas con clasificación conceptual
+
+Consulta del **14/10/2026**. Se continúa el mismo proyecto. Informe de la fase anterior: [análisis conceptual de las 700 preguntas](docs/concept-analysis-700.md); [datos calculados](data/research/concepts-700/analysis-report.json). Se conserva el [informe de la fase histórica anterior](docs/history-2023-2026.md).
 
 | Control                                                | Resultado                                                                                                                                                                                      |
 | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -88,15 +100,15 @@ La base local se guarda en `.local/gc-predictor.sqlite`, fuera de Git. Los PDF s
 
 En desarrollo, el acceso sin contraseña se limita a un servidor enlazado a loopback y un host `localhost`/`127.0.0.1`. Para exigir contraseña también en desarrollo, configura `PRIVATE_APP_PASSWORD`. No expongas `next dev` a Internet.
 
-Para reproducir la curación conceptual explícita, sin API de IA ni conexión de red:
+Para reproducir la auditoría conceptual actual, sin API de IA ni conexión de red y con el paquete privado de esta fase:
 
 ```bash
 .venv/bin/python python/curate_concepts.py
 npm run data:apply-verified
-npx tsx scripts/history-report.ts --concepts
+npm run data:report:audit
 ```
 
-Se conservan 524 anotaciones explícitas en `data/curation/concepts-700.psv` y un artefacto sellado de 700 filas, con texto y huella de entrada. `data:classify:concepts` abrevia curación y aplicación usando `python` del PATH. Las revisiones humanas del usuario se preservan. Administración permite editar materia y subconcepto, y confirmar la revisión humana por separado.
+Se conservan las 524 anotaciones y el artefacto sellado de la fase anterior. La confianza que contenían se ha retirado. `data:classify:concepts` ejecuta ahora la auditoría sobre las 700 filas usando `python` del PATH; necesita las propuestas del paquete privado y no modifica los artefactos históricos. Las revisiones humanas del usuario se preservan. Administración permite editar materia y subconcepto, y confirmar la revisión humana por separado.
 
 ## Qué se puede usar
 

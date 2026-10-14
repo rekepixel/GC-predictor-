@@ -1,10 +1,17 @@
+.git
 node_modules
 .next
-.git
-.env*
-!.env.example
 .local
+.env
+.env.*
+*.sqlite*
+*.log
+*.tsbuildinfo
+coverage
+.sites-runtime
+.wrangler
+
 .venv
 __pycache__
-*.sqlite*
-*.tsbuildinfo
+# Only an explicitly prepared private initial database may enter the image.
+!deployment/seed/gc-predictor.sqlite

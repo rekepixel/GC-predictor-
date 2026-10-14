@@ -1,5 +1,7 @@
 # Análisis conceptual de las 700 preguntas
 
+> Informe de la fase anterior, conservado como referencia. La confianza por redacción fue retirada y las agrupaciones se comparan en [la auditoría actual](auditoria-700.md). Los 89 grupos interanuales de este documento no son el resultado vigente de la nueva taxonomía.
+
 Fase del 14/10/2026 sobre el mismo repositorio. [Datos calculados](../data/research/concepts-700/analysis-report.json), [524 asignaciones explícitas](../data/curation/concepts-700.psv), [revisión sellada](../data/verified/concepts-2023-2026/review.json), [relaciones revisadas](../data/curation/concept-relations.json).
 
 ## Resultado de la clasificación

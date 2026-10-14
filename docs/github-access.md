@@ -40,3 +40,9 @@ Ejecuta el comando en tu ordenador; la autorización se completa en el navegador
 - [Conectar GitHub a ChatGPT, y diferencia con Codex](https://help.openai.com/es-es/articles/11145903-connecting-github-to-chatgpt).
 - [Revisar/modificar instalaciones de GitHub Apps](https://docs.github.com/en/apps/using-github-apps/reviewing-and-modifying-installed-github-apps).
 - [Autorizar una GitHub App](https://docs.github.com/en/apps/using-github-apps/authorizing-github-apps).
+
+## Entrega de auditoría del 14/10/2026
+
+Se ha comprobado mediante la API pública que `rekepixel/GC-predictor-` es público. La instrucción actual impide publicar datos sin autorización; por ello se preparan para subir únicamente código e informe agregado. Los nuevos PDF archivados, entradas de auditoría y base personal quedan fuera de Git mediante `.gitignore`, dentro del paquete privado. No se borra ningún archivo que ya estuviera versionado ni se cambia la visibilidad del repositorio.
+
+La autorización de GitHub para actualizar código y la autorización del proveedor de alojamiento son distintas. El despliegue aún requiere cuenta del proveedor, aceptación de costes, variables secretas y autorización para transferir la base al servicio privado. No se solicita ni se imprime ningún token. El flujo recomendado mediante la CLI de Railway no necesita instalar otra GitHub App.

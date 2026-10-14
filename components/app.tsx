@@ -729,6 +729,14 @@ export function QuestionCard({
         </button>
       </div>
       <h3 className="literal">{q.stem}</h3>
+      {answer &&
+        q.classificationAudit?.polarity === "negative_or_exception" && (
+          <p className="notice amber">
+            La consigna pide una opción incorrecta o una excepción. La
+            alternativa señalada por la clave no se afirma como una proposición
+            jurídica verdadera.
+          </p>
+        )}
       <div className="options">
         {q.options.map((o, i) => (
           <div
@@ -757,8 +765,10 @@ export function QuestionCard({
         {q.confidence !== null && !q.classificationReviewed && (
           <Badge>Confianza de regla {pct(q.confidence)}</Badge>
         )}
-        {q.concept && <Badge tone="green">Concepto: {q.concept}</Badge>}
-        {q.subject && <Badge>Materia: {q.subject}</Badge>}
+        {q.concept && <Badge tone="green">Concepto / regla: {q.concept}</Badge>}
+        {(q.taxonomy?.matter || q.subject) && (
+          <Badge>Materia: {q.taxonomy?.matter || q.subject}</Badge>
+        )}
         {q.subconcept && <Badge>Subconcepto: {q.subconcept}</Badge>}
         {q.conceptDetail && <Badge>Subaspecto: {q.conceptDetail}</Badge>}
         {q.law && (
@@ -780,13 +790,42 @@ export function QuestionCard({
           {q.conceptReview.independentHumanReview
             ? "Clasificación revisada por el usuario"
             : "Clasificación asistida · revisión humana independiente pendiente"}{" "}
-          · confianza cualitativa{" "}
-          {q.conceptReview.confidence === "high" ? "alta" : "media"}, no
-          calibrada.{" "}
+          {q.conceptReview.confidence === "unassessed"
+            ? "· Sin confianza estimada: la redacción no acredita la clasificación. "
+            : `· Confianza cualitativa ${q.conceptReview.confidence === "high" ? "alta" : "media"}, no calibrada. `}
           {q.conceptReview.scope === "keyed_statement_focus"
             ? "La etiqueta destaca el foco de la alternativa de clave; el ítem puede examinar varios contenidos."
             : ""}
         </p>
+      )}
+      {q.classificationAudit && (
+        <details className="muted">
+          <summary>
+            Auditoría de clasificación ·{" "}
+            {q.classificationAudit.status === "owner_reviewed"
+              ? "revisada por el usuario"
+              : "revisión manual pendiente"}
+          </summary>
+          <p>{q.classificationAudit.reason}</p>
+          <p>
+            Etiqueta anterior: {q.classificationAudit.previousConcept}.
+            Prioridad de revisión: {q.classificationAudit.priorityOrder} de 700.
+            Esta prioridad mide riesgo de revisión, no exactitud ni
+            probabilidad.
+          </p>
+          {q.classificationAudit.initialManualCohort && (
+            <p>
+              Incluida en las 211 etiquetas señaladas inicialmente para
+              revisión.
+            </p>
+          )}
+          {q.classificationAudit.randomSample && (
+            <p>
+              Incluida en la muestra aleatoria reproducible de 80 antiguas
+              etiquetas altas.
+            </p>
+          )}
+        </details>
       )}
       {q.answerIssue && (
         <div className="notice amber" role="note">
@@ -892,18 +931,32 @@ function Explorer({
             (!status ||
               (status === "documentary"
                 ? q.documentaryEligible || q.validation === "validated"
-                : status === "concept_medium"
+                : status === "audit_pending"
                   ? q.documentaryEligible &&
-                    q.conceptReview?.confidence === "medium"
-                  : status === "answer_conflict"
-                    ? q.documentaryEligible && !!q.answerIssue
-                    : q.validation === status)) &&
+                    q.classificationAudit?.status === "assisted_pending_manual"
+                  : status === "audit_initial"
+                    ? q.documentaryEligible &&
+                      !!q.classificationAudit &&
+                      (q.classificationAudit.initialManualCohort ||
+                        q.classificationAudit.randomSample)
+                    : status === "concept_medium"
+                      ? q.documentaryEligible &&
+                        (q.classificationAudit?.initialManualCohort ||
+                          q.conceptReview?.legacyConfidence === "medium" ||
+                          q.conceptReview?.confidence === "medium")
+                      : status === "answer_conflict"
+                        ? q.documentaryEligible && !!q.answerIssue
+                        : q.validation === status)) &&
             (reserves || !q.reserve) &&
             (!session || q.session === session) &&
             (!model || q.model === model),
         )
         .sort(
           (a, b) =>
+            (status.startsWith("audit_")
+              ? (a.classificationAudit?.priorityOrder || 9999) -
+                (b.classificationAudit?.priorityOrder || 9999)
+              : 0) ||
             b.year - a.year ||
             a.session.localeCompare(b.session) ||
             a.model.localeCompare(b.model) ||
@@ -1100,7 +1153,15 @@ function Explorer({
                 Cotejo documental o definitiva
               </option>
               <option value="validated">Validadas</option>
-              <option value="concept_medium">Concepto · confianza media</option>
+              <option value="audit_pending">
+                Auditoría · pendiente manual
+              </option>
+              <option value="audit_initial">
+                Auditoría · 211 iniciales + muestra de 80
+              </option>
+              <option value="concept_medium">
+                Cohorte anterior de 211 (confianza retirada)
+              </option>
               <option value="answer_conflict">Discrepancia de respuesta</option>
               <option value="draft">Borradores</option>
               <option value="reviewed">Revisadas</option>
@@ -1238,10 +1299,18 @@ function Patterns({
         title="Análisis de patrones"
         description="Repetición literal, conceptos persistentes y cambios de estilo sobre preguntas documentadas y cotejadas."
       />
+      {stats.conceptReviews.assisted > 0 && (
+        <p className="notice amber">
+          Las agrupaciones conceptuales proceden de revisión asistida y
+          requieren contraste manual. Sus recuentos dependen de la taxonomía; no
+          certifican equivalencia jurídica ni respuestas definitivas.
+        </p>
+      )}
       <div className="tabs">
         {[
           ["literal", "Repeticiones literales"],
           ["concept", "Conceptos repetidos"],
+          ["levels", "Materia, concepto y subaspecto"],
           ["relations", "Relaciones de contenido"],
           ["laws", "Frecuencia de leyes"],
           ["recent", "Histórica frente a reciente"],
@@ -1287,6 +1356,47 @@ function Patterns({
               description="Se normalizan espacios y Unicode, conservando acentos, puntuación y símbolos. Los cambios de orden entre modelos no crean una nueva observación."
             />
           )
+        ) : tab === "levels" ? (
+          <>
+            {!p.levels.some((level) => level.distinct > 0) && (
+              <p className="notice amber">
+                Esta instalación necesita el paquete privado de auditoría para
+                consultar los tres niveles de esta fase.
+              </p>
+            )}
+            <p className="muted">
+              La misma materia o el mismo artículo pueden contener reglas
+              distintas. Estos recuentos usan etiquetas asistidas pendientes de
+              revisión manual; no demuestran respuestas finales ni
+              probabilidades.
+            </p>
+            {p.levels.map((level) => (
+              <details key={level.level}>
+                <summary>
+                  {level.level === "matter"
+                    ? "Materia general"
+                    : level.level === "rule"
+                      ? "Concepto o regla"
+                      : "Subaspecto específico"}
+                  : {level.distinct} etiquetas ·{" "}
+                  {level.repeatedAcrossYears.length} presentes en varios años
+                </summary>
+                {level.repeatedAcrossYears.map((item) => (
+                  <div className="pattern-row" key={item.name}>
+                    <strong>{item.name}</strong>
+                    <p>
+                      {item.count} apariciones · {item.years.join(", ")}
+                    </p>
+                    <QuestionEvidence
+                      ids={item.evidence}
+                      data={data}
+                      review={review}
+                    />
+                  </div>
+                ))}
+              </details>
+            ))}
+          </>
         ) : tab === "relations" ? (
           <>
             <p className="muted">
@@ -1555,6 +1665,15 @@ function Priorities({
         title="Prioridades 2027"
         description="Un ranking explicable de estudio, contrastado con el pasado. No es una predicción del examen."
       />
+      {data.questions.some(
+        (q) => q.classificationAudit?.status === "assisted_pending_manual",
+      ) && (
+        <p className="notice amber">
+          La taxonomía del ranking es una propuesta asistida pendiente de
+          revisión manual. Consulta los subaspectos y las fuentes antes de
+          utilizar una agrupación como regla de estudio.
+        </p>
+      )}
       <div className="notice amber">
         <AlertCircle size={18} />
         <span>

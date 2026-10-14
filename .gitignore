@@ -14,3 +14,16 @@ coverage/
 
 *.tsbuildinfo
 playwright-report/
+
+# New documentary/classification evidence stays in the private delivery bundle.
+# The existing GitHub repository is public; uploading these data requires consent.
+data/verified/quality-audit-700/
+data/verified/documentary-audit-2023/
+data/curation/audit-blind-rules.json
+data/raw/2023-key-28-institutional-wayback.pdf
+data/raw/2023-key-29-institutional-wayback.pdf
+data/research/quality-audit-700/
+
+# Private initial database for an explicitly authorized hosting deployment.
+deployment/seed/*
+!deployment/seed/.gitkeep

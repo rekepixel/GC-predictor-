@@ -83,16 +83,44 @@ export interface Question {
   conceptReview?: {
     method:
       | "assistant_content_review"
+      | "assistant_blind_content_review"
       | "preserved_previous_curation"
       | "owner_review";
     artifactId?: string;
     artifactSha256?: string;
-    confidence: "high" | "medium";
+    confidence: "high" | "medium" | "unassessed";
+    legacyConfidence?: "high" | "medium";
     scope: "focused" | "keyed_statement_focus";
     independentHumanReview: boolean;
     normStatus: string;
     reviewedAt: string;
     inputSha256?: string;
+  } | null;
+  taxonomy?: {
+    version: string;
+    matterId: string;
+    matter: string;
+    ruleId: string;
+    rule: string;
+    subaspectId: string;
+    subaspect: string;
+  } | null;
+  classificationAudit?: {
+    artifactId: string;
+    artifactSha256: string;
+    inputSha256: string;
+    status: "assisted_pending_manual" | "owner_reviewed";
+    previousConcept: string;
+    previousSubconcept: string;
+    legacyConfidence: "high" | "medium";
+    flags: string[];
+    risk: number;
+    priorityOrder: number;
+    initialManualCohort: boolean;
+    randomSample: boolean;
+    polarity: string;
+    scope: string;
+    reason: string;
   } | null;
   contentRelations?: {
     id: string;

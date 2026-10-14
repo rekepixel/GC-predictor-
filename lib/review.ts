@@ -3,6 +3,8 @@ import { audit, getDB, put } from "./db";
 import { dataset, initialize } from "./store";
 import { deduplicate, officialURL } from "./importer";
 import { literalHash, normalized } from "./text";
+import { conceptContentFingerprint } from "./concept-bank";
+import { createHash } from "node:crypto";
 import type { Question } from "./types";
 export const reviewSchema = z.object({
   stem: z.string().min(5).max(15000),
@@ -93,9 +95,19 @@ export async function reviewQuestion(
     let conceptId: string | null = null;
     if (changes.concept?.trim()) {
       const name = changes.concept.trim();
-      const concept = data.concepts.find(
+      const matchingConcepts = data.concepts.filter(
         (c) => normalized(c.name) === normalized(name),
       );
+      // Historical labels remain stored. Confirming a current label must not
+      // silently switch to an older ID with the same name and split its counts.
+      const concept =
+        matchingConcepts.find((c) => c.id === previous.conceptId) ||
+        matchingConcepts.find((c) =>
+          data.questions.some(
+            (q) => q.active && !q.reserve && q.taxonomy?.ruleId === c.id,
+          ),
+        ) ||
+        matchingConcepts[0];
       conceptId = concept?.id || crypto.randomUUID();
       if (!concept)
         await put(tx, "concepts", {
@@ -112,7 +124,7 @@ export async function reviewQuestion(
       concept: changes.concept?.trim() || null,
       legalUrl: changes.legalUrl || null,
       literalHash: literalHash(changes.stem, changes.options),
-      confidence: changes.classificationReviewed ? 1 : previous.confidence,
+      confidence: changes.classificationReviewed ? null : previous.confidence,
       classificationMethod: changes.classificationReviewed
         ? "manual-reviewed"
         : previous.classificationMethod,
@@ -164,7 +176,12 @@ export async function reviewQuestion(
       (changes.subject !== undefined && changes.subject !== previous.subject) ||
       (changes.subconcept !== undefined &&
         changes.subconcept !== previous.subconcept);
-    if (contentChanged || conceptChanged) updated.conceptReview = null;
+    if (contentChanged || conceptChanged) {
+      updated.conceptReview = null;
+      // An annotation bound to another literal or rule cannot survive an edit.
+      updated.taxonomy = null;
+      updated.classificationAudit = null;
+    }
     if (
       confirmConceptReview &&
       changes.classificationReviewed &&
@@ -172,7 +189,7 @@ export async function reviewQuestion(
     )
       updated.conceptReview = {
         method: "owner_review",
-        confidence: "high",
+        confidence: "unassessed",
         scope: previous.conceptReview?.scope || "focused",
         independentHumanReview: true,
         normStatus: changes.legalVerified
@@ -180,6 +197,37 @@ export async function reviewQuestion(
           : "normative_scope_requires_separate_verification",
         reviewedAt: new Date().toISOString(),
       };
+    if (
+      confirmConceptReview &&
+      updated.conceptReview?.independentHumanReview &&
+      previous.classificationAudit
+    ) {
+      updated.classificationAudit = {
+        ...previous.classificationAudit,
+        status: "owner_reviewed",
+        inputSha256: conceptContentFingerprint(updated),
+        reason:
+          "El usuario ha confirmado la revisión del concepto y subaspecto; el historial conserva la propuesta asistida anterior.",
+      };
+      if (previous.taxonomy && updated.conceptId && updated.concept) {
+        const matter =
+          changes.subject !== previous.subject
+            ? changes.subject || previous.taxonomy.matter
+            : previous.taxonomy.matter;
+        const subaspect = updated.subconcept || updated.concept;
+        const key = (prefix: string, text: string) =>
+          prefix + createHash("sha256").update(text).digest("hex").slice(0, 20);
+        updated.taxonomy = {
+          version: "owner-reviewed",
+          matter,
+          matterId: key("matter-", matter),
+          rule: updated.concept,
+          ruleId: updated.conceptId,
+          subaspect,
+          subaspectId: key("sub-", updated.conceptId + "|" + subaspect),
+        };
+      }
+    }
     if (!contentChanged) {
       await put(tx, "questions", updated as unknown as Record<string, unknown>);
       await audit(tx, id, "review_question", previous, updated, actor);

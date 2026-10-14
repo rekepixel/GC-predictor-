@@ -55,6 +55,8 @@ function corpus(data: Dataset, documentary = false) {
     questions.push(
       [...group].sort(
         (a, b) =>
+          Number(!!b.conceptReview?.independentHumanReview) -
+            Number(!!a.conceptReview?.independentHumanReview) ||
           Number(b.classificationReviewed) - Number(a.classificationReviewed) ||
           Number(b.legalVerified) - Number(a.legalVerified) ||
           a.model.localeCompare(b.model),
@@ -152,7 +154,19 @@ export function frequencies(data: Dataset) {
       mediumConfidence: questions.filter(
         (q) => q.conceptReview?.confidence === "medium",
       ).length,
+      unassessedConfidence: questions.filter(
+        (q) => q.conceptReview?.confidence === "unassessed",
+      ).length,
+      secondAssistedPass: questions.filter((q) => q.classificationAudit).length,
+      pendingManual: questions.filter(
+        (q) => q.classificationAudit?.status === "assisted_pending_manual",
+      ).length,
     },
+    matters: counts(questions, (q) => q.taxonomy?.matter || q.subject || null),
+    subaspects: counts(
+      questions,
+      (q) => q.taxonomy?.subaspect || q.subconcept || null,
+    ),
     answerIssues: questions.filter((q) => q.answerIssue).length,
     bySession: [...new Set(questions.map(sessionKey))].sort().map((key) => {
       const subset = questions.filter((q) => sessionKey(q) === key);
@@ -295,7 +309,15 @@ export function rank(
     const warnings = [];
     if (qs.some((q) => q.validation !== "validated"))
       warnings.push(
-        "Contenido documental cotejado con clave oficial corregida; firmeza administrativa final pendiente.",
+        "Contenido documental cotejado; distinguir original institucional de copia corroborada. Respuesta final y anulaciones por pregunta pendientes.",
+      );
+    if (
+      qs.some(
+        (q) => q.classificationAudit?.status === "assisted_pending_manual",
+      )
+    )
+      warnings.push(
+        "Clasificación de segunda pasada asistida pendiente de revisión manual; un foco conceptual compartido no demuestra identidad de artículo ni subaspecto.",
       );
     if (years.length < 3)
       warnings.push("Pocos años observados; prioridad exploratoria.");
@@ -636,7 +658,31 @@ export function patterns(data: Dataset, weights: Partial<Weights> = {}) {
     recentRate: p.recentRate,
     evidence: p.evidence,
   }));
+  const levels = (["matter", "rule", "subaspect"] as const).map((level) => {
+    const groups = new Map<string, Question[]>();
+    for (const q of qs) {
+      const label = q.taxonomy?.[level];
+      if (!label) continue;
+      const group = groups.get(label) || [];
+      group.push(q);
+      groups.set(label, group);
+    }
+    return {
+      level,
+      distinct: groups.size,
+      repeatedAcrossYears: [...groups]
+        .filter(([, g]) => new Set(g.map((q) => q.year)).size > 1)
+        .map(([name, g]) => ({
+          name,
+          count: g.length,
+          years: [...new Set(g.map((q) => q.year))].sort(),
+          evidence: g.map((q) => q.id),
+        }))
+        .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name)),
+    };
+  });
   return {
+    levels,
     literals,
     concepts,
     dormant,

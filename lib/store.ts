@@ -5,6 +5,8 @@ import type { Dataset, Source, Topic, Syllabus } from "./types";
 import { applyVerifiedBank } from "./verified-bank";
 import { applyHistoricalBank } from "./historical-bank";
 import { applyConceptBank } from "./concept-bank";
+import { applyQualityAudit } from "./quality-audit";
+import { applyDocumentaryAudit } from "./documentary-audit";
 let initialization: Promise<void> | undefined;
 export function initialize() {
   return (initialization ??= (async () => {
@@ -97,8 +99,13 @@ export function initialize() {
       await applyVerifiedBank(db);
       if (process.env.GC_SKIP_HISTORICAL_BANK !== "1") {
         await applyHistoricalBank(db);
-        if (process.env.GC_SKIP_CONCEPT_BANK !== "1")
+        if (process.env.GC_SKIP_CONCEPT_BANK !== "1") {
           await applyConceptBank(db);
+          if (process.env.GC_SKIP_QUALITY_AUDIT !== "1") {
+            await applyDocumentaryAudit(db);
+            await applyQualityAudit(db);
+          }
+        }
       }
     }
   })());

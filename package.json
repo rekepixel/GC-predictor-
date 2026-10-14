@@ -15,7 +15,12 @@
     "data:apply-verified": "tsx scripts/apply-verified.ts",
     "data:verify:2026": "python python/verify_2026.py && tsx scripts/seal-bank.ts && tsx scripts/apply-verified.ts",
     "data:verify:history": "python python/verify_history.py && tsx scripts/apply-verified.ts",
-    "data:classify:concepts": "python python/curate_concepts.py && tsx scripts/apply-verified.ts"
+    "data:classify:concepts": "python python/curate_concepts.py && tsx scripts/apply-verified.ts",
+    "data:audit": "python python/audit_concepts.py && tsx scripts/apply-verified.ts",
+    "data:report:audit": "tsx scripts/quality-report.ts",
+    "db:backup": "node scripts/backup.mjs",
+    "db:restore": "node scripts/restore.mjs",
+    "deploy:prepare": "node scripts/prepare-private-deploy.mjs"
   },
   "dependencies": {
     "better-sqlite3": "13.0.3",

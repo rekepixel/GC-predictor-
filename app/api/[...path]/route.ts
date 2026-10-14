@@ -32,6 +32,7 @@ import {
 import type { Source, Weights } from "@/lib/types";
 import { isDocumentaryVerified, verificationState } from "@/lib/documentary";
 import { articleProfiles, validationByYear } from "@/lib/history";
+import { classificationWorklist } from "@/lib/quality-audit";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 function response(value: unknown, status = 200) {
@@ -90,7 +91,9 @@ async function handle(
       const r = response({ ok: true });
       r.cookies.set(COOKIE, sessionToken(), {
         httpOnly: true,
-        secure: req.nextUrl.protocol === "https:",
+        secure:
+          process.env.NODE_ENV === "production" ||
+          req.nextUrl.protocol === "https:",
         sameSite: "strict",
         maxAge: 7 * 86400,
         path: "/",
@@ -107,6 +110,8 @@ async function handle(
         configured() ? 401 : 503,
       );
     await initialize();
+    if (action === "classification-audit" && req.method === "GET")
+      return response(classificationWorklist(await dataset()));
     if (action === "logout" && req.method === "POST") {
       const r = response({ ok: true });
       r.cookies.delete(COOKIE);

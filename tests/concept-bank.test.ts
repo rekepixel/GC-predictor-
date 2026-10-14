@@ -8,6 +8,7 @@ process.env.SQLITE_PATH = path.join(
   "test.sqlite",
 );
 delete process.env.DATABASE_URL;
+process.env.GC_SKIP_QUALITY_AUDIT = "1";
 for (const key of [
   "GC_SKIP_VERIFIED_BANK",
   "GC_SKIP_HISTORICAL_BANK",

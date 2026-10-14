@@ -69,3 +69,17 @@ La fase vigente se detalla en [concept-analysis-700.md](concept-analysis-700.md)
 - Conservación: **148 rutas previas presentes, 45 PDF anteriores intactos, 2.100/2.100 IDs de preguntas conservados**, sin cambios de opciones, respuestas ni conceptos previamente asignados. Sólo los dos enunciados de rumbo recuperaron una línea. Todas las entidades y los eventos de auditoría anteriores conservan sus IDs; copia transaccional previa y paquetes anteriores retenidos.
 
 El análisis resultante informa 89 familias interanuales, 63 con años consecutivos y 14 relaciones explícitas de contenido, sin convertir todas las familias en reglas idénticas. La reconstrucción top 10 obtiene 3 preguntas de 2025 y 3 de 2026; frecuencia obtiene 2 y 3. Top 50 no mejora la frecuencia en esos objetivos. No se acredita ventaja predictiva estable ni calibración; la evaluación estricta sigue sin fuentes finales/publicación suficientes. La asignación completa no sustituye una revisión humana independiente ni acredita vigencia 2027.
+
+## Auditoría de las 700 preguntas · 14/10/2026
+
+- TypeScript y compilación Next.js correctos. Suite completa: **48 pruebas pasadas, cero fallos**; los seis controles de auditoría se repitieron tras ajustar la conservación de revisiones del propietario, también correctos.
+- Copia del contenido que se sube al repositorio público, sin evidencias privadas: **42 pruebas pasadas y 6 explícitamente omitidas**. No se presentan esas seis como ejecutadas en el clon público.
+- Las 45 huellas de los PDF previos, incluidos los nombres `.PDF` en mayúsculas, coinciden. Se conservan los 164 archivos versionados previos y todos los identificadores de las tablas. No cambiaron enunciados, alternativas, letras, condición de reserva, fuentes asociadas a las preguntas ni relaciones A/B.
+- Plantilla 28/10/2023 archivada: 210 celdas de conocimientos cotejadas, cero diferencias; SHA-1 del PDF coincide con el digest CDX. La del 29/10/2023 coincide byte a byte con la copia retenida.
+- Backup/restauración: tablas `questions`, `sources`, `audit_events`, `answer_entries` y `attempts` idénticas; integridad y claves foráneas correctas; sobrescritura de base existente rechazada.
+- Contenedor de producción con volumen y semilla privada: **2.100 registros antes y después de recrearlo**, edición y PDF subido conservados. Límite de prueba: 512 MiB y 1 CPU; muestra de memoria al terminar: 128,3 MiB. La restauración inicial se omite cuando la base del volumen ya existe.
+- HTTPS local mediante proxy: cookie `Secure`, `HttpOnly`, `SameSite=Strict`; API anónima 401, origen ajeno 403, validación final sin evidencia 400, PDF duplicado 400. Los PDF archivados se sirven autenticados y con su hash íntegro. Python PDF y SQLite nativo funcionan en el contenedor.
+- Extracción web de un PDF real de 19 páginas: 126 candidatos genéricos. **Pueden mezclar secciones; son borradores, no 126 conocimientos validados.** El banco estadístico de 700 procede del cotejo específico y no incorpora esos candidatos del test.
+- Chromium, 390 y 1440 px: cola de 291 entradas, incertidumbre visible, conflicto no marcado como respuesta correcta y tres niveles de análisis; sin desbordamiento horizontal ni errores JavaScript. Safari/iPhone físico y certificado público del alojamiento pendientes de despliegue autorizado.
+
+Las pruebas mutantes se ejecutaron sobre copias aisladas, no sobre la base personal. Los resultados detallados están en `data/research/quality-audit-700/` del paquete privado. No se ha desplegado un servicio ni contratado un plan.

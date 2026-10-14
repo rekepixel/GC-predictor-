@@ -1,0 +1,15 @@
+services:
+  gc-predictor:
+    build:
+      context: ..
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      PRIVATE_APP_PASSWORD: ${PRIVATE_APP_PASSWORD:?Configura la contraseña}
+      SESSION_SECRET: ${SESSION_SECRET:?Configura un secreto de al menos 32 caracteres}
+      SQLITE_PATH: /app/.local/gc-predictor.sqlite
+    volumes:
+      - gc-data:/app/.local
+    restart: unless-stopped
+volumes:
+  gc-data:
