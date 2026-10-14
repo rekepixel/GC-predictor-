@@ -304,7 +304,8 @@ export async function applyVerifiedBank(db: DB) {
         if (
           previous &&
           (previous.validation === "validated" ||
-            previous.classificationMethod === "manual-reviewed")
+            previous.classificationMethod === "manual-reviewed" ||
+            previous.classificationMethod === "curated-cross-year")
         )
           continue;
         const canonicalId = ids.get(`A-${pair.a}`)!;

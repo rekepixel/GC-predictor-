@@ -1,0 +1,92 @@
+[
+  {
+    "id": "2023-asp-key28",
+    "url": "https://www.aspirantes.es/wp-content/uploads/2023/10/Plantillas_Actualizado31oct-EXAMEN-28-DE-OCTUBRE.pdf",
+    "finalUrl": "https://www.aspirantes.es/wp-content/uploads/2023/10/Plantillas_Actualizado31oct-EXAMEN-28-DE-OCTUBRE.pdf",
+    "status": 200,
+    "bytes": 2285465,
+    "path": ".local/history-research/2023-asp-key28.pdf",
+    "sha256": "4b9ed97dfb3e5bb4c91f12d7d98f654aa56f93b4cafbf79b4d69ebea1d60bb2c"
+  },
+  {
+    "id": "2023-asp-key29",
+    "url": "https://www.aspirantes.es/wp-content/uploads/2023/10/Plantillas_dxa_29OCT2023.pdf",
+    "finalUrl": "https://www.aspirantes.es/wp-content/uploads/2023/10/Plantillas_dxa_29OCT2023.pdf",
+    "status": 200,
+    "bytes": 2457834,
+    "path": ".local/history-research/2023-asp-key29.pdf",
+    "sha256": "965e9da17e543161e20b305a764515cc9f7533b3c9431fc53b0fd83b23851194"
+  },
+  {
+    "id": "2023-polaris-1A",
+    "url": "https://www.polarisoposiciones.es/examenes-convocatorias-anteriores/guardia-civil/2023-ejercicio-1a.pdf",
+    "finalUrl": "https://www.polarisoposiciones.es/examenes-convocatorias-anteriores/guardia-civil/2023-ejercicio-1a.pdf",
+    "status": 200,
+    "bytes": 449566,
+    "path": ".local/history-research/2023-polaris-1A.pdf",
+    "sha256": "cc4c48730eaf558ffd5b633edd287c4f0e4190bbed5ec04143a0c863aad39d68"
+  },
+  {
+    "id": "2023-polaris-1B",
+    "url": "https://www.polarisoposiciones.es/examenes-convocatorias-anteriores/guardia-civil/2023-ejercicio-1b.pdf",
+    "finalUrl": "https://www.polarisoposiciones.es/examenes-convocatorias-anteriores/guardia-civil/2023-ejercicio-1b.pdf",
+    "status": 200,
+    "bytes": 450165,
+    "path": ".local/history-research/2023-polaris-1B.pdf",
+    "sha256": "2dc6bc2a05eece3f473207a41aacf90ac19730b3824060f09dd16a1e55d5d54e"
+  },
+  {
+    "id": "2023-polaris-2A",
+    "url": "https://www.polarisoposiciones.es/examenes-convocatorias-anteriores/guardia-civil/2023-ejercicio-2a.pdf",
+    "finalUrl": "https://www.polarisoposiciones.es/examenes-convocatorias-anteriores/guardia-civil/2023-ejercicio-2a.pdf",
+    "status": 200,
+    "bytes": 454099,
+    "path": ".local/history-research/2023-polaris-2A.pdf",
+    "sha256": "8293caa56388645917d1c620ec7ecf62e654e949ae7935c797a8a1e60da7fb47"
+  },
+  {
+    "id": "2023-polaris-2B",
+    "url": "https://www.polarisoposiciones.es/examenes-convocatorias-anteriores/guardia-civil/2023-ejercicio-2b.pdf",
+    "finalUrl": "https://www.polarisoposiciones.es/examenes-convocatorias-anteriores/guardia-civil/2023-ejercicio-2b.pdf",
+    "status": 200,
+    "bytes": 454330,
+    "path": ".local/history-research/2023-polaris-2B.pdf",
+    "sha256": "e69ccdaa49f8732c0b380f49ef3852fbf3dabe48f06bf5fe4e7eb78b300373e7"
+  },
+  {
+    "id": "2023-polaris-key1",
+    "url": "https://www.polarisoposiciones.es/examenes-convocatorias-anteriores/guardia-civil/2023-plantilla-ejercicio-1.pdf",
+    "finalUrl": "https://www.polarisoposiciones.es/examenes-convocatorias-anteriores/guardia-civil/2023-plantilla-ejercicio-1.pdf",
+    "status": 200,
+    "bytes": 2457834,
+    "path": ".local/history-research/2023-polaris-key1.pdf",
+    "sha256": "965e9da17e543161e20b305a764515cc9f7533b3c9431fc53b0fd83b23851194"
+  },
+  {
+    "id": "2023-polaris-key2",
+    "url": "https://www.polarisoposiciones.es/examenes-convocatorias-anteriores/guardia-civil/2023-plantilla-ejercicio-2.pdf",
+    "finalUrl": "https://www.polarisoposiciones.es/examenes-convocatorias-anteriores/guardia-civil/2023-plantilla-ejercicio-2.pdf",
+    "status": 200,
+    "bytes": 2285465,
+    "path": ".local/history-research/2023-polaris-key2.pdf",
+    "sha256": "4b9ed97dfb3e5bb4c91f12d7d98f654aa56f93b4cafbf79b4d69ebea1d60bb2c"
+  },
+  {
+    "id": "2025-vm-A",
+    "url": "https://vmoposiciones.com/wp-content/uploads/2026/08/examen-guardia-civil-2025-tipo-a-vm-oposiciones.pdf",
+    "finalUrl": "https://vmoposiciones.com/wp-content/uploads/2026/08/examen-guardia-civil-2025-tipo-a-vm-oposiciones.pdf",
+    "status": 200,
+    "bytes": 536976,
+    "path": ".local/history-research/2025-vm-A.pdf",
+    "sha256": "c3b7cb6290a93a3df58c5f507e67cfaed93a3a3a24029befc099be377a10ad47"
+  },
+  {
+    "id": "2025-vm-B",
+    "url": "https://vmoposiciones.com/wp-content/uploads/2026/08/examen-guardia-civil-2025-tipo-b-vm-oposiciones.pdf",
+    "finalUrl": "https://vmoposiciones.com/wp-content/uploads/2026/08/examen-guardia-civil-2025-tipo-b-vm-oposiciones.pdf",
+    "status": 200,
+    "bytes": 545803,
+    "path": ".local/history-research/2025-vm-B.pdf",
+    "sha256": "7d53364619fd17f4c51316a4305b1518143492479d4f93d458e8c10ec1f6b6a1"
+  }
+]

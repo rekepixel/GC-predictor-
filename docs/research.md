@@ -2,7 +2,7 @@
 
 Fecha de consulta: **14 de octubre de 2026 (UTC)**. El detalle reproducible de cada URL, acceso, procedencia, fecha y SHA-256 está en [`data/source-catalog.json`](../data/source-catalog.json). Esta investigación describe documentos; **descargar un PDF no equivale a importar ni validar un examen**.
 
-**Actualización:** el nuevo cotejo y las descargas secundarias se documentan al final y en [validación de 2026](validation-2026.md). La tabla inicial se conserva como registro de la primera recopilación.
+**Actualización vigente:** [base histórica 2023–2026](history-2023-2026.md), con seis sesiones y fuentes corroboradas. Los apartados iniciales se conservan como registro fechado de las fases anteriores; sus carencias se revisan en el informe nuevo.
 
 ## Dónde publica la Guardia Civil
 
@@ -92,3 +92,9 @@ Las 16 rutas primarias anteriores consultadas volvieron a responder 404. Se han 
 Las copias de 2024 no prueban qué sesiones se celebraron o repitieron; sus nombres no establecen fechas acreditadas. Ninguna pregunta secundaria entra en el análisis. Seguimiento HTTP y huellas: `data/research/2023-2025-follow-up.json`.
 
 El nuevo banco contiene 210 ocurrencias cotejadas (105 parejas): 100 ordinarias únicas y 5 reservas únicas. Mantiene firmeza no acreditada; habilita sólo frecuencias descriptivas y conserva la exigencia definitiva para retrospectiva y simulacros. Informe del protocolo, referencias BOE históricas y discrepancias en [validación de 2026](validation-2026.md).
+
+## Ampliación histórica 2023–2026
+
+Se repitieron las rutas oficiales y se inspeccionaron fuentes complementarias, sin eludir bloqueos. Se incorporaron copias corroboradas de seis cuadernillos A/B distintos de 2023–2025, con sus claves transcritas visualmente y cruce íntegro. La procedencia sigue siendo secundaria. Se descargó el comunicado oficial de suspensión del 29/09/2024 y se resolvió la atribución de dos ejercicios distintos al 28/09, incluido aula 21 de Baeza. Los ejercicios 2 y 1 de 2023 corresponden respectivamente al 28/10 y 29/10 según sus claves, frente a etiquetas secundarias inconsistentes.
+
+La resolución final de 2026 se registra con resultados cerrados, sin inferir un acuerdo por pregunta. No se redistribuye el listado personal. Nuevas descargas, intentos, pruebas visuales y SHA están en [data/research/history](../data/research/history/); las evidencias reconstruibles, en [data/verified/history](../data/verified/history/). El catálogo reúne ahora 69 fuentes y 45 PDF retenidos, con 24 oficiales y 21 secundarios. Véase el informe vigente para recuentos, limitaciones y URLs.

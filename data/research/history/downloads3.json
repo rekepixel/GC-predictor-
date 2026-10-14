@@ -1,0 +1,129 @@
+[
+  {
+    "id": "2023-key28-primary",
+    "url": "https://www.guardiacivil.es/documentos/pdfs/2023/IngresoGC2023/Plantillas_dxa_28OCT2023_Actualizado31oct.pdf",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "id": "2023-key29-primary",
+    "url": "https://www.guardiacivil.es/documentos/pdfs/2023/IngresoGC2023/Plantillas_dxa_29OCT2023.pdf",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "id": "2023-1A",
+    "url": "https://www.aspirantes.es/wp-content/uploads/2023/11/INGRESO_GC_2023_1A.pdf",
+    "finalUrl": "https://www.aspirantes.es/wp-content/uploads/2023/11/INGRESO_GC_2023_1A.pdf",
+    "status": 200,
+    "bytes": 449566,
+    "path": ".local/history-research/2023-1A.pdf",
+    "sha256": "cc4c48730eaf558ffd5b633edd287c4f0e4190bbed5ec04143a0c863aad39d68"
+  },
+  {
+    "id": "2023-1B",
+    "url": "https://www.aspirantes.es/wp-content/uploads/2023/11/INGRESO_GC_2023_1B.pdf",
+    "finalUrl": "https://www.aspirantes.es/wp-content/uploads/2023/11/INGRESO_GC_2023_1B.pdf",
+    "status": 200,
+    "bytes": 450165,
+    "path": ".local/history-research/2023-1B.pdf",
+    "sha256": "2dc6bc2a05eece3f473207a41aacf90ac19730b3824060f09dd16a1e55d5d54e"
+  },
+  {
+    "id": "2023-2A",
+    "url": "https://www.aspirantes.es/wp-content/uploads/2023/11/INGRESO_GC_2023_2A.pdf",
+    "finalUrl": "https://www.aspirantes.es/wp-content/uploads/2023/11/INGRESO_GC_2023_2A.pdf",
+    "status": 200,
+    "bytes": 454099,
+    "path": ".local/history-research/2023-2A.pdf",
+    "sha256": "8293caa56388645917d1c620ec7ecf62e654e949ae7935c797a8a1e60da7fb47"
+  },
+  {
+    "id": "2023-2B",
+    "url": "https://www.aspirantes.es/wp-content/uploads/2023/11/INGRESO_GC_2023_2B.pdf",
+    "finalUrl": "https://www.aspirantes.es/wp-content/uploads/2023/11/INGRESO_GC_2023_2B.pdf",
+    "status": 200,
+    "bytes": 454330,
+    "path": ".local/history-research/2023-2B.pdf",
+    "sha256": "e69ccdaa49f8732c0b380f49ef3852fbf3dabe48f06bf5fe4e7eb78b300373e7"
+  },
+  {
+    "id": "2024-method-1A",
+    "url": "https://metodogc.com/wp-content/uploads/2024/12/INGRESO_GC_2024_1A.pdf",
+    "finalUrl": "https://metodogc.com/wp-content/uploads/2024/12/INGRESO_GC_2024_1A.pdf",
+    "status": 200,
+    "bytes": 656786,
+    "path": ".local/history-research/2024-method-1A.pdf",
+    "sha256": "18fb2b2c910e640f56d9874d3f6dcc92273deb049f64a3c207873843cb59d270"
+  },
+  {
+    "id": "2024-method-1B",
+    "url": "https://metodogc.com/wp-content/uploads/2024/12/INGRESO_GC_2024_1B.pdf",
+    "finalUrl": "https://metodogc.com/wp-content/uploads/2024/12/INGRESO_GC_2024_1B.pdf",
+    "status": 200,
+    "bytes": 656080,
+    "path": ".local/history-research/2024-method-1B.pdf",
+    "sha256": "a27e92be6f6ffd12b494c8934c3201d5ce012695c05c9cd474f92eef4700df1b"
+  },
+  {
+    "id": "2024-method-2A",
+    "url": "https://metodogc.com/wp-content/uploads/2024/12/INGRESO_GC_2024_2A.pdf",
+    "finalUrl": "https://metodogc.com/wp-content/uploads/2024/12/INGRESO_GC_2024_2A.pdf",
+    "status": 200,
+    "bytes": 552334,
+    "path": ".local/history-research/2024-method-2A.pdf",
+    "sha256": "c38db56ef8f91dac7be1eb3a2b891c7fea3f1e4bdda9425f058fd4a589d4d0a9"
+  },
+  {
+    "id": "2024-method-2B",
+    "url": "https://metodogc.com/wp-content/uploads/2024/12/INGRESO_GC_2024_2B.pdf",
+    "finalUrl": "https://metodogc.com/wp-content/uploads/2024/12/INGRESO_GC_2024_2B.pdf",
+    "status": 200,
+    "bytes": 552510,
+    "path": ".local/history-research/2024-method-2B.pdf",
+    "sha256": "c8cfb4c69f793e5b75749ea4e3bbfe9cdf4d034c25f42ba762ed0e049d9e77d0"
+  },
+  {
+    "id": "2024-method-3A",
+    "url": "https://metodogc.com/wp-content/uploads/2024/12/INGRESO_GC_2024_3A.pdf",
+    "finalUrl": "https://metodogc.com/wp-content/uploads/2024/12/INGRESO_GC_2024_3A.pdf",
+    "status": 200,
+    "bytes": 531198,
+    "path": ".local/history-research/2024-method-3A.pdf",
+    "sha256": "b3260365c0a78554e7d294b4a30da2b7303a85512db86c7149833c54c13dc0fe"
+  },
+  {
+    "id": "2024-method-3B",
+    "url": "https://metodogc.com/wp-content/uploads/2024/12/INGRESO_GC_2024_3B.pdf",
+    "finalUrl": "https://metodogc.com/wp-content/uploads/2024/12/INGRESO_GC_2024_3B.pdf",
+    "status": 200,
+    "bytes": 466867,
+    "path": ".local/history-research/2024-method-3B.pdf",
+    "sha256": "b9ed6ee271fe1f34c66dcefe0124dae06d0cd59eef32cb91c21e6496fd55f3a0"
+  },
+  {
+    "id": "2024-method-key-28_09_24",
+    "url": "https://metodogc.com/wp-content/uploads/2024/12/Plantillas_ingreso_GC_28_09_24.pdf",
+    "finalUrl": "https://metodogc.com/wp-content/uploads/2024/12/Plantillas_ingreso_GC_28_09_24.pdf",
+    "status": 200,
+    "bytes": 2591687,
+    "path": ".local/history-research/2024-method-key-28_09_24.pdf",
+    "sha256": "ea6c22fa4f4906efdaf270736ed7e5654dfc84e4fdd37616968f51f12bc78ce9"
+  },
+  {
+    "id": "2024-method-key-13_10_24",
+    "url": "https://metodogc.com/wp-content/uploads/2024/12/Plantillas_ingreso_GC_13_10_24.pdf",
+    "finalUrl": "https://metodogc.com/wp-content/uploads/2024/12/Plantillas_ingreso_GC_13_10_24.pdf",
+    "status": 200,
+    "bytes": 1526578,
+    "path": ".local/history-research/2024-method-key-13_10_24.pdf",
+    "sha256": "9551570af8cdd7acf2d5bb677d554840272fb6f059ec180b06a7f8dcc7330b5d"
+  },
+  {
+    "id": "2025-mad-key",
+    "url": "https://mad.es/blog/wp-content/uploads/2025/09/Plantillas-Resultados-Ingreso-2025.pdf",
+    "finalUrl": "https://mad.es/blog/wp-content/uploads/2025/09/Plantillas-Resultados-Ingreso-2025.pdf",
+    "status": 200,
+    "bytes": 916188,
+    "path": ".local/history-research/2025-mad-key.pdf",
+    "sha256": "60da7b36d8a18ea449186f1a9e27fe6b6600827d4475bef5ecb50f6cbdca4289"
+  }
+]

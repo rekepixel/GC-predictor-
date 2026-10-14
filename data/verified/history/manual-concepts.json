@@ -1,0 +1,620 @@
+{
+  "2023-1A-10": {
+    "concept": "Discriminación indirecta por razón de sexo",
+    "lawId": "BOE-A-2007-6115",
+    "article": "6",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-6115&p=20070323&tn=1#a6",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2023-1A-10"
+  },
+  "2023-1A-43": {
+    "concept": "Responsabilidad civil derivada del delito",
+    "lawId": "BOE-A-1995-25444",
+    "article": "116",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444&p=20150331&tn=1#a116",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2023-1A-43"
+  },
+  "2023-1A-45": {
+    "concept": "Prescripción de medidas de seguridad",
+    "lawId": "BOE-A-1995-25444",
+    "article": "135",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444&p=19951124&tn=1#a135",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2023-1A-45"
+  },
+  "2023-1A-62": {
+    "concept": "Remisión por incompetencia de órganos administrativos",
+    "lawId": "BOE-A-2015-10566",
+    "article": "14",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-10566&p=20151002&tn=1#a14",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2023-1A-62"
+  },
+  "2023-1A-63": {
+    "concept": "Causas de abstención de autoridades y personal",
+    "lawId": "BOE-A-2015-10566",
+    "article": "23",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-10566&p=20151002&tn=1#a23",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2023-1A-63"
+  },
+  "2023-1A-65": {
+    "concept": "Potestades de investigación de la autoridad de protección de datos",
+    "lawId": "BOE-A-2018-16673",
+    "article": "51",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673&p=20181206&tn=1#a5-3",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2023-1A-65"
+  },
+  "2023-1A-73": {
+    "concept": "Guardas rurales y sus especialidades",
+    "lawId": "BOE-A-2014-3649",
+    "article": "34",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2014-3649&p=20140405&tn=1#a34",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2023-1A-73"
+  },
+  "2023-1A-77": {
+    "concept": "Disposiciones estatutarias comunes de las Fuerzas y Cuerpos de Seguridad",
+    "lawId": "BOE-A-1986-6859",
+    "article": "6",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1986-6859&p=19860314&tn=1#asexto",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2023-1A-77"
+  },
+  "2023-1A-86": {
+    "concept": "Objetivos y principios de la legislación de telecomunicaciones",
+    "lawId": "BOE-A-2022-10757",
+    "article": "3",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2022-10757&p=20220629&tn=1#a3",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2023-1A-86"
+  },
+  "2023-1A-93": {
+    "concept": "Derechos de menores internados",
+    "lawId": "BOE-A-2000-641",
+    "article": "56",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2000-641&p=20000113&tn=1#a56",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2023-1A-93"
+  },
+  "2023-1A-95": {
+    "concept": "Acreditación de situaciones de violencia de género",
+    "lawId": "BOE-A-2004-21760",
+    "article": "23",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2004-21760&p=20220907&tn=1#a23",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2023-1A-95"
+  },
+  "2023-1A-96": {
+    "concept": "Clasificación de armas de tercera categoría",
+    "lawId": "BOE-A-1993-6202",
+    "article": "3",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1993-6202&p=20200805&tn=1#a3",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2023-1A-96"
+  },
+  "2023-2A-13": {
+    "concept": "Igualdad en la responsabilidad social de las empresas",
+    "lawId": "BOE-A-2007-6115",
+    "article": "73",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-6115&p=20070323&tn=1#a73",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2023-2A-13"
+  },
+  "2023-2A-21": {
+    "concept": "Gobierno del Poder Judicial",
+    "lawId": "BOE-A-1978-31229",
+    "article": "122",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229&p=19781229&tn=1#a122",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2023-2A-21"
+  },
+  "2023-2A-25": {
+    "concept": "Tutela frente a intromisiones ilegítimas en el honor",
+    "lawId": "BOE-A-1982-11196",
+    "article": "9",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1982-11196&p=20100623&tn=1#anoveno",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2023-2A-25"
+  },
+  "2023-2A-39": {
+    "concept": "Nacimiento de la personalidad civil",
+    "lawId": "BOE-A-1889-4763",
+    "article": "30",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1889-4763&p=20110722&tn=1#art30",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2023-2A-39"
+  },
+  "2023-2A-55": {
+    "concept": "Entrada y registro en domicilio: presencia del interesado",
+    "lawId": "BOE-A-1882-6036",
+    "article": "569",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1882-6036&p=19970601&tn=1#a569",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2023-2A-55"
+  },
+  "2023-2A-64": {
+    "concept": "Constitución y funcionamiento de órganos colegiados",
+    "lawId": "BOE-A-2015-10566",
+    "article": "17",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-10566&p=20151002&tn=1#a17",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2023-2A-64"
+  },
+  "2023-2A-72": {
+    "concept": "Reglas generales de responsabilidad en infracciones de seguridad ciudadana",
+    "lawId": "BOE-A-2015-3442",
+    "article": "31",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-3442&p=20150331&tn=1#a31",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2023-2A-72"
+  },
+  "2023-2A-97": {
+    "concept": "Autorizaciones de armas de personal diplomático y asimilado",
+    "lawId": "BOE-A-1993-6202",
+    "article": "7",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1993-6202&p=20110709&tn=1#a7",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2023-2A-97"
+  },
+  "2024-1A-13": {
+    "concept": "Definición de acoso sexual",
+    "lawId": "BOE-A-2007-6115",
+    "article": "7",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-6115&p=20070323&tn=1#a7",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-1A-13"
+  },
+  "2024-1A-19": {
+    "concept": "Funciones constitucionales del Rey",
+    "lawId": "BOE-A-1978-31229",
+    "article": "62",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229&p=19781229&tn=1#a62",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-1A-19"
+  },
+  "2024-1A-52": {
+    "concept": "Medidas de protección de víctimas durante la investigación",
+    "lawId": "BOE-A-2015-4606",
+    "article": "25",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-4606&p=20220907&tn=1#a25",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-1A-52"
+  },
+  "2024-1A-54": {
+    "concept": "Cómputo de plazos administrativos",
+    "lawId": "BOE-A-2015-10565",
+    "article": "30",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-10565&p=20151002&tn=1#a30",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-1A-54"
+  },
+  "2024-1A-61": {
+    "concept": "Residencia temporal de extranjeros",
+    "lawId": "BOE-A-2000-544",
+    "article": "31",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2000-544&p=20091212&tn=1#a31",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-1A-61"
+  },
+  "2024-1A-66": {
+    "concept": "Excepciones al derecho a obtener pasaporte",
+    "lawId": "BOE-A-2015-3442",
+    "article": "11",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-3442&p=20150331&tn=1#a11",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-1A-66"
+  },
+  "2024-1A-78": {
+    "concept": "Residencia y domicilio de los miembros de la Guardia Civil",
+    "lawId": "BOE-A-2007-18391",
+    "article": "21",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-18391&p=20071023&tn=1#a21",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-1A-78"
+  },
+  "2024-1A-79": {
+    "concept": "Asociaciones profesionales de guardias civiles",
+    "lawId": "BOE-A-2007-18391",
+    "article": "39",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-18391&p=20071023&tn=1#a39",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-1A-79"
+  },
+  "2024-1A-92": {
+    "concept": "Observatorio Estatal de Violencia sobre la Mujer",
+    "lawId": "BOE-A-2004-21760",
+    "article": "30",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2004-21760&p=20041229&tn=1#a30",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-1A-92"
+  },
+  "2024-1A-96": {
+    "concept": "Requisitos de campos de tiro eventuales",
+    "lawId": "BOE-A-1993-6202",
+    "article": "152",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1993-6202&p=19930305&tn=1#a152",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-1A-96"
+  },
+  "2024-1A-98": {
+    "concept": "Clasificación y características de polvorines de explosivos",
+    "lawId": "BOE-A-2017-2313",
+    "article": "59",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2017-2313&p=20170304&tn=1#a5-11",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-1A-98"
+  },
+  "2024-2A-18": {
+    "concept": "Alegación judicial de principios rectores sociales y económicos",
+    "lawId": "BOE-A-1978-31229",
+    "article": "53",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229&p=19781229&tn=1#a53",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-2A-18"
+  },
+  "2024-2A-21": {
+    "concept": "Efectos constitucionales de la moción de censura",
+    "lawId": "BOE-A-1978-31229",
+    "article": "114",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229&p=19781229&tn=1#a114",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-2A-21"
+  },
+  "2024-2A-34": {
+    "concept": "Requisitos de la adopción",
+    "lawId": "BOE-A-1889-4763",
+    "article": "175",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1889-4763&p=20150729&tn=1#art175",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-2A-34"
+  },
+  "2024-2A-43": {
+    "concept": "Obligaciones y responsabilidad del denunciante de un delito",
+    "lawId": "BOE-A-1882-6036",
+    "article": "264",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1882-6036&p=19970601&tn=1#a264",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-2A-43"
+  },
+  "2024-2A-47": {
+    "concept": "Competencia penal de la Audiencia Nacional",
+    "lawId": "BOE-A-1985-12666",
+    "article": "65",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-12666&p=20221223&tn=1#asesentaycinco",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-2A-47"
+  },
+  "2024-2A-49": {
+    "concept": "Nombramiento y mandato de los jueces de paz",
+    "lawId": "BOE-A-1985-12666",
+    "article": "101",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-12666&p=19850702&tn=1#acientouno",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-2A-49"
+  },
+  "2024-2A-54": {
+    "concept": "Tramitación administrativa de urgencia",
+    "lawId": "BOE-A-2015-10565",
+    "article": "33",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-10565&p=20151002&tn=1#a33",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-2A-54"
+  },
+  "2024-2A-73": {
+    "concept": "Definición y regulación de especialidades de la Guardia Civil",
+    "lawId": "BOE-A-2014-12408",
+    "article": "23",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2014-12408&p=20141129&tn=1#a23",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-2A-73"
+  },
+  "2024-2A-84": {
+    "concept": "Obligaciones de prestadores de servicios electrónicos de confianza",
+    "lawId": "BOE-A-2020-14046",
+    "article": "9",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2020-14046&p=20201112&tn=1#a9",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-2A-84"
+  },
+  "2024-2A-95": {
+    "concept": "Tarjetas de armas",
+    "lawId": "BOE-A-1993-6202",
+    "article": "105",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1993-6202&p=19930305&tn=1#a105",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-2A-95"
+  },
+  "2024-3A-12": {
+    "concept": "Consejo Asesor del Mecanismo Nacional de Prevención de la Tortura",
+    "lawId": "BOE-A-1983-10613",
+    "article": "20",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1983-10613&p=20120301&tn=1#art20",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-3A-12"
+  },
+  "2024-3A-25": {
+    "concept": "Tutela frente a intromisiones ilegítimas en el honor",
+    "lawId": "BOE-A-1982-11196",
+    "article": "9",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1982-11196&p=20100623&tn=1#anoveno",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-3A-25"
+  },
+  "2024-3A-35": {
+    "concept": "Validez del matrimonio ante autoridad incompetente",
+    "lawId": "BOE-A-1889-4763",
+    "article": "53",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1889-4763&p=20150703&tn=1#art53",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-3A-35"
+  },
+  "2024-3A-50": {
+    "concept": "Funciones de las Unidades de Policía Judicial",
+    "lawId": "BOE-A-1985-12666",
+    "article": "549",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-12666&p=20031226&tn=1#aquinientoscuarentaynueve",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-3A-50"
+  },
+  "2024-3A-65": {
+    "concept": "Servicios privados de videovigilancia",
+    "lawId": "BOE-A-2014-3649",
+    "article": "42",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2014-3649&p=20140405&tn=1#a42",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-3A-65"
+  },
+  "2024-3A-66": {
+    "concept": "Servicios de investigación de detectives privados",
+    "lawId": "BOE-A-2014-3649",
+    "article": "48",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2014-3649&p=20140405&tn=1#a48",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-3A-66"
+  },
+  "2024-3A-98": {
+    "concept": "Paradas del transporte de explosivos por carretera",
+    "lawId": "BOE-A-2017-2313",
+    "article": "156",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2017-2313&p=20170304&tn=1#a1-68",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-3A-98"
+  },
+  "2024-3A-100": {
+    "concept": "No concurrencia de sanciones de contrabando",
+    "lawId": "BOE-A-1995-26836",
+    "article": "14 bis",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1995-26836&p=20150922&tn=1#a14bis",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2024-3A-100"
+  },
+  "2025-A-13": {
+    "concept": "Consejo Asesor del Mecanismo Nacional de Prevención de la Tortura",
+    "lawId": "BOE-A-1983-10613",
+    "article": "19",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1983-10613&p=20120301&tn=1#art19",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2025-A-13"
+  },
+  "2025-A-36": {
+    "concept": "Contenido de la obligación de alimentos entre parientes",
+    "lawId": "BOE-A-1889-4763",
+    "article": "142",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1889-4763&p=19810519&tn=1#art142",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2025-A-36"
+  },
+  "2025-A-37": {
+    "concept": "Modalidades de acogimiento familiar",
+    "lawId": "BOE-A-1889-4763",
+    "article": "173 bis",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1889-4763&p=20150729&tn=1#art173bis",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2025-A-37"
+  },
+  "2025-A-40": {
+    "concept": "Error sobre hechos y sobre la ilicitud penal",
+    "lawId": "BOE-A-1995-25444",
+    "article": "14",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444&p=19951124&tn=1#a14",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2025-A-40"
+  },
+  "2025-A-46": {
+    "concept": "Identidad supuesta y autorización del agente encubierto",
+    "lawId": "BOE-A-1882-6036",
+    "article": "282 bis",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1882-6036&p=20151006&tn=1#a282bis",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2025-A-46"
+  },
+  "2025-A-55": {
+    "concept": "Plazo extraordinario de revisión por error de hecho",
+    "lawId": "BOE-A-2015-10565",
+    "article": "125",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-10565&p=20151002&tn=1#a125",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2025-A-55"
+  },
+  "2025-A-57": {
+    "concept": "Encomienda de gestión administrativa",
+    "lawId": "BOE-A-2015-10566",
+    "article": "11",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-10566&p=20151002&tn=1#a11",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2025-A-57"
+  },
+  "2025-A-58": {
+    "concept": "Causas de abstención de autoridades y personal",
+    "lawId": "BOE-A-2015-10566",
+    "article": "23",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-10566&p=20151002&tn=1#a23",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2025-A-58"
+  },
+  "2025-A-79": {
+    "concept": "Concepto de vulnerabilidad en protección civil",
+    "lawId": "BOE-A-2015-7730",
+    "article": "2",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-7730&p=20150710&tn=1#a2",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2025-A-79"
+  },
+  "2025-A-96": {
+    "concept": "Paradas del transporte de explosivos por carretera",
+    "lawId": "BOE-A-2017-2313",
+    "article": "156",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2017-2313&p=20170304&tn=1#a1-68",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2025-A-96"
+  },
+  "2025-A-98": {
+    "concept": "Competencia para cerrar establecimientos por contrabando de tabaco",
+    "lawId": "BOE-A-1998-21017",
+    "article": "16",
+    "paragraph": null,
+    "legalUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1998-21017&p=19980907&tn=1#a1-8",
+    "legalVerified": true,
+    "legalEvidenceId": "history-ref-2025-A-98"
+  },
+  "2024-3A-78": {
+    "concept": "Presentación y tramitación de quejas en la Guardia Civil"
+  },
+  "2025-A-78": {
+    "concept": "Presentación y tramitación de quejas en la Guardia Civil"
+  },
+  "2026-A-76": {
+    "concept": "Presentación y tramitación de quejas en la Guardia Civil"
+  },
+  "2023-2A-93": {
+    "concept": "Presupuestos de internamiento cautelar de menores"
+  },
+  "2024-3A-92": {
+    "concept": "Presupuestos de internamiento cautelar de menores"
+  },
+  "2023-1A-41": {
+    "concept": "Clasificación de las penas por gravedad y duración"
+  },
+  "2023-2A-43": {
+    "concept": "Clasificación de las penas por gravedad y duración"
+  },
+  "2026-A-40": {
+    "concept": "Clasificación de las penas por gravedad y duración"
+  },
+  "2023-1A-31": {
+    "concept": "Secretaría General de las Naciones Unidas: titular y orden sucesorio"
+  },
+  "2026-A-28": {
+    "concept": "Secretaría General de las Naciones Unidas: titular y orden sucesorio"
+  },
+  "2026-A-12": {
+    "concept": "Consejo Asesor del Mecanismo Nacional de Prevención de la Tortura"
+  },
+  "2026-A-91": {
+    "concept": "Acreditación de situaciones de violencia de género"
+  },
+  "2023-1A-25": {
+    "concept": "Tutela frente a intromisiones ilegítimas en el honor"
+  },
+  "2026-A-23": {
+    "concept": "Tutela frente a intromisiones ilegítimas en el honor"
+  },
+  "2026-A-49": {
+    "concept": "Competencia penal de la Audiencia Nacional"
+  },
+  "2023-1A-102": {
+    "concept": "Observatorio Estatal de Violencia sobre la Mujer"
+  },
+  "2023-2A-103": {
+    "concept": "Observatorio Estatal de Violencia sobre la Mujer"
+  },
+  "2025-A-91": {
+    "concept": "Observatorio Estatal de Violencia sobre la Mujer"
+  },
+  "2025-A-92": {
+    "concept": "Observatorio Estatal de Violencia sobre la Mujer"
+  },
+  "2023-1A-9": {
+    "concept": "Autoridades competentes para cooperar con la Corte Penal Internacional"
+  },
+  "2026-A-11": {
+    "concept": "Autoridades competentes para cooperar con la Corte Penal Internacional"
+  },
+  "2023-1A-88": {
+    "concept": "Conversión de ángulos centesimales a radianes"
+  },
+  "2023-1A-35": {
+    "concept": "Misiones críticas del Fondo Monetario Internacional"
+  },
+  "2023-2A-36": {
+    "concept": "Instrumentos del FMI para la estabilidad financiera"
+  },
+  "2024-1A-31": {
+    "concept": "Fuentes de financiación del Fondo Monetario Internacional"
+  },
+  "2025-A-90": {
+    "concept": "Duración del internamiento cautelar de menores"
+  }
+}

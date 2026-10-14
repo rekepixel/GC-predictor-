@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-14T15:13:58.615632+00:00",
+  "sourceId": "results-2026-final-24-july",
+  "url": "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/IngresoGC_2026/PUBLICACION-RESOLUCION-RESULTADOS-DEFINITIVOS-PRUEBAS-ESCRITAS.pdf",
+  "sha256": "4760b3a61275f373991f4fcbb99723835077542a46b27aac274b92bb58ef8397",
+  "bytes": 86046671,
+  "pages": 231,
+  "inspectedPages": [
+    1
+  ],
+  "retention": "No se distribuye el listado de aspirantes ni su primera página con identificadores personales. Se retienen huella, URL y conclusión de la parte resolutiva.",
+  "resultsFinalized": true,
+  "resultsDecisionDate": "2026-07-24",
+  "questionSpecificAnswersEstablished": false,
+  "annulmentsByQuestion": "not_established",
+  "evidenceFacts": [
+    "La resolución corresponde a la convocatoria 160/38243/2026 y a las pruebas del 11/07/2026.",
+    "Declara resueltas las revisiones de calificaciones y realizadas las modificaciones de resultados.",
+    "Su acuerdo primero publica resultados definitivos por aspirante; no enumera respuestas corregidas ni preguntas anuladas.",
+    "La página oficial sigue enlazando PDF nº 2 como corrección expresa de A7/B88.",
+    "No se exige un certificado independiente de firmeza: falta identificar el alcance por pregunta de las modificaciones, no un título documental específico."
+  ],
+  "conclusion": "Resultados de calificación cerrados. Texto y clave oficial nº 2 cotejados. La respuesta definitiva y la situación respecto a anulaciones se mantienen sin acreditación específica por pregunta. Esta limitación no impide las frecuencias descriptivas ni la consulta del banco."
+}

@@ -1,6 +1,6 @@
 # Verificación de GC Predictor
 
-Fecha: 14/10/2026. Entorno Node 24.19.0 y Python 3.12.14.
+Fecha: 14/10/2026. Entorno Node 24.19.0 y Python 3.12.14. El estado vigente de la fase histórica está al final y en [history-2023-2026.md](history-2023-2026.md); las entregas anteriores se conservan como historial.
 
 ## Comprobaciones de la entrega inicial
 
@@ -38,3 +38,18 @@ La conexión GitHub volvió a devolver instalaciones y cuentas vacías. Instrucc
 ## Publicación en GitHub confirmada
 
 El 14/10/2026, después de instalar ChatGPT Codex Connector y conceder acceso al repositorio, el push finalizó correctamente. La rama remota `main` contiene el proyecto y sus documentos; se comprobó su referencia mediante `git ls-remote`. El error 403 anterior queda resuelto. Esto publica el código, no despliega la aplicación web.
+
+## Entrega histórica 2023–2026: controles actuales
+
+- Protocolo real ejecutado con `python/verify_history.py`: 12 cuadernillos digitales, 1.260 ocurrencias, 630 pares A/B incluyendo reservas, cuatro alternativas, dos motores concordantes y claves transcritas visualmente de ambos modelos. No requiere red para reproducirlo. Cotejo de copias entre proveedores conservado sin convertir su origen en oficial.
+- `npm run data:verify`: **45 PDF con SHA-256 correcto**, 24 de procedencia institucional y 21 copias secundarias; la huella no autentica por sí sola el origen.
+- `npm test`: **34 pruebas aprobadas, cero fallos**. Se mantienen las 23 anteriores y se añaden 11 sobre el banco histórico auténtico, con bases temporales. Cubren dos sesiones/tres formas de 2024, exclusión del 29/09, conservación de la errata impresa de 2025 y corrección visual de espacio de extracción de 2024, biyección A/B, reservas, dos repeticiones literales, conceptos, versiones BOE anteriores, alteración de corroboración, idempotencia y corte temporal. Los fixtures sintéticos no se mezclan con datos reales.
+- `npm run typecheck` y `npm run build`: correctos; rutas, API y login compilan en producción.
+- Navegación Chromium/Playwright sobre desarrollo: dashboard con 700 ordinarias; explorador 2024 con 300; artículo 9 LO 1/1982 con tres apariciones y fuentes A/B; apertura de los dos grupos literales y sus preguntas; doce familias conceptuales; comparación de frecuencias; cambio entre retrospectiva estricta y reconstrucción exploratoria. Sin errores de JavaScript ni desbordamiento a 390 píxeles.
+- Producción compilada con credenciales aleatorias en memoria y SQLite nueva temporal: API y documentos anónimos 401, login 200 y cookie HttpOnly/SameSite Strict, carga automática de **1.470 registros / 700 ordinarias / 0 finales**, 121 fichas, 2 grupos literales y 12 conceptuales. PDF entregado coincide con SHA del catálogo; escritura de origen externo 403; intento de declarar final una pregunta secundaria 400. Corpus personal sin modificaciones. [Resultado agregado](../data/research/history/production-checks.json).
+- Navegador en producción, autenticado y a 390 píxeles: dashboard correcto, sin desbordamiento ni errores JS. No equivale a Safari/iPhone físico.
+- Conservación: **109 rutas previas presentes, 34 PDF previos sin cambios, 840/840 IDs de preguntas anteriores conservados**. Se compararon también todas las fuentes, exámenes, conceptos, programas, temas, cambios legales, trabajos, intentos y auditoría: ningún identificador anterior perdido. La base contiene ahora 2.100 preguntas. Copia transaccional anterior en `.local/backups/historical-2023-2026/before.sqlite`; los ZIP anteriores se conservan.
+
+La retrospectiva estricta sigue sin datos finales/publicación suficientes. La reconstrucción documental obtiene 2 conceptos top 10 en 2025 y 6 en 2026, igual que frecuencia histórica, con cobertura parcial y supuestos explícitos. No se acredita mejora ni calibración. Se preservan 524 conceptos pendientes y 568 preguntas sin referencia concreta cotejada; no se inventan equivalencias. No se han certificado retiradas concretas del temario.
+
+El acceso de escritura a GitHub ya se resolvió en la fase anterior. La nueva fase se prepara como commit adicional, ZIP y Git bundle con nombre nuevo, conservando el estado anterior. Publicar código no despliega la web. PostgreSQL/Supabase, Docker, Safari físico y hosting HTTPS mantienen los límites indicados anteriormente.

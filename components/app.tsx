@@ -52,6 +52,7 @@ type Analysis = {
   ranking: ReturnType<typeof rank>;
   patterns: ReturnType<typeof patterns>;
   backtest: ReturnType<typeof backtest>;
+  reconstruction: ReturnType<typeof backtest>;
 };
 export async function api(path: string, body?: unknown, method = "POST") {
   const response = await fetch(
@@ -119,7 +120,10 @@ export function SourceLink({ source }: { source: Source | undefined }) {
       target="_blank"
       rel="noreferrer"
     >
-      Fuente original <ExternalLink size={13} />
+      {source.origin === "official"
+        ? "Fuente institucional"
+        : "Fuente secundaria"}{" "}
+      <ExternalLink size={13} />
     </a>
   ) : (
     <span className="muted">Fuente manual</span>
@@ -399,8 +403,11 @@ function Dashboard({
         <Info size={18} />
         <span>
           {stats.basisNote} Clave final acreditada: {stats.definitiveQuestions}{" "}
-          preguntas. Una única sesión cotejada no permite comparar tendencias
-          históricas.
+          preguntas. Descarga oficial: {stats.primaryDocumentQuestions}; copias
+          secundarias corroboradas: {stats.corroboratedCopyQuestions}.
+          {stats.years.length < 2
+            ? " Un solo año no permite comparar tendencias históricas."
+            : " Las comparaciones describen el corpus disponible y su cobertura parcial."}
         </span>
       </div>
       <section className="hero">
@@ -698,7 +705,10 @@ export function QuestionCard({
             {q.validation === "validated"
               ? "Definitiva acreditada"
               : q.documentaryEligible
-                ? "Cotejo documental · PDF nº 2"
+                ? q.documentaryVerification?.scope ===
+                  "corroborated_documentary"
+                  ? "Cotejo · copia secundaria corroborada"
+                  : "Cotejo · fuente oficial"
                 : q.validation === "cancelled"
                   ? "Anulada"
                   : q.validation === "reviewed"
@@ -738,6 +748,7 @@ export function QuestionCard({
           <Badge>Confianza de regla {pct(q.confidence)}</Badge>
         )}
         {q.concept && <Badge tone="green">Concepto: {q.concept}</Badge>}
+        {q.conceptDetail && <Badge>Subaspecto: {q.conceptDetail}</Badge>}
         {q.law && (
           <Badge>
             {q.law}
@@ -759,7 +770,10 @@ export function QuestionCard({
             : q.validation === "validated"
               ? "Respuesta de plantilla definitiva."
               : q.documentaryEligible
-                ? "Respuesta cotejada con la plantilla oficial corregida nº 2. Firmeza administrativa final no acreditada."
+                ? q.documentaryVerification?.scope ===
+                  "corroborated_documentary"
+                  ? "Respuesta cotejada con copias secundarias concordantes de la plantilla. La procedencia y la situación final por pregunta se informan por separado."
+                  : "Respuesta cotejada con la plantilla oficial nº 2. Resultados definitivos publicados el 24/07/2026; el acuerdo no identifica cambios de respuesta ni anulaciones por pregunta."
                 : "Respuesta provisional extraída. No equivale a una plantilla definitiva."}
           {q.explanation && <p>{q.explanation}</p>}
           {q.legalUrl && (
@@ -771,6 +785,16 @@ export function QuestionCard({
       )}
       <div className="question-bottom">
         <SourceLink source={data.sources.find((s) => s.id === q.sourceId)} />
+        {data.sources.find((s) => s.id === q.sourceId)?.storageKey && (
+          <a
+            className="source-link"
+            href={`/api/documents/${encodeURIComponent(q.sourceId)}#page=${q.sourcePage || 1}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            PDF conservado · pág. {q.sourcePage || 1}
+          </a>
+        )}
         {q.keySourceId && (
           <a
             className="source-link"
@@ -917,7 +941,9 @@ function Explorer({
         <span>
           Los borradores se pueden consultar, pero quedan fuera de los análisis.
           A/B se agrupan por contenido dentro de la misma sesión; las
-          repeticiones entre años se conservan.
+          repeticiones entre años se conservan. Las copias secundarias
+          corroboradas mantienen esa procedencia; no se presentan como descargas
+          institucionales.
         </span>
       </div>
       <section className="panel filters">
@@ -1118,6 +1144,32 @@ function Explorer({
     </>
   );
 }
+function QuestionEvidence({
+  ids,
+  data,
+  review,
+}: {
+  ids: string[];
+  data: Dataset;
+  review: (id: string) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  return (
+    <details
+      style={{ gridColumn: "1 / -1", width: "100%" }}
+      onToggle={(e) => setOpen(e.currentTarget.open)}
+    >
+      <summary>Inspeccionar {ids.length} preguntas y sus fuentes</summary>
+      {open &&
+        ids.map((id) => {
+          const q = data.questions.find((q) => q.id === id);
+          return q ? (
+            <QuestionCard key={id} q={q} data={data} review={review} />
+          ) : null;
+        })}
+    </details>
+  );
+}
 function Patterns({
   data,
   stats,
@@ -1144,6 +1196,8 @@ function Patterns({
         {[
           ["literal", "Repeticiones literales"],
           ["concept", "Conceptos repetidos"],
+          ["laws", "Frecuencia de leyes"],
+          ["recent", "Histórica frente a reciente"],
           ["similar", "Similitud textual"],
           ["dormant", "Contenidos sin reaparición"],
           ["style", "Estilo y distractores"],
@@ -1177,6 +1231,7 @@ function Patterns({
                 >
                   Ver evidencia <ArrowUpRight size={14} />
                 </button>
+                <QuestionEvidence ids={r.ids} data={data} review={review} />
               </div>
             ))
           ) : (
@@ -1192,6 +1247,9 @@ function Patterns({
                 <strong>{c.name}</strong>
                 <p>
                   {c.count} preguntas · {c.years.join(", ")}
+                  {c.consecutiveYears.length
+                    ? ` · años consecutivos: ${c.consecutiveYears.join(", ")}`
+                    : ""}
                 </p>
                 <button
                   className="text-button"
@@ -1199,6 +1257,11 @@ function Patterns({
                 >
                   Consultar evidencia
                 </button>
+                <QuestionEvidence
+                  ids={c.evidence}
+                  data={data}
+                  review={review}
+                />
               </div>
             ))
           ) : (
@@ -1207,6 +1270,73 @@ function Patterns({
               description="Redacciones distintas sólo se agrupan por concepto cuando su asignación ha sido revisada."
             />
           )
+        ) : tab === "laws" ? (
+          <>
+            <p className="muted">
+              Norma expresamente identificada en el enunciado, una vez por
+              pregunta ordinaria. {stats.questions} preguntas en el corpus; la
+              identificación de la norma no equivale a revisión completa de
+              todos sus artículos.
+            </p>
+            {stats.laws.map((l) => {
+              const ids = [
+                ...new Map(
+                  data.questions
+                    .filter(
+                      (q) =>
+                        q.law === l.name &&
+                        q.active &&
+                        !q.reserve &&
+                        q.documentaryEligible,
+                    )
+                    .map((q) => [q.canonicalId, q.id]),
+                ).values(),
+              ];
+              return (
+                <div className="pattern-row" key={l.name}>
+                  <strong>{l.name}</strong>
+                  <span>
+                    {l.count} apariciones · {pct(l.share)}
+                  </span>
+                  <QuestionEvidence ids={ids} data={data} review={review} />
+                </div>
+              );
+            })}
+          </>
+        ) : tab === "recent" ? (
+          <>
+            <p className="muted">
+              Frecuencia histórica de todo el corpus frente a {p.recentFrom}–
+              {Math.max(...stats.years)}. Las tasas son medias de proporciones
+              por sesión, no probabilidades. Conceptos revisados:{" "}
+              {stats.conceptClassified}/{stats.questions}; los pendientes
+              limitan las conclusiones.
+            </p>
+            <div className="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Concepto</th>
+                    <th>Apariciones históricas</th>
+                    <th>Apariciones recientes</th>
+                    <th>Tasa histórica por sesión</th>
+                    <th>Tasa reciente por sesión</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {p.recentComparison.map((c) => (
+                    <tr key={c.id}>
+                      <td>{c.name}</td>
+                      <td>{c.count}</td>
+                      <td>{c.recentCount}</td>
+                      <td>{pct(c.historicalRate)}</td>
+                      <td>{pct(c.recentRate)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
         ) : tab === "similar" ? (
           <>
             <div className="notice">
@@ -1247,7 +1377,9 @@ function Patterns({
           <>
             <p className="muted">
               Han pasado al menos tres años desde su última observación respecto
-              al último año cubierto. Un año sin datos no demuestra ausencia.
+              al último año cubierto. Un año sin datos no demuestra ausencia. El
+              tiempo sin aparecer no añade puntos a la prioridad ni implica que
+              deba volver a preguntarse.
             </p>
             {p.dormant.length ? (
               p.dormant.map((c) => (
@@ -1336,9 +1468,13 @@ function Priorities({
   setK: (n: number) => void;
   review: (id: string) => void;
 }) {
-  const [tab, setTab] = useState("ranking");
+  const [tab, setTab] = useState("ranking"),
+    [evaluationMode, setEvaluationMode] = useState("strict");
   const r = analysis?.ranking,
-    b = analysis?.backtest;
+    b =
+      evaluationMode === "strict"
+        ? analysis?.backtest
+        : analysis?.reconstruction;
   return (
     <>
       <PageTitle
@@ -1399,6 +1535,7 @@ function Priorities({
             </select>
           </div>
           <p className="muted">{r?.heuristicStatus}</p>
+          <p className="muted">{r?.qualityNote}</p>
           {r?.priorities.length ? (
             r.priorities.map((p, i) => (
               <article className="priority-row" key={p.id}>
@@ -1483,6 +1620,21 @@ function Priorities({
                 <p>
                   Entrenamiento anterior al examen · objetivo 2024, 2025 y 2026
                 </p>
+                <label>
+                  Ámbito de evaluación
+                  <select
+                    aria-label="Ámbito de evaluación"
+                    value={evaluationMode}
+                    onChange={(e) => setEvaluationMode(e.target.value)}
+                  >
+                    <option value="strict">
+                      Estricta: respuesta final y publicación acreditadas
+                    </option>
+                    <option value="documentary">
+                      Reconstrucción documental exploratoria
+                    </option>
+                  </select>
+                </label>
               </div>
               <label className="inline-label">
                 Top k
@@ -1514,6 +1666,13 @@ function Priorities({
                     {row.targetQuestions} preguntas objetivo ·{" "}
                     {row.classifiedTargetQuestions} con concepto
                   </p>
+                  {row.assumedAvailabilityQuestions > 0 && (
+                    <small>
+                      {row.assumedAvailabilityQuestions} fechas de
+                      disponibilidad supuestas a partir de la celebración. No es
+                      una evaluación estricta.
+                    </small>
+                  )}
                 </div>
                 {row.status === "insufficient" ? (
                   <div className="backtest-empty">
@@ -1532,6 +1691,7 @@ function Priorities({
                       <thead>
                         <tr>
                           <th>Ranking</th>
+                          <th>Aciertos de conceptos</th>
                           <th>Precisión @{row.k}</th>
                           <th>Cobertura conceptos</th>
                           <th>Cobertura preguntas</th>
@@ -1539,7 +1699,12 @@ function Priorities({
                       </thead>
                       <tbody>
                         {[
-                          ["Heurística", row.heuristic],
+                          [
+                            row.heuristicAvailable
+                              ? "Heurística"
+                              : "Apariciones · sin puntuación heurística",
+                            row.heuristic,
+                          ],
                           ["Frecuencia histórica", row.frequency],
                           ["Aleatorio · semilla 2027", row.random],
                         ].map(([name, m]) => {
@@ -1547,6 +1712,9 @@ function Priorities({
                           return (
                             <tr key={String(name)}>
                               <td>{String(name)}</td>
+                              <td>
+                                {metric.hits} / {row.targetConcepts}
+                              </td>
                               <td>{pct(metric.precision)}</td>
                               <td>{pct(metric.conceptCoverage)}</td>
                               <td>{pct(metric.questionCoverage)}</td>

@@ -1,0 +1,10 @@
+{
+  "2024-3A-78": [{
+    "field": "stem",
+    "from": "ant e los órganos",
+    "to": "ante los órganos",
+    "sourcePage": 13,
+    "evidence": "data/research/history/2024-3A-page13.png",
+    "reason": "Cotejo visual del PDF: ante se imprime como una palabra. Ambos motores introducían un espacio interno por la disposición tipográfica. No se cambia ningún carácter no blanco."
+  }]
+}

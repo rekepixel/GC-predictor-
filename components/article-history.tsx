@@ -119,6 +119,7 @@ export function ArticleHistory({
                     <th>Variantes equivalentes</th>
                     <th>Apartado</th>
                     <th>Respuesta</th>
+                    <th>Versión normativa por aparición</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -144,7 +145,18 @@ export function ArticleHistory({
                       <td>
                         {h.finality === "final_confirmed"
                           ? "Definitiva acreditada"
-                          : "Clave oficial corregida · firmeza pendiente"}
+                          : h.finality === "corroborated_documentary"
+                            ? "Copia de clave corroborada · situación final pendiente"
+                            : "Clave oficial cotejada · situación final pendiente"}
+                      </td>
+                      <td>
+                        {h.legalUrl ? (
+                          <a href={h.legalUrl} target="_blank" rel="noreferrer">
+                            {h.checkedAsOf || "Consultar versión"}
+                          </a>
+                        ) : (
+                          "Sin versión cotejada"
+                        )}
                       </td>
                     </tr>
                   ))}
@@ -192,9 +204,10 @@ export function ValidationLedger({ data }: { data: Dataset }) {
     <section className="panel">
       <h2>Registro de verificación por año</h2>
       <p className="muted">
-        El cotejo documental y la confirmación definitiva son controles
-        distintos. Un año sin original no se rellena con preguntas ni con un
-        número supuesto de pendientes.
+        Tres estados: cotejo documental completo; respuesta y anulaciones
+        definitivas acreditadas; comprobaciones documentales adicionales
+        pendientes. Las fuentes secundarias mantienen su procedencia y sus
+        límites.
       </p>
       {error && (
         <p className="error" role="alert">
@@ -221,15 +234,22 @@ export function ValidationLedger({ data }: { data: Dataset }) {
                 <td>
                   <strong>{r.year}</strong>
                   <small>
-                    {r.models} modelos · {r.sessions} sesiones registradas
+                    {r.models} modelos · {r.validSessions} sesiones cotejadas ·{" "}
+                    {r.forms} formas
                   </small>
                 </td>
-                <td>{r.verifiedOrdinary}</td>
+                <td>
+                  {r.verifiedOrdinary}
+                  <small>
+                    {r.primaryOrdinary} descarga oficial ·{" "}
+                    {r.corroboratedOrdinary} copia corroborada
+                  </small>
+                </td>
                 <td>
                   {r.definitiveOrdinary}
                   <small>
                     {r.finalityPending
-                      ? `${r.finalityPending} sin firmeza confirmada`
+                      ? `${r.finalityPending} sin acreditación específica de respuesta final/anulaciones`
                       : ""}
                   </small>
                 </td>
@@ -243,13 +263,16 @@ export function ValidationLedger({ data }: { data: Dataset }) {
                     : r.pendingImportedRecords
                       ? "Cotejo pendiente"
                       : r.finalityPending
-                        ? "Firmeza final pendiente"
+                        ? "Situación final por pregunta pendiente"
                         : "Consultar fuentes"}
                   <small>
                     {r.secondaryDocumentsPending
                       ? `${r.secondaryDocumentsPending} copias secundarias pendientes de autenticar. `
                       : ""}
                     {r.notes}
+                    {r.conceptsPending
+                      ? ` ${r.conceptsPending} conceptos específicos pendientes.`
+                      : ""}
                   </small>
                 </td>
               </tr>

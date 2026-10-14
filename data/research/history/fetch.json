@@ -1,0 +1,284 @@
+[
+  {
+    "name": "current",
+    "url": "https://web.guardiacivil.es/es/tramites/ingresos/ingresocuerpo/",
+    "finalUrl": "https://web.guardiacivil.es/es/tramites/ingresos/ingresocuerpo/",
+    "status": 200,
+    "bytes": 218993,
+    "sha256": "7a13f71386637d4b8069115477380f30a444e060374d217dcf6412347a235b53",
+    "path": ".local/history-research/current.html",
+    "links": [
+      [
+        "https://web.guardiacivil.es/pdflink/es/fb46b663-4062-11eb-8bde-6d0b3e4c7555/Novedades-del-proceso-de-seleccion-para-ingreso-directo-a-la-Escala-de-Cabos-y-Guardias-de-la-Guardia-Civil-Convocatoria-2026.pdf?themeconfigpath=/sites/guardiaCivil/.themeconfig",
+        "Generar PDF"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/ACUERDO-RESULTADOS-FINALES-INGRESO-2026-FIRMADO.pdf",
+        "06 de octubre - Resultados finales de las pruebas de aptitud psicofísica"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/01-Acuerdo-EXPONER-RESULTADOS-FISICAS-Y-CONVOCA-A-ENTREVISTA-GUARDIAS-DIA-02-SEPTIEMBRE.pdf",
+        "02 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-FISICAS-Y-CONVOCA-A-ENTREVISTA-GUARDIAS-DIA-03-SEPTIEMBRE-2026-FIRMADO.pdf",
+        "03 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-FISICAS-Y-CONVOCA-A-ENTREVISTA-GUARDIAS-DIA-04-SEPTIEMBRE-2026-FIRMADA1.pdf",
+        "04 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-FISICAS-Y-CONVOCA-A-ENTREVISTA-GUARDIAS-DIA-05-SEPTIEMBRE-2025-FIRMADA.pdf",
+        "05 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-FISICAS-Y-CONVOCA-A-ENTREVISTA-GUARDIAS-DIA-06-SEPTIEMBRE-2026.pdf",
+        "06 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-FISICAS-Y-CONVOCA-A-ENTREVISTA-GUARDIAS-DIA-07-SEPTIEMBRE-2026-FIRMADA.pdf",
+        "07 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-FISICAS-Y-CONVOCA-A-ENTREVISTA-GUARDIAS-DIA-08-SEPTIEMBRE-2026-FIRMADA.pdf",
+        "08 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-FISICAS-Y-CONVOCA-A-ENTREVISTA-GUARDIAS-DIA-09-SEPTIEMBRE-2026-FIRMADA.pdf",
+        "09 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-FISICAS-Y-CONVOCA-A-ENTREVISTA-GUARDIAS-DIA-10-SEPTIEMBRE-2026-FIRMADO.pdf",
+        "10 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-FISICAS-Y-CONVOCA-A-ENTREVISTA-GUARDIAS-DIA-11-SEPTIEMBRE-2026-FIRMADO.pdf",
+        "11 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-FISICAS-Y-CONVOCA-A-ENTREVISTA-GUARDIAS-DIA-12-SEPTIEMBRE-2026-FIRMADO.pdf",
+        "12 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-FISICAS-Y-CONVOCA-A-ENTREVISTA-GUARDIAS-DIA-13-SEPTIEMBRE-2026-FIRMADO.pdf",
+        "13 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-FISICAS-Y-CONVOCA-A-ENTREVISTA-GUARDIAS-DIA-14-SEPTIEMBRE-2026-FIRMADO.pdf",
+        "14 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-FISICAS-Y-CONVOCA-A-ENTREVISTA-GUARDIAS-DIA-15-SEPTIEMBRE-2026-FIRMADO.pdf",
+        "15 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-FISICAS-Y-CONVOCA-A-ENTREVISTA-GUARDIAS-DIA-16-SEPTIEMBRE-2026-FIRMADA.pdf",
+        "16 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-FISICAS-Y-CONVOCA-A-ENTREVISTA-GUARDIAS-DIA-17-SEPTIEMBRE-2026-FIRMADO.pdf",
+        "17 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-FISICAS-Y-CONVOCA-A-ENTREVISTA-GUARDIAS-DIA-18-SEPTIEMBRE-2026-FIRMADO.pdf",
+        "18 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-FISICAS-Y-CONVOCA-A-ENTREVISTA-GUARDIAS-DIA-19-SEPTIEMBRE-2026-FIRMADO.pdf",
+        "19 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-resultados-pruebas-psicofisicas-dia-20.pdf",
+        "20 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-FISICAS-Y-CONVOCA-A-ENTREVISTA-GUARDIAS-DIA-21-SEPTIEMBRE-2026-FIRMADO.pdf",
+        "21 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-FISICAS-Y-CONVOCA-A-ENTREVISTA-GUARDIAS-DIA-22-SEPTIEMBRE-2026-FIRMADO.pdf",
+        "22 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-FISICAS-Y-CONVOCA-A-ENTREVISTA-GUARDIAS-DIA-23-SEPTIEMBRE-2026-FIRMADO.pdf",
+        "23 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-FISICAS-Y-CONVOCA-A-ENTREVISTA-GUARDIAS-DIA-24-SEPTIEMBRE-2026-FIRMADO.pdf",
+        "24 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-ENTREVISTA-Y-REC.-MEDICO-GUARDIAS-DIA-25-SEPTIEMBRE-2026-FIRMADO.pdf",
+        "25 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-FISICAS-Y-CONVOCA-A-ENTREVISTA-GUARDIAS-DIA-26-SEPTIEMBRE-2026.pdf",
+        "26 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-RECONOCIMIENTO-MEDICO-Y-REVISION-ENTREVISTA-PERSONAL-DIA-29-SEPTIEMBRE-2026-firmado.pdf",
+        "29 de septiembre"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/Acuerdo-EXPONER-RESULTADOS-REVISION-RECONOCIMIENTO-MEDICO-DIA-02-OCTUBRE-2026-FIRMADO.pdf",
+        "02 de octubre - Revisión Rec. Médico"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/IngresoGC_2026/PUBLICACION-RESOLUCION-RESULTADOS-DEFINITIVOS-PRUEBAS-ESCRITAS.pdf",
+        "PDF de la Resolución del Tribunal de Selección de fecha 24 de julio de 2026"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/IngresoGC_2026/PUBLICACION-RESOLUCION-RESULTADOS-DEFINITIVOS-PRUEBAS-ESCRITAS.pdf",
+        "Resultado definitivo de las pruebas de ortografía, gramática, conocimientos generales, lengua inglesa y aptitudes intelectuales, y lugar, fecha y hora de presentación a las pruebas psicofísicas"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/IngresoGC_2026/RESOLUCION-RESULTADOS-PROVISIONALES-ESCRITAS-INGRESO-2026.pdf",
+        "Resultado provisional de las pruebas de ortografía, gramática, conocimientos generales, lengua inglesa y aptitudes intelectuales"
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/PLANTILLAS-INGRESO_CABOS_-Y_GUARDIAS.-2026-2.pdf",
+        "PDF nº 2 , con las plantillas de respuestas de las pruebas de conocimientos, idioma, ortografía, gramática y aptitudes intelectuales, celebradas el 11 de julio de 2026."
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/PLANTILLAS-INGRESO-CABOS-Y-GUARDIAS.-2026.pdf",
+        "PDF nº 1 , con las plantillas de respuestas de las pruebas de conocimientos, idioma, ortografía, gramática y aptitudes intelectuales, celebradas el día 11 de julio de 2026."
+      ],
+      [
+        "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2026/Procesos_Selectivos_2026/03.-RESOLUCION-BOE-ADMITIDOS-Y-EXCLUIDOS-DEFINITIVOS-INGRESO-GC-2026.pdf",
+        "Resolución 160/38308/2026, de 30 de junio,"
+      ]
+    ]
+  },
+  {
+    "name": "2023-A",
+    "url": "https://web.guardiacivil.es/documentos/pdfs/2023/IngresoGC2023/INGRESO_GC_2023_1A.pdf",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "2025-key",
+    "url": "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2025/Procesos_Selectivos_2025/Plantillas-Resultados-Ingreso-2025.pdf",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "2024-cancel",
+    "url": "https://www.guardiacivil.es/documentos/pdfs/2024/Comunicado_anulaciAn_examen_29_septiembre_ingreso_guardias.pdf",
+    "finalUrl": "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2024/Comunicado_anulaciAn_examen_29_septiembre_ingreso_guardias.pdf",
+    "status": 200,
+    "bytes": 296627,
+    "sha256": "2e79ee98802c056bb32ee8098997e22c96e9a8a2cfd52de983c77fe130cb9e6b",
+    "path": ".local/history-research/2024-cancel.pdf"
+  },
+  {
+    "name": "2023-secondary",
+    "url": "https://www.aspirantes.es/examen-guardia-civil-2023/",
+    "finalUrl": "https://www.aspirantes.es/examen-guardia-civil-2023/",
+    "status": 200,
+    "bytes": 699801,
+    "sha256": "945f1e27948dcb49746792c0d4d49ff38b710a40c5c1be62206c39fe8d0c6815",
+    "path": ".local/history-research/2023-secondary.html",
+    "links": [
+      [
+        "https://www.aspirantes.es/wp-content/uploads/2023/11/INGRESO_GC_2023_1A.pdf",
+        "Modelo 1A"
+      ],
+      [
+        "https://www.aspirantes.es/wp-content/uploads/2023/11/INGRESO_GC_2023_1B.pdf",
+        "Modelo 1B"
+      ],
+      [
+        "https://www.aspirantes.es/wp-content/uploads/2023/11/INGRESO_GC_2023_2A.pdf",
+        "Modelo 2A"
+      ],
+      [
+        "https://www.aspirantes.es/wp-content/uploads/2023/11/INGRESO_GC_2023_2B.pdf",
+        "Modelo 2B"
+      ]
+    ]
+  },
+  {
+    "name": "2024-secondary",
+    "url": "https://metodogc.com/examenes-oposiciones-guardia-civil/examen-2024/",
+    "finalUrl": "https://metodogc.com/examenes-oposiciones-guardia-civil/examen-2024/",
+    "status": 200,
+    "bytes": 190398,
+    "sha256": "b2a589a9c165857c6a2411ebfef45361dfee11aba18661db728264cf46ee3905",
+    "path": ".local/history-research/2024-secondary.html",
+    "links": [
+      [
+        "https://metodogc.com/wp-content/uploads/2024/12/INGRESO_GC_2024_1A.pdf",
+        "Examen de prueba de conocimientos Teóricos – Prácticos. Modelo 1A"
+      ],
+      [
+        "https://metodogc.com/wp-content/uploads/2024/12/INGRESO_GC_2024_1A.pdf",
+        "Descarga"
+      ],
+      [
+        "https://metodogc.com/wp-content/uploads/2024/12/INGRESO_GC_2024_1B.pdf",
+        "Examen de prueba de conocimientos Teóricos – Prácticos. Modelo 1B"
+      ],
+      [
+        "https://metodogc.com/wp-content/uploads/2024/12/INGRESO_GC_2024_1B.pdf",
+        "Descarga"
+      ],
+      [
+        "https://metodogc.com/wp-content/uploads/2024/12/INGRESO_GC_2024_2A.pdf",
+        "Examen de prueba de conocimientos Teóricos – Prácticos. Modelo 2A"
+      ],
+      [
+        "https://metodogc.com/wp-content/uploads/2024/12/INGRESO_GC_2024_2A.pdf",
+        "Descarga"
+      ],
+      [
+        "https://metodogc.com/wp-content/uploads/2024/12/INGRESO_GC_2024_2B.pdf",
+        "Examen de prueba de conocimientos Teóricos – Prácticos. Modelo 2B"
+      ],
+      [
+        "https://metodogc.com/wp-content/uploads/2024/12/INGRESO_GC_2024_2B.pdf",
+        "Descarga"
+      ],
+      [
+        "https://metodogc.com/wp-content/uploads/2024/12/INGRESO_GC_2024_3A.pdf",
+        "Examen de prueba de conocimientos Teóricos – Prácticos. Modelo 3A"
+      ],
+      [
+        "https://metodogc.com/wp-content/uploads/2024/12/INGRESO_GC_2024_3A.pdf",
+        "Descarga"
+      ],
+      [
+        "https://metodogc.com/wp-content/uploads/2024/12/INGRESO_GC_2024_3B.pdf",
+        "Examen de prueba de conocimientos Teóricos – Prácticos. Modelo 3B"
+      ],
+      [
+        "https://metodogc.com/wp-content/uploads/2024/12/INGRESO_GC_2024_3B.pdf",
+        "Descarga"
+      ],
+      [
+        "https://metodogc.com/wp-content/uploads/2024/12/Plantillas_ingreso_GC_28_09_24.pdf",
+        "Respuestas PRIMER DÍA"
+      ],
+      [
+        "https://metodogc.com/wp-content/uploads/2024/12/Plantillas_ingreso_GC_28_09_24.pdf",
+        "Descarga"
+      ],
+      [
+        "https://metodogc.com/wp-content/uploads/2024/12/Plantillas_ingreso_GC_13_10_24.pdf",
+        "Respuestas SEGUNDO DÍA"
+      ],
+      [
+        "https://metodogc.com/wp-content/uploads/2024/12/Plantillas_ingreso_GC_13_10_24.pdf",
+        "Descarga"
+      ]
+    ]
+  },
+  {
+    "name": "2025-print",
+    "url": "https://web.guardiacivil.es/pdflink/es/fb46b663-4062-11eb-8bde-6d0b3e4c7555/Ingreso-en-el-Cuerpo-Escala-de-Cabos-y-Guardias-Convocatoria-2025.pdf?themeconfigpath=%2Fsites%2FguardiaCivil%2F.themeconfig",
+    "finalUrl": "https://web.guardiacivil.es/pdflink/es/fb46b663-4062-11eb-8bde-6d0b3e4c7555/Ingreso-en-el-Cuerpo-Escala-de-Cabos-y-Guardias-Convocatoria-2025.pdf?themeconfigpath=%2Fsites%2FguardiaCivil%2F.themeconfig",
+    "status": 200,
+    "bytes": 5638,
+    "sha256": "71f782f5a2d7379feed24b8bc93f9833125909107460556a8e3310f8cb15d3ca",
+    "path": ".local/history-research/2025-print.html",
+    "links": []
+  }
+]

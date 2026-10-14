@@ -30,7 +30,7 @@ import {
   validatedCorpus,
 } from "@/lib/analysis";
 import type { Source, Weights } from "@/lib/types";
-import { isDocumentaryVerified } from "@/lib/documentary";
+import { isDocumentaryVerified, verificationState } from "@/lib/documentary";
 import { articleProfiles, validationByYear } from "@/lib/history";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -120,6 +120,7 @@ async function handle(
           questions: data.questions.map((q) => ({
             ...q,
             documentaryEligible: isDocumentaryVerified(q, data),
+            verificationState: verificationState(q, data),
           })),
         },
         stats: frequencies(data),
@@ -158,6 +159,18 @@ async function handle(
             .max(100)
             .parse(input.k ?? 10),
           2027,
+        ),
+        reconstruction: backtest(
+          data,
+          weights,
+          z
+            .number()
+            .int()
+            .min(1)
+            .max(100)
+            .parse(input.k ?? 10),
+          2027,
+          "documentary_reconstruction",
         ),
       });
     }

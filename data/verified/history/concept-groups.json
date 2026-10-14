@@ -1,0 +1,109 @@
+{
+  "granularity": "Conceptos de estudio curados, con distintos subaspectos. Compartir grupo no significa literalidad ni identidad de todas las condiciones jurídicas.",
+  "groups": [
+    {
+      "name": "Presentación y tramitación de quejas en la Guardia Civil",
+      "questionIdentities": [
+        "2024-3A-78",
+        "2025-A-78",
+        "2026-A-76"
+      ],
+      "reviewed": true
+    },
+    {
+      "name": "Presupuestos de internamiento cautelar de menores",
+      "questionIdentities": [
+        "2023-2A-93",
+        "2024-3A-92"
+      ],
+      "reviewed": true
+    },
+    {
+      "name": "Clasificación de las penas por gravedad y duración",
+      "questionIdentities": [
+        "2023-1A-41",
+        "2023-2A-43",
+        "2026-A-40"
+      ],
+      "reviewed": true
+    },
+    {
+      "name": "Secretaría General de las Naciones Unidas: titular y orden sucesorio",
+      "questionIdentities": [
+        "2023-1A-31",
+        "2026-A-28"
+      ],
+      "reviewed": true
+    },
+    {
+      "name": "Consejo Asesor del Mecanismo Nacional de Prevención de la Tortura",
+      "questionIdentities": [
+        "2024-3A-12",
+        "2025-A-13",
+        "2026-A-12"
+      ],
+      "reviewed": true
+    },
+    {
+      "name": "Acreditación de situaciones de violencia de género",
+      "questionIdentities": [
+        "2023-1A-95",
+        "2026-A-91"
+      ],
+      "reviewed": true
+    },
+    {
+      "name": "Tutela frente a intromisiones ilegítimas en el honor",
+      "questionIdentities": [
+        "2023-1A-25",
+        "2023-2A-25",
+        "2024-3A-25",
+        "2026-A-23"
+      ],
+      "reviewed": true
+    },
+    {
+      "name": "Competencia penal de la Audiencia Nacional",
+      "questionIdentities": [
+        "2024-2A-47",
+        "2026-A-49"
+      ],
+      "reviewed": true
+    },
+    {
+      "name": "Observatorio Estatal de Violencia sobre la Mujer",
+      "questionIdentities": [
+        "2023-1A-102",
+        "2023-2A-103",
+        "2024-1A-92",
+        "2025-A-91",
+        "2025-A-92"
+      ],
+      "reviewed": true
+    },
+    {
+      "name": "Paradas del transporte de explosivos por carretera",
+      "questionIdentities": [
+        "2024-3A-98",
+        "2025-A-96"
+      ],
+      "reviewed": true
+    },
+    {
+      "name": "Causas de abstención de autoridades y personal",
+      "questionIdentities": [
+        "2023-1A-63",
+        "2025-A-58"
+      ],
+      "reviewed": true
+    },
+    {
+      "name": "Autoridades competentes para cooperar con la Corte Penal Internacional",
+      "questionIdentities": [
+        "2023-1A-9",
+        "2026-A-11"
+      ],
+      "reviewed": true
+    }
+  ]
+}

@@ -1,0 +1,310 @@
+{
+  "basis": "Explicit question heading to official 2026 topic titles; no retroactive claim about syllabus dates.",
+  "rules": [
+    {
+      "pattern": "^carta de las naciones",
+      "lawCode": "UN",
+      "topic": 1
+    },
+    {
+      "pattern": "^declaracion universal",
+      "lawCode": "DUDH",
+      "topic": 1
+    },
+    {
+      "pattern": "^convenio para la proteccion",
+      "lawCode": "CEDH",
+      "topic": 1
+    },
+    {
+      "pattern": "^carta social",
+      "lawCode": "CSE",
+      "topic": 1
+    },
+    {
+      "pattern": "^pacto internacional de derechos economicos",
+      "lawCode": "PIDESC",
+      "topic": 1
+    },
+    {
+      "pattern": "^pacto internacional de derechos civiles",
+      "lawCode": "PIDCP",
+      "topic": 1
+    },
+    {
+      "pattern": "^consejo de derechos humanos",
+      "lawCode": "RES60",
+      "topic": 1
+    },
+    {
+      "pattern": "^protocolo facultativo",
+      "lawCode": "OPCAT",
+      "topic": 1
+    },
+    {
+      "pattern": "^convencion contra la tortura",
+      "lawCode": "CAT",
+      "topic": 1
+    },
+    {
+      "pattern": "^carta de (?:los )?derechos fundamentales",
+      "lawCode": "CDFUE",
+      "topic": 1
+    },
+    {
+      "pattern": "^estatuto de roma",
+      "lawCode": "ROMA",
+      "topic": 1
+    },
+    {
+      "pattern": "^ley organica de cooperacion",
+      "lawCode": "LO18",
+      "topic": 1
+    },
+    {
+      "pattern": "^reglamento de organizacion y funcionamiento del defensor",
+      "lawCode": "DEFREG",
+      "topic": 1
+    },
+    {
+      "pattern": "^ley organica para la igualdad",
+      "lawCode": "LO3EQ",
+      "topic": 2
+    },
+    {
+      "pattern": "^ley de prevencion",
+      "lawCode": "L31",
+      "topic": 3
+    },
+    {
+      "pattern": "^real decreto de adaptacion",
+      "lawCode": "RD67",
+      "topic": 3
+    },
+    {
+      "pattern": "^real decreto sobre prevencion",
+      "lawCode": "RD179",
+      "topic": 3
+    },
+    {
+      "pattern": "^constitucion",
+      "lawCode": "CE",
+      "topic": 4
+    },
+    {
+      "pattern": "^ley organica del defensor",
+      "lawCode": "LODP",
+      "topic": 4
+    },
+    {
+      "pattern": "^ley organica sobre proteccion civil del derecho",
+      "lawCode": "LOHONOR",
+      "topic": 4
+    },
+    {
+      "pattern": "^tratado de la union",
+      "lawCode": "TUE",
+      "topic": 5
+    },
+    {
+      "pattern": "^tratado de funcionamiento",
+      "lawCode": "TFUE",
+      "topic": 5
+    },
+    {
+      "pattern": "^instituciones internacionales",
+      "lawCode": null,
+      "topic": 6
+    },
+    {
+      "pattern": "^codigo civil",
+      "lawCode": "CC",
+      "topic": 7
+    },
+    {
+      "pattern": "^ley organica del codigo penal",
+      "lawCode": "CP",
+      "topic": 8
+    },
+    {
+      "pattern": "^ley de enjuiciamiento",
+      "lawCode": "LEC",
+      "topic": 9
+    },
+    {
+      "pattern": "^ley organica reguladora del procedimiento de habeas",
+      "lawCode": "HC",
+      "topic": 9
+    },
+    {
+      "pattern": "^ley organica del poder judicial",
+      "lawCode": "LOPJ",
+      "topic": 9
+    },
+    {
+      "pattern": "^ley del estatuto de la victima",
+      "lawCode": "VICTIM",
+      "topic": 9
+    },
+    {
+      "pattern": "^real decreto sobre regulacion de la policia judicial",
+      "lawCode": "POLJUD",
+      "topic": 9
+    },
+    {
+      "pattern": "^ley del procedimiento administrativo",
+      "lawCode": "L39",
+      "topic": 10
+    },
+    {
+      "pattern": "^ley (?:del? )?regimen juridico del sector publico",
+      "lawCode": "L40",
+      "topic": 10
+    },
+    {
+      "pattern": "^ley organica de proteccion.*datos",
+      "lawCode": "LOPD",
+      "topic": 11
+    },
+    {
+      "pattern": "^ley organica (?:4/2000 )?sobre derechos y libertades",
+      "lawCode": "LOEX",
+      "topic": 12
+    },
+    {
+      "pattern": "^real decreto sobre entrada",
+      "lawCode": "RD240",
+      "topic": 12
+    },
+    {
+      "pattern": "^ley organica de proteccion de la seguridad ciudadana",
+      "lawCode": "LOSC",
+      "topic": 13
+    },
+    {
+      "pattern": "^ley de seguridad privada",
+      "lawCode": "LSP",
+      "topic": 13
+    },
+    {
+      "pattern": "^real decreto por el que se desarrolla la estructura organica basica del ministerio del interior",
+      "lawCode": "RDINT",
+      "topic": 14
+    },
+    {
+      "pattern": "^real decreto por el que se desarrolla la estructura organica basica del ministerio de defensa",
+      "lawCode": "RDDEF",
+      "topic": 14
+    },
+    {
+      "pattern": "^ley organica de fuerzas",
+      "lawCode": "LOFCS",
+      "topic": 15
+    },
+    {
+      "pattern": "^ley de regimen del personal",
+      "lawCode": "LGC",
+      "topic": 15
+    },
+    {
+      "pattern": "^estructura organica de los servicios",
+      "lawCode": "OGC",
+      "topic": 15
+    },
+    {
+      "pattern": "^historia de la guardia",
+      "lawCode": null,
+      "topic": 15
+    },
+    {
+      "pattern": "^ley organica reguladora de los derechos y deberes",
+      "lawCode": "LOGCDD",
+      "topic": 15
+    },
+    {
+      "pattern": "^ley del sistema nacional",
+      "lawCode": "LPC",
+      "topic": 16
+    },
+    {
+      "pattern": "^ley del patrimonio",
+      "lawCode": "LPAT",
+      "topic": 16
+    },
+    {
+      "pattern": "^ley general de telecomunicaciones",
+      "lawCode": "LGT",
+      "topic": 17
+    },
+    {
+      "pattern": "^real decreto por el que se regula el esquema",
+      "lawCode": "ENI",
+      "topic": 17
+    },
+    {
+      "pattern": "^ley reguladora de determinados aspectos",
+      "lawCode": "LECONF",
+      "topic": 17
+    },
+    {
+      "pattern": "^principios y recomendaciones basicas en ciberseguridad",
+      "lawCode": null,
+      "topic": 17
+    },
+    {
+      "pattern": "^real decreto sobre organizacion e instrumentos operativos",
+      "lawCode": "TICAGE",
+      "topic": 17
+    },
+    {
+      "pattern": "^topografia",
+      "lawCode": null,
+      "topic": 18
+    },
+    {
+      "pattern": "^real decreto por el que se aprueba el codigo de conducta",
+      "lawCode": "RDCOD",
+      "topic": 19
+    },
+    {
+      "pattern": "^principios basicos sobre el empleo",
+      "lawCode": "PBF",
+      "topic": 19
+    },
+    {
+      "pattern": "^ley organica reguladora de la responsabilidad",
+      "lawCode": "LOMEN",
+      "topic": 20
+    },
+    {
+      "pattern": "^ley organica de medidas de proteccion",
+      "lawCode": "LOGEN",
+      "topic": 21
+    },
+    {
+      "pattern": "^reglamento de armas",
+      "lawCode": "RARMS",
+      "topic": 22
+    },
+    {
+      "pattern": "^reglamento de explosivos",
+      "lawCode": "REXP",
+      "topic": 22
+    },
+    {
+      "pattern": "^ley organica de represion",
+      "lawCode": "LOCON",
+      "topic": 23
+    },
+    {
+      "pattern": "^real decreto.*contrabando",
+      "lawCode": "RDCON",
+      "topic": 23
+    },
+    {
+      "pattern": "^(?:reglamento por el que se establece el codigo aduanero|codigo aduanero)",
+      "lawCode": "CAU",
+      "topic": 23
+    }
+  ]
+}

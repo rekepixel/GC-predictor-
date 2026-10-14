@@ -16,16 +16,33 @@ export interface Source {
   storageKey: string | null;
   definitive: boolean;
   verified: boolean;
-  answerKeyStatus?: "official_corrected_current" | "superseded";
+  answerKeyStatus?:
+    "official_corrected_current" | "corroborated_current_copy" | "superseded";
+  corroboration?: {
+    status: "cross_source_consistent";
+    method:
+      "byte_identity" | "question_text_identity_except_publisher_watermark";
+    checkedAt: string;
+    matches: { url: string; sha256: string }[];
+    primaryAvailability: string;
+    authenticityLimitation: string;
+  };
+  answerKeyAssessment?: {
+    resultsFinalized: boolean;
+    resultsDecisionSourceId: string;
+    annulmentsByQuestion: "not_established" | "established";
+    conclusion: string;
+  };
 }
 export interface DocumentaryVerification {
   status: "verified";
-  scope: "official_corrected_documentary";
+  scope: "official_corrected_documentary" | "corroborated_documentary";
   artifactId: string;
   artifactSha256: string;
   fingerprint: string;
   sourceSha256: string;
   keySha256: string;
+  corroborationSha256?: string;
   checkedAt: string;
   canonicalNumber: number;
   pairedNumber: number;
@@ -60,6 +77,15 @@ export interface Question {
   topicId: string | null;
   conceptId: string | null;
   concept: string | null;
+  conceptDetail?: string | null;
+  extractionCorrections?: {
+    field: string;
+    from: string;
+    to: string;
+    sourcePage: number;
+    evidence: string;
+    reason: string;
+  }[];
   law: string | null;
   article: string | null;
   paragraph: string | null;
@@ -71,6 +97,11 @@ export interface Question {
   legalCheckedAsOf?: string | null;
   documentaryVerification?: DocumentaryVerification | null;
   documentaryEligible?: boolean;
+  verificationState?:
+    | "documentary_checked"
+    | "answer_and_annulments_confirmed"
+    | "additional_checks_pending";
+  form?: string;
   confidence: number | null;
   classificationMethod: string;
   classificationReviewed: boolean;

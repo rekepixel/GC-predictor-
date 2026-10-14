@@ -36,10 +36,13 @@ export function articleProfiles(data: Dataset) {
           concept: q.concept,
           sourceId: q.sourceId,
           keySourceId: q.keySourceId,
+          legalUrl: q.legalUrl,
+          checkedAsOf: q.legalCheckedAsOf || null,
           finality:
             q.validation === "validated"
               ? "final_confirmed"
-              : "official_corrected_documentary",
+              : q.documentaryVerification?.scope ||
+                "official_corrected_documentary",
           variants: data.questions
             .filter(
               (other) =>
@@ -91,6 +94,20 @@ export function validationByYear(data: Dataset) {
       documentaryVerifiedRecords: verified.length,
       verifiedOrdinary: verifiedOrdinary.length,
       definitiveOrdinary: final.filter((q) => q.year === year).length,
+      primaryOrdinary: verifiedOrdinary.filter(
+        (q) =>
+          q.documentaryVerification?.scope === "official_corrected_documentary",
+      ).length,
+      corroboratedOrdinary: verifiedOrdinary.filter(
+        (q) => q.documentaryVerification?.scope === "corroborated_documentary",
+      ).length,
+      validSessions: new Set(verifiedOrdinary.map((q) => q.session)).size,
+      forms: new Set(
+        verifiedOrdinary.map((q) => q.form ?? q.model.replace(/[AB]$/, "")),
+      ).size,
+      conceptsPending: verifiedOrdinary.filter((q) => !q.conceptId).length,
+      referencesPending: verifiedOrdinary.filter((q) => !q.legalVerified)
+        .length,
       pendingImportedRecords: rows.filter(
         (q) =>
           q.validation !== "validated" &&
@@ -114,7 +131,7 @@ export function validationByYear(data: Dataset) {
       notes: !exams.length
         ? "No hay cuadernillo importado; se desconoce el número de preguntas pendientes."
         : verifiedOrdinary.length
-          ? "Frecuencia documental; la firmeza final de las respuestas se informa aparte."
+          ? "Cotejo documental admitido para descripción; procedencia, respuestas definitivas y anulaciones por pregunta se informan aparte."
           : "Cuadernillos registrados sin cotejo documental completo.",
     };
   });

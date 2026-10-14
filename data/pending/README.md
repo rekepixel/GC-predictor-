@@ -1,12 +1,13 @@
-# Copias secundarias sin autenticar
+# Copias secundarias con grado de comprobación explícito
 
-Estos **11 PDF** proceden de sitios secundarios, según `data/source-catalog.json` y `data/research/2023-2025-follow-up.json`:
+Se conservan **21 PDF secundarios**. La procedencia, URL, fecha de consulta, SHA-256 y comprobaciones están en `data/source-catalog.json`, `data/research/history/` y `data/verified/history/`.
 
-- 2025: dos modelos y una plantilla, obtenidos desde Método GC.
-- 2024: seis modelos y dos plantillas, obtenidos desde Ser Guardia Civil.
+- 2023: cuatro cuadernillos y dos claves, coincidentes byte por byte entre Aspirantes y Polaris.
+- 2024: seis cuadernillos y dos claves ya conservados; coinciden byte por byte con los obtenidos desde Método GC. El ejercicio 1 se aplicó en el aula 21 de Baeza el 28/09; el 2, también el 28/09; el 3, el 13/10. El 29/09 suspendido no se incorpora como sesión.
+- 2025: dos cuadernillos digitales de Polaris cotejados con dos copias digitales de VM (se retira sólo su marca editorial en el extractor de contraste); una clave coincidente con la copia de Polaris; dos cuadernillos escaneados anteriores conservados, sin generar una segunda importación.
 
-Su descarga y huella SHA-256 sólo permiten conservar la copia recibida. **No acreditan autenticidad, convocatoria, fecha, clave definitiva ni ausencia de modificaciones.** Las fechas de los nombres de archivo tampoco se consideran verificadas.
+Los doce cuadernillos digitales y sus cinco claves sustentan un cotejo documental de 600 ordinarias y 30 reservas únicas. Las dos copias con marca y los dos escaneados de 2025 no añaden preguntas.
 
-No contienen preguntas incorporadas al corpus ni alimentan las estadísticas. `data:archive` las excluye. Antes de importarlas, hace falta cotejarlas con originales institucionales o con una aportación cuya procedencia pueda acreditarse, verificar modelos/sesiones y comprobar cada pregunta y su clave. Utiliza la importación manual conservando la procedencia secundaria mientras ese control siga pendiente.
+**Concordancia entre proveedores no acredita por sí sola identidad con un original institucional hoy inaccesible.** Las fuentes siguen siendo secundarias, `verified:false`, `definitive:false`. No se acredita ausencia de anulaciones posteriores. Las estadísticas documentales muestran la procedencia y la cobertura; el corpus de respuestas finales permanece separado.
 
-Se han excluido del conjunto de entrega documentos de resultados personales y análisis de academia localizados en la misma página; este directorio contiene únicamente cuadernillos y plantillas.
+`data:archive` sigue excluyendo fuentes secundarias. El banco histórico sólo se aplica después de verificar su manifiesto, los originales retenidos, las transcripciones de clave y las equivalencias. No se importan silenciosamente nuevos PDF de este directorio.

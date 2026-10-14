@@ -95,9 +95,16 @@ export function frequencies(data: Dataset) {
     documentaryOnlyQuestions: questions.filter(
       (q) => q.validation !== "validated",
     ).length,
+    primaryDocumentQuestions: questions.filter(
+      (q) =>
+        q.documentaryVerification?.scope === "official_corrected_documentary",
+    ).length,
+    corroboratedCopyQuestions: questions.filter(
+      (q) => q.documentaryVerification?.scope === "corroborated_documentary",
+    ).length,
     basis: "verified_published_ordinary_content",
     basisNote:
-      "Frecuencias de preguntas ordinarias publicadas y cotejadas. Las reservas y variantes A/B no aumentan el denominador. La clave oficial corregida no se declara definitiva.",
+      "Frecuencias documentales de ordinarias cotejadas; se distingue descarga oficial de copia secundaria corroborada. Reservas y variantes A/B no aumentan el denominador. El cierre de calificaciones no demuestra por sí solo respuestas y anulaciones definitivas por pregunta.",
     occurrences: data.questions.length,
     validatedOccurrences: data.questions.filter(
       (q) => q.validation === "validated",
@@ -117,12 +124,23 @@ export function frequencies(data: Dataset) {
     ),
     articles: counts(questions, (q) =>
       q.legalVerified && q.law && q.article && /^\d/.test(q.article)
-        ? `${q.law} · art. ${q.article}${q.paragraph ? " · " + q.paragraph : ""}`
+        ? `${q.law} · art. ${q.article}`
+        : null,
+    ),
+    articleParagraphs: counts(questions, (q) =>
+      q.legalVerified && q.law && q.article && q.paragraph
+        ? `${q.law} · art. ${q.article} · ${q.paragraph}`
         : null,
     ),
     concepts: counts(questions, (q) =>
       q.classificationReviewed ? q.concept : null,
     ),
+    conceptClassified: questions.filter(
+      (q) => q.classificationReviewed && q.conceptId,
+    ).length,
+    conceptPending: questions.filter(
+      (q) => !q.conceptId || !q.classificationReviewed,
+    ).length,
     bySession: [...new Set(questions.map(sessionKey))].sort().map((key) => {
       const subset = questions.filter((q) => sessionKey(q) === key);
       return {
@@ -168,6 +186,8 @@ export interface Priority {
   count: number;
   years: number[];
   lastYear: number;
+  sessions: number;
+  consecutiveYears: number[];
   historicalRate: number;
   recentRate: number;
   persistence: number;
@@ -206,7 +226,7 @@ export function rank(
         ? q.conceptId
         : null
       : q.legalVerified && q.law && q.article && /^\d/.test(q.article)
-        ? normalized(q.law) + "|" + q.article + "|" + (q.paragraph || "")
+        ? normalized(q.law) + "|" + q.article
         : null;
   const ids = [...new Set(corpus.map(keyOf).filter((s): s is string => !!s))];
   const unitRate = (matches: Question[], base: Question[], u: string[]) =>
@@ -228,10 +248,7 @@ export function rank(
     const name =
       kind === "concept"
         ? sample.concept!
-        : sample.law +
-          " · art. " +
-          sample.article +
-          (sample.paragraph ? " · " + sample.paragraph : "");
+        : sample.law + " · art. " + sample.article;
     const topic = sample.topicId
       ? data.topics.find((t) => t.id === sample.topicId)
       : null;
@@ -292,6 +309,10 @@ export function rank(
       count: qs.length,
       years,
       lastYear: Math.max(...years),
+      sessions: new Set(qs.map(sessionKey)).size,
+      consecutiveYears: years.filter(
+        (y) => years.includes(y - 1) || years.includes(y + 1),
+      ),
       historicalRate: unitRate(qs, corpus, units),
       recentRate: unitRate(
         qs.filter((q) => q.year >= w.recentFrom),
@@ -341,6 +362,12 @@ export function rank(
     weights: w,
     trainingQuestions: corpus.length,
     trainingYears: historicalYears,
+    classifiedTrainingQuestions: corpus.filter((q) =>
+      kind === "concept"
+        ? q.classificationReviewed && q.conceptId
+        : q.legalVerified && q.article,
+    ).length,
+    qualityNote: `Clasificación conceptual revisada en ${corpus.filter((q) => q.classificationReviewed && q.conceptId).length}/${corpus.length} preguntas; los conceptos pendientes no se sustituyen por etiquetas automáticas. Las copias secundarias corroboradas conservan esa procedencia. El ranking describe sólo la parte clasificada.`,
     probability: null,
     probabilityStatus:
       "No se ha entrenado ni calibrado un modelo probabilístico. La puntuación es una heurística de estudio.",
@@ -382,8 +409,17 @@ export function backtest(
   weights: Partial<Weights> = {},
   k = 10,
   seed = 2027,
+  mode: "strict" | "documentary_reconstruction" = "strict",
 ) {
-  const corpus = validatedCorpus(data).questions;
+  const corpus =
+    mode === "strict"
+      ? validatedCorpus(data).questions
+      : observedCorpus(data).questions;
+  const availability = (q: Question) =>
+    q.availableAt ||
+    (mode === "documentary_reconstruction"
+      ? data.exams.find((e) => e.id === q.examId)?.heldAt
+      : null);
   const rows = [2024, 2025, 2026].map((year) => {
     const targets = corpus.filter((q) => q.year === year);
     const dates = data.exams
@@ -391,9 +427,11 @@ export function backtest(
       .map((e) => e.heldAt!)
       .sort();
     const cutoff = dates[0] || `${year}-01-01`;
-    const training = corpus.filter(
-      (q) => q.year < year && q.availableAt && q.availableAt < cutoff,
-    );
+    const training = corpus
+      .filter(
+        (q) => q.year < year && availability(q) && availability(q)! < cutoff,
+      )
+      .map((q) => ({ ...q, availableAt: availability(q)! }));
     const trainData = { ...data, questions: training };
     const ranking = rank(trainData, weights, year, cutoff);
     const target = targets.filter(
@@ -448,7 +486,9 @@ export function backtest(
     const meanRandom =
       draws.reduce((sum, m) => sum + m.conceptCoverage, 0) / draws.length;
     const reason = !targets.length
-      ? "No hay preguntas definitivas validadas en el año objetivo."
+      ? mode === "strict"
+        ? "No hay preguntas con respuesta final y anulaciones acreditadas en el año objetivo."
+        : "No hay contenido documental cotejado en el objetivo."
       : !target.length
         ? "Falta clasificación conceptual revisada."
         : !training.length
@@ -465,7 +505,17 @@ export function backtest(
       k: effectiveK,
       requestedK: k,
       trainingQuestions: training.length,
-      excludedUndated: corpus.filter((q) => q.year < year && !q.availableAt)
+      trainingConcepts: universe.length,
+      heuristicAvailable: ranking.heuristicAvailable,
+      trainingIds: training.map((q) => q.id),
+      targetIds: targets.map((q) => q.id),
+      assumedAvailabilityQuestions:
+        mode === "documentary_reconstruction"
+          ? training.filter(
+              (q) => !corpus.find((p) => p.id === q.id)?.availableAt,
+            ).length
+          : 0,
+      excludedUndated: corpus.filter((q) => q.year < year && !availability(q))
         .length,
       targetQuestions: targets.length,
       classifiedTargetQuestions: target.length,
@@ -489,17 +539,30 @@ export function backtest(
     seed,
     randomDraws: 200,
     probability: null,
-    status: !evaluated.length
-      ? "Sin evidencia suficiente para evaluar."
-      : evaluated.every((r) => r.beatsReferences)
-        ? "La heurística supera las referencias en las particiones disponibles; esto no demuestra generalización ni calibración."
-        : "La heurística no supera ambas referencias en todas las particiones. No debe presentarse como predicción fiable.",
+    mode,
+    conclusive: false,
+    status:
+      mode === "documentary_reconstruction" && evaluated.length
+        ? "Reconstrucción exploratoria, no concluyente: se usa la fecha de celebración para contenido con publicación histórica desconocida. Copias y etiquetas revisadas a posteriori; no acredita anticipación predictiva real."
+        : !evaluated.length
+          ? "Sin evidencia suficiente para evaluar."
+          : evaluated.every((r) => r.beatsReferences)
+            ? "La heurística supera las referencias en las particiones disponibles; esto no demuestra generalización ni calibración."
+            : "La heurística no supera ambas referencias en todas las particiones. No debe presentarse como predicción fiable.",
     limitations: [
-      "Sólo se entrena con convocatorias anteriores y fuentes cuya publicación precede al examen objetivo. Las fechas desconocidas se excluyen.",
+      ...(mode === "documentary_reconstruction"
+        ? [
+            "Esta reconstrucción no sustituye la evaluación estricta: cuando falta fecha de publicación se supone disponible el contenido de un examen ya celebrado. Las copias se recuperaron después; esa disponibilidad histórica y la autenticidad institucional plena no están certificadas.",
+          ]
+        : []),
+      mode === "strict"
+        ? "Sólo se entrena con convocatorias anteriores y fuentes cuya publicación precede al examen objetivo. Las fechas desconocidas se excluyen."
+        : "Sólo se usan preguntas de exámenes anteriores al objetivo; una fecha de publicación conocida posterior al corte excluye la pregunta. La fecha de celebración sustituye a la publicación desconocida como supuesto explícito, no como dato acreditado.",
       "Los conceptos del año objetivo no amplían el universo del ranking de entrenamiento. No se ajustan pesos usando el examen objetivo.",
       "La referencia aleatoria toma el mismo número de conceptos del universo histórico, con semilla fija y 200 repeticiones.",
       "La precisión usa conceptos únicos del top-k; la cobertura se informa por conceptos y preguntas. Intervalos Wilson orientativos; las preguntas no son independientes.",
       "Las etiquetas conceptuales son anotaciones retrospectivas revisadas; no constituyen una reconstrucción completa de lo que el opositor sabía entonces.",
+      "Con un solo año de entrenamiento la puntuación heurística está deshabilitada: su columna conserva un orden descriptivo por apariciones, identificado como tal.",
       "Con pocos años, sin un último conjunto externo y con pesos elegidos por el usuario, no se emiten probabilidades calibradas.",
     ],
   };
@@ -530,11 +593,29 @@ export function patterns(data: Dataset, weights: Partial<Weights> = {}) {
     qs.slice(0, 1000).map((q) => ({ id: q.id, text: q.stem, year: q.year })),
     0.72,
   );
+  const recentFrom = latest - 1;
+  const recentComparison = rank(data, {
+    ...weights,
+    recentFrom,
+  }).priorities.map((p) => ({
+    id: p.id,
+    name: p.name,
+    count: p.count,
+    recentCount: qs.filter((q) => q.conceptId === p.id && q.year >= recentFrom)
+      .length,
+    years: p.years,
+    historicalRate: p.historicalRate,
+    recentRate: p.recentRate,
+    evidence: p.evidence,
+  }));
   return {
     literals,
     concepts,
     dormant,
     similar,
+    recentComparison,
+    recentFrom,
+    consecutive: concepts.filter((c) => c.consecutiveYears.length > 0),
     similarityMethod:
       "Similitud léxica TF-IDF/coseno sobre enunciados, umbral 0,72. Requiere revisión humana; no confirma equivalencia conceptual.",
     truncated: qs.length > 1000,

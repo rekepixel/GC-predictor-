@@ -9,6 +9,7 @@ process.env.SQLITE_PATH = path.join(
   fs.mkdtempSync(path.join(os.tmpdir(), "gc-real-bank-test-")),
   "bank.sqlite",
 );
+process.env.GC_SKIP_HISTORICAL_BANK = "1";
 delete process.env.DATABASE_URL;
 delete process.env.GC_SKIP_VERIFIED_BANK;
 import { dataset } from "../lib/store";

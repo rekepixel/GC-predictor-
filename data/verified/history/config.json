@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "scope": "corroborated_documentary",
+  "createdAt": "2026-10-14T15:05:34.391537+00:00",
+  "forms": [
+    {
+      "year": 2023,
+      "form": "1",
+      "session": "2023-10-29",
+      "keySourceId": "copy-key-2023-29",
+      "models": [
+        {
+          "model": "1A",
+          "sourceId": "copy-exam-2023-1A",
+          "path": "data/pending/2023-exam-1A.pdf",
+          "corroboratingPath": "data/pending/2023-exam-1A.pdf"
+        },
+        {
+          "model": "1B",
+          "sourceId": "copy-exam-2023-1B",
+          "path": "data/pending/2023-exam-1B.pdf",
+          "corroboratingPath": "data/pending/2023-exam-1B.pdf"
+        }
+      ],
+      "keyPages": {
+        "A": 1,
+        "B": 2
+      },
+      "notes": "",
+      "availableAt": null
+    },
+    {
+      "year": 2023,
+      "form": "2",
+      "session": "2023-10-28",
+      "keySourceId": "copy-key-2023-28",
+      "models": [
+        {
+          "model": "2A",
+          "sourceId": "copy-exam-2023-2A",
+          "path": "data/pending/2023-exam-2A.pdf",
+          "corroboratingPath": "data/pending/2023-exam-2A.pdf"
+        },
+        {
+          "model": "2B",
+          "sourceId": "copy-exam-2023-2B",
+          "path": "data/pending/2023-exam-2B.pdf",
+          "corroboratingPath": "data/pending/2023-exam-2B.pdf"
+        }
+      ],
+      "keyPages": {
+        "A": 1,
+        "B": 2
+      },
+      "notes": "",
+      "availableAt": null
+    },
+    {
+      "year": 2024,
+      "form": "1",
+      "session": "2024-09-28",
+      "keySourceId": "secondary-2024-plantilla_examen_guardia_civil_2024_3B_28_09_24",
+      "models": [
+        {
+          "model": "1A",
+          "sourceId": "secondary-2024-examen_guardia_civil_2024_1A",
+          "path": "data/pending/2024-examen_guardia_civil_2024_1A.pdf",
+          "corroboratingPath": "data/pending/2024-examen_guardia_civil_2024_1A.pdf"
+        },
+        {
+          "model": "1B",
+          "sourceId": "secondary-2024-examen_guardia_civil_2024_1B",
+          "path": "data/pending/2024-examen_guardia_civil_2024_1B.pdf",
+          "corroboratingPath": "data/pending/2024-examen_guardia_civil_2024_1B.pdf"
+        }
+      ],
+      "keyPages": {
+        "A": 3,
+        "B": 4
+      },
+      "notes": "Ejercicio aplicado en aula 21 de Baeza; misma sesión, contenido diferente al ejercicio 2.",
+      "availableAt": null
+    },
+    {
+      "year": 2024,
+      "form": "2",
+      "session": "2024-09-28",
+      "keySourceId": "secondary-2024-plantilla_examen_guardia_civil_2024_3B_28_09_24",
+      "models": [
+        {
+          "model": "2A",
+          "sourceId": "secondary-2024-examen_guardia_civil_2024_2A",
+          "path": "data/pending/2024-examen_guardia_civil_2024_2A.pdf",
+          "corroboratingPath": "data/pending/2024-examen_guardia_civil_2024_2A.pdf"
+        },
+        {
+          "model": "2B",
+          "sourceId": "secondary-2024-examen_guardia_civil_2024_2B",
+          "path": "data/pending/2024-examen_guardia_civil_2024_2B.pdf",
+          "corroboratingPath": "data/pending/2024-examen_guardia_civil_2024_2B.pdf"
+        }
+      ],
+      "keyPages": {
+        "A": 1,
+        "B": 2
+      },
+      "notes": "",
+      "availableAt": null
+    },
+    {
+      "year": 2024,
+      "form": "3",
+      "session": "2024-10-13",
+      "keySourceId": "secondary-2024-plantilla_examen_guardia_civil_2024_3B_13_10_24",
+      "models": [
+        {
+          "model": "3A",
+          "sourceId": "secondary-2024-examen_guardia_civil_2024_3A",
+          "path": "data/pending/2024-examen_guardia_civil_2024_3A.pdf",
+          "corroboratingPath": "data/pending/2024-examen_guardia_civil_2024_3A.pdf"
+        },
+        {
+          "model": "3B",
+          "sourceId": "secondary-2024-examen_guardia_civil_2024_3B",
+          "path": "data/pending/2024-examen_guardia_civil_2024_3B.pdf",
+          "corroboratingPath": "data/pending/2024-examen_guardia_civil_2024_3B.pdf"
+        }
+      ],
+      "keyPages": {
+        "A": 1,
+        "B": 2
+      },
+      "notes": "",
+      "availableAt": null
+    },
+    {
+      "year": 2025,
+      "form": "",
+      "session": "2025-09-06",
+      "keySourceId": "secondary-2025-Plantillas-Resultados-Ingreso-2025",
+      "models": [
+        {
+          "model": "A",
+          "sourceId": "copy-exam-2025-digital-A",
+          "path": "data/pending/2025-digital-A.pdf",
+          "corroboratingPath": "data/pending/2025-watermarked-A.pdf"
+        },
+        {
+          "model": "B",
+          "sourceId": "copy-exam-2025-digital-B",
+          "path": "data/pending/2025-digital-B.pdf",
+          "corroboratingPath": "data/pending/2025-watermarked-B.pdf"
+        }
+      ],
+      "keyPages": {
+        "A": 1,
+        "B": 2
+      },
+      "notes": "",
+      "availableAt": null
+    }
+  ],
+  "limitations": [
+    "Originales institucionales históricos inaccesibles; se conserva procedencia secundaria, corroborada por dos proveedores.",
+    "Las fechas de examen se leen en las plantillas y no se usan como fechas de publicación.",
+    "No se acredita ausencia de anulaciones posteriores ni firmeza administrativa individual.",
+    "En 2024 hay dos sesiones válidas y tres ejercicios diferentes; 1 y 2 pertenecen al 28/09. El 29/09 no se cuenta."
+  ]
+}

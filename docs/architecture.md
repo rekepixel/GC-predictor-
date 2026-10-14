@@ -11,14 +11,14 @@ Se eligió JSON validado en tablas relacionadas frente a un esquema con decenas 
 - `lib/types.ts`: contratos de dominio, estado de validación y pesos.
 - `lib/db.ts`: SQLite/PostgreSQL, migración, transacciones, persistencia y auditoría.
 - `lib/store.ts`: carga del catálogo y del temario; lectura del dataset y aplicación idempotente del banco cotejado.
-- `lib/verified-bank.ts`, `lib/documentary.ts`: manifiesto y validación transaccional de evidencias; elegibilidad documental y huellas por pregunta.
+- `lib/verified-bank.ts`, `lib/historical-bank.ts`, `lib/documentary.ts`: manifiesto y validación transaccional de evidencias; elegibilidad documental y huellas por pregunta.
 - `lib/history.ts`, `components/article-history.tsx`: fichas normativas e informe anual.
 - `lib/importer.ts`, `lib/review.ts`: esquema de entrada, procedencia, extracción, correspondencia de opciones, plantillas y revisión.
 - `lib/analysis.ts`: frecuencias, corpus admisible, ranking, comparación textual y evaluación temporal.
 - `lib/auth.ts`, `lib/files.ts`: sesiones firmadas, protección del acceso, originales privados locales/Supabase.
 - `app/api/[...path]/route.ts`: endpoints autenticados, corrección de simulacros y exportación.
 - `components/app.tsx`, `components/admin.tsx`: interfaz de las seis secciones, filtros y revisión.
-- `python/verify_2026.py`, `python/curate_2026.py`: cotejo con dos motores PDF y referencias BOE históricas.
+- `python/verify_2026.py`, `python/curate_2026.py`, `python/verify_history.py`, `python/curate_history.py`: cotejo con dos motores PDF y referencias BOE históricas.
 - `python/extract.py`: extracción especializada de conocimientos del archivo oficial, excluyendo idioma y ortografía.
 - `data/source-catalog.json`, `data/syllabus-2026.json`, `data/raw`: investigación y originales públicos oficiales. No contienen resultados personales.
 
@@ -30,11 +30,15 @@ Se conserva una ocurrencia literal por modelo. `canonicalId` agrupa equivalencia
 
 ## Aplicación del banco documental
 
-Los JSON de `data/verified` contienen las 210 ocurrencias reales y las referencias verificadas; el manifiesto fija sus huellas y las de la consulta oficial. `initialize` aplica el banco a una base nueva o existente mediante una transacción. Una versión de manifiesto ya aplicada no se repite; los identificadores existentes se reutilizan y las revisiones manuales se preservan. `GC_SKIP_VERIFIED_BANK=1` se reserva para aislamiento de fixtures de prueba. El estado inicial se puede reconstruir sin ejecutar Python.
+Los JSON de `data/verified` conservan el banco original de 210 ocurrencias de 2026; `data/verified/history` añade 1.260 de 2023–2025 y sus referencias, transcripciones de claves y corroboraciones; el manifiesto fija sus huellas y las de la consulta oficial. `initialize` aplica el banco a una base nueva o existente mediante una transacción. Una versión de manifiesto ya aplicada no se repite; los identificadores existentes se reutilizan y las revisiones manuales se preservan. `GC_SKIP_VERIFIED_BANK=1` se reserva para aislamiento de fixtures de prueba. El estado inicial se puede reconstruir sin ejecutar Python.
 
 Antes de aplicar se validan esquemas, numeración, reservas, correcciones y correspondencia biyectiva, además de las huellas de los PDF retenidos. El cotejo en ejecución liga texto, opciones, respuesta, identidad de fuente/clave, grupo y mapa A/B. Cambiar contenido retira el certificado propio y el de la pareja. La revisión de metadatos conserva la relación; una anulación se propaga a sus variantes, con auditoría y sin borrar filas. La clave sustituida nº 1 queda conservada y bloqueada para corrección.
 
-`data/pending` contiene once copias secundarias sin autenticar y no genera preguntas. El servidor entrega sus PDF como documentos tras autenticación, pero no los convierte en oficiales. La verificación de integridad diferencia explícitamente fuente oficial y secundaria.
+`data/pending` conserva 21 copias secundarias. Doce cuadernillos y cinco claves alimentan el banco histórico tras el cotejo dual y la corroboración: SHA-256 entre proveedores o concordancia textual con excepción explícita de marca editorial. Dos copias de contraste y dos escaneados anteriores de 2025 no duplican preguntas. Las fuentes siguen con origen secundario y sin validación oficial/final. El servidor entrega sus PDF tras autenticación.
+
+El ámbito `corroborated_documentary` liga la huella por pregunta a la corroboración de ambas fuentes. El manifiesto histórico incluye todos sus JSON y las huellas de los PDF; una aplicación fallida se revierte. La migración es aditiva, conserva identificadores previos y respeta registros `manual-reviewed` o ya validados. Las modificaciones de clasificación de 2026 conservan el subaspecto original y auditoría. `verificationState` distingue cotejo documental, respuesta final acreditada y pendiente; el origen es una dimensión separada.
+
+La analítica documental incluye ambas procedencias con aviso. La retrospectiva estricta y los simulacros requieren el corpus final. La reconstrucción exploratoria se calcula por separado y declara sus supuestos, cobertura parcial y etiquetas retrospectivas. No modifica fechas de publicación ni genera probabilidades.
 
 ## Acceso y despliegue
 

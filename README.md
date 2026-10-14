@@ -4,36 +4,40 @@ Aplicación personal para analizar exámenes oficiales de acceso a la Escala de 
 
 Implementación funcional con Next.js 16, App Router, TypeScript, Tailwind 4, SQLite/PostgreSQL y extracción local de PDF en JavaScript o Python. No necesita una API de IA ni servicios de pago para ejecutarse localmente.
 
-## Estado real tras el cotejo de 2026
+## Estado real: base histórica 2023–2026
 
-Consulta del **14/10/2026**. Se ha continuado el proyecto y la base existentes, sin eliminar archivos ni preguntas. Informe reproducible: [validación de 2026](docs/validation-2026.md), [fuentes](docs/research.md) y [catálogo](data/source-catalog.json).
+Consulta del **14/10/2026**. Se continúa el mismo proyecto. Informe: [base histórica y controles](docs/history-2023-2026.md); datos agregados: [reporte JSON](data/research/history/validation-report.json).
 
-| Elemento                          | Resultado comprobado                                                                                                         |
-| --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Sesión cotejada                   | 11/07/2026, modelos oficiales A y B, misma convocatoria                                                                      |
-| Registros literales cotejados     | **210**: 105 por modelo; dos extracciones independientes concordantes                                                        |
-| Preguntas únicas                  | **105**: 100 ordinarias y 5 de reserva, con equivalencia A/B biyectiva                                                       |
-| Base del dashboard                | **100 ordinarias cotejadas documentalmente**, sin duplicar modelos ni incluir reservas                                       |
-| Validación con firmeza definitiva | **0**: la fuente confirma PDF nº 2 corregido, pero no acredita expresamente firmeza final ni relación final de anulaciones   |
-| Corrección oficial                | A7 / B88: **C → A**, contrastando PDF nº 1 y nº 2                                                                            |
-| Clasificación                     | 105 temas/conceptos revisados; 100 ordinarias repartidas entre los 23 temas                                                  |
-| Referencias normativas            | 76 localizaciones BOE comprobadas, incluidas reservas y disposiciones; **68 fichas de artículos numéricos ordinarios**       |
-| Años 2025 / 2024 / 2023           | 0 preguntas cotejadas; 3 / 8 / 0 copias secundarias pendientes; fuentes primarias anteriores consultadas no accesibles       |
-| Archivo conservado                | 840 registros existentes: 210 cotejados de 2026 y 630 borradores de 2022; 2020 sin transcripción                             |
-| Documentos                        | 57 fuentes catalogadas; 23 PDF de procedencia oficial en `data/raw` y 11 copias secundarias sin autenticar en `data/pending` |
-| Prioridad y predicción            | Orden descriptivo con fuentes; puntuación heurística suspendida con un solo año; probabilidades siempre `null`               |
+| Control                                                | Resultado                                                                                                                         |
+| ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| Sesiones celebradas representadas                      | **6**: dos de 2023, dos de 2024, una de 2025 y una de 2026                                                                        |
+| Formas distintas de examen                             | **7**; la sesión 28/09/2024 contiene dos ejercicios diferentes, uno aplicado en un aula de Baeza                                  |
+| Preguntas ordinarias para descripción                  | **700 únicas**, sin duplicar A/B                                                                                                  |
+| Reservas                                               | **35 únicas**, separadas e inactivas                                                                                              |
+| Registros literales cotejados                          | **1.470** ocurrencias de modelo, con cuatro alternativas y claves emparejadas                                                     |
+| Procedencia                                            | **100 ordinarias de descarga institucional y 600 cotejadas en copias secundarias corroboradas**                                   |
+| Respuesta final y anulaciones acreditadas por pregunta | **0**; no se presentan las copias ni las claves vigentes como prueba de ese control final                                         |
+| Clasificación temática                                 | 700/700 ordinarias en los 23 temas de referencia 2026                                                                             |
+| Clasificación conceptual específica                    | **176/700 revisadas; 524 pendientes**; 12 grupos reaparecen entre años                                                            |
+| Referencias normativas                                 | **132 preguntas** con alguna localización normativa cotejada; **121 fichas de artículos numéricos**, con sus versiones históricas |
+| Repeticiones                                           | 2 grupos de repetición literal entre años; 12 grupos conceptuales, 6 con años consecutivos                                        |
+| Archivo existente                                      | **2.100 registros**: los 840 anteriores se conservan y se añaden 1.260 históricos; 630 de 2022 siguen en borrador                 |
+| Documentación                                          | 69 fuentes catalogadas; 45 PDF retenidos: 24 de procedencia oficial y 21 secundarios                                              |
+| Predicción                                             | Probabilidades siempre `null`; retrospectiva estricta no concluyente; reconstrucción exploratoria separada                        |
 
-**Cotejo documental no significa plantilla administrativamente definitiva.** Las preguntas siguen en estado `reviewed`, con un certificado documental independiente ligado al texto, opciones, respuesta, equivalencia y huellas de los originales. El dashboard describe el contenido publicado y muestra esta limitación. Simulacros y evaluación retrospectiva mantienen el requisito de clave definitiva; actualmente no tienen preguntas habilitadas.
+**Corroborar copias no las convierte en descargas oficiales.** Para admitir el cotejo histórico se exige concordancia literal de dos motores PDF, cuatro alternativas, sección y reservas identificadas, transcripción visual independiente de las claves A/B y correspondencia biyectiva coherente de respuestas. Las copias coinciden entre dos proveedores: por SHA-256 en 2023/2024 y plantillas, o por texto de preguntas tras retirar únicamente la marca editorial del documento de contraste de 2025. Se conserva procedencia secundaria, originales institucionales inaccesibles y situación final pendiente.
 
-Frecuencias reales de 2026: Derechos Humanos 12/100; Procesal Penal 9/100; Fuerzas y Cuerpos de Seguridad/Guardia Civil 9/100; Constitucional 7/100. Son proporciones del examen disponible, **no probabilidades de 2027**. Cada concepto curado aparece una vez en esta única sesión; no hay evidencia todavía de persistencia entre años.
+La resolución de 24/07/2026 acredita resultados definitivos tras revisiones de notas, pero su parte resolutiva no enumera cambios de respuesta o anulaciones. Se registran tres estados: cotejo documental, respuesta y anulaciones finales acreditadas, y cotejo adicional pendiente. La procedencia y los controles pendientes se informan aparte. **No se exige un certificado independiente por su título; se exige evidencia del alcance por pregunta.** Esa falta no bloquea las frecuencias documentales.
 
-Las 840 filas no representan preguntas independientes: incluyen modelos y reservas. Se conservan las repeticiones legítimas entre años. No hay datos de demostración en la aplicación. Las copias secundarias no se importan automáticamente ni alimentan análisis.
+En 2024 no se cuenta el examen suspendido del 29/09: las sesiones son 28/09 y 13/10. La primera reúne 200 preguntas distintas de dos ejercicios, cada uno con A/B. No se conoce el número de aspirantes de cada forma; las tasas se normalizan por sesión sobre los contenidos disponibles, sin inventar pesos poblacionales.
+
+Estadísticas actuales: Derechos Humanos 80/700, Procesal Penal 68/700 y Constitucional 58/700. Son recuentos documentales. El ranking conceptual sólo utiliza la parte revisada; **su cobertura incompleta impide tratarlo como ranking exhaustivo del temario**. El tiempo sin aparecer no añade puntos.
 
 ## Estado de entrega y permisos de GitHub
 
-El proyecto completo está publicado en [rekepixel/GC-predictor-](https://github.com/rekepixel/GC-predictor-), rama **main**, con el código, los documentos recopilados y el banco documental de 2026. El 14/10/2026 se resolvió el error 403 tras instalar ChatGPT Codex Connector y conceder acceso al repositorio. La subida se ha comprobado contra la referencia remota.
+El proyecto completo está publicado en [rekepixel/GC-predictor-](https://github.com/rekepixel/GC-predictor-), rama **main**, con el código, los documentos recopilados y los bancos documentales de 2023–2026. El 14/10/2026 se resolvió el error 403 tras instalar ChatGPT Codex Connector y conceder acceso al repositorio. La subida se ha comprobado contra la referencia remota.
 
-El historial del diagnóstico está en [Acceso a GitHub](docs/github-access.md). También se conservan los paquetes ZIP anteriores. Si usas el ZIP, entra en su carpeta `gc-predictor` y omite las dos líneas de clonación. No se incluyen contraseñas, dependencias instaladas ni bases de datos personales; el arranque carga automáticamente el banco documental de 2026 y `data:archive` reconstruye además los borradores antiguos.
+El historial del diagnóstico está en [Acceso a GitHub](docs/github-access.md). También se conservan los paquetes ZIP anteriores. Si usas el ZIP, entra en su carpeta `gc-predictor` y omite las dos líneas de clonación. No se incluyen contraseñas, dependencias instaladas ni bases de datos personales; el arranque carga automáticamente el banco documental de 2023–2026 y `data:archive` reconstruye además los borradores antiguos.
 
 ## Inicio local
 
@@ -47,7 +51,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Abre **http://127.0.0.1:3000**. La primera petición crea la base y carga las 210 ocurrencias cotejadas de 2026 desde la evidencia sellada incluida. **No requiere Python** para consultar el dashboard y el explorador. En una base existente conserva sus identificadores y aplica únicamente las comprobaciones nuevas, con auditoría. No sustituye revisiones manuales ya registradas.
+Abre **http://127.0.0.1:3000**. La primera petición crea la base y carga las 1.470 ocurrencias cotejadas de 2023–2026 desde la evidencia sellada incluida. **No requiere Python** para consultar el dashboard y el explorador. En una base existente conserva sus identificadores y aplica únicamente las comprobaciones nuevas, con auditoría. No sustituye revisiones manuales ya registradas.
 
 Para reconstruir también el archivo antiguo, instala Python 3.11 o superior:
 
@@ -59,7 +63,7 @@ PYTHON_BIN=.venv/bin/python npm run data:archive
 
 `data:archive` es idempotente, importa sólo fuentes catalogadas como oficiales y nunca valida los borradores. En Windows usa `.venv\Scripts\python.exe` y configura `PYTHON_BIN` en tu terminal.
 
-Para repetir el cotejo de los PDF retenidos:
+Para repetir el cotejo de los PDF retenidos, desde la raíz del repositorio:
 
 ```bash
 .venv/bin/python python/verify_2026.py
@@ -69,21 +73,30 @@ npx tsx scripts/seal-bank.ts
 npm run data:apply-verified
 ```
 
+Para el banco histórico ya curado:
+
+```bash
+.venv/bin/python python/verify_history.py
+npm run data:apply-verified
+```
+
+`verify_history.py` trabaja sin red con los documentos y transcripciones de clave incluidos, verifica dos motores y ambos modelos y genera su propio manifiesto. Las transcripciones y grupos revisados se guardan en `data/verified/history/`. El comando abreviado es `npm run data:verify:history` usando `python` del PATH. Tras la extracción, `python/curate_history.py` reconstruye la clasificación desde las reglas de encabezados y las anotaciones explícitas. Las propuestas normativas nuevas necesitan el XML BOE en `.local/legal-cache` y revisión; ninguna propuesta se verifica automáticamente por su parecido.
+
 El primer script compara pypdf y pdfplumber, comprueba sección, opciones, reservas, equivalencias y cambios de clave. El segundo utiliza el TSV de propuestas curadas y sólo publica artículos cuyo bloque y fragmento se localizan en una versión BOE publicada y vigente antes del examen. No convierte propuestas sin verificar en referencias ciertas. El sellado actualiza SHA-256 de las evidencias; revísalas antes de aplicarlas. Los fallos interrumpen el proceso. `npm run data:verify:2026` abrevia extracción, sellado y aplicación usando `python` del PATH; no renueva las referencias BOE.
 
-La base local se guarda en `.local/gc-predictor.sqlite`, fuera de Git. Los PDF subidos se guardan en `.local/originals`, salvo que configures Supabase Storage. Los PDF oficiales recopilados en `data/raw` forman parte del repositorio. Los comandos CLI leen `.env.local` y `.env`; las variables ya exportadas en la terminal tienen prioridad.
+La base local se guarda en `.local/gc-predictor.sqlite`, fuera de Git. Los PDF subidos se guardan en `.local/originals`, salvo que configures Supabase Storage. Los PDF institucionales recopilados en `data/raw` y las copias con procedencia explícita en `data/pending` forman parte del repositorio. Los comandos CLI leen `.env.local` y `.env`; las variables ya exportadas en la terminal tienen prioridad.
 
 En desarrollo, el acceso sin contraseña se limita a un servidor enlazado a loopback y un host `localhost`/`127.0.0.1`. Para exigir contraseña también en desarrollo, configura `PRIVATE_APP_PASSWORD`. No expongas `next dev` a Internet.
 
 ## Qué se puede usar
 
-- **Dashboard**: documentos y registros importados, años, estado de cobertura y, distribución de las 100 preguntas ordinarias cotejadas y gráficos interactivos; separa cotejo documental de firmeza final.
-- **Explorador**: preguntas reales en borrador/revisadas/validadas, filtradas por año, sesión, modelo, tema, norma, artículo, concepto y texto. Conserva el enunciado y el orden literal de las opciones de cada modelo. Por defecto muestra ordinarias cotejadas y una sola variante por pregunta. La pestaña «Fichas de artículos» ofrece 68 referencias, historial, páginas A/B y versión normativa.
+- **Dashboard**: documentos y registros importados, años, estado de cobertura distribución de las 700 preguntas ordinarias cotejadas y gráficos interactivos; separa cotejo documental de firmeza final.
+- **Explorador**: preguntas reales en borrador/revisadas/validadas, filtradas por año, sesión, modelo, tema, norma, artículo, concepto y texto. Conserva el enunciado y el orden literal de las opciones de cada modelo. Por defecto muestra ordinarias cotejadas y una sola variante por pregunta. La pestaña «Fichas de artículos» ofrece 121 fichas, historial, páginas A/B y versión normativa.
 - **Administración**: subida y conservación de PDF, extracción revisable, importación de JSON, asociación de plantillas, cotejo de preguntas, fuentes, versiones del programa y cambios normativos. Auditoría de cambios y exportación JSON.
 - **Análisis**: frecuencia de temas, normas, artículos y conceptos; repeticiones literales y conceptuales; sugerencias léxicas TF-IDF/coseno; periodos sin reaparición; estilos y distractores anotados.
 - **Prioridades**: orden explicable por concepto o artículo, pesos configurables y referencias documentales. Con un único año sólo se muestran apariciones; los puntos heurísticos se habilitan con al menos dos años, sin promesa de fiabilidad predictiva. Se informa de cobertura, fechas desconocidas, vigencia y muestra pequeña.
-- **Retrospectiva**: cortes 2024, 2025 y 2026, entrenamiento estrictamente anterior y comparativas por frecuencia y azar reproducible. Con el corpus inicial informa «sin evidencia suficiente».
-- **Simulacros**: selección de preguntas oficiales activas validadas, filtro temático o top 10 conceptual, corrección en servidor y resultados persistidos por tema. Con cero preguntas validadas, crear tests permanece deshabilitado. No se generan preguntas nuevas mediante IA.
+- **Retrospectiva**: cortes 2024, 2025 y 2026, entrenamiento estrictamente anterior y comparativas por frecuencia y azar reproducible. La evaluación estricta informa «sin evidencia suficiente». Existe además una reconstrucción documental seleccionable, con supuestos de disponibilidad y taxonomía retrospectiva visibles; no prueba anticipación real.
+- **Simulacros**: selección de preguntas oficiales activas validadas, filtro temático o top 10 conceptual, corrección en servidor y resultados persistidos por tema. La corrección que exige respuesta definitiva permanece deshabilitada con cero preguntas finales acreditadas. El explorador sí muestra las respuestas documentales y sus límites. No se generan preguntas nuevas mediante IA.
 - **PWA**: manifiesto, iconos y modo standalone. El service worker conserva sólo iconos/manifiesto, nunca exámenes, respuestas, sesiones o páginas privadas. No funciona como archivo de exámenes sin conexión.
 
 ## Flujo de importación y validación
@@ -143,11 +156,11 @@ Es una **plantilla de formato, no un examen ni un documento real**. Sustituye me
 
 Detalle en [docs/methodology.md](docs/methodology.md).
 
-- **Observación descriptiva**: pregunta ordinaria oficial activa con cotejo documental sellado o validación contra clave definitiva. **Corpus estricto**: únicamente el segundo supuesto, reservado a simulacros y retrospectiva. Las variantes equivalentes de una sesión/año se cuentan una vez. Se conservan literalmente las ocurrencias A/B y su correspondencia de opciones; los conflictos de respuesta entre variantes excluyen el grupo.
+- **Observación descriptiva**: pregunta ordinaria activa con cotejo documental sellado —institucional o de copia corroborada identificada— o validación contra clave definitiva. **Corpus estricto**: únicamente el segundo supuesto, reservado a simulacros y retrospectiva. Las variantes equivalentes de una sesión/año se cuentan una vez. Se conservan literalmente las ocurrencias A/B y su correspondencia de opciones; los conflictos de respuesta entre variantes excluyen el grupo.
 - **Frecuencia observada**: recuentos y proporciones sobre el corpus disponible. Para el ranking se calcula la **media de proporciones por sesión**, de modo que un examen con más preguntas disponibles no domine automáticamente.
-- **Puntuación heurística**: combinación de frecuencia histórica (0,30), recencia desde 2023 (0,30), persistencia (0,20), temario verificado para la fecha (0,15) y cambios legales documentados (0,05). Los pesos se normalizan. Frecuencia y recencia se escalan respecto al máximo del corpus. Con al menos dos años cubiertos produce una prioridad relativa de estudio de 0 a 100, **sin símbolo de porcentaje**. Con el único año actual devuelve `score:null` y muestra el recuento.
+- **Puntuación heurística**: combinación de frecuencia histórica (0,30), recencia desde 2023 (0,30), persistencia (0,20), temario verificado para la fecha (0,15) y cambios legales documentados (0,05). Los pesos se normalizan. Frecuencia y recencia se escalan respecto al máximo del corpus. Con al menos dos años cubiertos produce una prioridad relativa de estudio de 0 a 100, **sin símbolo de porcentaje**. Con un único año de entrenamiento devuelve `score:null` y muestra el recuento.
 - **Probabilidad**: siempre `null`. No hay modelo probabilístico entrenado, calibrado ni validado. Superar una referencia retrospectiva no basta para afirmar una probabilidad.
-- **Retrospectiva**: antes de cada año objetivo sólo se usan años anteriores con fecha de disponibilidad anterior al examen. La disponibilidad es la más tardía entre publicación del examen y de su clave. Las fechas desconocidas se excluyen. El universo de conceptos lo define sólo el entrenamiento. Las anotaciones conceptuales retrospectivas se declaran como una limitación, no como conocimiento histórico reconstruido.
+- **Retrospectiva estricta**: antes de cada año objetivo sólo se usan años anteriores con fecha de disponibilidad anterior al examen. La disponibilidad es la más tardía entre publicación del examen y de su clave. Las fechas desconocidas se excluyen. El universo de conceptos lo define sólo el entrenamiento. Las anotaciones conceptuales retrospectivas se declaran como una limitación, no como conocimiento histórico reconstruido.
 - **Referencias**: frecuencia histórica normalizada y selección aleatoria del mismo universo y tamaño. Semilla 2027, 200 repeticiones; se muestra una realización y la media de cobertura aleatoria.
 - **Métricas**: precisión de conceptos top-k, cobertura de conceptos únicos, cobertura de preguntas clasificadas, resultados por tema e intervalo Wilson orientativo. Las dependencias entre preguntas y las muestras pequeñas limitan la interpretación.
 
@@ -201,14 +214,16 @@ npm run typecheck
 npm run build
 ```
 
-Las pruebas usan bases temporales: fixtures sintéticos identificados y una integración independiente con las evidencias de los PDF auténticos de 2026. Cubren equivalencias A/B y orden de opciones, preservación de repeticiones entre años, signos matemáticos, conflictos de claves, borradores/anulaciones, normalización por sesión, corte temporal, exclusión de fechas desconocidas, universo de conceptos sin futuro, referencias reproducibles, importación atómica, claves foráneas, revisión y auditoría, sustitución/anulación de plantillas y firmas de sesión.
+Las pruebas incluyen los dos bancos documentales reales y usan bases temporales: fixtures sintéticos identificados y una integración independiente con las evidencias de los PDF auténticos de 2026. Cubren equivalencias A/B y orden de opciones, preservación de repeticiones entre años, signos matemáticos, conflictos de claves, borradores/anulaciones, normalización por sesión, corte temporal, exclusión de fechas desconocidas, universo de conceptos sin futuro, referencias reproducibles, importación atómica, claves foráneas, revisión y auditoría, sustitución/anulación de plantillas y firmas de sesión.
 
-GitHub Actions ejecuta comprobación de tipos, pruebas y build. Las credenciales de Supabase no vienen configuradas; el adaptador PostgreSQL y el bucket necesitan una prueba de integración en tu entorno antes de usarlo como almacenamiento de producción. El Dockerfile y Safari iOS tampoco se certifican por la compilación de Next.js.
+GitHub Actions ejecuta integridad de fuentes, comprobación de tipos, pruebas y build. Las credenciales de Supabase no vienen configuradas; el adaptador PostgreSQL y el bucket necesitan una prueba de integración en tu entorno antes de usarlo como almacenamiento de producción. El Dockerfile y Safari iOS tampoco se certifican por la compilación de Next.js.
 
 ## Límites y siguiente paso
 
-El corpus permite describir una única sesión de 2026. Falta acreditar la firmeza final de su clave, las anulaciones y la autenticidad de los documentos pendientes de 2023–2025. No permite comparar tendencias históricas ni acreditar rendimiento predictivo. Las referencias legales se han cotejado para el 11/07/2026, no se certifica automáticamente su vigencia para 2027. Nueve propuestas de apartado permanecen sin confirmar; las referencias internacionales y otras pendientes no reciben artículos supuestos.
+El corpus permite comparar seis sesiones, con procedencia explícita. No equivale a disponer de todas sus respuestas finales acreditadas. Faltan autenticación institucional plena de las copias, fechas originales de publicación, revisión de 524 conceptos y referencias concretas en 568 preguntas (algunas materias no son jurídicas). No se han certificado retiradas concretas del temario 2026; mapear un tema no demuestra vigencia de cada contenido. Las versiones legales se cotejan para la fecha del examen, no para 2027.
 
-No hay calibración probabilística, OCR automático, embeddings semánticos, sistema multiusuario ni explicaciones jurídicas generadas. La similitud es léxica y tiene un límite interactivo de 1.000 preguntas.
+La retrospectiva estricta mantiene sus controles de publicación y respuesta final. La reconstrucción exploratoria usa sólo exámenes anteriores, pero supone disponibilidad a partir de la celebración cuando falta la publicación y utiliza etiquetas retrospectivas: sus resultados no son concluyentes. Top 10 de 2025: 2 conceptos cubiertos de 14 revisados; de 2026: 6 de 100. La referencia de frecuencia consigue lo mismo, por lo que **no hay evidencia de mejora predictiva**.
 
-El siguiente paso es obtener un acuerdo oficial que acredite la plantilla final/anulaciones de 2026 y autenticar las copias de 2025. Tras ese control, repetir el protocolo por sesión en 2024 y 2023, unificar conceptos entre años y ejecutar la retrospectiva sin información futura. Informe y límites: [validación 2026](docs/validation-2026.md).
+No hay calibración probabilística, OCR automático web, embeddings de pago ni sistema multiusuario. Las claves históricas escaneadas se transcribieron visualmente y se cruzaron entre A/B. La similitud es léxica y conserva su límite interactivo de 1.000 preguntas.
+
+Siguiente paso: conseguir los acuerdos o claves que acrediten el estado final por pregunta, confirmar fechas históricas de publicación y completar la taxonomía conceptual. Congelar la taxonomía y los pesos antes de evaluar un periodo externo nuevo. Los archivos y registros anteriores están conservados; el informe incluye las comprobaciones de integridad.

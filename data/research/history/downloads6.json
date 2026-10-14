@@ -1,0 +1,26 @@
+[
+  {
+    "id": "2025-polaris-A",
+    "url": "https://www.polarisoposiciones.es/examenes-convocatorias-anteriores/guardia-civil/2025-ejercicio-a.pdf",
+    "status": 200,
+    "path": ".local/history-research/2025-polaris-A.pdf",
+    "bytes": 580393,
+    "sha256": "518d15bee492ee2a7b9136528fef9a75e1fbdf36977c12b3d287e8745f624355"
+  },
+  {
+    "id": "2025-polaris-B",
+    "url": "https://www.polarisoposiciones.es/examenes-convocatorias-anteriores/guardia-civil/2025-ejercicio-b.pdf",
+    "status": 200,
+    "path": ".local/history-research/2025-polaris-B.pdf",
+    "bytes": 589190,
+    "sha256": "030b5a0fa36a8dda0cda8bd8eace5d756115ff4c9bc28f4627f6bd3fafa5dad1"
+  },
+  {
+    "id": "2025-polaris-key",
+    "url": "https://www.polarisoposiciones.es/examenes-convocatorias-anteriores/guardia-civil/2025-plantilla.pdf",
+    "status": 200,
+    "path": ".local/history-research/2025-polaris-key.pdf",
+    "bytes": 1412204,
+    "sha256": "7d622fe6e4594545c2eb80a1d65d77609e0849c0220a6666be382d98e68d641c"
+  }
+]

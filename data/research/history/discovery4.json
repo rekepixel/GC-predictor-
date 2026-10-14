@@ -1,0 +1,61 @@
+[
+  {
+    "id": "tercio",
+    "url": "https://tercio14.com/oposicion/examenes",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "vm",
+    "url": "https://vmoposiciones.com/examenes-guardia-civil-pdf/",
+    "links": [
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/examen-guardia-civil-2026-tipo-a-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/examen-guardia-civil-2026-tipo-b-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/plantilla-respuestas-guardia-civil-2026-conocimientos-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/plantilla-psicotecnicos-guardia-civil-2026-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/examen-guardia-civil-2025-tipo-a-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/examen-guardia-civil-2025-tipo-b-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/plantilla-respuestas-guardia-civil-2025-conocimientos-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/plantilla-psicotecnicos-guardia-civil-2025-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/examen-guardia-civil-2024-dia-1-tipo-a-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/examen-guardia-civil-2024-dia-1-tipo-b-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/examen-guardia-civil-2024-dia-2-tipo-a-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/examen-guardia-civil-2024-dia-2-tipo-b-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/examen-guardia-civil-2024-dia-3-tipo-a-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/examen-guardia-civil-2024-dia-3-tipo-b-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/plantilla-respuestas-guardia-civil-2024-examen-1-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/plantilla-respuestas-guardia-civil-2024-examen-2-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/plantilla-respuestas-guardia-civil-2024-examen-3-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/plantilla-psicotecnicos-guardia-civil-2024-dia-28-septiembre-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/plantilla-psicotecnicos-guardia-civil-2024-dia-13-octubre-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/examen-guardia-civil-2023-dia-1-tipo-a-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/examen-guardia-civil-2023-dia-1-tipo-b-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/examen-guardia-civil-2023-dia-2-tipo-a-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/examen-guardia-civil-2023-dia-2-tipo-b-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/plantilla-respuestas-guardia-civil-2023-examen-1-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/plantilla-respuestas-guardia-civil-2023-dia-1-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/plantilla-psicotecnicos-guardia-civil-2023-examen-1-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/examen-guardia-civil-2022-dia-1-tipo-a-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/examen-guardia-civil-2022-dia-1-tipo-b-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/examen-guardia-civil-2022-dia-2-tipo-a-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/examen-guardia-civil-2022-dia-2-tipo-b-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/examen-guardia-civil-2022-dia-3-tipo-a-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/examen-guardia-civil-2022-dia-3-tipo-b-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/plantilla-respuestas-guardia-civil-2022-dia-25-septiembre-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/plantilla-respuestas-guardia-civil-2022-dia-24-septiembre-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/plantilla-psicotecnicos-guardia-civil-2022-dia-25-septiembre-vm-oposiciones.pdf",
+      "https://vmoposiciones.com/wp-content/uploads/2026/08/plantilla-psicotecnicos-guardia-civil-2022-dia-24-septiembre-vm-oposiciones.pdf"
+    ]
+  },
+  {
+    "id": "2023-polaris",
+    "url": "https://www.polarisoposiciones.es/examenes-convocatorias-anteriores/guardia-civil/2023",
+    "links": [
+      "/examenes-convocatorias-anteriores/guardia-civil/2023-ejercicio-1a.pdf",
+      "/examenes-convocatorias-anteriores/guardia-civil/2023-plantilla-ejercicio-1.pdf",
+      "/examenes-convocatorias-anteriores/guardia-civil/2023-ejercicio-1b.pdf",
+      "/examenes-convocatorias-anteriores/guardia-civil/2023-ejercicio-2a.pdf",
+      "/examenes-convocatorias-anteriores/guardia-civil/2023-plantilla-ejercicio-2.pdf",
+      "/examenes-convocatorias-anteriores/guardia-civil/2023-ejercicio-2b.pdf"
+    ]
+  }
+]

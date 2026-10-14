@@ -1,0 +1,14 @@
+[
+  {
+    "id": "archive2023",
+    "url": "https://web.archive.org/cdx/search/cdx?url=www.guardiacivil.es/documentos/pdfs/2023/IngresoGC2023/INGRESO_GC_2023_1A.pdf&output=json&filter=statuscode:200&collapse=digest",
+    "error": "HTTP Error 503: Service Unavailable"
+  },
+  {
+    "id": "2023-official-post",
+    "url": "https://es.linkedin.com/posts/guardiacivil_plantillas-respuestas-pruebasselectivas-activity-7124883178850312194-OGtn",
+    "status": 200,
+    "bytes": 96469,
+    "preview": "<!DOCTYPE html>\n\n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n\n    \n    <html lang=\"es\">\n      <head>\n        <meta name=\"pageKey\" content=\"d_public_post\">\n          \n    <meta name=\"robots\" content=\"max-image-preview:large, noarchive\">\n    <meta name=\"bingbot\" con"
+  }
+]

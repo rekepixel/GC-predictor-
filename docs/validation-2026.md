@@ -1,5 +1,7 @@
 # Cotejo documental de 2026
 
+> Registro de la fase anterior. La revisión de la resolución de 24/07/2026 y el estado histórico actual están en [history-2023-2026.md](history-2023-2026.md). Se conserva este informe para documentar el punto de partida.
+
 Fecha de consulta: 14/10/2026. Proyecto existente conservado. Este informe distingue **contenido publicado comprobado** de **firmeza administrativa de las respuestas**. No presenta un examen definitivamente validado si falta esta última evidencia.
 
 ## Resultado
@@ -81,3 +83,9 @@ Dashboard de frecuencias temáticas y normativas, 100 conceptos curados con una 
 No hay comparación histórica sustantiva con un solo año. La puntuación heurística devuelve `null` y la vista muestra apariciones; las probabilidades siguen `null`. Retrospectiva y simulacros exigen el corpus estricto con clave definitiva y permanecen sin datos habilitados. Tampoco se afirma que el método supere frecuencia histórica o azar: aún no hay evaluación real posible.
 
 Siguiente control necesario: acuerdo final/relación de anulaciones de 2026. Después, autenticar 2025, verificar cada sesión y ampliar 2024/2023; la publicación secundaria no sustituye esta comprobación.
+
+## Revisión posterior de la resolución final
+
+Se recuperó el documento completo y se inspeccionó la parte resolutiva de la página 1. Se acredita cierre de las calificaciones tras revisiones, no una relación de respuestas o anulaciones por pregunta. Se registra ese avance en `Source.answerKeyAssessment` y [2026-assessment.json](../data/verified/history/2026-assessment.json). No se exige una declaración independiente de firmeza por su título. Sigue pendiente una evidencia de alcance suficiente para el estado final por pregunta. Las 100 ordinarias no se bloquean para el análisis documental.
+
+El informe histórico añade 2023–2025 y relaciones revisadas con 2026. Las cifras de la sección anterior corresponden únicamente a la fase inicial; los originales y el banco sellado de 2026 se conservan. La curación interanual mantiene subaspectos y auditoría. No se redistribuyen listados de aspirantes.

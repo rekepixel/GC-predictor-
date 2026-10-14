@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    {
+      "path": "data/verified/history/2026-assessment.json",
+      "sha256": "f7cbe46cd3e207070734cdbf4c1431826befbf2d8dee656f411cb1a3d405bb5c"
+    },
+    {
+      "path": "data/verified/history/bank.json",
+      "sha256": "d5c1685eeadad6e9f0f59460b9d0b599d350b019a573d9f19943ce69d0cd503b"
+    },
+    {
+      "path": "data/verified/history/concept-groups.json",
+      "sha256": "cc313c978396095a2ab98694923ef5ae551e65fb1e74562343107391238690b2"
+    },
+    {
+      "path": "data/verified/history/config.json",
+      "sha256": "31897496b6bf0940663f74ee0fb0b0b522ebd6d3de0bcdb8e4371c05688a6c58"
+    },
+    {
+      "path": "data/verified/history/curation.json",
+      "sha256": "41f806150faa036f3b32351452764e159f477a26199949ee285945a16f5e5e5f"
+    },
+    {
+      "path": "data/verified/history/heading-rules.json",
+      "sha256": "0802e8b94cca394a4d701abe81493274fc1eb00c623238144eba935222bd6b0b"
+    },
+    {
+      "path": "data/verified/history/key-transcriptions.json",
+      "sha256": "8f505a5ef07b9bd9c458dbc26d2c92c3f114c20adb9d0404a3081d85c855eef1"
+    },
+    {
+      "path": "data/verified/history/legal-evidence.json",
+      "sha256": "a9b5436bfc1d770da48af17034c213f600bebc23c99abd9f580bc0e7f497a673"
+    },
+    {
+      "path": "data/verified/history/literal-corrections.json",
+      "sha256": "25678672422d6971c249d4f2ab94e355fe437420be3137583057c733d5370fe9"
+    },
+    {
+      "path": "data/verified/history/manual-concepts.json",
+      "sha256": "ff0da36f17cbfc5db829de87998cd7e01161f064e47389c63b473c28dee69cef"
+    }
+  ]
+}
