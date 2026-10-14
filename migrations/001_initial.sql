@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS schema_migrations (version TEXT PRIMARY KEY, applied_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS sources (id TEXT PRIMARY KEY, payload TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS exams (id TEXT PRIMARY KEY, source_id TEXT NOT NULL REFERENCES sources(id), payload TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS concepts (id TEXT PRIMARY KEY, payload TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS syllabi (id TEXT PRIMARY KEY, source_id TEXT NOT NULL REFERENCES sources(id), payload TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS topics (id TEXT PRIMARY KEY, syllabus_id TEXT NOT NULL REFERENCES syllabi(id), payload TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS questions (id TEXT PRIMARY KEY, exam_id TEXT NOT NULL REFERENCES exams(id), source_id TEXT NOT NULL REFERENCES sources(id), canonical_id TEXT NOT NULL, payload TEXT NOT NULL);
+CREATE INDEX IF NOT EXISTS questions_exam_idx ON questions(exam_id);
+CREATE INDEX IF NOT EXISTS questions_canonical_idx ON questions(canonical_id);
+CREATE TABLE IF NOT EXISTS law_changes (id TEXT PRIMARY KEY, payload TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS import_jobs (id TEXT PRIMARY KEY, source_id TEXT NOT NULL REFERENCES sources(id), payload TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS attempts (id TEXT PRIMARY KEY, payload TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS answer_entries (exam_id TEXT NOT NULL REFERENCES exams(id), question_number INTEGER NOT NULL, correct INTEGER, cancelled INTEGER NOT NULL DEFAULT 0, source_id TEXT NOT NULL REFERENCES sources(id), PRIMARY KEY(exam_id,question_number));
+CREATE TABLE IF NOT EXISTS audit_events (id TEXT PRIMARY KEY, entity_id TEXT NOT NULL, action TEXT NOT NULL, actor TEXT NOT NULL, before_payload TEXT, after_payload TEXT, created_at TEXT NOT NULL);
+CREATE INDEX IF NOT EXISTS audit_entity_idx ON audit_events(entity_id);

@@ -1,0 +1,16 @@
+node_modules/
+.next/
+.env
+.env.*
+!.env.example
+.local/
+*.sqlite*
+*.log
+__pycache__/
+.venv/
+coverage/
+.sites-runtime/
+.wrangler/
+
+*.tsbuildinfo
+playwright-report/

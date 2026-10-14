@@ -1,0 +1,39 @@
+{
+  "name": "gc-predictor",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1",
+    "build": "next build",
+    "start": "next start --hostname 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "db:migrate": "tsx scripts/migrate.ts",
+    "data:import": "tsx scripts/import-bundle.ts",
+    "data:archive": "tsx scripts/import-archive.ts",
+    "data:verify": "tsx scripts/verify-sources.ts"
+  },
+  "dependencies": {
+    "better-sqlite3": "13.0.3",
+    "lucide-react": "^0.577.0",
+    "next": "16.4.0",
+    "pdfjs-dist": "6.4.299",
+    "pg": "^8.16.3",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "recharts": "^3.8.0",
+    "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.0",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^24.0.0",
+    "@types/pg": "^8.15.6",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "prettier": "^3.9.10",
+    "tailwindcss": "^4.1.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}

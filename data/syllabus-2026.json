@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "version": "2026-oficial-enlazado-actualizado-2024",
+  "status": "official_topic_titles_verified",
+  "consultedAt": "2026-10-14T11:23:53Z",
+  "publicationAt": null,
+  "validity": {
+    "referenceYear": 2026,
+    "basis": "La página corporativa oficial del procedimiento de ingreso, en apartado convocatoria 2026, enlaza este documento como temario vigente. No se deduce una nueva resolución 2026 del nombre del archivo.",
+    "validFrom": null,
+    "validTo": null,
+    "update2027Status": "not_verified_or_published",
+    "historicalApplicability": "Debe reconstruirse por año; no aplicar automáticamente el programa 2026 a 2017-2025 para validación temporal."
+  },
+  "source": {
+    "id": "syllabus-linked-2026",
+    "title": "Temario oficial enlazado actualmente por Guardia Civil",
+    "url": "https://web.guardiacivil.es/export/sites/guardiaCivil/documentos/pdfs/2024/TEMARIO_INGRESO_GC_ACTUALIZADO_2024.pdf",
+    "linkedFrom": "https://web.guardiacivil.es/es/tramites/autorizaciones-de-armas-y-explosivos/Procedimiento-de-ingreso-directo-en-la-Escala-de-Cabos-y-Guardias-de-la-Guardia-Civil/",
+    "localPath": "data/raw/syllabus-current-linked-2024.pdf",
+    "sha256": "995a0e948e4beb8842b075626ad2c0714e82c049ff1c98c951c64fc4183ea2fb"
+  },
+  "notes": [
+    "Son 25 temas del proceso; los temas 24 y 25 corresponden a pruebas lingüísticas distintas de conocimientos generales.",
+    "Se han verificado sólo número/título y procedencia de temas. La delimitación jurídica completa se consulta en el PDF original.",
+    "La vigencia de cada norma y artículo debe contrastarse con fuentes oficiales y con la fecha de examen; este catálogo no certifica todos los artículos.",
+    "Guardar una nueva versión cuando se verifique oficialmente el programa 2027. No sobrescribir versiones históricas."
+  ],
+  "topics": [
+    {
+      "id": "tema-01",
+      "number": 1,
+      "title": "DERECHOS HUMANOS",
+      "scope": "general_knowledge"
+    },
+    {
+      "id": "tema-02",
+      "number": 2,
+      "title": "IGUALDAD EFECTIVA DE MUJERES Y HOMBRES",
+      "scope": "general_knowledge"
+    },
+    {
+      "id": "tema-03",
+      "number": 3,
+      "title": "PREVENCIÓN DE RIESGOS LABORALES",
+      "scope": "general_knowledge"
+    },
+    {
+      "id": "tema-04",
+      "number": 4,
+      "title": "DERECHO CONSTITUCIONAL",
+      "scope": "general_knowledge"
+    },
+    {
+      "id": "tema-05",
+      "number": 5,
+      "title": "DERECHO DE LA UNIÓN EUROPEA",
+      "scope": "general_knowledge"
+    },
+    {
+      "id": "tema-06",
+      "number": 6,
+      "title": "INSTITUCIONES INTERNACIONALES",
+      "scope": "general_knowledge"
+    },
+    {
+      "id": "tema-07",
+      "number": 7,
+      "title": "DERECHO CIVIL",
+      "scope": "general_knowledge"
+    },
+    {
+      "id": "tema-08",
+      "number": 8,
+      "title": "DERECHO PENAL",
+      "scope": "general_knowledge"
+    },
+    {
+      "id": "tema-09",
+      "number": 9,
+      "title": "DERECHO PROCESAL PENAL",
+      "scope": "general_knowledge"
+    },
+    {
+      "id": "tema-10",
+      "number": 10,
+      "title": "DERECHO ADMINISTRATIVO",
+      "scope": "general_knowledge"
+    },
+    {
+      "id": "tema-11",
+      "number": 11,
+      "title": "PROTECCIÓN DE DATOS",
+      "scope": "general_knowledge"
+    },
+    {
+      "id": "tema-12",
+      "number": 12,
+      "title": "EXTRANJERÍA. INMIGRACIÓN",
+      "scope": "general_knowledge"
+    },
+    {
+      "id": "tema-13",
+      "number": 13,
+      "title": "SEGURIDAD PÚBLICA Y SEGURIDAD PRIVADA",
+      "scope": "general_knowledge"
+    },
+    {
+      "id": "tema-14",
+      "number": 14,
+      "title": "MINISTERIO DEL INTERIOR. MINISTERIO DE DEFENSA",
+      "scope": "general_knowledge"
+    },
+    {
+      "id": "tema-15",
+      "number": 15,
+      "title": "FUERZAS Y CUERPOS DE SEGURIDAD. GUARDIA CIVIL",
+      "scope": "general_knowledge"
+    },
+    {
+      "id": "tema-16",
+      "number": 16,
+      "title": "MATERIAS SOCIO-CULTURALES. PROTECCIÓN CIVIL. DESARROLLO SOSTENIBLE. EFICIENCIA ENERGÉTICA",
+      "scope": "general_knowledge"
+    },
+    {
+      "id": "tema-17",
+      "number": 17,
+      "title": "MATERIAS TÉCNICO-CIENTÍFICAS. TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN",
+      "scope": "general_knowledge"
+    },
+    {
+      "id": "tema-18",
+      "number": 18,
+      "title": "TOPOGRAFÍA",
+      "scope": "general_knowledge"
+    },
+    {
+      "id": "tema-19",
+      "number": 19,
+      "title": "DEONTOLOGÍA PROFESIONAL",
+      "scope": "general_knowledge"
+    },
+    {
+      "id": "tema-20",
+      "number": 20,
+      "title": "RESPONSABILIDAD PENAL DE LOS MENORES",
+      "scope": "general_knowledge"
+    },
+    {
+      "id": "tema-21",
+      "number": 21,
+      "title": "PROTECCIÓN INTEGRAL CONTRA LA VIOLENCIA DE GÉNERO",
+      "scope": "general_knowledge"
+    },
+    {
+      "id": "tema-22",
+      "number": 22,
+      "title": "ARMAS Y EXPLOSIVOS",
+      "scope": "general_knowledge"
+    },
+    {
+      "id": "tema-23",
+      "number": 23,
+      "title": "DERECHO FISCAL",
+      "scope": "general_knowledge"
+    },
+    {
+      "id": "tema-24",
+      "number": 24,
+      "title": "INGLÉS",
+      "scope": "english"
+    },
+    {
+      "id": "tema-25",
+      "number": 25,
+      "title": "LENGUA ESPAÑOLA",
+      "scope": "spanish_language"
+    }
+  ]
+}
