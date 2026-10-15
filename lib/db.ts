@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Database from "better-sqlite3";
 import { Pool } from "pg";
+import { remoteOnly } from "./cloud";
 type Row = Record<string, unknown>;
 export interface DB {
   query<T extends Row = Row>(sql: string, params?: unknown[]): Promise<T[]>;
@@ -18,10 +19,33 @@ function postgresSQL(sql: string) {
 }
 function connect(): DB {
   if (process.env.DATABASE_URL) {
+    const connection = new URL(process.env.DATABASE_URL);
+    if (remoteOnly())
+      for (const option of ["sslmode", "sslrootcert", "sslcert", "sslkey"])
+        connection.searchParams.delete(option);
     const pool = new Pool({
-      connectionString: process.env.DATABASE_URL,
-      max: 5,
+      connectionString: connection.href,
+      // Unnamed queries work with Supavisor transaction pooling; never name prepared statements.
+      max: remoteOnly() ? 1 : 5,
+      connectionTimeoutMillis: 10000,
+      idleTimeoutMillis: 10000,
+      allowExitOnIdle: true,
+      ...(remoteOnly()
+        ? {
+            ssl: {
+              rejectUnauthorized: true,
+              ...(process.env.DATABASE_CA_CERT
+                ? { ca: process.env.DATABASE_CA_CERT.replaceAll("\\n", "\n") }
+                : {}),
+            },
+          }
+        : {}),
     });
+    pool.on("error", () =>
+      console.error(
+        "Conexión PostgreSQL inactiva cerrada; se abrirá otra en la siguiente consulta.",
+      ),
+    );
     const wrap = (
       q: (sql: string, params?: unknown[]) => Promise<{ rows: Row[] }>,
       transaction: DB["transaction"],
@@ -59,6 +83,10 @@ function connect(): DB {
     );
     return db;
   }
+  if (remoteOnly())
+    throw Error(
+      "Netlify requiere DATABASE_URL: se prohíbe crear una base SQLite temporal.",
+    );
   const location = path.resolve(
     /* turbopackIgnore: true */ process.env.SQLITE_PATH ||
       ".local/gc-predictor.sqlite",
@@ -112,10 +140,9 @@ export function getDB() {
 export async function migrate() {
   return (globals.gcMigration ??= (async () => {
     const db = getDB();
-    const sql = fs.readFileSync(
-      path.resolve("migrations/001_initial.sql"),
-      "utf8",
-    );
+    const sql = ["001_initial.sql", "002_cloud.sql"]
+      .map((file) => fs.readFileSync(path.resolve("migrations", file), "utf8"))
+      .join("\n");
     await db.transaction(async (tx) => {
       for (const stmt of sql
         .split(";")
@@ -128,11 +155,18 @@ export async function migrate() {
           "answer_entries",
           "audit_events",
           "schema_migrations",
+          "deployment_state",
+          "login_limits",
+          "study_state",
         ])
           await tx.run(`ALTER TABLE ${table} ENABLE ROW LEVEL SECURITY`);
       await tx.run(
         "INSERT INTO schema_migrations(version,applied_at) VALUES(?,?) ON CONFLICT(version) DO NOTHING",
         ["001", new Date().toISOString()],
+      );
+      await tx.run(
+        "INSERT INTO schema_migrations(version,applied_at) VALUES(?,?) ON CONFLICT(version) DO NOTHING",
+        ["002", new Date().toISOString()],
       );
     });
   })());

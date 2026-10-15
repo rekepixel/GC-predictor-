@@ -20,7 +20,9 @@
     "data:report:audit": "tsx scripts/quality-report.ts",
     "db:backup": "node scripts/backup.mjs",
     "db:restore": "node scripts/restore.mjs",
-    "deploy:prepare": "node scripts/prepare-private-deploy.mjs"
+    "deploy:prepare": "node scripts/prepare-private-deploy.mjs",
+    "cloud:preflight": "tsx scripts/migrate-cloud.ts",
+    "cloud:import": "tsx scripts/migrate-cloud.ts --apply"
   },
   "dependencies": {
     "better-sqlite3": "13.0.3",

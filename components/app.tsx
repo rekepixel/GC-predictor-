@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, createContext, useContext } from "react";
+import type { StudyProgress } from "@/lib/study-state";
 import {
   ShieldCheck,
   LayoutDashboard,
@@ -48,6 +49,13 @@ import type { frequencies, rank, patterns, backtest } from "@/lib/analysis";
 import Admin from "./admin";
 import { ArticleHistory } from "./article-history";
 type Stats = ReturnType<typeof frequencies>;
+const StudyContext = createContext<{
+  progress: Record<string, StudyProgress>;
+  save: (
+    id: string,
+    value: { status: StudyProgress["status"]; answer: number | null },
+  ) => Promise<void>;
+} | null>(null);
 type Analysis = {
   ranking: ReturnType<typeof rank>;
   patterns: ReturnType<typeof patterns>;
@@ -130,6 +138,7 @@ export function SourceLink({ source }: { source: Source | undefined }) {
   );
 }
 export default function App() {
+  const [progress, setProgress] = useState<Record<string, StudyProgress>>({});
   const [data, setData] = useState<Dataset | null>(null),
     [stats, setStats] = useState<Stats | null>(null),
     [error, setError] = useState(""),
@@ -144,6 +153,21 @@ export default function App() {
   async function refresh() {
     try {
       const result = await api("bootstrap");
+      const questions: Question[] = [];
+      let after: string | null = "";
+      do {
+        const page = await api(
+          "question-page?after=" + encodeURIComponent(after),
+        );
+        questions.push(...page.questions);
+        after = page.next;
+      } while (after);
+      if (questions.length !== result.questionCount)
+        throw Error(
+          "El banco ha cambiado durante la carga. Actualiza para obtener la versión completa.",
+        );
+      result.data.questions = questions;
+      setProgress(result.studyProgress);
       setData(result.data);
       setStats(result.stats);
       setError("");
@@ -164,9 +188,21 @@ export default function App() {
     };
     onHash();
     addEventListener("hashchange", onHash);
+    const syncProgress = () => {
+      if (!document.hidden)
+        api("study-state")
+          .then(setProgress)
+          .catch((e) => setError(e.message));
+    };
+    addEventListener("focus", syncProgress);
+    document.addEventListener("visibilitychange", syncProgress);
     if ("serviceWorker" in navigator)
       navigator.serviceWorker.register("/sw.js").catch(() => {});
-    return () => removeEventListener("hashchange", onHash);
+    return () => {
+      removeEventListener("hashchange", onHash);
+      removeEventListener("focus", syncProgress);
+      document.removeEventListener("visibilitychange", syncProgress);
+    };
   }, []);
   useEffect(() => {
     if (!data || !["prioridades", "patrones"].includes(section)) return;
@@ -194,156 +230,180 @@ export default function App() {
     navigate("administracion");
   };
   return (
-    <div className="app-shell">
-      <button
-        className="mobile-menu"
-        aria-label="Abrir navegación"
-        onClick={() => setMenu(true)}
-      >
-        <Menu />
-      </button>
-      {menu && (
+    <StudyContext.Provider
+      value={{
+        progress,
+        save: async (id, value) => {
+          try {
+            const saved = await api(
+              "study-state/" + encodeURIComponent(id),
+              { ...value, revision: progress[id]?.revision || 0 },
+              "PATCH",
+            );
+            setProgress((previous) => ({ ...previous, [id]: saved }));
+          } catch (e) {
+            setError(
+              e instanceof Error
+                ? e.message
+                : "No se pudo sincronizar el progreso.",
+            );
+            setProgress(await api("study-state"));
+            throw e;
+          }
+        },
+      }}
+    >
+      <div className="app-shell">
         <button
-          className="scrim"
-          aria-label="Cerrar navegación"
-          onClick={() => setMenu(false)}
-        />
-      )}
-      <aside className={"sidebar " + (menu ? "open" : "")}>
-        <div className="brand">
-          <div className="brand-mark">
-            <ShieldCheck size={24} />
-          </div>
-          <div>
-            <strong>
-              GC Predictor<span>.</span>
-            </strong>
-            <small>ESTUDIA CON EVIDENCIA</small>
-          </div>
+          className="mobile-menu"
+          aria-label="Abrir navegación"
+          onClick={() => setMenu(true)}
+        >
+          <Menu />
+        </button>
+        {menu && (
           <button
-            className="mobile-close"
-            aria-label="Cerrar menú"
+            className="scrim"
+            aria-label="Cerrar navegación"
             onClick={() => setMenu(false)}
-          >
-            <X />
-          </button>
-        </div>
-        <div className="space-label">MI ESPACIO DE ESTUDIO</div>
-        <nav>
-          {sections.map((s) => (
+          />
+        )}
+        <aside className={"sidebar " + (menu ? "open" : "")}>
+          <div className="brand">
+            <div className="brand-mark">
+              <ShieldCheck size={24} />
+            </div>
+            <div>
+              <strong>
+                GC Predictor<span>.</span>
+              </strong>
+              <small>ESTUDIA CON EVIDENCIA</small>
+            </div>
             <button
-              key={s.id}
-              onClick={() => navigate(s.id)}
-              className={section === s.id ? "nav-item active" : "nav-item"}
+              className="mobile-close"
+              aria-label="Cerrar menú"
+              onClick={() => setMenu(false)}
             >
-              <s.icon size={19} />
-              <span>{s.label}</span>
-              {s.id === "prioridades" && <span className="nav-year">27</span>}
-            </button>
-          ))}
-        </nav>
-        <div className="sidebar-bottom">
-          <div className="next-call">
-            <GraduationCap size={22} />
-            <strong>Objetivo: Guardia Civil</strong>
-            <span>Convocatoria 2027</span>
-            <div className="next-call-line" />
-            <small>La evidencia guía. Tú decides.</small>
-          </div>
-          <div className="private-space">
-            <LockKeyhole size={15} />
-            <span>Espacio privado</span>
-            <button
-              aria-label="Cerrar sesión"
-              onClick={async () => {
-                await api("logout", {});
-                location.href = "/login";
-              }}
-            >
-              <LogOut size={15} />
+              <X />
             </button>
           </div>
-        </div>
-      </aside>
-      <div className="workspace">
-        <header className="topbar">
-          <span>
-            Mi preparación <ChevronRight size={14} />{" "}
-            <strong>{sections.find((s) => s.id === section)?.label}</strong>
-          </span>
-          <div>
-            <Badge tone="green">
-              <span className="status-dot" />
-              Fuentes verificables
-            </Badge>
-            <span className="avatar">GC</span>
+          <div className="space-label">MI ESPACIO DE ESTUDIO</div>
+          <nav>
+            {sections.map((s) => (
+              <button
+                key={s.id}
+                onClick={() => navigate(s.id)}
+                className={section === s.id ? "nav-item active" : "nav-item"}
+              >
+                <s.icon size={19} />
+                <span>{s.label}</span>
+                {s.id === "prioridades" && <span className="nav-year">27</span>}
+              </button>
+            ))}
+          </nav>
+          <div className="sidebar-bottom">
+            <div className="next-call">
+              <GraduationCap size={22} />
+              <strong>Objetivo: Guardia Civil</strong>
+              <span>Convocatoria 2027</span>
+              <div className="next-call-line" />
+              <small>La evidencia guía. Tú decides.</small>
+            </div>
+            <div className="private-space">
+              <LockKeyhole size={15} />
+              <span>Espacio privado</span>
+              <button
+                aria-label="Cerrar sesión"
+                onClick={async () => {
+                  await api("logout", {});
+                  location.href = "/login";
+                }}
+              >
+                <LogOut size={15} />
+              </button>
+            </div>
           </div>
-        </header>
-        <main className="main-content">
-          {error && (
-            <div role="alert" className="notice error">
-              <AlertCircle size={18} />
-              <span>{error}</span>
-              <button onClick={refresh}>Reintentar</button>
+        </aside>
+        <div className="workspace">
+          <header className="topbar">
+            <span>
+              Mi preparación <ChevronRight size={14} />{" "}
+              <strong>{sections.find((s) => s.id === section)?.label}</strong>
+            </span>
+            <div>
+              <Badge tone="green">
+                <span className="status-dot" />
+                Fuentes verificables
+              </Badge>
+              <span className="avatar">GC</span>
             </div>
-          )}
-          {!data || !stats ? (
-            <div className="loading">
-              <RefreshCw className="spin" />
-              Cargando tu archivo de estudio…
-            </div>
-          ) : (
-            <>
-              {section === "dashboard" && (
-                <Dashboard data={data} stats={stats} navigate={navigate} />
-              )}
-              {section === "examenes" && (
-                <Explorer data={data} review={review} />
-              )}
-              {section === "patrones" && (
-                <Patterns
-                  data={data}
-                  stats={stats}
-                  analysis={analysis}
-                  busy={loadingAnalysis}
-                  review={review}
-                />
-              )}
-              {section === "prioridades" && (
-                <Priorities
-                  data={data}
-                  analysis={analysis}
-                  busy={loadingAnalysis}
-                  weights={weights}
-                  setWeights={setWeights}
-                  kind={kind}
-                  setKind={setKind}
-                  k={k}
-                  setK={setK}
-                  review={review}
-                />
-              )}
-              {section === "simulacros" && (
-                <Simulations data={data} refresh={refresh} />
-              )}
-              {section === "administracion" && (
-                <Admin
-                  data={data}
-                  refresh={refresh}
-                  selectedId={selected}
-                  setSelectedId={setSelected}
-                />
-              )}
-            </>
-          )}
-          <footer className="footer">
-            <ShieldCheck size={14} />
-            <span>GC Predictor · Datos reales. Criterio propio.</span>
-            <span>Una prioridad de estudio no es una probabilidad.</span>
-          </footer>
-        </main>
+          </header>
+          <main className="main-content">
+            {error && (
+              <div role="alert" className="notice error">
+                <AlertCircle size={18} />
+                <span>{error}</span>
+                <button onClick={refresh}>Reintentar</button>
+              </div>
+            )}
+            {!data || !stats ? (
+              <div className="loading">
+                <RefreshCw className="spin" />
+                Cargando tu archivo de estudio…
+              </div>
+            ) : (
+              <>
+                {section === "dashboard" && (
+                  <Dashboard data={data} stats={stats} navigate={navigate} />
+                )}
+                {section === "examenes" && (
+                  <Explorer data={data} review={review} />
+                )}
+                {section === "patrones" && (
+                  <Patterns
+                    data={data}
+                    stats={stats}
+                    analysis={analysis}
+                    busy={loadingAnalysis}
+                    review={review}
+                  />
+                )}
+                {section === "prioridades" && (
+                  <Priorities
+                    data={data}
+                    analysis={analysis}
+                    busy={loadingAnalysis}
+                    weights={weights}
+                    setWeights={setWeights}
+                    kind={kind}
+                    setKind={setKind}
+                    k={k}
+                    setK={setK}
+                    review={review}
+                  />
+                )}
+                {section === "simulacros" && (
+                  <Simulations data={data} refresh={refresh} />
+                )}
+                {section === "administracion" && (
+                  <Admin
+                    data={data}
+                    refresh={refresh}
+                    selectedId={selected}
+                    setSelectedId={setSelected}
+                  />
+                )}
+              </>
+            )}
+            <footer className="footer">
+              <ShieldCheck size={14} />
+              <span>GC Predictor · Datos reales. Criterio propio.</span>
+              <span>Una prioridad de estudio no es una probabilidad.</span>
+            </footer>
+          </main>
+        </div>
       </div>
-    </div>
+    </StudyContext.Provider>
   );
 }
 function PageTitle({
@@ -692,6 +752,22 @@ export function QuestionCard({
   review: (id: string) => void;
 }) {
   const [answer, setAnswer] = useState(false);
+  const study = useContext(StudyContext);
+  const [saving, setSaving] = useState(false);
+  const saved = study?.progress[q.id];
+  async function saveStudy(
+    status: StudyProgress["status"],
+    selectedAnswer = saved?.answer ?? null,
+  ) {
+    setSaving(true);
+    try {
+      await study?.save(q.id, { status, answer: selectedAnswer });
+    } catch {
+      /* App shows the error and reloads the latest revision. */
+    } finally {
+      setSaving(false);
+    }
+  }
   const topic = data.topics.find((t) => t.id === q.topicId);
   return (
     <article className="question-card">
@@ -756,6 +832,29 @@ export function QuestionCard({
         ))}
       </div>
       <div className="question-tags">
+        {study && (
+          <label>
+            Mi respuesta de práctica · sin calificación definitiva
+            <select
+              aria-label={`Mi respuesta ${q.year} ${q.model} ${q.number}`}
+              disabled={saving}
+              value={saved?.answer ?? ""}
+              onChange={(e) =>
+                saveStudy(
+                  saved?.status || "pending",
+                  e.target.value === "" ? null : Number(e.target.value),
+                )
+              }
+            >
+              <option value="">Sin responder</option>
+              {q.options.map((_option, i) => (
+                <option key={i} value={i}>
+                  {String.fromCharCode(65 + i)}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
         {topic && (
           <Badge>
             {q.classificationReviewed ? "Tema revisado" : "Tema sugerido"}:{" "}
@@ -862,6 +961,23 @@ export function QuestionCard({
         </div>
       )}
       <div className="question-bottom">
+        {study && (
+          <label>
+            Mi progreso
+            <select
+              aria-label={`Mi progreso ${q.year} ${q.model} ${q.number}`}
+              disabled={saving}
+              value={saved?.status || "pending"}
+              onChange={(e) =>
+                saveStudy(e.target.value as StudyProgress["status"])
+              }
+            >
+              <option value="pending">Pendiente de estudiar</option>
+              <option value="studied">Estudiada</option>
+              <option value="review">Repasar después</option>
+            </select>
+          </label>
+        )}
         <SourceLink source={data.sources.find((s) => s.id === q.sourceId)} />
         {data.sources.find((s) => s.id === q.sourceId)?.storageKey && (
           <a

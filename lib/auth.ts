@@ -1,5 +1,7 @@
 import { createHmac, timingSafeEqual, randomBytes } from "node:crypto";
 import type { NextRequest } from "next/server";
+import { getDB, migrate } from "./db";
+import { remoteOnly } from "./cloud";
 const ephemeral = randomBytes(32).toString("hex");
 export const COOKIE = "gc-session";
 function secret() {
@@ -12,11 +14,12 @@ export function secureEqual(a: string, b: string) {
 }
 export function configured() {
   return (
-    process.env.NODE_ENV !== "production" ||
+    (!remoteOnly() && process.env.NODE_ENV !== "production") ||
     !!(
       process.env.PRIVATE_APP_PASSWORD &&
       process.env.SESSION_SECRET &&
-      process.env.SESSION_SECRET.length >= 32
+      process.env.SESSION_SECRET.length >= 32 &&
+      (!remoteOnly() || process.env.PRIVATE_APP_PASSWORD.length >= 16)
     )
   );
 }
@@ -75,16 +78,25 @@ export function safeOrigin(req: NextRequest) {
     return false;
   }
 }
-const loginFailures = new Map<string, { attempts: number; since: number }>();
-export function loginAllowed(ip: string) {
-  const state = loginFailures.get(ip);
-  if (!state || Date.now() - state.since > 15 * 60000) {
-    loginFailures.set(ip, { attempts: 0, since: Date.now() });
+/** Atomic, shared across serverless instances. Includes a global cap against forged IPs. */
+export async function reserveLoginAttempt(ip: string, now = Date.now()) {
+  if (!remoteOnly()) await migrate();
+  const db = getDB();
+  return db.transaction(async (tx) => {
+    await tx.run("DELETE FROM login_limits WHERE window_start<?", [
+      now - 15 * 60000,
+    ]);
+    for (const [identity, limit] of [
+      ["global", 100],
+      [ip.slice(0, 200), 10],
+    ] as const) {
+      const id = createHmac("sha256", secret()).update(identity).digest("hex");
+      const rows = await tx.query<{ attempts: number }>(
+        "INSERT INTO login_limits(id,attempts,window_start) VALUES(?,1,?) ON CONFLICT(id) DO UPDATE SET attempts=login_limits.attempts+1 RETURNING attempts",
+        [id, now],
+      );
+      if (rows[0].attempts > limit) return false;
+    }
     return true;
-  }
-  return state.attempts < 10;
-}
-export function loginFailed(ip: string) {
-  const state = loginFailures.get(ip);
-  if (state) state.attempts++;
+  });
 }

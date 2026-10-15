@@ -268,11 +268,41 @@ function ImportForm({
     setExtracting(true);
     setWarning("");
     try {
-      const form = new FormData();
-      form.set("file", file);
-      const r = await fetch("/api/extract", { method: "POST", body: form });
-      const d = await r.json();
-      if (!r.ok) throw Error(d.error);
+      const bytes = await file.arrayBuffer();
+      if (
+        bytes.byteLength > 25 * 1024 * 1024 ||
+        new TextDecoder().decode(bytes.slice(0, 5)) !== "%PDF-"
+      )
+        throw Error("Selecciona un PDF de hasta 25 MB.");
+      const sha256 = Array.from(
+        new Uint8Array(await crypto.subtle.digest("SHA-256", bytes)),
+      )
+        .map((v) => v.toString(16).padStart(2, "0"))
+        .join("");
+      const ticket = await api("upload-ticket", {
+        sha256,
+        bytes: bytes.byteLength,
+      });
+      let d;
+      if (ticket.direct) {
+        const uploaded = await fetch(ticket.url, {
+          method: "PUT",
+          headers: { "Content-Type": "application/pdf" },
+          body: bytes,
+        });
+        if (!uploaded.ok && uploaded.status !== 409) {
+          const error = await uploaded.json().catch(() => ({}));
+          if (error.error !== "Duplicate" && error.statusCode !== "409")
+            throw Error("No se pudo subir el PDF al almacenamiento privado.");
+        }
+        d = await api("extract", { key: ticket.key });
+      } else {
+        const form = new FormData();
+        form.set("file", file);
+        const r = await fetch("/api/extract", { method: "POST", body: form });
+        d = await r.json();
+        if (!r.ok) throw Error(d.error);
+      }
       setStorage(d.storage);
       setText(d.text);
       setJson(

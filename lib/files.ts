@@ -1,6 +1,11 @@
 import { createHash } from "node:crypto";
 import fs from "node:fs/promises";
 import path from "node:path";
+import {
+  storageConfigured,
+  putPrivateObject,
+  getPrivateObject,
+} from "./private-storage";
 const MAX = 25 * 1024 * 1024;
 export async function storePDF(file: File) {
   if (file.size > MAX || file.size < 5)
@@ -10,25 +15,8 @@ export async function storePDF(file: File) {
     throw Error("El archivo no tiene cabecera PDF.");
   const sha256 = createHash("sha256").update(bytes).digest("hex");
   const key = `originals/${sha256}.pdf`;
-  if (process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
-    const url = `${process.env.SUPABASE_URL}/storage/v1/object/${process.env.SUPABASE_STORAGE_BUCKET || "gc-originals"}/${key}`;
-    const r = await fetch(url, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY}`,
-        apikey: process.env.SUPABASE_SERVICE_ROLE_KEY,
-        "Content-Type": "application/pdf",
-        "x-upsert": "false",
-      },
-      body: bytes,
-    });
-    if (!r.ok && r.status !== 409 && r.status !== 400)
-      throw Error(`No se pudo almacenar el original (${r.status}).`);
-    if (r.status === 400) {
-      const text = await r.text();
-      if (!text.includes("Duplicate"))
-        throw Error("Error del bucket privado de Supabase.");
-    }
+  if (storageConfigured()) {
+    await putPrivateObject(key, bytes, "application/pdf");
   } else {
     const full = path.resolve(".local", key);
     await fs.mkdir(path.dirname(full), { recursive: true });
@@ -43,23 +31,7 @@ export async function readPDF(key: string) {
     )
   )
     throw Error("Ruta de documento no válida.");
-  if (
-    key.startsWith("originals/") &&
-    process.env.SUPABASE_URL &&
-    process.env.SUPABASE_SERVICE_ROLE_KEY
-  ) {
-    const r = await fetch(
-      `${process.env.SUPABASE_URL}/storage/v1/object/authenticated/${process.env.SUPABASE_STORAGE_BUCKET || "gc-originals"}/${key}`,
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY}`,
-          apikey: process.env.SUPABASE_SERVICE_ROLE_KEY,
-        },
-      },
-    );
-    if (!r.ok) throw Error("Original no disponible.");
-    return Buffer.from(await r.arrayBuffer());
-  }
+  if (storageConfigured()) return getPrivateObject(key);
   return fs.readFile(
     path.resolve(key.startsWith("data/") ? key : ".local/" + key),
   );

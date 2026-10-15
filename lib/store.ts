@@ -7,9 +7,24 @@ import { applyHistoricalBank } from "./historical-bank";
 import { applyConceptBank } from "./concept-bank";
 import { applyQualityAudit } from "./quality-audit";
 import { applyDocumentaryAudit } from "./documentary-audit";
+import { remoteOnly, requireCloudStorage } from "./cloud";
 let initialization: Promise<void> | undefined;
 export function initialize() {
   return (initialization ??= (async () => {
+    if (remoteOnly()) {
+      requireCloudStorage();
+      const db = getDB();
+      // Provisioning is a separate private migration, never a public repository seed.
+      const rows = await db.query<{ payload: string }>(
+        "SELECT payload FROM deployment_state WHERE id=?",
+        ["private-import-v1"],
+      );
+      if (!rows.length || JSON.parse(rows[0].payload).ordinaryQuestions !== 700)
+        throw Error(
+          "La migración privada completa todavía no ha sido verificada. No se cargará el banco público incompleto.",
+        );
+      return;
+    }
     await migrate();
     const db = getDB();
     const catalogPath = path.resolve("data/source-catalog.json");
@@ -108,7 +123,10 @@ export function initialize() {
         }
       }
     }
-  })());
+  })().catch((error) => {
+    initialization = undefined;
+    throw error;
+  }));
 }
 export async function dataset(db?: DB): Promise<Dataset> {
   if (!db) {

@@ -4,7 +4,13 @@ Aplicación personal para analizar exámenes oficiales de acceso a la Escala de 
 
 Implementación funcional con Next.js 16, App Router, TypeScript, Tailwind 4, SQLite/PostgreSQL y extracción local de PDF en JavaScript o Python. No necesita una API de IA ni servicios de pago para ejecutarse localmente.
 
-## Fase actual: auditoría y preparación de uso privado
+## Fase actual: Netlify Free + Supabase Free
+
+Decisión del 15/10/2026: alojamiento gratuito con Next.js y persistencia PostgreSQL/Storage privada. [Pasos de conexión, despliegue e instalación PWA](docs/despliegue-iphone.md); [pruebas y límites verificados](docs/verificacion-netlify.md). La configuración Netlify, la importación íntegra y la sincronización de progreso ya están implementadas. No hay todavía una URL real publicada: faltan conexiones autorizadas a las plataformas. La nueva auditoría privada no se sustituye por los datos incompletos de GitHub.
+
+`npm run cloud:preflight` comprueba la copia privada completa y las cuotas; `npm run cloud:import` la transfiere a un proyecto privado vacío con las credenciales del servidor. Estos comandos son tareas del operador, no requisitos para estudiar desde el teléfono. Netlify nunca crea una base SQLite temporal ni importa automáticamente la semilla pública.
+
+## Auditoría conservada: 700 preguntas
 
 Informe vigente: [auditoría de las 700 preguntas](docs/auditoria-700.md). Se retira la confianza basada en «señale/indique», se conserva toda la evidencia previa y se prepara el [despliegue privado para iPhone](docs/despliegue-iphone.md).
 

@@ -1,6 +1,7 @@
 {
   "name": "GC Predictor",
   "short_name": "GC Predictor",
+  "id": "/",
   "lang": "es",
   "description": "Análisis de exámenes oficiales de Guardia Civil",
   "start_url": "/",

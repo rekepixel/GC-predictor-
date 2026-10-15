@@ -4,14 +4,13 @@ import {
   authorized,
   COOKIE,
   configured,
-  loginAllowed,
-  loginFailed,
+  reserveLoginAttempt,
   safeOrigin,
   secureEqual,
   sessionToken,
 } from "@/lib/auth";
 import { dataset, initialize } from "@/lib/store";
-import { audit, getDB, put } from "@/lib/db";
+import { audit, getDB, put, readAll } from "@/lib/db";
 import {
   attachAnswerKey,
   bundleSchema,
@@ -29,10 +28,20 @@ import {
   backtest,
   validatedCorpus,
 } from "@/lib/analysis";
-import type { Source, Weights } from "@/lib/types";
+import type { Source, Weights, Question } from "@/lib/types";
+import {
+  storageConfigured,
+  signPrivateDownload,
+  signPrivateUpload,
+} from "@/lib/private-storage";
 import { isDocumentaryVerified, verificationState } from "@/lib/documentary";
 import { articleProfiles, validationByYear } from "@/lib/history";
 import { classificationWorklist } from "@/lib/quality-audit";
+import {
+  studyProgress,
+  saveStudyProgress,
+  StudyConflict,
+} from "@/lib/study-state";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 function response(value: unknown, status = 200) {
@@ -72,8 +81,11 @@ async function handle(
           },
           503,
         );
-      const ip = req.headers.get("x-forwarded-for")?.split(",")[0] || "local";
-      if (!loginAllowed(ip))
+      const ip =
+        (process.env.NETLIFY === "true"
+          ? req.headers.get("x-nf-client-connection-ip")
+          : req.headers.get("x-forwarded-for")?.split(",")[0]) || "unknown";
+      if (!(await reserveLoginAttempt(ip)))
         return response(
           { error: "Demasiados intentos. Espera 15 minutos." },
           429,
@@ -85,7 +97,6 @@ async function handle(
         !process.env.PRIVATE_APP_PASSWORD ||
         !secureEqual(password, process.env.PRIVATE_APP_PASSWORD)
       ) {
-        loginFailed(ip);
         return response({ error: "Contraseña incorrecta." }, 401);
       }
       const r = response({ ok: true });
@@ -110,6 +121,29 @@ async function handle(
         configured() ? 401 : 503,
       );
     await initialize();
+    if (action === "study-state" && req.method === "GET")
+      return response(await studyProgress());
+    if (action === "study-state" && id && req.method === "PATCH")
+      return response(await saveStudyProgress(id, await req.json()));
+    if (action === "question-page" && req.method === "GET") {
+      const after = req.nextUrl.searchParams.get("after") || "";
+      const rows = await getDB().query<{ id: string; payload: string }>(
+        "SELECT id,payload FROM questions WHERE id>? ORDER BY id LIMIT ?",
+        [after, 100],
+      );
+      const sources = await readAll<Source>(getDB(), "sources");
+      return response({
+        questions: rows.map((row) => {
+          const q: Question = JSON.parse(row.payload);
+          return {
+            ...q,
+            documentaryEligible: isDocumentaryVerified(q, { sources }),
+            verificationState: verificationState(q, { sources }),
+          };
+        }),
+        next: rows.length === 100 ? rows.at(-1)!.id : null,
+      });
+    }
     if (action === "classification-audit" && req.method === "GET")
       return response(classificationWorklist(await dataset()));
     if (action === "logout" && req.method === "POST") {
@@ -122,12 +156,10 @@ async function handle(
       return response({
         data: {
           ...data,
-          questions: data.questions.map((q) => ({
-            ...q,
-            documentaryEligible: isDocumentaryVerified(q, data),
-            verificationState: verificationState(q, data),
-          })),
+          questions: [],
         },
+        questionCount: data.questions.length,
+        studyProgress: await studyProgress(),
         stats: frequencies(data),
         validationByYear: validationByYear(data),
         simulationIds: validatedCorpus(data).questions.map((q) => q.id),
@@ -181,12 +213,20 @@ async function handle(
     }
     if (action === "export" && req.method === "GET") {
       const data = await dataset();
+      const json = JSON.stringify(
+        { schemaVersion: 1, exportedAt: new Date().toISOString(), ...data },
+        null,
+        2,
+      );
+      const encoded = new TextEncoder().encode(json);
+      let offset = 0;
       return new NextResponse(
-        JSON.stringify(
-          { schemaVersion: 1, exportedAt: new Date().toISOString(), ...data },
-          null,
-          2,
-        ),
+        new ReadableStream({
+          pull(controller) {
+            if (offset >= encoded.length) return controller.close();
+            controller.enqueue(encoded.slice(offset, (offset += 65536)));
+          },
+        }),
         {
           headers: {
             "Content-Type": "application/json",
@@ -198,15 +238,50 @@ async function handle(
       );
     }
     if (action === "extract" && req.method === "POST") {
-      const form = await req.formData(),
-        file = form.get("file");
-      if (!(file instanceof File)) throw Error("Selecciona un archivo PDF.");
-      const storage = await storePDF(file);
+      let storage: { key: string; sha256: string; bytes: Buffer };
+      if (req.headers.get("content-type")?.includes("application/json")) {
+        const { key } = z
+          .object({ key: z.string().regex(/^originals\/[a-f0-9]{64}\.pdf$/) })
+          .parse(await req.json());
+        const bytes = await readPDF(key);
+        const { createHash } = await import("node:crypto");
+        const sha256 = createHash("sha256").update(bytes).digest("hex");
+        if (
+          bytes.length > 25 * 1024 * 1024 ||
+          bytes.subarray(0, 5).toString() !== "%PDF-" ||
+          key !== `originals/${sha256}.pdf`
+        )
+          throw Error(
+            "El archivo subido no coincide con su huella o no es un PDF permitido.",
+          );
+        storage = { key, sha256, bytes };
+      } else {
+        const form = await req.formData(),
+          file = form.get("file");
+        if (!(file instanceof File)) throw Error("Selecciona un archivo PDF.");
+        storage = await storePDF(file);
+      }
       const extraction = await extractPDF(new Uint8Array(storage.bytes));
       return response({
         ...extraction,
         storage: { key: storage.key, sha256: storage.sha256 },
       });
+    }
+    if (action === "upload-ticket" && req.method === "POST") {
+      const input = z
+        .object({
+          sha256: z.string().regex(/^[a-f0-9]{64}$/),
+          bytes: z
+            .number()
+            .int()
+            .min(5)
+            .max(25 * 1024 * 1024),
+        })
+        .parse(await req.json());
+      if (!storageConfigured()) return response({ direct: false });
+      const key = `originals/${input.sha256}.pdf`;
+      // Content-addressed, immutable path. Never grants read/list or bucket-wide write access.
+      return response({ direct: true, key, url: await signPrivateUpload(key) });
     }
     if (action === "import" && req.method === "POST") {
       const body = await req.json();
@@ -301,7 +376,19 @@ async function handle(
     if (action === "documents" && id && req.method === "GET") {
       const data = await dataset(),
         source = data.sources.find((s) => s.id === id);
-      if (!source?.storageKey) throw Error("No hay copia local del documento.");
+      if (!source?.storageKey)
+        throw Error("No hay copia conservada del documento.");
+      if (storageConfigured())
+        return NextResponse.redirect(
+          await signPrivateDownload(source.storageKey),
+          {
+            status: 302,
+            headers: {
+              "Cache-Control": "private, no-store",
+              "Referrer-Policy": "no-referrer",
+            },
+          },
+        );
       const bytes = await readPDF(source.storageKey);
       return new NextResponse(new Uint8Array(bytes), {
         headers: {
@@ -453,6 +540,7 @@ async function handle(
     }
     return response({ error: "Ruta no encontrada." }, 404);
   } catch (e) {
+    if (e instanceof StudyConflict) return response({ error: e.message }, 409);
     if (e instanceof z.ZodError)
       return response(
         {
