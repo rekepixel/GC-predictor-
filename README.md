@@ -1,5 +1,7 @@
 # GC Predictor
 
+**Acceso actualizado, 15/10/2026:** por petición expresa del propietario, la aplicación se abre sin contraseña ni sesión. `/login` redirige al inicio. El acceso a las funciones de estudio y administración es compartido por quienes alcancen el sitio; los resultados no están aislados por usuario. Las antiguas instrucciones de contraseña de la documentación describen el modo anterior y ya no son un requisito. PostgreSQL, el bucket privado y las credenciales de servidor mantienen su configuración; este cambio no importa los datos privados pendientes.
+
 Aplicación personal para analizar exámenes oficiales de acceso a la Escala de Cabos y Guardias y orientar el estudio de 2027. **La fiabilidad del corpus precede al ranking.** Una puntuación de prioridad no es una probabilidad de examen.
 
 Implementación funcional con Next.js 16, App Router, TypeScript, Tailwind 4, SQLite/PostgreSQL y extracción local de PDF en JavaScript o Python. No necesita una API de IA ni servicios de pago para ejecutarse localmente.

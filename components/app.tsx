@@ -25,14 +25,12 @@ import {
   Upload,
   Download,
   RefreshCw,
-  LockKeyhole,
   Clock3,
   Layers3,
   GraduationCap,
   LineChart,
   FileText,
   Info,
-  LogOut,
 } from "lucide-react";
 import {
   ResponsiveContainer,
@@ -76,7 +74,6 @@ export async function api(path: string, body?: unknown, method = "POST") {
   );
   const json = await response.json();
   if (!response.ok) {
-    if (response.status === 401) location.href = "/login";
     throw Error(json.error || "No se pudo completar la operación.");
   }
   return json;
@@ -314,17 +311,8 @@ export default function App() {
               <small>La evidencia guía. Tú decides.</small>
             </div>
             <div className="private-space">
-              <LockKeyhole size={15} />
-              <span>Espacio privado</span>
-              <button
-                aria-label="Cerrar sesión"
-                onClick={async () => {
-                  await api("logout", {});
-                  location.href = "/login";
-                }}
-              >
-                <LogOut size={15} />
-              </button>
+              <BookOpen size={15} />
+              <span>Acceso directo · sin contraseña</span>
             </div>
           </div>
         </aside>
@@ -2225,7 +2213,7 @@ function Simulations({
       <PageTitle
         eyebrow="PRACTICAR CON EL ORIGINAL"
         title="Simulacros"
-        description="Tests de preguntas oficiales validadas. Corrección y resultados guardados en tu espacio privado."
+        description="Tests de preguntas oficiales validadas. Corrección y resultados guardados en tu espacio de estudio."
       />
       {error && (
         <div role="alert" className="notice error">

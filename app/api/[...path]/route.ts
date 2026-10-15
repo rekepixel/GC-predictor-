@@ -1,14 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import {
-  authorized,
-  COOKIE,
-  configured,
-  reserveLoginAttempt,
-  safeOrigin,
-  secureEqual,
-  sessionToken,
-} from "@/lib/auth";
+import { COOKIE, safeOrigin } from "@/lib/auth";
 import { dataset, initialize } from "@/lib/store";
 import { audit, getDB, put, readAll } from "@/lib/db";
 import {
@@ -85,54 +77,13 @@ async function handle(
   try {
     if (req.method !== "GET" && !safeOrigin(req))
       return response({ error: "Origen no permitido." }, 403);
-    if (action === "login" && req.method === "POST") {
-      if (!configured())
-        return response(
-          {
-            error:
-              "Configura PRIVATE_APP_PASSWORD y SESSION_SECRET (mínimo 32 caracteres) antes de iniciar producción.",
-          },
-          503,
-        );
-      const ip =
-        (process.env.NETLIFY === "true"
-          ? req.headers.get("x-nf-client-connection-ip")
-          : req.headers.get("x-forwarded-for")?.split(",")[0]) || "unknown";
-      if (!(await reserveLoginAttempt(ip)))
-        return response(
-          { error: "Demasiados intentos. Espera 15 minutos." },
-          429,
-        );
-      const { password } = z
-        .object({ password: z.string().max(512) })
-        .parse(await req.json());
-      if (
-        !process.env.PRIVATE_APP_PASSWORD ||
-        !secureEqual(password, process.env.PRIVATE_APP_PASSWORD)
-      ) {
-        return response({ error: "Contraseña incorrecta." }, 401);
-      }
+    // Access is intentionally passwordless at the owner's request. Handle old
+    // clients before database initialization; neither endpoint creates a session.
+    if ((action === "login" || action === "logout") && req.method === "POST") {
       const r = response({ ok: true });
-      r.cookies.set(COOKIE, sessionToken(), {
-        httpOnly: true,
-        secure:
-          process.env.NODE_ENV === "production" ||
-          req.nextUrl.protocol === "https:",
-        sameSite: "strict",
-        maxAge: 7 * 86400,
-        path: "/",
-      });
+      r.cookies.delete(COOKIE);
       return r;
     }
-    if (!authorized(req))
-      return response(
-        {
-          error: configured()
-            ? "Acceso privado: inicia sesión."
-            : "Falta configurar autenticación de producción.",
-        },
-        configured() ? 401 : 503,
-      );
     await initialize();
     if (action === "generated-bank" && req.method === "GET") {
       const bank = (
@@ -274,11 +225,6 @@ async function handle(
     }
     if (action === "classification-audit" && req.method === "GET")
       return response(classificationWorklist(await dataset()));
-    if (action === "logout" && req.method === "POST") {
-      const r = response({ ok: true });
-      r.cookies.delete(COOKIE);
-      return r;
-    }
     if (action === "bootstrap" && req.method === "GET") {
       const data = await dataset();
       return response({
