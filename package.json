@@ -22,7 +22,11 @@
     "db:restore": "node scripts/restore.mjs",
     "deploy:prepare": "node scripts/prepare-private-deploy.mjs",
     "cloud:preflight": "tsx scripts/migrate-cloud.ts",
-    "cloud:import": "tsx scripts/migrate-cloud.ts --apply"
+    "cloud:import": "tsx scripts/migrate-cloud.ts --apply",
+    "exam:report": "tsx scripts/exam-generator-report.ts",
+    "exam:import": "tsx scripts/import-generated.ts",
+    "exam:sources": "python python/fetch_generator_sources.py",
+    "exam:prepare-drafts": "python python/prepare_generator_candidates.py"
   },
   "dependencies": {
     "better-sqlite3": "13.0.3",

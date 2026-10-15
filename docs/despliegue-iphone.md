@@ -2,7 +2,7 @@
 
 Decisión vigente del propietario, 15/10/2026. Se mantiene el repositorio, Next.js y toda la base privada. La propuesta anterior queda conservada en [el documento histórico](despliegue-contenedor-anterior.md). No se ha activado ningún servicio de pago.
 
-**Estado:** código y migrador preparados; copia íntegra verificada; pruebas locales con PostgreSQL real y adaptación OpenNext. No hay todavía un proyecto Netlify conectado, una importación en Supabase real ni una URL pública verificada. No confundir una compilación local con un despliegue.
+**Estado actualizado:** Supabase está conectado. Se aplicó en el proyecto existente la migración de `generated_questions`, `exam_blueprints` y `exam_sessions`, con RLS y sin acceso para `anon` ni `authenticated`. Se comprobó escritura/actualización en una transacción revertida, sin importar datos personales. Sigue pendiente transferir la base completa, configurar las credenciales del servidor y autorizar Netlify. No hay una URL pública verificada. No confundir una compilación local con un despliegue.
 
 ## Arquitectura y cuotas gratuitas
 
@@ -26,7 +26,7 @@ Consulta de documentación oficial el 15/10/2026:
 
 ## Conexiones que necesita el propietario (sin terminal)
 
-1. En ChatGPT, abrir **Configuración → Aplicaciones → Supabase → Conectar**, iniciar sesión y autorizar únicamente el proyecto previsto. Si se usa la opción de conexión ofrecida en la conversación, lleva a la misma autorización. No enviar contraseñas al chat. Si todavía no existe cuenta/proyecto, elegir organización **Free**, crear `gc-predictor` en región europea y guardar la contraseña de base en el gestor de contraseñas. No activar complementos de pago.
+1. **Supabase ya está conectado: no volver a crear ni conectar un proyecto.** Falta configurar de forma privada la conexión PostgreSQL y la clave de servidor de Storage descritas abajo. La autorización del conector permite administrar el proyecto, pero no configura automáticamente las variables de ejecución de Netlify. No enviar contraseñas al chat ni activar complementos de pago.
 2. En [Netlify](https://app.netlify.com/), entrar con GitHub y elegir equipo **Free**. **Add new project → Import an existing project → GitHub**. En la autorización de GitHub, dar acceso solo a `rekepixel/GC-predictor-`, el repositorio existente. Seleccionarlo; no duplicar ni crear otro repositorio. La configuración se lee de `netlify.toml`.
 3. Para que el agente despliegue y compruebe el sitio sin pedir operaciones repetidas, hace falta acceso autorizado a la API de Netlify. Si se configura mediante credenciales del entorno, el token se crea en **User settings → Applications → Personal access tokens → New access token**, y se guarda únicamente como secreto del entorno `NETLIFY_AUTH_TOKEN`. No pegarlo al chat ni en GitHub. Un acceso de ChatGPT a GitHub no concede por sí solo acceso a Netlify. Si no se dispone de conexión segura del entorno, el propietario utiliza el panel de Netlify para configurar las variables y publicar; el agente continúa migración y comprobaciones accesibles.
 4. Antes de publicar el uso personal, completar la migración privada descrita abajo y comprobar que Netlify dispone de las variables del servidor. En **Project configuration → Environment variables → Add a variable**, ponerlas con contexto **Production** y alcance **Functions** (y Builds si la interfaz lo requiere). Las variables de `netlify.toml` no sustituyen la configuración secreta de Functions. No compartir la base de producción con Deploy Previews de cambios no revisados ni con PR de terceros.

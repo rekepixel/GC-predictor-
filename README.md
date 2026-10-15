@@ -4,9 +4,17 @@ Aplicación personal para analizar exámenes oficiales de acceso a la Escala de 
 
 Implementación funcional con Next.js 16, App Router, TypeScript, Tailwind 4, SQLite/PostgreSQL y extracción local de PDF en JavaScript o Python. No necesita una API de IA ni servicios de pago para ejecutarse localmente.
 
-## Fase actual: Netlify Free + Supabase Free
+## Fase actual: exámenes históricos y generación documentada
 
-Decisión del 15/10/2026: alojamiento gratuito con Next.js y persistencia PostgreSQL/Storage privada. [Pasos de conexión, despliegue e instalación PWA](docs/despliegue-iphone.md); [pruebas y límites verificados](docs/verificacion-netlify.md). La configuración Netlify, la importación íntegra y la sincronización de progreso ya están implementadas. No hay todavía una URL real publicada: faltan conexiones autorizadas a las plataformas. La nueva auditoría privada no se sustituye por los datos incompletos de GitHub.
+La pantalla inicial permite realizar los **14 modelos originales de 2023–2026** (7 formas en 6 sesiones), guardar respuestas, marcas y tiempo, continuar después y corregir al finalizar. Se conservan las reservas, las advertencias de claves provisionales y la discrepancia jurídica de 2024. El modo documental de práctica no convierte las claves en respuestas definitivas acreditadas.
+
+El generador guarda primero un plan de **100 preguntas + 5 reservas**, calculado sobre las 700 ordinarias sin duplicar A/B y normalizado por sesión. El banco privado separado contiene **13 preguntas nuevas cotejadas mediante revisión asistida de fuentes BOE fechadas y 95 borradores pendientes**; ninguna tiene revisión humana independiente. **Todavía no puede producir un examen inédito completo y lo bloquea expresamente.** La nueva documentación y los resultados retrospectivos están en [Generador y exámenes históricos](docs/generador-examenes-2027.md).
+
+Los nuevos candidatos, fuentes y resultados detallados permanecen fuera del GitHub público. No se sustituyen por datos de demostración. Las 2.100 filas históricas y toda la auditoría anterior se conservan.
+
+## Alojamiento: Netlify Free + Supabase Free
+
+Decisión del 15/10/2026: alojamiento gratuito con Next.js y persistencia PostgreSQL/Storage privada. [Pasos de conexión, despliegue e instalación PWA](docs/despliegue-iphone.md); [pruebas y límites verificados](docs/verificacion-netlify.md). Supabase ya está conectado y la migración de las tres tablas nuevas se aplicó con RLS y acceso público denegado. La base completa aún no se ha transferido al proyecto real. No hay todavía una URL real publicada: faltan la autorización de Netlify y las credenciales de servidor para ejecutar la aplicación y la importación privada. La nueva auditoría privada no se sustituye por los datos incompletos de GitHub.
 
 `npm run cloud:preflight` comprueba la copia privada completa y las cuotas; `npm run cloud:import` la transfiere a un proyecto privado vacío con las credenciales del servidor. Estos comandos son tareas del operador, no requisitos para estudiar desde el teléfono. Netlify nunca crea una base SQLite temporal ni importa automáticamente la semilla pública.
 

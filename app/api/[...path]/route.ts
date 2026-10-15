@@ -42,6 +42,19 @@ import {
   saveStudyProgress,
   StudyConflict,
 } from "@/lib/study-state";
+import {
+  historicalExams,
+  startHistorical,
+  startGenerated,
+  readRun,
+  updateRun,
+  publicRun,
+  ExamConflict,
+  generatedProblems,
+  type GeneratedQuestion,
+} from "@/lib/exam-engine";
+import { profile, examRetrospective } from "@/lib/exam-profile";
+import { reviewGenerated } from "@/lib/generated-review";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 function response(value: unknown, status = 200) {
@@ -121,6 +134,121 @@ async function handle(
         configured() ? 401 : 503,
       );
     await initialize();
+    if (action === "generated-bank" && req.method === "GET") {
+      const bank = (
+        await getDB().query<{ payload: string }>(
+          "SELECT payload FROM generated_questions ORDER BY id",
+        )
+      ).map((r) => JSON.parse(r.payload) as GeneratedQuestion);
+      if (id) {
+        const q = bank.find((q) => q.id === id);
+        return q
+          ? response(q)
+          : response({ error: "Candidato inexistente." }, 404);
+      }
+      return response(
+        bank.map((q) => ({
+          id: q.id,
+          stem: q.stem,
+          topicId: q.topicId,
+          concept: q.concept,
+          referenceDate: q.referenceDate,
+          quality: q.quality,
+        })),
+      );
+    }
+    if (action === "generated-bank" && id && req.method === "PATCH")
+      return response(await reviewGenerated(id, await req.json()));
+    if (action === "questions" && id && req.method === "GET") {
+      const d = await dataset();
+      const q = d.questions.find((q) => q.id === id);
+      return q
+        ? response(q)
+        : response({ error: "Pregunta inexistente." }, 404);
+    }
+    if (action === "exam-home" && req.method === "GET") {
+      const data = await dataset();
+      const bank = (
+        await getDB().query<{ payload: string }>(
+          "SELECT payload FROM generated_questions ORDER BY id",
+        )
+      ).map((r) => JSON.parse(r.payload) as GeneratedQuestion);
+      const sessions = (
+        await getDB().query<{ payload: string }>(
+          "SELECT payload FROM exam_sessions ORDER BY created_at DESC LIMIT 30",
+        )
+      ).map((r) => {
+        const s = JSON.parse(r.payload);
+        return {
+          id: s.id,
+          title: s.title,
+          mode: s.mode,
+          status: s.status,
+          answered: Object.keys(s.answers).length,
+          updatedAt: s.updatedAt,
+          result: s.result,
+        };
+      });
+      const p = profile(data);
+      return response({
+        exams: historicalExams(data),
+        sessions,
+        bank: {
+          total: bank.length,
+          eligible: bank.filter(
+            (q) =>
+              q.quality.state === "documentary_checked" &&
+              !generatedProblems(q, data).length,
+          ).length,
+          pending: bank.filter(
+            (q) =>
+              q.quality.state !== "documentary_checked" ||
+              generatedProblems(q, data).length,
+          ).length,
+        },
+        profile: {
+          questions: p.questions,
+          sessions: p.sessions,
+          topics: p.topics,
+          formats: p.formats,
+          polarity: p.polarity,
+          limitations: p.limitations,
+        },
+        retrospective: examRetrospective(data),
+      });
+    }
+    if (action === "exam-start" && req.method === "POST") {
+      const body = z
+        .discriminatedUnion("mode", [
+          z.object({ mode: z.literal("historical"), examId: z.string() }),
+          z.object({
+            mode: z.literal("generated"),
+            seed: z.string().min(1).max(100).optional(),
+            recentWeight: z.number().min(0.25).max(4).optional(),
+          }),
+        ])
+        .parse(await req.json());
+      return response(
+        body.mode === "historical"
+          ? { status: "ready", run: await startHistorical(body.examId) }
+          : await startGenerated(body),
+      );
+    }
+    if (action === "exam-runs" && id && req.method === "GET")
+      return response(publicRun(await readRun(id)));
+    if (action === "exam-runs" && id && req.method === "PATCH")
+      return response(await updateRun(id, await req.json()));
+    if (action === "exam-finish" && id && req.method === "POST")
+      return response(await updateRun(id, await req.json(), true));
+    if (action === "exam-blueprints" && id && req.method === "GET") {
+      const rows = await getDB().query<{ payload: string }>(
+        "SELECT payload FROM exam_blueprints WHERE id=?",
+        [id],
+      );
+      return rows.length
+        ? response(JSON.parse(rows[0].payload))
+        : response({ error: "Planificación inexistente." }, 404);
+    }
     if (action === "study-state" && req.method === "GET")
       return response(await studyProgress());
     if (action === "study-state" && id && req.method === "PATCH")
@@ -540,6 +668,7 @@ async function handle(
     }
     return response({ error: "Ruta no encontrada." }, 404);
   } catch (e) {
+    if (e instanceof ExamConflict) return response({ error: e.message }, 409);
     if (e instanceof StudyConflict) return response({ error: e.message }, 409);
     if (e instanceof z.ZodError)
       return response(

@@ -47,6 +47,7 @@ import type { Dataset, Question, Weights, Source } from "@/lib/types";
 import { DEFAULT_WEIGHTS } from "@/lib/types";
 import type { frequencies, rank, patterns, backtest } from "@/lib/analysis";
 import Admin from "./admin";
+import ExamHub from "./exam-hub";
 import { ArticleHistory } from "./article-history";
 type Stats = ReturnType<typeof frequencies>;
 const StudyContext = createContext<{
@@ -81,6 +82,7 @@ export async function api(path: string, body?: unknown, method = "POST") {
   return json;
 }
 const sections = [
+  { id: "simulador", label: "Empezar examen", icon: GraduationCap },
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
   { id: "examenes", label: "Explorador de exámenes", icon: BookOpen },
   { id: "patrones", label: "Análisis de patrones", icon: ScanLine },
@@ -142,7 +144,7 @@ export default function App() {
   const [data, setData] = useState<Dataset | null>(null),
     [stats, setStats] = useState<Stats | null>(null),
     [error, setError] = useState(""),
-    [section, setSection] = useState("dashboard"),
+    [section, setSection] = useState("simulador"),
     [menu, setMenu] = useState(false),
     [selected, setSelected] = useState<string | null>(null),
     [weights, setWeights] = useState<Weights>(DEFAULT_WEIGHTS),
@@ -181,7 +183,6 @@ export default function App() {
     location.hash = id;
   };
   useEffect(() => {
-    refresh();
     const onHash = () => {
       const value = location.hash.slice(1);
       if (sections.some((s) => s.id === value)) setSection(value);
@@ -204,6 +205,9 @@ export default function App() {
       document.removeEventListener("visibilitychange", syncProgress);
     };
   }, []);
+  useEffect(() => {
+    if (section !== "simulador" && (!data || !stats)) refresh();
+  }, [section]);
   useEffect(() => {
     if (!data || !["prioridades", "patrones"].includes(section)) return;
     let cancelled = false;
@@ -346,7 +350,9 @@ export default function App() {
                 <button onClick={refresh}>Reintentar</button>
               </div>
             )}
-            {!data || !stats ? (
+            {section === "simulador" ? (
+              <ExamHub />
+            ) : !data || !stats ? (
               <div className="loading">
                 <RefreshCw className="spin" />
                 Cargando tu archivo de estudio…

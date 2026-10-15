@@ -31,13 +31,20 @@ async function main() {
     "schema_migrations",
   ];
   const reportDir = path.resolve(".local/netlify-migration");
-  const dbPath = path.resolve(
-    process.env.GC_MIGRATION_SQLITE ||
-      ".local/backups/netlify-before/gc-predictor.sqlite",
-  );
+  let defaultBackup = ".local/backups/netlify-before/gc-predictor.sqlite";
+  try {
+    await fs.access(".local/backups/exam-generator-final/gc-predictor.sqlite");
+    defaultBackup = ".local/backups/exam-generator-final/gc-predictor.sqlite";
+  } catch {}
+  const dbPath = path.resolve(process.env.GC_MIGRATION_SQLITE || defaultBackup);
   const raw = new Database(dbPath, { readonly: true, fileMustExist: true });
   type SQLRow = Record<string, string | number | null>;
-  const optionalTables = ["study_state"].filter((name) =>
+  const optionalTables = [
+    "study_state",
+    "generated_questions",
+    "exam_blueprints",
+    "exam_sessions",
+  ].filter((name) =>
     raw
       .prepare("SELECT name FROM sqlite_master WHERE type='table' AND name=?")
       .get(name),
@@ -108,10 +115,7 @@ async function main() {
   }
   await walk(path.resolve("data"), "data");
   try {
-    await walk(
-      path.resolve(".local/backups/netlify-before/originals"),
-      "originals",
-    );
+    await walk(path.join(path.dirname(dbPath), "originals"), "originals");
   } catch (e) {
     if ((e as NodeJS.ErrnoException).code !== "ENOENT") throw e;
   }
@@ -287,6 +291,15 @@ async function main() {
         await client.query(
           await fs.readFile(path.resolve("migrations", file), "utf8"),
         );
+      const examSchema = await fs.readFile(
+        "supabase/migrations/20261015113618_exam_generator.sql",
+        "utf8",
+      );
+      for (const stmt of examSchema
+        .split(";")
+        .map((s) => s.trim())
+        .filter((s) => /^CREATE /i.test(s)))
+        await client.query(stmt);
       const prior = await client.query(
         "SELECT payload FROM deployment_state WHERE id='private-import-v1'",
       );
@@ -352,6 +365,9 @@ async function main() {
           "deployment_state",
           "login_limits",
           "study_state",
+          "generated_questions",
+          "exam_blueprints",
+          "exam_sessions",
         ];
         for (const table of secureTables) {
           await client.query(`ALTER TABLE ${table} ENABLE ROW LEVEL SECURITY`);

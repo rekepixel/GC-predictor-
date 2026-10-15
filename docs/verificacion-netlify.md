@@ -1,6 +1,8 @@
 # Verificación de la adaptación a Netlify, 15/10/2026
 
-El repositorio existente conserva todos sus registros. No hay aún un despliegue remoto certificado: faltan las conexiones autorizadas a Netlify y Supabase.
+El repositorio existente conserva todos sus registros. No hay aún un despliegue remoto certificado: falta autorización para Netlify y configurar los secretos del servidor. Supabase ya está conectado; véase la actualización siguiente.
+
+Actualización del generador: [implementación, pruebas y límites actuales](generador-examenes-2027.md). La lista de 52 pruebas siguiente corresponde a la fase anterior y se conserva como historial.
 
 ## Comprobaciones realizadas
 
@@ -29,10 +31,10 @@ El repositorio existente conserva todos sus registros. No hay aún un despliegue
 
 ## Límites y pendientes
 
-Faltan el proyecto real de Supabase, los secretos del servidor y la autorización de Netlify para publicar. La conexión GitHub existente no concede esos accesos. La conexión Supabase fue localizada y solicitada, pero aún no consta autorizada. No se ha contratado capacidad ni configurado facturación.
+El proyecto real de Supabase ya está autorizado. Se aplicó la migración de las tres tablas nuevas, se comprobó RLS y se probó la persistencia mediante transacción revertida. No hay políticas públicas de acceso. Faltan la importación completa, los secretos del servidor y la autorización de Netlify para publicar. La conexión GitHub no concede acceso a Netlify. No se ha contratado capacidad ni configurado facturación.
 
 Pendientes de la conexión: importación en Supabase real, revisión de sus políticas y cuotas, despliegue Netlify, certificado HTTPS público, pruebas de acceso y persistencia contra esa URL, instalación física en Safari/iPhone y Chrome/Edge de Windows. Hasta entonces no se entrega una URL como funcional.
 
-Las 700 clasificaciones siguen siendo asistidas, pendientes de revisión humana. La situación final de respuestas/anulaciones no mejora por cambiar el alojamiento. Los simulacros con calificación estricta continúan exigiendo respuestas definitivas acreditadas; las respuestas personales de práctica y marcas de estudio no alteran ese criterio. No hay nuevas probabilidades predictivas.
+Las 700 clasificaciones siguen siendo asistidas, pendientes de revisión humana. La situación final de respuestas/anulaciones no mejora por cambiar el alojamiento. Los simulacros con calificación estricta continúan exigiendo respuestas definitivas acreditadas. El nuevo modo histórico documental, autorizado en la fase siguiente, permite practicar con las claves disponibles y muestra expresamente la provisionalidad y discrepancias; no altera la calidad del banco. No hay nuevas probabilidades predictivas.
 
 Los registros detallados y huellas se conservan en `.local/netlify-test/` y `.local/netlify-migration/`, fuera del repositorio público. [Guía de conexión e instalación](despliegue-iphone.md).

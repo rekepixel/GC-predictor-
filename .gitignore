@@ -12,6 +12,9 @@ coverage/
 .sites-runtime/
 .wrangler/
 .netlify/
+supabase/.temp/
+data/generated/
+data/research/exam-generator/
 
 *.tsbuildinfo
 playwright-report/

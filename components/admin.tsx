@@ -16,6 +16,7 @@ import {
 import type { Dataset, Question, Source } from "@/lib/types";
 import { api, Empty, Badge, SourceLink } from "./app";
 import { ValidationLedger } from "./article-history";
+import GeneratedReview from "./generated-review";
 type Storage = { key: string; sha256: string };
 const initialMeta = {
   title: "",
@@ -90,6 +91,7 @@ export default function Admin({
           ["norms", "Normas y temario"],
           ["jobs", "Registro de importación"],
           ["validation", "Verificación por año"],
+          ["generated", "Banco inédito"],
         ].map(([id, label]) => (
           <button
             key={id}
@@ -113,6 +115,7 @@ export default function Admin({
         </div>
       )}
       {tab === "validation" && <ValidationLedger data={data} />}
+      {tab === "generated" && <GeneratedReview />}
       {tab === "import" && (
         <ImportForm data={data} perform={perform} busy={busy} />
       )}

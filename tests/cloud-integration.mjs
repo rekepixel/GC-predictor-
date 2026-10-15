@@ -24,6 +24,9 @@ const storage = await storageEmulator();
 const env = {
   ...process.env,
   DATABASE_URL: connectionString,
+  GC_MIGRATION_SQLITE: path.resolve(
+    ".local/backups/netlify-before/gc-predictor.sqlite",
+  ),
   DATABASE_CA_CERT: ca,
   SUPABASE_URL: storage.url,
   SUPABASE_SERVICE_ROLE_KEY: storage.secret,
@@ -104,6 +107,18 @@ try {
     ).rows[0].n,
     "0",
   );
+  if (process.env.GC_TEST_EXAMS === "1") {
+    for (const file of [
+      "data/generated/2027-v1/literal-candidates.json",
+      "data/generated/2027-v1/authored-candidates-v1.json",
+    ]) {
+      for (const q of JSON.parse(await fs.readFile(file, "utf8")))
+        await pool.query(
+          "INSERT INTO generated_questions(id,payload) VALUES($1,$2)",
+          [q.id, JSON.stringify(q)],
+        );
+    }
+  }
   await assert.rejects(
     () => pool.query("SET ROLE anon; SELECT * FROM questions"),
     /permission denied/,
@@ -266,6 +281,95 @@ try {
   assert.equal((await manifest.json()).display, "standalone");
   const sw = await fetch(origin + "/sw.js");
   assert.equal(sw.status, 200);
+  let savedExamId;
+  if (process.env.GC_TEST_EXAMS === "1") {
+    const home = await api("exam-home");
+    assert.equal(home.exams.length, 14);
+    assert.equal(home.bank.eligible, 13);
+    assert.equal(home.profile.questions, 700);
+    const exam = home.exams.find((e) => e.year === 2026 && e.model === "A");
+    assert.ok(exam);
+    const started = (
+      await api("exam-start", { mode: "historical", examId: exam.id })
+    ).run;
+    savedExamId = started.id;
+    assert.equal(started.items.length, 105);
+    assert.equal(started.items.filter((q) => q.reserve).length, 5);
+    assert.ok(
+      started.items.every((q) => !("correct" in q) && !("explanation" in q)),
+    );
+    const real = questions.filter((q) => q.examId === exam.id && !q.reserve);
+    const answers = Object.fromEntries(
+      real.map((q, i) => [q.id, i < 75 ? q.correct : (q.correct + 1) % 4]),
+    );
+    const saved = await api(
+      "exam-runs/" + started.id,
+      {
+        revision: 1,
+        answers,
+        flagged: [real[0].id],
+        currentIndex: 5,
+        elapsedSeconds: 1200,
+      },
+      "PATCH",
+    );
+    const mobile = await api(
+      "exam-runs/" + started.id,
+      undefined,
+      "GET",
+      cookie2,
+    );
+    assert.deepEqual(mobile.answers, answers);
+    assert.equal(mobile.revision, 2);
+    const finished = await api("exam-finish/" + started.id, {
+      revision: 2,
+      answers,
+      flagged: [real[0].id],
+      currentIndex: 5,
+      elapsedSeconds: 1201,
+    });
+    assert.equal(finished.result.correct, 75);
+    assert.equal(finished.result.wrong, 25);
+    assert.equal(finished.result.blank, 0);
+    assert.ok(Math.abs(finished.result.score - (75 - 25 / 3)) < 1e-8);
+    assert.equal(finished.result.unusedReserves, 5);
+    assert.equal(finished.result.provisional, true);
+    assert.ok("correct" in finished.items[0]);
+    const disputedExam = home.exams.find(
+      (e) => e.year === 2024 && e.model === "2A",
+    );
+    const disputed = await api("exam-start", {
+      mode: "historical",
+      examId: disputedExam.id,
+    });
+    const issue = questions.find(
+      (q) => q.examId === disputedExam.id && q.number === 81,
+    );
+    const issueFinished = await api("exam-finish/" + disputed.run.id, {
+      revision: 1,
+      answers: { [issue.id]: 1 },
+      flagged: [issue.id],
+      currentIndex: 80,
+      elapsedSeconds: 100,
+    });
+    assert.equal(issueFinished.result.uncertainAnswered, 1);
+    assert.equal(issueFinished.result.unresolved.length, 1);
+    assert.ok(
+      issueFinished.result.scoreRange.upper >
+        issueFinished.result.scoreRange.lower,
+    );
+    const generated = await api("exam-start", {
+      mode: "generated",
+      seed: "private-e2e-test",
+    });
+    assert.equal(generated.status, "blocked");
+    assert.equal(generated.eligible, 13);
+    assert.ok(generated.shortages.length > 0);
+    assert.ok(!generated.run);
+    const plan = await api("exam-blueprints/" + generated.blueprintId);
+    assert.equal(plan.slots.length, 105);
+    assert.equal(plan.status, "blocked");
+  }
   if (process.env.GC_TEST_BROWSER === "1") {
     const ui = spawn(
       process.execPath,
@@ -293,6 +397,8 @@ try {
         await new Promise((r) => setTimeout(r, 200));
       }
       await command(["tests/cloud-browser.py"], "browser.log", "python");
+      if (process.env.GC_TEST_EXAMS === "1")
+        await command(["tests/exam-browser.py"], "exam-browser.log", "python");
     } finally {
       ui.kill("SIGTERM");
     }
@@ -315,6 +421,16 @@ try {
     (await api("study-state", undefined, "GET", cookie2))[q.id].status,
     "studied",
   );
+  if (savedExamId) {
+    const persisted = await api(
+      "exam-runs/" + savedExamId,
+      undefined,
+      "GET",
+      cookie2,
+    );
+    assert.equal(persisted.status, "finished");
+    assert.equal(persisted.result.correct, 75);
+  }
   await pool.query(
     "ALTER TABLE storage.objects ENABLE ROW LEVEL SECURITY; CREATE POLICY fixture_public_access ON storage.objects FOR SELECT TO anon USING(true)",
   );
@@ -343,7 +459,7 @@ try {
     realPostgres: true,
     tlsCertificateVerified: true,
     storage:
-      "local Supabase REST contract double; real Supabase still requires connection",
+      "local Supabase REST contract double; live application Storage access not configured",
     historicalRecords: questions.length,
     ordinaryQuestions: bootstrap.stats.questions,
     auditEvents: 15569,
@@ -358,6 +474,17 @@ try {
     twoDeviceProgress: true,
     optimisticConflict: true,
     processRestartPersistence: true,
+    examModes:
+      process.env.GC_TEST_EXAMS === "1"
+        ? {
+            officialModels: 14,
+            historicalFullRun: true,
+            resultsAcrossDevices: true,
+            disputedKeyWarning: true,
+            generatedBlockedBelowQuality: true,
+            generatedEligible: 13,
+          }
+        : undefined,
     patterns: 37,
     pwaAssets: true,
     allBufferedResponsesBelow4MB: true,

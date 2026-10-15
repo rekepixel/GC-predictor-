@@ -140,14 +140,18 @@ export function getDB() {
 export async function migrate() {
   return (globals.gcMigration ??= (async () => {
     const db = getDB();
-    const sql = ["001_initial.sql", "002_cloud.sql"]
-      .map((file) => fs.readFileSync(path.resolve("migrations", file), "utf8"))
+    const sql = [
+      "migrations/001_initial.sql",
+      "migrations/002_cloud.sql",
+      "supabase/migrations/20261015113618_exam_generator.sql",
+    ]
+      .map((file) => fs.readFileSync(path.resolve(file), "utf8"))
       .join("\n");
     await db.transaction(async (tx) => {
       for (const stmt of sql
         .split(";")
         .map((s) => s.trim())
-        .filter(Boolean))
+        .filter((s) => !!s && !/^(ALTER TABLE|REVOKE|GRANT)\b/i.test(s)))
         await tx.run(stmt);
       if (process.env.DATABASE_URL)
         for (const table of [
@@ -158,6 +162,9 @@ export async function migrate() {
           "deployment_state",
           "login_limits",
           "study_state",
+          "generated_questions",
+          "exam_blueprints",
+          "exam_sessions",
         ])
           await tx.run(`ALTER TABLE ${table} ENABLE ROW LEVEL SECURITY`);
       await tx.run(
@@ -167,6 +174,10 @@ export async function migrate() {
       await tx.run(
         "INSERT INTO schema_migrations(version,applied_at) VALUES(?,?) ON CONFLICT(version) DO NOTHING",
         ["002", new Date().toISOString()],
+      );
+      await tx.run(
+        "INSERT INTO schema_migrations(version,applied_at) VALUES(?,?) ON CONFLICT(version) DO NOTHING",
+        ["20261015113618", new Date().toISOString()],
       );
     });
   })());
